@@ -1,12 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to lwyz.org</title>
+  <!-- ====== Basic Page Needs ====== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LWYZ — Learn • Build • Explore</title>
+  <meta name="description" content="LWYZ — a personal hub for projects, writing, photos, and contact info." />
+  <meta name="author" content="LWYZ" />
+
+  <!-- ====== SEO / Social Sharing ====== -->
+  <meta property="og:title" content="LWYZ — Learn • Build • Explore" />
+  <meta property="og:description" content="Projects, posts, and experiments from LWYZ." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lwyz.org/" />
+  <meta property="og:image" content="/assets/og-image.jpg" /> <!-- TODO: add this image -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- ====== Favicon & PWA (optional) ====== -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="manifest" href="/site.webmanifest" /> <!-- optional: create a manifest for installable PWA -->
+
+  <!-- ====== Fonts (system stack for speed) ====== -->
+  <style>
+    /* Use a fast system font stack */
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #0f1530;
+      --text: #e8ecf1;
+      --muted: #9fb0c3;
+      --brand: #7aa2ff;
+      --brand-weak: #a9c1ff;
+      --card: #111833;
+      --border: #1d2647;
+      --link: #9bd5ff;
+      --ok: #35d07f;
+      --warn: #ffcf5a;
+      --danger: #ff6b6b;
+    }
+    
+    /* Light mode */
+    .light {
+      --bg: #f7f9fc;
+      --bg-soft: #ffffff;
+      --text: #121722;
+      --muted: #5a6b82;
+      --brand: #315efb;
+      --brand-weak: #6f8bff;
+      --card: #ffffff;
+      --border: #e7ecf5;
+      --link: #1558d6;
+      --ok: #0a9154;
+      --warn: #b27400;
+      --danger: #c03535;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* ====== Header / Nav ====== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: color-mix(in oklab, var(--bg), transparent 20%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-weight: 800; letter-spacing: .4px; font-size: 1.05rem; }
+
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav a { padding: 8px 10px; border-radius: 10px; }
+    .nav a:hover { background: color-mix(in oklab, var(--brand), transparent 88%); text-decoration: none; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; }
+    .btn:hover { filter: brightness(1.05); }
+    .btn.primary { background: linear-gradient(160deg, var(--brand), var(--brand-weak)); color: white; border: none; }
+
+    /* ====== Hero ====== */
+    .hero { padding: 64px 0 28px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+    .hero h1 { margin: 0 0 12px; font-size: clamp(2rem, 2vw + 1.7rem, 3.2rem); letter-spacing: 0.2px; }
+    .hero p { color: var(--muted); font-size: 1.05rem; }
+    .hero .card { padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); }
+    .badge { font-size: .78rem; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--brand), transparent 90%); }
+
+    /* ====== Sections ====== */
+    section { padding: 52px 0; border-top: 1px dashed var(--border); }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .section-title h2 { margin: 0; font-size: 1.4rem; letter-spacing: .2px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .meta { font-size: .86rem; color: var(--muted); }
+
+    /* ====== Gallery ====== */
+    .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+
+    /* ====== Contact ====== */
+    form { display: grid; gap: 12px; }
+    input, textarea { background: var(--bg-soft); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 12px; }
+    textarea { min-height: 120px; resize: vertical; }
+
+    /* ====== Footer ====== */
+    footer { padding: 36px 0 56px; border-top: 1px solid var(--border); color: var(--muted); font-size: .95rem; }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(6, 1fr); }
+      .col-4 { grid-column: span 6; }
+      .col-6 { grid-column: span 6; }
+    }
+  </style>
+
+  <!-- (Optional) Analytics: replace G-XXXX with your tag or remove -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXX');
+  </script> -->
 </head>
 <body>
-  <h1>Welcome to lwyz.org 🎉</h1>
-  <p>This site is hosted on GitHub Pages.</p>
+  <!-- ====== Header / Nav ====== -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">LWYZ</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#posts">Posts</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="modeBtn" class="btn" title="Toggle dark/light">🌙</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">Welcome</span>
+        <h1>Learn • Build • Explore</h1>
+        <p>
+          Hi! I'm <strong>LWYZ</strong>. This is my digital home for experiments — from
+          math + coding notes to investing memos, travel logs, and astronomy pics.
+        </p>
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn" href="#posts">Read Posts</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px;">Now</h3>
+        <p class="meta" style="margin:0 0 10px;">What I'm focusing on this month:</p>
+        <ul style="margin:0 0 8px 18px;">
+          <li>Automating property & email workflows (Python + APIs)</li>
+          <li>Math contest prep with my kids (AMC / MATHCOUNTS)</li>
+          <li>Astrophotography and night-sky posts 🌌</li>
+        </ul>
+        <p class="meta">Last updated <span id="lastUpdated"></span></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== Projects ====== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <a class="btn" href="#">All projects →</a>
+      </div>
+      <div class="grid">
+        <article class="card col-6">
+          <h3>HOA Mail Summarizer</h3>
+          <p class="meta">Python • Gmail API • Automation</p>
+          <p>Summarizes HOA notices, extracts violations by address & type, and exports monthly reports.</p>
+          <a href="#" aria-label="Project details">Learn more →</a>
+        </article>
+        <article class="card col-6">
+          <h3>Star Map Annotator</h3>
+          <p class="meta">Python • Imaging • Astronomy</p>
+          <p>Annotate constellations and create bilingual captions for social posts.</p>
+          <a href="#">See the write-up →</a>
+        </article>
+        <article class="card col-6">
+          <h3>Element Clash — Card Game</h3>
+          <p class="meta">Design • Kids • Printables</p>
+          <p>Printable cards, basic rules, and a web demo. Kid‑friendly and fun.</p>
+          <a href="#">Download kit →</a>
+        </article>
+        <article class="card col-6">
+          <h3>Property KPI Dashboard</h3>
+          <p class="meta">Python • Charts • Real Estate</p>
+          <p>Track rent rolls, NOI, capex, and maintenance tickets across properties.</p>
+          <a href="#">View screenshots →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Posts ====== -->
+  <section id="posts">
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest Posts</h2>
+        <a class="btn" href="#">Blog archive →</a>
+      </div>
+      <div class="grid">
+        <article class="card col-4">
+          <h3>Night Sky: Autumn Edition</h3>
+          <p class="meta">Oct 2025 • 3 min</p>
+          <p>Notes on capturing the Milky Way between cloud gaps, plus gear tips.</p>
+          <a href="#">Read →</a>
+        </article>
+        <article class="card col-4">
+          <h3>Auto‑reply for HOA Tickets</h3>
+          <p class="meta">Oct 2025 • 4 min</p>
+          <p>How I parse emails into a violation table with Python and schedule weekly checks.</p>
+          <a href="#">Read →</a>
+        </article>
+        <article class="card col-4">
+          <h3>Kid Math: Quadratics Fast</h3>
+          <p class="meta">Sep 2025 • 2 min</p>
+          <p>Practice flow for one‑variable quadratics my kids actually enjoy.</p>
+          <a href="#">Read →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Gallery ====== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Photo Gallery</h2>
+        <a class="btn" href="#">See all →</a>
+      </div>
+      <div class="gallery" aria-label="Photo thumbnails">
+        <img src="/assets/gallery/1.jpg" alt="Stars over lake" />
+        <img src="/assets/gallery/2.jpg" alt="City at dusk" />
+        <img src="/assets/gallery/3.jpg" alt="Trail in forest" />
+        <img src="/assets/gallery/4.jpg" alt="Mountain panorama" />
+        <img src="/assets/gallery/5.jpg" alt="Coding on laptop" />
+        <img src="/assets/gallery/6.jpg" alt="Kids' card game playtest" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <span class="meta">Prefer email? hello@lwyz.org</span>
+      </div>
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Send a message</h3>
+          <!-- Quick no‑backend form via Formspree/Static forms. Replace action URL. -->
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <input aria-label="Your name" type="text" name="name" placeholder="Your name" required />
+            <input aria-label="Your email" type="email" name="email" placeholder="you@example.com" required />
+            <textarea aria-label="Message" name="message" placeholder="Say hello…" required></textarea>
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+          <p class="meta" style="margin-top:8px;">Your data is sent over HTTPS. Replace the form action to control where it goes.</p>
+        </div>
+        <div class="card col-6">
+          <h3>Links</h3>
+          <ul style="margin:0 0 0 18px;">
+            <li><a href="https://github.com/stephen-n-zhou" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="#">Blog RSS</a> <!-- TODO: add feed.xml if you publish posts -->
+            </li>
+            <li><a href="#">Projects index</a></li>
+          </ul>
+          <h3 style="margin-top:16px;">Colophon</h3>
+          <p class="meta">Built with vanilla HTML/CSS for speed. No framework needed. Deployed on GitHub Pages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>© <span id="year"></span> LWYZ. All rights reserved.</div>
+      <div>
+        <a href="/privacy.html">Privacy</a>
+        <span class="meta"> • </span>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== Scripts ====== -->
+  <script>
+    // Dark/Light mode toggle with localStorage
+    (function() {
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light' || (!saved && prefersLight)) document.body.classList.add('light');
+      const btn = document.getElementById('modeBtn');
+      if (btn) btn.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+        btn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
+      });
+      if (btn) btn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
+    })();
+
+    // Footer year + hero updated timestamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const d = new Date();
+    const stamp = d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+    document.getElementById('lastUpdated').textContent = stamp;
+  </script>
 </body>
 </html>
