@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOA Mail Summarizer — LWYZ Projects</title>
+  <meta name="description" content="Summarize HOA notices from Gmail, extract violations by address & type, and export monthly reports." />
+  <meta property="og:title" content="HOA Mail Summarizer — LWYZ" />
+  <meta property="og:description" content="Python • Gmail API • Automation — summarize HOA emails into structured reports." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.lwyz.org/projects/hoa-mail-summarizer.html" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <style>
+    :root { --bg:#0b1020; --bg-soft:#0f1530; --text:#e8ecf1; --muted:#9fb0c3; --brand:#7aa2ff; --brand-weak:#a9c1ff; --card:#111833; --border:#1d2647; }
+    .light{ --bg:#f7f9fc; --bg-soft:#fff; --text:#121722; --muted:#5a6b82; --brand:#315efb; --brand-weak:#6f8bff; --card:#fff; --border:#e7ecf5; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial;line-height:1.6}
+    a{color:#9bd5ff}
+    header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg),transparent 20%);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--border)}
+    .container{max-width:1060px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+    .brand{font-weight:800}
+    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+    .btn.primary{background:linear-gradient(160deg,var(--brand),var(--brand-weak));border:none;color:#fff}
+    main{padding:40px 0}
+    h1{margin:0 0 8px;font-size:clamp(1.8rem,2vw+1.5rem,3rem)}
+    .lead{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .col-8{grid-column:span 8} .col-4{grid-column:span 4}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+    section{padding:36px 0;border-top:1px dashed var(--border)}
+    pre{background:var(--bg-soft);border:1px solid var(--border);padding:14px;border-radius:12px;overflow:auto}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono"}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+    .small{font-size:.9rem;color:var(--muted)}
+    footer{padding:36px 0;border-top:1px solid var(--border);color:var(--muted)}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(6,1fr)}.col-8{grid-column:span 6}.col-4{grid-column:span 6}.gallery{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/">LWYZ</a>
+      <nav>
+        <a class="btn" href="/index.html#projects">← Back to Projects</a>
+        <button id="modeBtn" class="btn" title="Toggle theme">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>HOA Mail Summarizer</h1>
+    <p class="lead">Python • Gmail API • Automation — Summarizes HOA notices, extracts violations by address & type, and exports monthly reports.</p>
+
+    <div class="grid" style="margin-top:18px">
+      <div class="col-8 card">
+        <h2 style="margin-top:0">Overview</h2>
+        <p>Automate HOA inbox triage: this tool connects to Gmail (read‑only), pulls messages from PMs/HOAs, and structures them into a violation ledger with address, category, dates, and status. Export to CSV/Excel, or generate monthly rollups for your property dashboard.</p>
+        <ul>
+          <li>Filters HOA emails using sender + subject patterns and labels.</li>
+          <li>Extracts key fields: <em>address</em>, <em>violation type</em>, <em>opened</em>/<em>due</em> dates, <em>status</em>, <em>cost/quote</em>.</li>
+          <li>Deduplicates threads and groups by property & month.</li>
+          <li>Exports: CSV/Excel (pivot‑ready) and Markdown summaries.</li>
+        </ul>
+      </div>
+      <aside class="col-4 card">
+        <h3 style="margin-top:0">Project Facts</h3>
+        <ul style="margin:0 0 0 18px">
+          <li>Status: <strong>v0.3</strong></li>
+          <li>Language: Python 3.10+</li>
+          <li>Libs: google‑api‑python‑client, pandas, dateparser, python‑dotenv</li>
+          <li>Auth: OAuth (read‑only Gmail scopes)</li>
+          <li>License: MIT</li>
+        </ul>
+        <div style="margin-top:10px">
+          <a class="btn primary" href="#download">Download</a>
+        </div>
+      </aside>
+    </div>
+
+    <section id="screens">
+      <h2>Screenshots</h2>
+      <div class="gallery" aria-label="Summaries and exports">
+        <img src="/assets/hoa/summary-table.jpg" alt="Violation summary table" />
+        <img src="/assets/hoa/thread-highlight.jpg" alt="Email thread highlight" />
+        <img src="/assets/hoa/monthly-export.jpg" alt="Monthly export sample" />
+      </div>
+      <p class="small">Place your images at <code>/assets/hoa/</code> to update these thumbnails.</p>
+    </section>
+
+    <section id="setup">
+      <h2>Setup (Gmail API, local run)</h2>
+<ol>
+<li><strong>Create a Google Cloud project</strong> → enable <em>Gmail API</em> → create OAuth <em>Desktop App</em> credentials → download <code>client_secret.json</code>.</li>
+<li><strong>Install dependencies</strong>:</li>
+</ol>
+<pre><code>pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib pandas python-dotenv dateparser</code></pre>
+<ol start="3">
+<li>Put <code>client_secret.json</code> in your project folder. First run opens a browser for consent and saves <code>token.json</code>.</li>
+<li>Create a <code>.env</code> (optional) for label filters and senders.</li>
+</ol>
+<pre><code># .env
+GMAIL_QUERY=(label:INBOX OR label:HOA) from:(support@ncfindahome.com OR management@example.com)
+DATE_SINCE=2025-01-01
+EXPORT_DIR=exports</code></pre>
+    </section>
+
+    <section id="usage">
+      <h2>Usage</h2>
+<pre><code>python summarize_hoa.py --since 2025-01-01 --out exports/hoa_violations_2025-10.csv</code></pre>
+<p class="small">Add <code>--month 2025-10</code> to force a month rollup. Use Windows Task Scheduler or cron to run weekly.</p>
+
+<pre><code># summarize_hoa.py (core outline)
+from gmail_client import fetch_messages
+from parsers import parse_violation
+import pandas as pd
+
+msgs = fetch_messages(query)
+rows = [parse_violation(m) for m in msgs]
+df = pd.DataFrame([r for r in rows if r])
+# dedupe by (address, type, threadId)
+df = df.sort_values('date').drop_duplicates(['address','type','threadId'], keep='last')
+df.to_csv('exports/hoa_violations.csv', index=False)</code></pre>
+    </section>
+
+    <section id="output">
+      <h2>Output Columns</h2>
+      <div class="card">
+        <ul>
+          <li><strong>address</strong> — standardized (e.g., <code>11111 Travis Gulch Dr, Charlotte, NC</code>)</li>
+          <li><strong>type</strong> — exterior / trash bin / lawn / parking / noise / other</li>
+          <li><strong>opened</strong>, <strong>due</strong>, <strong>resolved</strong> — ISO dates</li>
+          <li><strong>status</strong> — open / scheduled / completed / appealed</li>
+          <li><strong>cost</strong> — numeric, parsed from quotes</li>
+          <li><strong>threadId</strong>, <strong>messageId</strong>, <strong>sender</strong>, <strong>subject</strong></li>
+          <li><strong>month</strong> — YYYY‑MM for pivoting</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy & Permissions</h2>
+      <p>This tool requests minimal, read‑only Gmail scopes and stores tokens locally in <code>token.json</code>. You can revoke access anytime from your Google Account → Security → Third‑party access. Never commit token files to Git.</p>
+    </section>
+
+    <section id="download">
+      <h2>Download & Run</h2>
+      <div class="card">
+        <ol>
+          <li><strong>Clone</strong>: <code>git clone https://github.com/stephen-n-zhou/hoa-mail-summarizer</code></li>
+          <li><strong>Install</strong> dependencies (see above).</li>
+          <li><strong>Run</strong> the script and check <code>/exports</code> for CSV/Excel.</li>
+        </ol>
+        <p class="small">Want a GUI? Next milestone adds a simple web UI to preview threads and confirm parsed fields before export.</p>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>One‑click Windows Task Scheduler job / cron template</li>
+        <li>Rules editor for address normalization and type mapping</li>
+        <li>Attachment saving + image OCR (optional)</li>
+        <li>Dashboard: per‑property monthly trend charts</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Will this mark emails as read or move them?</summary>
+        <div class="card"><p>No. It uses read‑only scopes unless you opt in to labeling (write scopes).</p></div>
+      </details>
+      <details>
+        <summary>Can I export to Excel pivot with month columns?</summary>
+        <div class="card"><p>Yes — export CSV and open in Excel; or extend the script to produce an .xlsx with a PivotTable.</p></div>
+      </details>
+      <details>
+        <summary>How do I avoid re‑processing old threads?</summary>
+        <div class="card"><p>Use <code>--since</code> and persist a <code>seen_threads.json</code> cache file keyed by <code>threadId</code>.</p></div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> LWYZ</div>
+      <div><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const saved=localStorage.getItem('theme');
+      if(saved==='light') document.body.classList.add('light');
+      const btn=document.getElementById('modeBtn');
+      if(btn) btn.addEventListener('click',()=>{
+        document.body.classList.toggle('light');
+        localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');
+        btn.textContent=document.body.classList.contains('light')?'🌞':'🌙';
+      });
+      if(btn) btn.textContent=document.body.classList.contains('light')?'🌞':'🌙';
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
