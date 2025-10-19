@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Privacy Policy – Gmail Attachment Downloader (Python Script)</title>
+  <title>Privacy Policy – Gmail Automation Script</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <style>
@@ -22,72 +22,68 @@
 </head>
 <body>
 <main>
-  <h1>Privacy Policy – Gmail Attachment Downloader (Python Script)</h1>
+  <h1>Privacy Policy – Gmail Automation Script</h1>
   <p><strong>Effective date:</strong> October 19, 2025</p>
-  <p><strong>Contact:</strong> <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a></p>
+  <p><strong>Contact:</strong> <a href="mailto:iambosszhou@gmail.com">iambosszhou@gmail.com</a></p>
 
   <div class="note">
-    <p>This Python script connects to the Gmail API with <code>gmail.readonly</code> access to identify and download email attachments.  
-    All attachments and message data are processed and saved <strong>locally on your computer</strong>.  
-    No data is uploaded, shared, or transmitted to any external server or third party.</p>
+    <p>This local Python automation script connects to the Gmail API using the <code>gmail.readonly</code> scope.  
+    Its primary purpose is to perform email-based automation and analysis tasks, including downloading specific attachments needed for processing.  
+    All Gmail data and attachments are handled and stored <strong>locally</strong> on the user’s device. No data is transmitted, shared, or uploaded to any external server.</p>
   </div>
 
   <h2>1. Overview</h2>
-  <p>The script enables users to download attachments from their own Gmail account using Google’s official Gmail API.  
-  It does not modify, send, or delete any emails and does not communicate with any online service other than the Gmail API.</p>
+  <p>The script allows a user to analyze and automate workflows based on their own Gmail account data.  
+  For example, it may read certain messages and save related attachments for automated processing.  
+  It does not send, delete, or modify any emails.</p>
 
   <h2>2. Data Accessed</h2>
   <ul>
     <li>Email metadata (e.g., sender, subject, date)</li>
-    <li>Email message content, only as required to locate attachments</li>
-    <li>Email attachments (e.g., PDFs, images, or other file types)</li>
+    <li>Email content (only to identify automation-related messages)</li>
+    <li>Email attachments (e.g., PDFs, CSVs, or documents used for analysis)</li>
   </ul>
-  <p>No other Google data or personal information is accessed.</p>
 
   <h2>3. API Scope Used</h2>
   <ul>
-    <li><code>https://www.googleapis.com/auth/gmail.readonly</code> – used to read messages and download attachments from the user’s mailbox.</li>
+    <li><code>https://www.googleapis.com/auth/gmail.readonly</code> – used to read emails and download attachments for local automation or data analysis.</li>
   </ul>
-  <p>No other scopes (such as modify, send, or full access) are requested or used.</p>
+  <p>No other Gmail API scopes are requested or used.</p>
 
-  <h2>4. How Data Is Used and Stored</h2>
+  <h2>4. Data Usage and Storage</h2>
   <ul>
-    <li><strong>Local processing only:</strong> All Gmail data and attachments are handled on your own device.</li>
-    <li><strong>Attachment saving:</strong> When attachments are downloaded, they are saved to a local folder (e.g., <code>attachments/</code>) that remains under your control.</li>
-    <li><strong>No external sharing:</strong> Attachments and email data are never uploaded to any external database, server, or cloud service.</li>
-    <li><strong>Token storage:</strong> OAuth credentials (e.g., <code>token.json</code>) are stored locally for user convenience; deleting this file revokes access immediately.</li>
+    <li><strong>Local processing only:</strong> All Gmail data is processed directly on the user’s computer.</li>
+    <li><strong>Attachment saving:</strong> Attachments are downloaded only when relevant to the automation task and are saved in a local folder (e.g., <code>attachments/</code>).</li>
+    <li><strong>No external transmission:</strong> The script does not upload, send, or share Gmail data or attachments to any third party or online service.</li>
+    <li><strong>OAuth credentials:</strong> Access tokens (e.g., <code>token.json</code>) are stored locally to maintain authorization. Users can delete this file at any time to revoke access.</li>
   </ul>
 
   <h2>5. User Control and Revocation</h2>
   <ul>
-    <li>You may delete downloaded attachments or generated files at any time.</li>
-    <li>You may revoke the script’s access to your Gmail account at any time by visiting:  
+    <li>Users can delete any locally saved attachments or data outputs at any time.</li>
+    <li>Access to Gmail can be revoked by visiting:  
       <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">
       https://myaccount.google.com/permissions</a>.</li>
   </ul>
 
   <h2>6. Google API Limited Use</h2>
-  <p>This application’s use of information received from Gmail APIs will adhere to the
+  <p>This application’s use of information received from Gmail APIs complies with the  
      <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">
      Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements.  
-     The script does not transfer Gmail data to others except as necessary to provide or improve user-facing functionality, comply with applicable law, or as part of a merger/acquisition.</p>
+     Data retrieved via the Gmail API is not transferred to others except as necessary to provide or improve user-facing functionality, comply with the law, or as part of a merger/acquisition.</p>
 
   <h2>7. Security</h2>
   <ul>
-    <li>All processing occurs locally on your device; no remote servers are involved.</li>
-    <li>Users are responsible for securing their local files and folders where attachments are stored.</li>
+    <li>All data remains on the user’s device; no external servers are used.</li>
+    <li>Users are responsible for protecting their local storage environment.</li>
   </ul>
 
   <h2>8. Changes to This Policy</h2>
-  <p>This policy may be updated periodically. Any material changes will be reflected by updating the effective date above.</p>
+  <p>Any updates or changes will be reflected by updating the effective date above.</p>
 
   <h2>9. Contact</h2>
-  <p>For questions or privacy concerns, please contact <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a>.</p>
+  <p>For questions or concerns, email <a href="mailto:iambosszhou@gmail.com">iambosszhou@gmail.com</a>.</p>
 
   <footer>
     <p>© <span id="year"></span> YOUR NAME / ENTITY. All rights reserved.</p>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </footer>
-</main>
-</body>
-</html>
+    <script>document.getEleme
