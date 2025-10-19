@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy | Email Summarizer for Gmail – lwyz.org</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;margin:0;color:#0f172a;background:#fff}
+    header{background:#0f172a;color:#fff;padding:32px 20px}
+    main{max-width:860px;margin:auto;padding:28px 20px}
+    h1{margin:0 0 8px;font-size:28px}
+    h2{margin-top:28px}
+    a{color:#0ea5e9;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:#475569}
+    footer{border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px;color:#64748b}
+    ul{padding-left:20px}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:4px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="muted">Email Summarizer for Gmail — lwyz.org</p>
+  </header>
+
+  <main>
+    <p><strong>Effective date:</strong> 2025-10-16</p>
+
+    <h2>1. What this app does</h2>
+    <p>
+      Email Summarizer for Gmail (“the App”) reads your Gmail messages with your explicit consent and
+      generates concise summaries for your personal use. The App is intended for personal use and typically
+      runs locally on your own machine (e.g., a notebook or script you execute yourself).
+    </p>
+
+    <h2>2. Data we access</h2>
+    <ul>
+      <li><strong>Gmail content (read-only):</strong> message headers (From, To, Subject, Date) and message bodies; attachments only if you enable that feature.</li>
+      <li><strong>No send/modify/delete:</strong> the App uses the <code>gmail.readonly</code> scope and cannot change or delete your emails.</li>
+    </ul>
+
+    <h2>3. How we use your data</h2>
+    <ul>
+      <li>To create on-device summaries of selected emails (e.g., HOA notices, invoices, meeting updates).</li>
+      <li>To optionally extract key fields (dates, amounts, action items) and display them to you.</li>
+    </ul>
+
+    <h2>4. Storage & retention</h2>
+    <ul>
+      <li><strong>Local by default:</strong> Processing and temporary cache typically occur on your device. We do not maintain a cloud database for your email content.</li>
+      <li>If you configure logs or exports (e.g., Markdown/CSV), those files are saved locally where you run the App. You may delete them at any time.</li>
+    </ul>
+
+    <h2>5. Third-party processing</h2>
+    <p>
+      To generate summaries, you may configure the App to send snippets or extracted text to a language
+      model API provider (e.g., OpenAI). Only the minimum necessary text for summarization is sent.
+    </p>
+    <ul>
+      <li>You control when the App sends content for summarization.</li>
+      <li>We do not sell your data to third parties.</li>
+    </ul>
+
+    <h2>6. Google user data – Limited Use</h2>
+    <p>
+      This App’s use and transfer of information received from Google APIs will adhere to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>,
+      including the <strong>Limited Use</strong> requirements. We only use Google user data to provide the requested
+      summarization features; we do not use it for advertising, profiling, or selling.
+    </p>
+
+    <h2>7. Your choices & control</h2>
+    <ul>
+      <li><strong>Revoke access:</strong> You can revoke the App’s Gmail access anytime at
+        <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account &gt; Security &gt; Third-party access</a>.
+      </li>
+      <li><strong>Delete local data:</strong> Remove any exported files and cached tokens on your device.</li>
+      <li><strong>Attachments:</strong> Enable or disable attachment processing per your needs.</li>
+    </ul>
+
+    <h2>8. Security</h2>
+    <ul>
+      <li>OAuth 2.0 is used to obtain your consent; your credentials are not shared with us.</li>
+      <li>If you store API keys or tokens locally, keep them in secure locations (environment variables, encrypted keychains).</li>
+    </ul>
+
+    <h2>9. Children’s privacy</h2>
+    <p>
+      The App is not directed to children under 13. We do not knowingly collect personal information from children.
+    </p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>
+      We may update this policy from time to time. Material changes will be reflected by updating the effective date.
+    </p>
+
+    <h2>11. Contact</h2>
+    <p>
+      Questions or requests (including data deletion): <a href="mailto:iambosszhou@hotmail.com">iambosszhou@hotmail.com</a>
+      <!-- You can replace with your preferred email, e.g.,  @gmail.com -->
+    </p>
+
+    <footer>
+      <p>&copy; <span id="y"></span> lwyz.org</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
