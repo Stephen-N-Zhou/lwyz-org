@@ -1,7 +1,179 @@
-<html>
-  <body>
-    <h2>Privacy Policy for Gmail Automation Script</h2>
-    <p>This application uses the Gmail API to read and manage your messages only for personal automation purposes. No user data is stored, shared, or sent to any third-party servers.</p>
-    <p>If you have questions, contact: iambosszhou@gmail.com</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Privacy Policy – YOUR APP NAME</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root { --fg:#111; --muted:#555; --bg:#fff; --card:#f7f7f8; }
+    * { box-sizing: border-box; }
+    body { margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, "PingFang SC", "Microsoft YaHei", sans-serif; color:var(--fg); background:var(--bg); }
+    header, main, footer { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header h1 { margin: 16px 0 6px; }
+    .card { background:var(--card); border-radius:16px; padding:16px 20px; margin:14px 0; }
+    h2 { margin-top:28px; }
+    code, kbd { background:#eee; padding:2px 6px; border-radius:6px; }
+    small, .muted { color:var(--muted); }
+    .lang-tabs { display:flex; gap:10px; margin: 10px 0 20px; }
+    .lang-tabs a { padding:6px 10px; border-radius:10px; background:#eee; text-decoration:none; color:#333; }
+    .lang-tabs a.active { background:#222; color:#fff; }
+    .note { border-left:4px solid #222; padding:10px 12px; background:#fafafa; }
+    ul { margin: 0.6em 0 0.6em 1.3em; }
+    li { margin: 0.25em 0; }
+  </style>
+  <script>
+    // Simple language toggle without dependencies
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'block' : 'none';
+      });
+      document.querySelectorAll('.lang-tabs a').forEach(a => {
+        a.classList.toggle('active', a.dataset.lang === lang);
+      });
+      history.replaceState(null, '', '#' + lang);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#','');
+      setLang(hash === 'zh' ? 'zh' : 'en');
+    });
+  </script>
+</head>
+<body>
+<header>
+  <div class="lang-tabs">
+    <a href="#en" data-lang="en" onclick="setLang('en'); return false;" class="active">English</a>
+    <a href="#zh" data-lang="zh" onclick="setLang('zh'); return false;">中文</a>
+  </div>
+  <h1 data-lang="en">Privacy Policy – YOUR APP NAME</h1>
+  <h1 data-lang="zh" style="display:none">隐私政策 – YOUR APP NAME</h1>
+  <p class="muted" data-lang="en">Effective date: October 19, 2025 • Contact: <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a></p>
+  <p class="muted" data-lang="zh" style="display:none">生效日期：2025年10月19日 • 联系方式：<a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a></p>
+</header>
+
+<main>
+
+  <!-- ENGLISH -->
+  <section data-lang="en">
+    <div class="card note">
+      <strong>Summary:</strong> This Python application uses the Gmail API to read messages and, when instructed, download email attachments to the user’s local device. Data is not shared with third parties, not used for advertising, and not uploaded to external servers. You control the data and can revoke access at any time.
+    </div>
+
+    <h2>1) Who we are</h2>
+    <p><strong>YOUR APP NAME</strong> (“the App”) is a locally run Python tool maintained by <strong>YOUR LEGAL NAME / ENTITY</strong>. Contact: <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a>.</p>
+
+    <h2>2) What data we access</h2>
+    <ul>
+      <li><strong>Gmail message metadata and content (read-only)</strong> to locate emails that match your filters.</li>
+      <li><strong>Email attachments</strong> (e.g., PDFs, images) for the purpose you initiate (e.g., saving a copy locally).</li>
+      <li><strong>Labels/status</strong> when you enable features like “mark as read” or “apply label”.</li>
+    </ul>
+
+    <h2>3) API scopes & justification</h2>
+    <ul>
+      <li><code>https://www.googleapis.com/auth/gmail.readonly</code> – Read messages to identify and retrieve the content/attachments you request.</li>
+      <li><code>https://www.googleapis.com/auth/gmail.modify</code> (optional) – Apply labels or mark processed messages as read/archived.</li>
+      <li><code>https://www.googleapis.com/auth/gmail.send</code> (optional) – Send automated replies you explicitly enable.</li>
+    </ul>
+    <p>We request the minimum scopes needed for the features you turn on.</p>
+
+    <h2>4) How we use and store data</h2>
+    <ul>
+      <li><strong>Local processing:</strong> The App runs on your device or server. When you choose to download attachments, files are saved to a local folder (e.g., <code>attachments/</code>).</li>
+      <li><strong>No external sharing:</strong> The App does not sell, share, or transmit your Gmail data or attachments to any third party.</li>
+      <li><strong>No advertising or profiling:</strong> Data is never used for ads.</li>
+      <li><strong>Access tokens:</strong> OAuth tokens are stored locally (e.g., <code>token.json</code>) to maintain your sign-in; you can delete this file to sign out.</li>
+    </ul>
+
+    <h2>5) Retention & deletion</h2>
+    <ul>
+      <li><strong>Your control:</strong> You can delete downloaded attachments and generated files at any time.</li>
+      <li><strong>Revoking access:</strong> Visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account → Security → Third-party access</a> to revoke the App’s access.</li>
+      <li><strong>Suggested retention:</strong> Configure your script to keep only what you need; example configs can auto-delete local files after <em>N</em> days.</li>
+    </ul>
+
+    <h2>6) Security</h2>
+    <ul>
+      <li><strong>Local-only by default:</strong> Data remains on your device unless you change the code to upload elsewhere.</li>
+      <li><strong>File permissions:</strong> We recommend storing files under a restricted directory only you can access.</li>
+    </ul>
+
+    <h2>7) Google API Limited Use</h2>
+    <p>This App’s use of information received from Gmail APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements. Specifically, the App does not transfer Gmail data to others except to provide or improve user-facing features you enable, comply with applicable law, or as part of a merger/acquisition process.</p>
+
+    <h2>8) Children</h2>
+    <p>The App is not intended for children under 13 and does not knowingly collect information from them.</p>
+
+    <h2>9) Changes to this policy</h2>
+    <p>We may update this policy from time to time. Material changes will be reflected by updating the effective date above.</p>
+
+    <h2>10) Contact</h2>
+    <p>Questions? Email <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a>.</p>
+  </section>
+
+  <!-- CHINESE -->
+  <section data-lang="zh" style="display:none">
+    <div class="card note">
+      <strong>摘要：</strong>本应用为本地运行的 Python 工具，通过 Gmail API 读取邮件，并在您需要时将附件下载到本地设备。我们不与第三方共享数据，不做广告用途，不上传到外部服务器。您对数据拥有完全控制权，可随时撤销授权。
+    </div>
+
+    <h2>1）我们是谁</h2>
+    <p><strong>YOUR APP NAME</strong>（以下简称“本应用”）由 <strong>YOUR LEGAL NAME / ENTITY</strong> 维护。联系邮箱：<a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a>。</p>
+
+    <h2>2）我们访问哪些数据</h2>
+    <ul>
+      <li><strong>Gmail 邮件元数据与正文（只读）</strong>：用于根据您的条件查找目标邮件。</li>
+      <li><strong>邮件附件</strong>：例如 PDF、图片等，用于下载到您的本地设备。</li>
+      <li><strong>邮件标签 / 状态</strong>：当您启用“标记为已读”或“应用标签”等功能时使用。</li>
+    </ul>
+
+    <h2>3）API 权限与用途说明</h2>
+    <ul>
+      <li><code>gmail.readonly</code>：读取邮件以便检索您需要的内容/附件。</li>
+      <li><code>gmail.modify</code>（可选）：为已处理邮件打标签或标记为已读/归档。</li>
+      <li><code>gmail.send</code>（可选）：当您明确启用自动回复时发送邮件。</li>
+    </ul>
+    <p>我们仅请求实现相应功能所需的最小权限。</p>
+
+    <h2>4）数据使用与存储</h2>
+    <ul>
+      <li><strong>本地处理：</strong>应用在您的设备或服务器上运行。您选择下载附件时，文件保存到本地目录（如 <code>attachments/</code>）。</li>
+      <li><strong>不对外共享：</strong>应用不会向第三方出售、共享或传输您的 Gmail 数据或附件。</li>
+      <li><strong>不用于广告：</strong>数据不会用于广告或用户画像。</li>
+      <li><strong>访问令牌：</strong>OAuth 令牌（如 <code>token.json</code>）保存在本地，您可删除该文件以退出登录。</li>
+    </ul>
+
+    <h2>5）保留与删除</h2>
+    <ul>
+      <li><strong>您可控：</strong>您可随时删除下载的附件及生成文件。</li>
+      <li><strong>撤销授权：</strong>可前往 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google 账户 → 安全性 → 第三方访问权限</a> 撤销本应用的访问。</li>
+      <li><strong>建议保留策略：</strong>可通过配置让脚本仅保留必要文件，例如自动在 <em>N</em> 天后清理本地文件。</li>
+    </ul>
+
+    <h2>6）安全</h2>
+    <ul>
+      <li><strong>默认仅本地：</strong>数据默认保留在您的设备，除非您自行修改代码将其上传到其他位置。</li>
+      <li><strong>文件权限：</strong>建议将文件存放在仅自己可访问的受限目录。</li>
+    </ul>
+
+    <h2>7）Google API 限制性使用</h2>
+    <p>本应用对 Gmail API 信息的使用遵循 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 服务用户数据政策</a>，包括<strong>“限制性使用（Limited Use）”</strong>要求。除为提供/改进您启用的面向用户的功能、遵守法律或并购等情形外，本应用不会向他人传输 Gmail 数据。</p>
+
+    <h2>8）未成年人</h2>
+    <p>本应用不面向 13 岁以下儿童，也不会主动收集其信息。</p>
+
+    <h2>9）政策变更</h2>
+    <p>我们可能适时更新本政策，重大变更将通过更新上述生效日期予以体现。</p>
+
+    <h2>10）联系</h2>
+    <p>如有疑问，请发送邮件至 <a href="mailto:YOUR_CONTACT_EMAIL">YOUR_CONTACT_EMAIL</a>。</p>
+  </section>
+
+</main>
+
+<footer>
+  <p class="muted">© <span id="y"></span> YOUR LEGAL NAME / ENTITY. All rights reserved.</p>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</footer>
+</body>
 </html>
