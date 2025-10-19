@@ -4,86 +4,31 @@
   <meta charset="utf-8" />
   <title>Privacy Policy – Gmail Automation Script</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex,nofollow" />
   <style>
-    body {
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:#222; background:#fff; margin:0; padding:0;
-    }
-    main { max-width:800px; margin:0 auto; padding:32px 20px; }
-    h1,h2 { color:#111; }
-    h1 { margin-bottom:0.2em; }
-    p,li { margin:0.5em 0; }
-    ul { margin:0.5em 0 1em 1.3em; }
+    body { font:16px/1.6 system-ui, sans-serif; color:#222; margin:40px; max-width:700px; }
+    h1 { margin-bottom:0.3em; }
     code { background:#f5f5f5; padding:2px 5px; border-radius:4px; }
-    footer { margin-top:2em; font-size:0.9em; color:#666; text-align:center; }
-    .note { background:#f8f8f8; border-left:4px solid #222; padding:12px 16px; margin:1em 0; }
   </style>
 </head>
 <body>
-<main>
   <h1>Privacy Policy – Gmail Automation Script</h1>
   <p><strong>Effective date:</strong> October 19, 2025</p>
   <p><strong>Contact:</strong> <a href="mailto:iambosszhou@gmail.com">iambosszhou@gmail.com</a></p>
 
-  <div class="note">
-    <p>This local Python automation script connects to the Gmail API using the <code>gmail.readonly</code> scope.  
-    Its primary purpose is to perform email-based automation and analysis tasks, including downloading specific attachments needed for processing.  
-    All Gmail data and attachments are handled and stored <strong>locally</strong> on the user’s device. No data is transmitted, shared, or uploaded to any external server.</p>
-  </div>
+  <p>This desktop Python script connects to the Gmail API using the <code>gmail.readonly</code> scope to perform automated email analysis and save specific attachments locally for automation tasks. All processing and storage occur only on the user’s local computer. No data, emails, or attachments are uploaded, shared, or transmitted to any external service.</p>
 
-  <h2>1. Overview</h2>
-  <p>The script allows a user to analyze and automate workflows based on their own Gmail account data.  
-  For example, it may read certain messages and save related attachments for automated processing.  
-  It does not send, delete, or modify any emails.</p>
+  <p>The script fully complies with the 
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">
+    Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements.</p>
 
-  <h2>2. Data Accessed</h2>
-  <ul>
-    <li>Email metadata (e.g., sender, subject, date)</li>
-    <li>Email content (only to identify automation-related messages)</li>
-    <li>Email attachments (e.g., PDFs, CSVs, or documents used for analysis)</li>
-  </ul>
-
-  <h2>3. API Scope Used</h2>
-  <ul>
-    <li><code>https://www.googleapis.com/auth/gmail.readonly</code> – used to read emails and download attachments for local automation or data analysis.</li>
-  </ul>
-  <p>No other Gmail API scopes are requested or used.</p>
-
-  <h2>4. Data Usage and Storage</h2>
-  <ul>
-    <li><strong>Local processing only:</strong> All Gmail data is processed directly on the user’s computer.</li>
-    <li><strong>Attachment saving:</strong> Attachments are downloaded only when relevant to the automation task and are saved in a local folder (e.g., <code>attachments/</code>).</li>
-    <li><strong>No external transmission:</strong> The script does not upload, send, or share Gmail data or attachments to any third party or online service.</li>
-    <li><strong>OAuth credentials:</strong> Access tokens (e.g., <code>token.json</code>) are stored locally to maintain authorization. Users can delete this file at any time to revoke access.</li>
-  </ul>
-
-  <h2>5. User Control and Revocation</h2>
-  <ul>
-    <li>Users can delete any locally saved attachments or data outputs at any time.</li>
-    <li>Access to Gmail can be revoked by visiting:  
-      <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">
-      https://myaccount.google.com/permissions</a>.</li>
-  </ul>
-
-  <h2>6. Google API Limited Use</h2>
-  <p>This application’s use of information received from Gmail APIs complies with the  
-     <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">
-     Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements.  
-     Data retrieved via the Gmail API is not transferred to others except as necessary to provide or improve user-facing functionality, comply with the law, or as part of a merger/acquisition.</p>
-
-  <h2>7. Security</h2>
-  <ul>
-    <li>All data remains on the user’s device; no external servers are used.</li>
-    <li>Users are responsible for protecting their local storage environment.</li>
-  </ul>
-
-  <h2>8. Changes to This Policy</h2>
-  <p>Any updates or changes will be reflected by updating the effective date above.</p>
-
-  <h2>9. Contact</h2>
-  <p>For questions or concerns, email <a href="mailto:iambosszhou@gmail.com">iambosszhou@gmail.com</a>.</p>
+  <p>Users may revoke access at any time via:
+    <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">
+    https://myaccount.google.com/permissions</a>.
+  </p>
 
   <footer>
-    <p>© <span id="year"></span> YOUR NAME / ENTITY. All rights reserved.</p>
-    <script>document.getEleme
+    <p>© <span id="year"></span> YOUR NAME / ENTITY</p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
