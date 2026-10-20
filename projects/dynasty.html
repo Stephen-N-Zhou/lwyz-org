@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dynasty：从一条指令到一方天下 — LWYZ</title>
+  <meta name="description" content="Dynasty 是一款以中国历史为背景的策略游戏。了解它的玩法、技术架构与开发经验。">
+  <link rel="canonical" href="https://www.lwyz.org/projects/dynasty.html">
+  <meta property="og:title" content="Dynasty：从一条指令到一方天下">
+  <meta property="og:description" content="一款历史策略游戏的玩法、技术架构与开发经验。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.lwyz.org/projects/dynasty.html">
+  <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/dynasty-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">跳至正文</a>
+<header class="top"><nav class="shell nav" aria-label="主导航"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">← 返回项目</a></nav></header>
+<main id="content">
+  <section class="hero">
+    <img src="/assets/dynasty/hero.png" width="1888" height="833" alt="" fetchpriority="high">
+    <div class="hero-shade"></div>
+    <div class="shell hero-content"><p class="eyebrow">A STRATEGY GAME PROJECT · 策略游戏项目</p><h1>一条指令，<br>一方<span>天下。</span></h1><p>从经营一座城池，到指挥千军万马。Dynasty 将历史沙盘、回合制战斗与 AI 叙事，连接成一个可以反复探索的策略世界。</p><div class="hero-actions"><a class="button" href="#overview">探索项目 <span aria-hidden="true">↓</span></a><a class="quiet-link" href="#architecture">技术设计 →</a></div></div>
+  </section>
+  <div class="shell content">
+    <div class="meta-bar"><span>历史策略</span><span>Python + Web</span><span>单人沙盘</span><span>项目介绍 · 非在线试玩</span></div>
+    <nav class="toc" aria-label="文章目录"><span>本篇导览</span><a href="#overview">项目概览</a><a href="#gameplay">游戏玩法</a><a href="#architecture">技术架构</a><a href="#lessons">开发经验</a><a href="#next">展望</a></nav>
+    <section id="overview" class="section intro"><div><p class="eyebrow">01 / THE VISION</p><h2>让历史成为<br>可以推演的世界。</h2></div><div class="prose"><p class="lead">Dynasty 是一个以中国历史为背景的中文策略与角色扮演游戏。玩家选择势力，管理城池与武将，在不断变化的局势中作出取舍。</p><p>项目借鉴经典历史策略游戏与回合制战棋的乐趣：既要考虑粮草、兵力和边境，也要在战场上判断地形、兵种和指挥时机。它不是对某一款游戏的复刻，而是一场关于「如何把历史叙事、规则与交互结合起来」的实践。</p><p>目前有两个剧本：<strong>三国 194 年</strong>与<strong>楚汉争霸前 206 年</strong>。两者共享核心引擎，但拥有各自的城池、势力、人物与事件数据。</p></div></section>
+    <section id="gameplay" class="section"><div class="section-head"><p class="eyebrow">02 / THE GAME</p><h2>从一季的经营，到一场战争。</h2><p>每个决定都有机会成本：扩张需要兵粮，防守需要准备，而人才与外交可能改变下一季的局势。</p></div>
+      <div class="features">
+        <article><span>01</span><h3>治理与发展</h3><p>开垦、发展商业、修筑城防、征兵与搜索人才。行动点和武将的行动次数让资源分配成为真正的选择。</p></article>
+        <article><span>02</span><h3>情报与外交</h3><p>战争迷雾限制对敌方的了解；侦察帮助判断风险。赠礼、结盟、书信与劝说则提供军事之外的路径。</p></article>
+        <article><span>03</span><h3>出征与战斗</h3><p>出兵前可估算胜率。战斗中选择冲锋、坚守或侧翼，结合兵种、武将、军师、技能、地形和天气应对局势。</p></article>
+        <article><span>04</span><h3>成长与延续</h3><p>武将拥有技能、装备、体力和技力；战后恢复与后勤影响长期作战。存档、快照和回滚让探索可以继续。</p></article>
+      </div>
+      <div class="cycle"><p class="eyebrow">THE SEASONAL LOOP</p><div><span>观察局势</span><b>→</b><span>经营与部署</span><b>→</b><span>出征或外交</span><b>→</b><span>季末结算</span><b>→</b><span>新的局势</span></div></div>
+      <figure class="wide-art"><img src="/assets/dynasty/campaign.png" width="1774" height="887" loading="lazy" decoding="async" alt="古代战略沙盘与城池棋子的概念插画"><figcaption>战略桌面概念插画 · AI 生成，非游戏截图</figcaption></figure>
+      <div class="two-col"><div><h3>一场战斗，多个决策</h3><p>冲锋、坚守与侧翼形成循环克制，单一策略并不总是最优。将领技能与军师策略提供额外选择，但也消耗有限的资源。胜利不只是兵力大小的比较，还要考虑状态、阵型与时机。</p></div><div><h3>对手也在思考</h3><p>敌方会评估边境威胁、补防与集结，寻找可行的进攻机会；战斗 AI 会在阵型之间权衡，并根据对手已经表现出的习惯调整。它不能读取玩家尚未作出的战斗指令。</p></div></div>
+    </section>
+    <section id="architecture" class="section"><div class="section-head"><p class="eyebrow">03 / UNDER THE HOOD</p><h2>把想象力建立在可靠规则之上。</h2><p>游戏的关键设计，是让叙事保持灵活，同时让状态、资源与胜负始终有明确的依据。</p></div>
+      <div class="architecture"><div><small>01 / INPUT</small><strong>文字指令或地图操作</strong><p>玩家可以使用命令，也可以在本机地图界面操作城池与战场。</p></div><div><small>02 / ENGINE</small><strong>Python 规则引擎</strong><p>统一验证行动、推进回合、计算战斗并更新游戏状态。</p></div><div><small>03 / PRESENTATION</small><strong>地图、战报与叙事</strong><p>Web 界面呈现状态；语言模型可用于受规则约束的叙事和互动。</p></div></div>
+      <div class="prose narrow">
+        <h3>数据与规则分离</h3><p>城池、势力、武将、技能和平衡参数以数据文件组织，游戏引擎负责执行规则。剧本载入时进行校验，帮助发现缺失字段或不一致关系。这样既便于调整平衡，也为增加新剧本留下空间；但数据改动仍需要兼顾旧存档的兼容性。</p>
+        <h3>战斗预测与真实战斗使用同一套规则</h3><p>战斗预估通过多次模拟提供胜率参考，而不是承诺结果。模拟使用独立随机源，不消耗正式游戏的随机序列；预测和实际战斗共享核心战斗逻辑，减少「预览说一套、实战算另一套」的问题。</p>
+        <h3>可复现的随机性与安全存档</h3><p>游戏把随机种子和计数器保存在状态中：相同状态下重复相同指令，可以得到相同的随机结果。存档写入采用临时文件与替换操作，降低中断时写出半份文件的风险；回滚也会保留被放弃的时间线，方便恢复。</p>
+        <h3>AI 负责表达，引擎负责事实</h3><p>自然语言可用于战术描述、角色对话、外交和朝议等互动；规则引擎仍负责合法动作及其实际效果。随机事件的触发、目标和数值先由引擎决定，再交由模型润色文字，避免叙事凭空改变资源或胜负。不同互动模块有各自的约束与降级方式。</p>
+        <h3>从静态地图到本机交互</h3><p>早期地图是由状态生成的静态快照；之后加入本地服务和 JSON 接口，让地图操作调用同一个引擎。前端以 HTML、CSS、JavaScript 和 Canvas 展示城池、指令与战场，动画基于战斗日志呈现，而不是另算一套结果。本机服务默认仅监听本地地址，并对请求来源与敏感操作设限。</p>
+      </div>
+    </section>
+    <section id="lessons" class="section"><div class="section-head"><p class="eyebrow">04 / WHAT WE LEARNED</p><h2>从能运行，到值得反复玩。</h2><p>项目逐步从文字原型发展为带地图、战场、对手 AI 与养成系统的完整沙盘。过程中的经验，也适用于其他交互式模拟项目。</p></div>
+      <ol class="lessons"><li><strong>先建立唯一可信的规则。</strong><p>把计算集中到引擎，再让文字、地图、预估与自动战斗复用它；界面可以变化，结果的来源不应变化。</p></li><li><strong>先解决可复现性，再扩充随机性。</strong><p>种子、计数器、快照和隔离的模拟随机源，使难以重现的战斗问题更容易定位，也让回滚具有可信的语义。</p></li><li><strong>平衡要靠反复模拟和玩家反馈。</strong><p>名将、兵力、技能、城防与 AI 会互相影响。通过多种局面和种子进行模拟，再根据玩家体验调整，才能避免单一套路或极端优势统治游戏。</p></li><li><strong>AI 的边界与能力同样重要。</strong><p>让对手依据已知情报决策，避免偷看玩家指令；让生成式叙事丰富角色，同时限制它能改变的状态，体验与可信度才能并存。</p></li><li><strong>让反馈可见，让操作可恢复。</strong><p>估算、战报、不可执行原因、地图状态和回滚机制都减少了误操作成本。游戏越复杂，解释能力越重要。</p></li></ol>
+    </section>
+    <section id="next" class="section closing"><div><p class="eyebrow">05 / WHAT'S NEXT</p><h2>一个可以继续生长的世界。</h2><p>后续可以继续打磨平衡、完善角色与事件、丰富剧本，并改善不同设备上的操作体验。每一次扩展，都需要与现有规则、存档和测试一起演进。</p><p class="disclaimer">本页是项目介绍与设计笔记，并非在线游戏入口。配图为 AI 生成的概念插画，不代表实际游戏画面。</p><a class="button" href="/#projects">← 返回所有项目</a></div></section>
+  </div>
+</main>
+<footer><div class="shell footer"><span>© LWYZ · Learn, build, explore.</span><a href="/">返回首页</a></div></footer>
+</body></html>
