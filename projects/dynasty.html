@@ -3,60 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dynasty：从一条指令到一方天下 — LWYZ</title>
-  <meta name="description" content="Dynasty 是一款以中国历史为背景的策略游戏。了解它的玩法、技术架构与开发经验。">
+  <title>Dynasty 开发手记：从本地游戏到手机和平板 — LWYZ</title>
+  <meta name="description" content="Dynasty 技术案例：Python 规则引擎、Tailscale 私网访问、手机和平板交互，以及持续测试与微调。">
   <link rel="canonical" href="https://www.lwyz.org/projects/dynasty.html">
-  <meta property="og:title" content="Dynasty：从一条指令到一方天下">
-  <meta property="og:description" content="一款历史策略游戏的玩法、技术架构与开发经验。">
+  <meta property="og:title" content="Dynasty 开发手记：从本地游戏到手机和平板">
+  <meta property="og:description" content="一次从规则引擎、本地服务到移动端体验的实践。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.lwyz.org/projects/dynasty.html">
   <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/dynasty-guide.css">
+  <link rel="stylesheet" href="/assets/dynasty-tech.css">
 </head>
 <body>
 <a class="skip" href="#content">跳至正文</a>
 <header class="top"><nav class="shell nav" aria-label="主导航"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">← 返回项目</a></nav></header>
 <main id="content">
-  <section class="hero">
-    <img src="/assets/dynasty/game-map.png" width="1440" height="900" alt="" fetchpriority="high">
-    <div class="hero-shade"></div>
-    <div class="shell hero-content"><p class="eyebrow">A STRATEGY GAME PROJECT · 策略游戏项目</p><h1>一条指令，<br>一方<span>天下。</span></h1><p>从经营一座城池，到指挥千军万马。Dynasty 将历史沙盘、回合制战斗与 AI 叙事，连接成一个可以反复探索的策略世界。</p><div class="hero-actions"><a class="button" href="#overview">探索项目 <span aria-hidden="true">↓</span></a><a class="quiet-link" href="#architecture">技术设计 →</a></div></div>
-  </section>
+  <section class="hero"><img src="/assets/dynasty/game-map.png" width="1440" height="900" alt="" fetchpriority="high"><div class="hero-shade"></div><div class="shell hero-content"><p class="eyebrow">DYNASTY / A BUILDING JOURNAL</p><h1>从本地游戏，<br>到<span>掌中世界。</span></h1><p>一个历史策略游戏的开发记录：如何构建可复现的规则引擎，用私有网络连接手机，并为触屏一点一点打磨交互。</p><div class="hero-actions"><a class="button" href="#architecture">阅读技术案例 ↓</a><a class="quiet-link" href="#screens">查看游戏实景 →</a></div></div></section>
   <div class="shell content">
-    <div class="meta-bar"><span>历史策略</span><span>Python + Web</span><span>单人沙盘</span><span>项目介绍 · 非在线试玩</span></div>
-    <nav class="toc" aria-label="文章目录"><span>本篇导览</span><a href="#overview">项目概览</a><a href="#gameplay">游戏玩法</a><a href="#architecture">技术架构</a><a href="#lessons">开发经验</a><a href="#next">展望</a></nav>
-    <section id="overview" class="section intro"><div><p class="eyebrow">01 / THE VISION</p><h2>让历史成为<br>可以推演的世界。</h2></div><div class="prose"><p class="lead">Dynasty 是一个以中国历史为背景的中文策略与角色扮演游戏。玩家选择势力，管理城池与武将，在不断变化的局势中作出取舍。</p><p>项目借鉴经典历史策略游戏与回合制战棋的乐趣：既要考虑粮草、兵力和边境，也要在战场上判断地形、兵种和指挥时机。它不是对某一款游戏的复刻，而是一场关于「如何把历史叙事、规则与交互结合起来」的实践。</p><p>目前有两个剧本：<strong>三国 194 年</strong>与<strong>楚汉争霸前 206 年</strong>。两者共享核心引擎，但拥有各自的城池、势力、人物与事件数据。</p></div></section>
-    <section id="gameplay" class="section"><div class="section-head"><p class="eyebrow">02 / THE GAME</p><h2>从一季的经营，到一场战争。</h2><p>每个决定都有机会成本：扩张需要兵粮，防守需要准备，而人才与外交可能改变下一季的局势。</p></div>
-      <div class="features">
-        <article><span>01</span><h3>治理与发展</h3><p>开垦、发展商业、修筑城防、征兵与搜索人才。行动点和武将的行动次数让资源分配成为真正的选择。</p></article>
-        <article><span>02</span><h3>情报与外交</h3><p>战争迷雾限制对敌方的了解；侦察帮助判断风险。赠礼、结盟、书信与劝说则提供军事之外的路径。</p></article>
-        <article><span>03</span><h3>出征与战斗</h3><p>出兵前可估算胜率。战斗中选择冲锋、坚守或侧翼，结合兵种、武将、军师、技能、地形和天气应对局势。</p></article>
-        <article><span>04</span><h3>成长与延续</h3><p>武将拥有技能、装备、体力和技力；战后恢复与后勤影响长期作战。存档、快照和回滚让探索可以继续。</p></article>
-      </div>
-      <div class="cycle"><p class="eyebrow">THE SEASONAL LOOP</p><div><span>观察局势</span><b>→</b><span>经营与部署</span><b>→</b><span>出征或外交</span><b>→</b><span>季末结算</span><b>→</b><span>新的局势</span></div></div>
-      <div class="screens-intro"><p class="eyebrow">IN THE GAME / 实际画面</p><h3>走进沙盘</h3><p>以下截图来自独立演示局，展示实际的战略地图与城池管理界面。点击图片可查看大图。</p></div>
-      <div class="game-screens">
-        <figure><a href="/assets/dynasty/game-map.png"><img src="/assets/dynasty/game-map.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏战略地图，显示城池、势力与战争迷雾"></a><figcaption><strong>群雄沙盘</strong> · 城池连接、势力分布与可见情报</figcaption></figure>
-        <figure><a href="/assets/dynasty/game-city.png"><img src="/assets/dynasty/game-city.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏城池面板，显示兵粮、内政、武将与相邻城池"></a><figcaption><strong>城池管理</strong> · 兵粮、内政、驻将与边境风险</figcaption></figure>
-      </div>
-      <div class="two-col"><div><h3>一场战斗，多个决策</h3><p>冲锋、坚守与侧翼形成循环克制，单一策略并不总是最优。将领技能与军师策略提供额外选择，但也消耗有限的资源。胜利不只是兵力大小的比较，还要考虑状态、阵型与时机。</p></div><div><h3>对手也在思考</h3><p>敌方会评估边境威胁、补防与集结，寻找可行的进攻机会；战斗 AI 会在阵型之间权衡，并根据对手已经表现出的习惯调整。它不能读取玩家尚未作出的战斗指令。</p></div></div>
+    <div class="meta-bar"><span>Python + Web</span><span>Tailscale Serve</span><span>手机 / iPad</span><span>项目手记 · 非在线试玩</span></div>
+    <nav class="toc" aria-label="文章目录"><span>本篇导览</span><a href="#overview">项目概览</a><a href="#architecture">系统架构</a><a href="#tailscale">手机连接</a><a href="#mobile">触屏设计</a><a href="#tuning">调试与微调</a><a href="#screens">实际画面</a></nav>
+
+    <section id="overview" class="section intro"><div><p class="eyebrow">01 / THE PROJECT</p><h2>一个游戏，<br>也是一次系统实践。</h2></div><div class="prose"><p class="lead">Dynasty 是以中国历史为背景的单人策略游戏：玩家管理城池、部署武将，并在不断变化的局势中作出决策。</p><p>它从文字和本地规则出发，逐渐加入战略地图、战斗画面以及触屏操作。这里重点记录实现过程：让同一套游戏逻辑同时服务命令、本机网页和移动设备，并尽量让每个结果都可以解释、测试和复现。</p><p class="note">本页为开发案例，不是公开的游戏入口；下面的命令和域名均为通用示例。</p></div></section>
+
+    <section id="architecture" class="section"><div class="section-head"><p class="eyebrow">02 / SYSTEM DESIGN</p><h2>让规则只有一个答案。</h2><p>界面负责输入与呈现，规则引擎负责判定。这样无论从命令还是地图发起操作，都不会各自维护一套游戏结果。</p></div>
+      <div class="architecture"><div><small>01 / INTERFACE</small><strong>浏览器与触屏</strong><p>HTML、CSS、JavaScript 展示状态；地图使用 SVG，战斗画面使用 Canvas。</p></div><div><small>02 / LOCAL SERVICE</small><strong>本机 HTTP + JSON</strong><p>本地服务接收请求、校验来源与操作，再调用游戏命令并返回状态。</p></div><div><small>03 / ENGINE</small><strong>Python 规则与数据</strong><p>引擎验证行动、推进回合与计算战斗；剧本和平衡参数由数据文件组织。</p></div></div>
+      <div class="prose narrow"><h3>把计算和表现拆开</h3><p>战斗动画依据引擎产生的战报播放，而不是在浏览器里重新计算胜负。战斗预估复用核心规则，并使用独立随机源，避免试算消耗正式游戏的随机序列。引擎记录随机种子与计数器，让相同状态和指令更容易重现问题。</p><h3>存档、并发与安全边界</h3><p>存档写入使用临时文件和替换，降低中途写坏文件的风险；服务对操作加锁，避免并发请求同时修改状态。请求还会检查 Host、来源和特定请求头。但这些检查不是用户登录系统：能访问服务的人仍可能操作游戏，需要另靠网络访问控制保护。</p><h3>AI 与确定性规则各司其职</h3><p>规则、资源变化和战斗结果由引擎决定；自然语言可以用于受约束的叙事或互动。将可变的表达和可验证的状态分开，既方便丰富体验，也便于定位错误。</p></div>
     </section>
-    <section id="architecture" class="section"><div class="section-head"><p class="eyebrow">03 / UNDER THE HOOD</p><h2>把想象力建立在可靠规则之上。</h2><p>游戏的关键设计，是让叙事保持灵活，同时让状态、资源与胜负始终有明确的依据。</p></div>
-      <div class="architecture"><div><small>01 / INPUT</small><strong>文字指令或地图操作</strong><p>玩家可以使用命令，也可以在本机地图界面操作城池与战场。</p></div><div><small>02 / ENGINE</small><strong>Python 规则引擎</strong><p>统一验证行动、推进回合、计算战斗并更新游戏状态。</p></div><div><small>03 / PRESENTATION</small><strong>地图、战报与叙事</strong><p>Web 界面呈现状态；语言模型可用于受规则约束的叙事和互动。</p></div></div>
-      <div class="prose narrow">
-        <h3>数据与规则分离</h3><p>城池、势力、武将、技能和平衡参数以数据文件组织，游戏引擎负责执行规则。剧本载入时进行校验，帮助发现缺失字段或不一致关系。这样既便于调整平衡，也为增加新剧本留下空间；但数据改动仍需要兼顾旧存档的兼容性。</p>
-        <h3>战斗预测与真实战斗使用同一套规则</h3><p>战斗预估通过多次模拟提供胜率参考，而不是承诺结果。模拟使用独立随机源，不消耗正式游戏的随机序列；预测和实际战斗共享核心战斗逻辑，减少「预览说一套、实战算另一套」的问题。</p>
-        <h3>可复现的随机性与安全存档</h3><p>游戏把随机种子和计数器保存在状态中：相同状态下重复相同指令，可以得到相同的随机结果。存档写入采用临时文件与替换操作，降低中断时写出半份文件的风险；回滚也会保留被放弃的时间线，方便恢复。</p>
-        <h3>AI 负责表达，引擎负责事实</h3><p>自然语言可用于战术描述、角色对话、外交和朝议等互动；规则引擎仍负责合法动作及其实际效果。随机事件的触发、目标和数值先由引擎决定，再交由模型润色文字，避免叙事凭空改变资源或胜负。不同互动模块有各自的约束与降级方式。</p>
-        <h3>从静态地图到本机交互</h3><p>早期地图是由状态生成的静态快照；之后加入本地服务和 JSON 接口，让地图操作调用同一个引擎。前端以 HTML、CSS、JavaScript 和 Canvas 展示城池、指令与战场，动画基于战斗日志呈现，而不是另算一套结果。本机服务默认仅监听本地地址，并对请求来源与敏感操作设限。</p>
-      </div>
+
+    <section id="tailscale" class="section"><div class="section-head"><p class="eyebrow">03 / PRIVATE ACCESS</p><h2>手机如何连接电脑上的游戏？</h2><p>电脑运行游戏服务，手机与 iPad 通过 Tailscale 私有网络访问；浏览器看到的是 HTTPS 地址，游戏服务本身仍只监听电脑的本地回环地址。</p></div>
+      <div class="flow" aria-label="连接路径"><span>手机 / iPad 浏览器</span><b>→</b><span>Tailscale 私有网络</span><b>→</b><span>电脑上的 Serve</span><b>→</b><span>127.0.0.1:8777 游戏服务</span></div>
+      <div class="prose narrow"><h3>准备：先连接设备</h3><ol class="steps"><li>在电脑和手机或 iPad 安装并登录 Tailscale，确认设备已连接到同一个 tailnet，且访问策略允许连接。</li><li>根据需要在管理端启用 MagicDNS 与 HTTPS；查看 Serve 输出，获取自己的 HTTPS 主机名。证书和设备名称有隐私影响，公开文章和截图不要展示真实主机名或地址。</li><li>在电脑保持游戏进程运行，并防止电脑休眠。手机上打开 Serve 提供的 HTTPS 地址；若使用其他账户或设备，先确认其访问权限。</li></ol><p>相关步骤会随 Tailscale 版本和管理策略变化，可对照 <a href="https://tailscale.com/docs/use-cases/application-testing/share-local-dev-server-with-team">官方本地服务访问指南</a>与 <a href="https://tailscale.com/docs/reference/tailscale-cli/serve">Serve 命令文档</a>。</p>
+      <h3>示例：保持服务在本机，再开启私网代理</h3><p>在游戏代码目录的 PowerShell 中启动服务。把占位符替换为 Serve 给出的<strong>完整主机名，不含 https:// 或端口</strong>；这里的地址不是实际设备信息。</p><pre><code>$TsHost = "YOUR-DEVICE.YOUR-TAILNET.ts.net"
+python dy_server.py --port 8777 --allow-host $TsHost</code></pre><p>在另一个终端开启前台代理：</p><pre><code>tailscale serve 8777</code></pre><p>以命令输出为准，在手机浏览器访问对应的 HTTPS 地址。前台 Serve 结束时可用 Ctrl+C 停止；如需后台运行或停用特定代理，请先查看当前版本的官方文档，避免影响已有配置。设备首次配置可能需要管理员启用相关功能。</p>
+      <div class="callout"><strong>私网不等于应用登录</strong><p>Tailscale Serve 面向被允许访问的 tailnet 设备；它不是公开部署方案，也不会替代应用级身份认证。只允许可信设备访问，不要为了方便改用公开的 Funnel、开放路由器端口或关闭 Host 校验。参考 <a href="https://tailscale.com/docs/features/tailscale-funnel">Serve 与 Funnel 的区别</a>。</p></div>
+      <h3>连接不上时，按层排查</h3><ul><li><strong>本机也打不开：</strong>先确认 Python 服务仍在运行、端口正确，查看终端报错。</li><li><strong>手机连不上：</strong>检查两台设备是否在线、同一 tailnet 的访问策略、Serve 是否仍运行，以及电脑是否休眠。</li><li><strong>能连接却返回 403：</strong>检查浏览器使用的主机名与 <code>--allow-host</code> 是否完全一致；默认 HTTPS 地址避免非默认端口导致来源检查不匹配。不要靠关闭校验解决。</li><li><strong>页面能开但操作失败：</strong>查看浏览器网络请求和服务端日志，区分来源检查、请求格式和游戏规则错误；分享日志前先移除设备名、地址和存档内容。</li></ul></div>
     </section>
-    <section id="lessons" class="section"><div class="section-head"><p class="eyebrow">04 / WHAT WE LEARNED</p><h2>从能运行，到值得反复玩。</h2><p>项目逐步从文字原型发展为带地图、战场、对手 AI 与养成系统的完整沙盘。过程中的经验，也适用于其他交互式模拟项目。</p></div>
-      <ol class="lessons"><li><strong>先建立唯一可信的规则。</strong><p>把计算集中到引擎，再让文字、地图、预估与自动战斗复用它；界面可以变化，结果的来源不应变化。</p></li><li><strong>先解决可复现性，再扩充随机性。</strong><p>种子、计数器、快照和隔离的模拟随机源，使难以重现的战斗问题更容易定位，也让回滚具有可信的语义。</p></li><li><strong>平衡要靠反复模拟和玩家反馈。</strong><p>名将、兵力、技能、城防与 AI 会互相影响。通过多种局面和种子进行模拟，再根据玩家体验调整，才能避免单一套路或极端优势统治游戏。</p></li><li><strong>AI 的边界与能力同样重要。</strong><p>让对手依据已知情报决策，避免偷看玩家指令；让生成式叙事丰富角色，同时限制它能改变的状态，体验与可信度才能并存。</p></li><li><strong>让反馈可见，让操作可恢复。</strong><p>估算、战报、不可执行原因、地图状态和回滚机制都减少了误操作成本。游戏越复杂，解释能力越重要。</p></li></ol>
+
+    <section id="mobile" class="section"><div class="section-head"><p class="eyebrow">04 / MOBILE & TABLET</p><h2>触屏不是缩小版桌面。</h2><p>一张大地图要同时容纳点击、拖动、页面滚动和缩放。核心工作是让这些动作互不抢夺，并给不同屏幕留下足够空间。</p></div>
+      <div class="tech-grid"><article><span>01 / LAYOUT</span><h3>手机、平板分别考虑</h3><p>根据视口宽度和方向调整，而不只按设备名称判断：窄屏将多列面板堆叠；较宽屏保留更多并排信息。战场还针对竖屏和矮横屏分别布局，平板分屏也要纳入检查。</p></article><article><span>02 / TOUCH</span><h3>地图的手势分工</h3><p>双指缩放和平移地图；单指水平拖动地图、垂直滚动页面。移动超过阈值后判断方向，避免轻微抖动误触。另提供缩放、复位和全屏按钮。</p></article><article><span>03 / NAVIGATION</span><h3>返回与长按</h3><p>返回操作优先关闭菜单、面板或当前视图；长按约 550 毫秒可触发上下文操作，移动超过容差则取消，并抑制随后的误点击。</p></article><article><span>04 / COMFORT</span><h3>留出安全区域</h3><p>战斗界面使用 safe-area inset 避开刘海和底部手势条；窄屏操作按钮增加可触碰高度。输入框在粗指针设备使用 16px 字体，减少 iOS 聚焦时的意外放大。</p></article></div>
+      <div class="prose narrow"><h3>几个值得保留的实现细节</h3><pre><code>/* 触屏输入：降低 iOS 自动放大的概率 */
+@media (pointer: coarse) {
+  input, select, textarea { font-size: 16px; }
+}
+
+/* 重要控件避开系统遮挡 */
+.controls {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}</code></pre><p>这是提炼后的示意代码，不是完整样式。游戏实际还使用动态视口单位、方向媒体查询以及滚动边界控制；调整时需要分别检查浏览器地址栏收起、横竖屏切换和系统手势。</p><div class="callout"><strong>一个需要继续改进的取舍</strong><p>当前地图手势实现会拦截页面级缩放，以便双指操作地图；这可能影响依赖浏览器放大的用户。更好的后续方向是把手势限制在地图区域，保留页面缩放并测试辅助技术，而不是把禁用缩放当成通用最佳实践。</p></div></div>
     </section>
-    <section id="next" class="section closing"><div><p class="eyebrow">05 / WHAT'S NEXT</p><h2>一个可以继续生长的世界。</h2><p>后续可以继续打磨平衡、完善角色与事件、丰富剧本，并改善不同设备上的操作体验。每一次扩展，都需要与现有规则、存档和测试一起演进。</p><p class="disclaimer">本页是项目介绍与设计笔记，并非在线游戏入口。截图来自游戏的独立演示局。</p><a class="button" href="/#projects">← 返回所有项目</a></div></section>
+
+    <section id="tuning" class="section"><div class="section-head"><p class="eyebrow">05 / FINE-TUNING</p><h2>体验来自许多小的调整。</h2><p>没有一个断点或一次测试能覆盖所有设备。把问题拆成可观察的行为，再一次只调整一个变量，更容易知道改动是否真的有效。</p></div>
+      <ol class="lessons"><li><strong>先量空间，再改布局</strong><p>分别检查手机竖屏、横屏、iPad 全屏与分屏：标题是否换行、面板是否溢出、底部控件是否被遮住。用宽度和可用高度共同判断，不把 iPad 永远当作桌面。</p></li><li><strong>区分点击、拖动和长按</strong><p>从轻触、慢拖、斜向滑动、双指缩放到中途抬手逐项测试。地图的方向锁定约 8px，长按移动容差约 10px；这些是当前实现的起点，不是所有设备的万能数值。</p></li><li><strong>测试返回与中断</strong><p>打开面板后按返回、旋转设备、切换应用再回来；确认当前视图、滚动位置和正在进行的战斗不会因为意外关闭而丢失。</p></li><li><strong>性能与动画按设备观察</strong><p>战斗动画使用 requestAnimationFrame，缓存绘制资源，并考虑减少动态效果的系统偏好。实机观察卡顿、内存和耗电，再针对具体瓶颈调整；不凭模拟器宣称固定帧率。</p></li><li><strong>记录问题，分层定位</strong><p>先区分触摸事件、布局、网络请求和规则计算。地图提供 <code>?touchdebug=1</code> 调试入口；复现时记下设备、方向、操作步骤及预期结果，分享前清理敏感信息。</p></li><li><strong>让修改可回归</strong><p>规则、服务器和战斗有自动化测试；修改后运行相关测试，再用真实手机和平板检查触摸、键盘、横竖屏和安全区域。浏览器模拟器有帮助，但不能替代实机。</p></li></ol>
+      <div class="prose narrow"><h3>一个实用的微调循环</h3><p><strong>复现 → 定位 → 最小改动 → 自动化回归 → 多尺寸和实机复查。</strong> 例如按钮难点中时，先检查可点击区域与相邻间距，而不是立即放大整个面板；地图误触时，先记录手指移动路径，再调整阈值。每次保留修改前后的观察，避免改善一个设备却让另一个设备退步。</p><p class="note">文中区分了当前代码已有设计与建议的后续检查；实际设备表现仍需在对应手机和 iPad 上验证。</p></div>
+    </section>
+
+    <section id="screens" class="section"><div class="section-head"><p class="eyebrow">06 / REAL GAME SCREENS</p><h2>最终，技术服务于体验。</h2><p>以下图片来自游戏的独立演示局，是真实界面截图，而非生成图片。点击可查看大图。</p></div><div class="game-screens"><figure><a href="/assets/dynasty/game-map.png"><img src="/assets/dynasty/game-map.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏战略地图，显示城池、势力与战争迷雾"></a><figcaption><strong>战略地图</strong> · 同一份游戏状态的可视化</figcaption></figure><figure><a href="/assets/dynasty/game-city.png"><img src="/assets/dynasty/game-city.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏城池面板，显示兵粮、内政、武将与相邻城池"></a><figcaption><strong>城池管理</strong> · 操作、状态与反馈汇聚在一个界面</figcaption></figure></div></section>
+    <section class="section closing"><div><p class="eyebrow">THE TAKEAWAY</p><h2>从能运行，到随手可用。</h2><p>这个项目最有价值的经验，是把规则、网络和交互分别做好，再通过反复测试让它们自然地协作。后续仍可继续改善可访问性、设备兼容性与长期维护。</p><a class="button" href="/#projects">← 返回所有项目</a></div></section>
   </div>
-</main>
-<footer><div class="shell footer"><span>© LWYZ · Learn, build, explore.</span><a href="/">返回首页</a></div></footer>
-<style>.screens-intro{margin:55px 0 22px}.screens-intro h3{font-size:1.5rem}.screens-intro>p:last-child{color:#b1bcb7}.game-screens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:55px}.game-screens figure{margin:0;min-width:0}.game-screens img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid #60716a}.game-screens figcaption{color:#b1bcb7;font-size:.85rem;margin-top:10px}.game-screens strong{color:#edf0e9}@media(max-width:750px){.game-screens{grid-template-columns:1fr}}</style>
+</main><footer><div class="shell footer"><span>© LWYZ · Learn, build, explore.</span><a href="/">返回首页</a></div></footer>
 </body></html>
