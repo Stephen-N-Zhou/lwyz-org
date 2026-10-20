@@ -18,7 +18,7 @@
 <header class="top"><nav class="shell nav" aria-label="主导航"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">← 返回项目</a></nav></header>
 <main id="content">
   <section class="hero">
-    <img src="/assets/dynasty/hero.png" width="1888" height="833" alt="" fetchpriority="high">
+    <img src="/assets/dynasty/game-map.png" width="1440" height="900" alt="" fetchpriority="high">
     <div class="hero-shade"></div>
     <div class="shell hero-content"><p class="eyebrow">A STRATEGY GAME PROJECT · 策略游戏项目</p><h1>一条指令，<br>一方<span>天下。</span></h1><p>从经营一座城池，到指挥千军万马。Dynasty 将历史沙盘、回合制战斗与 AI 叙事，连接成一个可以反复探索的策略世界。</p><div class="hero-actions"><a class="button" href="#overview">探索项目 <span aria-hidden="true">↓</span></a><a class="quiet-link" href="#architecture">技术设计 →</a></div></div>
   </section>
@@ -39,7 +39,6 @@
         <figure><a href="/assets/dynasty/game-map.png"><img src="/assets/dynasty/game-map.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏战略地图，显示城池、势力与战争迷雾"></a><figcaption><strong>群雄沙盘</strong> · 城池连接、势力分布与可见情报</figcaption></figure>
         <figure><a href="/assets/dynasty/game-city.png"><img src="/assets/dynasty/game-city.png" width="1440" height="900" loading="lazy" decoding="async" alt="游戏城池面板，显示兵粮、内政、武将与相邻城池"></a><figcaption><strong>城池管理</strong> · 兵粮、内政、驻将与边境风险</figcaption></figure>
       </div>
-      <figure class="wide-art"><img src="/assets/dynasty/campaign.png" width="1774" height="887" loading="lazy" decoding="async" alt="古代战略沙盘与城池棋子的概念插画"><figcaption>战略桌面概念插画 · AI 生成，非游戏截图</figcaption></figure>
       <div class="two-col"><div><h3>一场战斗，多个决策</h3><p>冲锋、坚守与侧翼形成循环克制，单一策略并不总是最优。将领技能与军师策略提供额外选择，但也消耗有限的资源。胜利不只是兵力大小的比较，还要考虑状态、阵型与时机。</p></div><div><h3>对手也在思考</h3><p>敌方会评估边境威胁、补防与集结，寻找可行的进攻机会；战斗 AI 会在阵型之间权衡，并根据对手已经表现出的习惯调整。它不能读取玩家尚未作出的战斗指令。</p></div></div>
     </section>
     <section id="architecture" class="section"><div class="section-head"><p class="eyebrow">03 / UNDER THE HOOD</p><h2>把想象力建立在可靠规则之上。</h2><p>游戏的关键设计，是让叙事保持灵活，同时让状态、资源与胜负始终有明确的依据。</p></div>
@@ -55,7 +54,7 @@
     <section id="lessons" class="section"><div class="section-head"><p class="eyebrow">04 / WHAT WE LEARNED</p><h2>从能运行，到值得反复玩。</h2><p>项目逐步从文字原型发展为带地图、战场、对手 AI 与养成系统的完整沙盘。过程中的经验，也适用于其他交互式模拟项目。</p></div>
       <ol class="lessons"><li><strong>先建立唯一可信的规则。</strong><p>把计算集中到引擎，再让文字、地图、预估与自动战斗复用它；界面可以变化，结果的来源不应变化。</p></li><li><strong>先解决可复现性，再扩充随机性。</strong><p>种子、计数器、快照和隔离的模拟随机源，使难以重现的战斗问题更容易定位，也让回滚具有可信的语义。</p></li><li><strong>平衡要靠反复模拟和玩家反馈。</strong><p>名将、兵力、技能、城防与 AI 会互相影响。通过多种局面和种子进行模拟，再根据玩家体验调整，才能避免单一套路或极端优势统治游戏。</p></li><li><strong>AI 的边界与能力同样重要。</strong><p>让对手依据已知情报决策，避免偷看玩家指令；让生成式叙事丰富角色，同时限制它能改变的状态，体验与可信度才能并存。</p></li><li><strong>让反馈可见，让操作可恢复。</strong><p>估算、战报、不可执行原因、地图状态和回滚机制都减少了误操作成本。游戏越复杂，解释能力越重要。</p></li></ol>
     </section>
-    <section id="next" class="section closing"><div><p class="eyebrow">05 / WHAT'S NEXT</p><h2>一个可以继续生长的世界。</h2><p>后续可以继续打磨平衡、完善角色与事件、丰富剧本，并改善不同设备上的操作体验。每一次扩展，都需要与现有规则、存档和测试一起演进。</p><p class="disclaimer">本页是项目介绍与设计笔记，并非在线游戏入口。配图为 AI 生成的概念插画，不代表实际游戏画面。</p><a class="button" href="/#projects">← 返回所有项目</a></div></section>
+    <section id="next" class="section closing"><div><p class="eyebrow">05 / WHAT'S NEXT</p><h2>一个可以继续生长的世界。</h2><p>后续可以继续打磨平衡、完善角色与事件、丰富剧本，并改善不同设备上的操作体验。每一次扩展，都需要与现有规则、存档和测试一起演进。</p><p class="disclaimer">本页是项目介绍与设计笔记，并非在线游戏入口。截图来自游戏的独立演示局。</p><a class="button" href="/#projects">← 返回所有项目</a></div></section>
   </div>
 </main>
 <footer><div class="shell footer"><span>© LWYZ · Learn, build, explore.</span><a href="/">返回首页</a></div></footer>
