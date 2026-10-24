@@ -1,94 +1,97 @@
 {
-  "title": "The Forbidden Bite",
+  "title": "Forbidden Bite",
+  "tagline": "Where elegance meets comfort.",
+  "notice": "Fictional restaurant concept · Illustrative prices in USD",
   "sections": [
     {
-      "name": "Small Plates",
+      "name": "Small Bites",
+      "description": "A little something to start.",
       "items": [
-        {"name": "Forbidden Popcorn Chicken", "description": "Crispy five-spice chicken with scallion and chili salt."},
-        {"name": "Pork & Chive Dumplings", "description": "Pan-seared dumplings with ginger soy dip."},
-        {"name": "Crispy Spring Rolls", "description": "Vegetable rolls with a sweet chili dip."},
-        {"name": "Scallion Pancake", "description": "Flaky layers served with sesame soy sauce."},
-        {"name": "Shrimp Toast", "description": "Golden toast topped with sesame shrimp."}
+        {"name": "Smashed Cucumbers", "description": "Chilled cucumber, garlic, rice vinegar, sesame, and a little chili oil.", "price": 7, "tags": ["Vegan"], "options": ["No chili available"]},
+        {"name": "Forbidden Popcorn Chicken", "description": "Crispy five-spice chicken with scallion and chili salt.", "price": 11, "options": ["Sweet & spicy", "Garlic butter", "Honey pepper"]},
+        {"name": "Pork & Chive Dumplings", "description": "Pan-seared dumplings with ginger soy dip.", "price": 10},
+        {"name": "Crispy Spring Rolls", "description": "Vegetable rolls with a sweet chili dip.", "price": 8, "tags": ["Vegan"]},
+        {"name": "Scallion Pancake", "description": "Flaky layers served with sesame soy sauce.", "price": 8},
+        {"name": "Five-Spice Wings", "description": "Crisp wings tossed with scallion and five-spice salt.", "price": 13},
+        {"name": "Shrimp Toast", "description": "Golden sesame toast topped with seasoned shrimp.", "price": 11},
+        {"name": "Seasonal Bao Buns (2)", "description": "Soft steamed buns with the chef’s seasonal filling.", "price": 10}
       ]
     },
     {
       "name": "Noodles",
+      "description": "Hand-pulled favorites, from warming broth to chilled udon.",
       "items": [
-        {"name": "Dragon Fire Noodles", "description": "Spicy broth, braised beef, bok choy, and chili crisp."},
-        {"name": "Empress’ Comfort", "description": "Soy broth, roast pork, bamboo shoots, and tea egg."},
-        {"name": "Silken Path (Vegan)", "description": "Sesame broth, tofu, mushrooms, and scallions."},
-        {"name": "Golden Chill Udon", "description": "Chilled udon, sesame sauce, cucumber, nori, and citrus."},
-        {"name": "Dan Dan Noodles", "description": "Savory sesame chili sauce, greens, and crushed peanuts."},
-        {"name": "Beef Lo Mein", "description": "Wok-tossed noodles, tender beef, and crisp vegetables."}
+        {"name": "Dragon Fire Noodles", "description": "Spicy broth, braised beef, bok choy, and chili crisp.", "price": 19, "options": ["Mild", "Medium", "Hot"]},
+        {"name": "Empress’ Comfort", "description": "Soy broth, roast pork, bamboo shoots, and a tea egg.", "price": 18},
+        {"name": "Silken Path (Vegan)", "description": "Sesame broth, tofu, mushrooms, and scallions.", "price": 16, "tags": ["Vegan"], "options": ["No chili", "Mild", "Medium", "Hot"]},
+        {"name": "Golden Chill Udon", "description": "Chilled udon, golden sesame sauce, cucumber, nori, and citrus.", "price": 16, "tags": ["Vegan"]}
       ]
     },
     {
       "name": "Soups",
+      "description": "Comforting bowls, simmered for a little warmth.",
       "items": [
-        {"name": "Spicy Wonton Soup", "description": "Pork wontons, greens, and warming chili broth."},
-        {"name": "Imperial Hot & Sour", "description": "A bright, savory soup with tofu and bamboo shoots."},
-        {"name": "Lotus Root & Pork Soup", "description": "Slow-simmered pork, lotus root, and ginger."},
-        {"name": "Tofu Seaweed Soup", "description": "Silken tofu, seaweed, and light ginger broth."}
+        {"name": "Imperial Hot & Sour", "description": "Tofu, shiitake, bamboo shoots, egg, and black vinegar.", "price": 7, "tags": ["Vegetarian"]},
+        {"name": "Lotus Root & Pork", "description": "Slow-simmered pork, lotus root, ginger, and scallion.", "price": 9},
+        {"name": "Spicy Wonton Soup", "description": "Pork wontons, greens, and warming chili broth.", "price": 9, "options": ["Mild", "Medium", "Hot"]},
+        {"name": "Tofu Seaweed Soup", "description": "Silken tofu and seaweed in a light ginger broth.", "price": 7, "tags": ["Vegan"]}
       ]
     },
     {
       "name": "Rice Bowls",
+      "description": "Served with jasmine rice and seasonal greens.",
       "items": [
-        {"name": "Char Siu Pork Bowl", "description": "Roast pork, jasmine rice, greens, and sesame."},
-        {"name": "Mapo Tofu Bowl", "description": "Silky tofu in a savory, gently spicy sauce."},
-        {"name": "Dragon Beef Bowl", "description": "Braised beef, jasmine rice, and chili scallion sauce."},
-        {"name": "Golden Veggie Bowl", "description": "Seasonal vegetables, tofu, and sesame dressing."},
-        {"name": "Teriyaki Chicken Bowl", "description": "Grilled chicken, rice, and house teriyaki glaze."},
-        {"name": "Ginger Scallop Bowl", "description": "Seared scallops, ginger rice, and crisp greens."}
+        {"name": "Char Siu Bowl", "description": "Roast pork, jasmine rice, greens, and sesame.", "price": 17},
+        {"name": "Mapo Tofu Bowl", "description": "Silky tofu in a savory, gently spicy sauce.", "price": 16, "options": ["Classic", "Vegan with mushrooms"]},
+        {"name": "Dragon Beef Bowl", "description": "Braised beef, rice, and chili scallion sauce.", "price": 19, "options": ["No chili", "Mild", "Medium", "Hot"]},
+        {"name": "Golden Veggie Bowl", "description": "Seasonal vegetables, tofu, and sesame dressing.", "price": 15, "tags": ["Vegan"]}
       ]
     },
     {
-      "name": "Seafood & Wok Favorites",
+      "name": "Seafood & Sides",
+      "description": "Fresh-from-the-sea favorites and dishes for sharing.",
       "items": [
-        {"name": "Imperial Garlic Prawns", "description": "Garlic prawns with scallions and steamed rice."},
-        {"name": "Chili Crab Claws", "description": "Crab claws in a sweet, savory chili sauce."},
-        {"name": "Sweet & Sour Fish", "description": "Crisp fish with pineapple, peppers, and tangy sauce."},
-        {"name": "Crispy Orange Beef", "description": "Wok-tossed beef with a bright orange glaze."},
-        {"name": "Garlic Butter Shrimp", "description": "Tender shrimp with garlic, butter, and herbs."},
-        {"name": "Sichuan Eggplant", "description": "Soft eggplant in a fragrant garlic chili sauce."}
+        {"name": "Imperial Garlic Prawns", "description": "Garlic prawns with scallions and steamed rice.", "price": 25},
+        {"name": "Chili Crab Claws", "description": "Crab claws in a sweet, savory chili sauce.", "price": 29, "options": ["Mild", "Medium", "Hot"]},
+        {"name": "Ginger-Scallion Steamed Fish", "description": "Steamed fish with ginger, scallion, and delicate soy.", "price": 27},
+        {"name": "Golden Seafood Fried Rice", "description": "Wok-fried rice with seafood, egg, and scallion.", "price": 18},
+        {"name": "Moonlight Fried Rice", "description": "Jasmine rice, egg, scallion, and crisp garlic.", "price": 13, "tags": ["Vegetarian"]},
+        {"name": "Charred Seasonal Greens", "description": "Market greens with garlic and sesame.", "price": 9, "tags": ["Vegan"]}
       ]
     },
     {
-      "name": "Sides",
+      "name": "Kids, Combos & Specials",
+      "description": "Smaller portions, shareable sets, and a rotating chef’s special.",
       "items": [
-        {"name": "Golden Seafood Fried Rice", "description": "Wok-fried rice with seafood, egg, and scallion."},
-        {"name": "Moonlight Fried Rice", "description": "Jasmine rice, egg, scallion, and crisp garlic."},
-        {"name": "Charred Seasonal Greens", "description": "Market greens with garlic and sesame."},
-        {"name": "Smashed Cucumbers", "description": "Cool cucumber with garlic, black vinegar, sesame, and chili oil."},
-        {"name": "Steamed Bao Buns", "description": "Soft buns with a choice of savory filling."}
+        {"name": "Mini Noodle Bowl", "description": "A small noodle bowl with a gentle broth.", "price": 9},
+        {"name": "Popcorn Chicken Bites", "description": "A kid-sized portion with a mild seasoning.", "price": 9},
+        {"name": "Kids’ Fried Rice Cup", "description": "A little cup of egg and scallion fried rice.", "price": 6},
+        {"name": "Panda Dessert", "description": "A playful panda-shaped ice cream treat.", "price": 6},
+        {"name": "Noodle + Popcorn Chicken", "description": "A house noodle bowl with a side of chicken bites.", "price": 21},
+        {"name": "Small Bite + Drink", "description": "One small plate paired with a tea or soft drink.", "price": 15},
+        {"name": "Family Feast", "description": "A shareable spread of noodles, rice, and small bites.", "price": 58},
+        {"name": "Emperor’s Midnight Bowl", "description": "A rotating seasonal noodle special from the chef.", "price": 20, "options": ["Spice level varies by season"]}
       ]
     },
     {
       "name": "Desserts",
+      "description": "A sweet ending, with a touch of jade and gold.",
       "items": [
-        {"name": "Sweet Sin", "description": "Black sesame panna cotta with toasted sesame."},
-        {"name": "Jade Pillows", "description": "Soft matcha mochi with a sweet red bean center."},
-        {"name": "Red Moon Ice Cream", "description": "A rotating scoop of creamy seasonal ice cream."},
-        {"name": "Mango Pudding", "description": "Chilled mango pudding with fresh fruit."}
+        {"name": "Sweet Sin", "description": "Black sesame panna cotta with toasted sesame.", "price": 8, "tags": ["Vegetarian"]},
+        {"name": "Jade Pillows", "description": "Soft matcha mochi with a sweet red bean center.", "price": 7, "tags": ["Vegan"]},
+        {"name": "Red Moon Ice Cream", "description": "Creamy red bean ice cream with a sesame wafer.", "price": 7, "tags": ["Vegetarian"]}
       ]
     },
     {
       "name": "Drinks & Tea",
+      "description": "A warm pot, a cool glass, or something bright and sparkling.",
       "items": [
-        {"name": "Chrysanthemum Tea", "description": "Fragrant, lightly sweet floral tea."},
-        {"name": "Jade Matcha Latte", "description": "Matcha whisked with milk or oat milk."},
-        {"name": "Lychee Sparkler", "description": "Lychee, citrus, and sparkling water."},
-        {"name": "Mandarin Blossom Cold Brew", "description": "Cold brew tea with a bright mandarin finish."}
-      ]
-    },
-    {
-      "name": "Kids & Combos",
-      "items": [
-        {"name": "Mini Noodle Bowl", "description": "A small noodle bowl with a mild broth."},
-        {"name": "Popcorn Chicken Bites", "description": "A kid-sized serving with a gentle seasoning."},
-        {"name": "Panda Dessert", "description": "A playful panda-shaped ice cream treat."},
-        {"name": "Family Feast", "description": "A shareable mix of noodles, rice, and small plates."}
+        {"name": "Wolfberry Chrysanthemum Tea", "description": "A gently floral tea with wolfberry, served by the pot.", "price": 5, "tags": ["Caffeine-free"]},
+        {"name": "Jade Matcha Latte", "description": "Whisked matcha with steamed milk or poured over ice.", "price": 6, "options": ["Hot", "Iced", "Oat milk available"]},
+        {"name": "Lychee Sparkler", "description": "Lychee, citrus, and sparkling water over ice.", "price": 6, "tags": ["Nonalcoholic"]},
+        {"name": "Mandarin Blossom Cold Brew", "description": "Cold-brew tea with mandarin and a bright citrus finish.", "price": 5}
       ]
     }
-  ]
+  ],
+  "footer_note": "Please tell your server about food allergies. Shared preparation areas are used."
 }

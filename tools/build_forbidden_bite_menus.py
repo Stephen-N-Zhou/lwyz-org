@@ -1,102 +1,94 @@
-"""Build matching, typo-free Forbidden Bite menu posters from menu.json."""
+"""Render matching Forbidden Bite picture and full menus from menu.json."""
 
 from __future__ import annotations
 
+import base64
 import html
 import json
-import textwrap
 from pathlib import Path
+
+from playwright.sync_api import sync_playwright
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "assets" / "forbidden_bite" / "menu.json"
-OUT = ROOT / "assets" / "forbidden_bite"
-WIDTH = 1080
-MARGIN = 42
-GAP = 24
-CARD_W = (WIDTH - MARGIN * 2 - GAP) // 2
-COLS = ([0, 2, 4, 6, 8], [1, 3, 5, 7])
+ASSETS = ROOT / "assets" / "forbidden_bite"
+DATA = ASSETS / "menu.json"
+ART = ASSETS / "menu-food-art.png"
+SPLIT = 4
 
 
 def esc(value: str) -> str:
     return html.escape(value, quote=True)
 
 
-def wrap(value: str, width: int) -> list[str]:
-    return textwrap.wrap(value, width=width, break_long_words=False) or [""]
+def render_item(item: dict, full: bool) -> str:
+    tags = "".join(f'<span class="tag">{esc(tag)}</span>' for tag in item.get("tags", []))
+    details = ""
+    if full:
+        details += f'<p class="description">{esc(item["description"])}</p>'
+        if item.get("options"):
+            details += f'<p class="options"><b>Options</b> · {esc(" / ".join(item["options"]))}</p>'
+    return (
+        '<li class="item">'
+        f'<div class="item-line"><span class="item-name">{esc(item["name"])}</span>'
+        f'<span class="price">${item["price"]}</span></div>'
+        f'{details}{tags}</li>'
+    )
 
 
-def card_svg(section: dict, x: int, y: int, full: bool) -> tuple[str, int]:
-    items = section["items"]
-    cursor = y + 68
-    fragments = [
-        f'<rect x="{x}" y="{y}" width="{CARD_W}" height="{{HEIGHT}}" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>',
-        f'<path d="M{x+20} {y+60} H{x+CARD_W-20}" stroke="#d7bd79" stroke-width="2"/>',
-        f'<circle cx="{x+32}" cy="{y+33}" r="14" fill="#0d5c4b"/>',
-        f'<text x="{x+32}" y="{y+39}" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">{esc(section["name"][0])}</text>',
-        f'<text x="{x+58}" y="{y+42}" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">{esc(section["name"])}</text>',
-    ]
-    for item in items:
-        name_lines = wrap(item["name"], 37)
-        desc_lines = wrap(item["description"], 48) if full else []
-        line_start = cursor
-        for index, line in enumerate(name_lines):
-            fragments.append(
-                f'<text x="{x+24}" y="{cursor+21*index}" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">{esc(line)}</text>'
-            )
-        cursor += len(name_lines) * 23
-        for index, line in enumerate(desc_lines):
-            fragments.append(
-                f'<text x="{x+24}" y="{cursor+18*index}" font-family="Arial,sans-serif" font-size="15" fill="#625d52">{esc(line)}</text>'
-            )
-        cursor += len(desc_lines) * 18
-        cursor += 10
-        if item is not items[-1]:
-            fragments.append(f'<path d="M{x+24} {cursor-4} H{x+CARD_W-24}" stroke="#eee6d8" stroke-width="1"/>')
-        if cursor <= line_start:
-            raise ValueError("Menu card did not advance")
-    height = cursor - y + 16
-    fragments[0] = fragments[0].replace("{HEIGHT}", str(height))
-    return "\n".join(fragments), height
+def render_section(section: dict, full: bool) -> str:
+    items = "".join(render_item(item, full) for item in section["items"])
+    return (
+        '<section class="category">'
+        f'<div class="category-head"><h2>{esc(section["name"])}</h2>'
+        f'<p>{esc(section["description"])}</p></div>'
+        f'<ul>{items}</ul></section>'
+    )
 
 
-def build(data: dict, filename: str, full: bool) -> None:
-    column_y = [900, 900]
-    cards: list[str] = []
-    for col, section_ids in enumerate(COLS):
-        x = MARGIN + col * (CARD_W + GAP)
-        for section_id in section_ids:
-            if section_id >= len(data["sections"]):
-                continue
-            card, height = card_svg(data["sections"][section_id], x, column_y[col], full)
-            cards.append(card)
-            column_y[col] += height + 18
-    canvas_h = max(column_y) + 90
-    subtitle = "FULL MENU · ITEM NAMES & DESCRIPTIONS" if full else "PICTURE MENU · THE SAME DISHES AS THE FULL MENU"
-    disclaimer = "A FICTIONAL FOOD & DESIGN CONCEPT · MENU ITEMS ARE ILLUSTRATIVE"
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{canvas_h}" viewBox="0 0 {WIDTH} {canvas_h}">
-<rect width="100%" height="100%" fill="#f5eddd"/>
-<rect x="18" y="18" width="{WIDTH-36}" height="{canvas_h-36}" rx="28" fill="none" stroke="#b8923c" stroke-width="4"/>
-<rect x="27" y="27" width="{WIDTH-54}" height="{canvas_h-54}" rx="22" fill="none" stroke="#d9c58f" stroke-width="1.5"/>
-<circle cx="{WIDTH//2}" cy="67" r="25" fill="#0d5c4b"/>
-<path d="M{WIDTH//2-12} 68 q12 -19 24 0 q-12 19 -24 0" fill="none" stroke="#f1d889" stroke-width="3"/>
-<text x="{WIDTH//2}" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="2" fill="#741e25">{esc(data['title'])}</text>
-<text x="{WIDTH//2}" y="173" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#0d5c4b">{esc(subtitle)}</text>
-<path d="M{MARGIN} 198 H{WIDTH-MARGIN}" stroke="#b8923c" stroke-width="2"/>
-<defs><clipPath id="food-art-clip"><rect x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" rx="20"/></clipPath></defs>
-<image href="menu-food-art.png" x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" preserveAspectRatio="xMidYMid slice" clip-path="url(#food-art-clip)"/>
-<rect x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" rx="20" fill="none" stroke="#b8923c" stroke-width="3"/>
-{''.join(cards)}
-<text x="{WIDTH//2}" y="{canvas_h-43}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="1.3" fill="#625d52">{esc(disclaimer)}</text>
-</svg>'''
-    (OUT / filename).write_text(svg, encoding="utf-8")
+def build_document(data: dict, full: bool) -> str:
+    sections = data["sections"]
+    if len(sections) != 8:
+        raise ValueError("Expected eight menu categories")
+    names = [item["name"] for category in sections for item in category["items"]]
+    if len(names) != len(set(names)):
+        raise ValueError("Menu item names must be unique")
+    left = "".join(render_section(section, full) for section in sections[:SPLIT])
+    right = "".join(render_section(section, full) for section in sections[SPLIT:])
+    art = base64.b64encode(ART.read_bytes()).decode("ascii")
+    mode = "Full Menu · Descriptions & Choices" if full else "Picture Menu · Dishes & Prices"
+    page = '''<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}html,body{margin:0}body{width:1200px;margin:0 auto;padding:34px 42px 30px;background:#f5eddd;color:#28251f;font-family:Arial,Helvetica,sans-serif}
+.frame{border:3px solid #b8923c;border-radius:24px;padding:24px 25px 22px;background:#f8f1e4;box-shadow:inset 0 0 0 5px #f8f1e4,inset 0 0 0 6px #dfd0a9}
+header{text-align:center;padding:4px 8px 16px} .mark{width:42px;height:42px;border-radius:50%;margin:0 auto 8px;background:#0d5c4b;color:#f1d889;font:28px/42px Georgia,serif}h1{font:700 52px/1.08 Georgia,'Times New Roman',serif;color:#741e25;margin:0;letter-spacing:.03em}.tagline{font:italic 21px Georgia,serif;color:#173e35;margin:8px 0}.mode{font-size:15px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0d5c4b;margin:12px 0 14px}.rule{height:2px;background:#b8923c;margin:0 0 14px}.art{display:block;width:100%;height:auto;max-height:660px;object-fit:contain;border:2px solid #b8923c;border-radius:16px;margin:0 auto 20px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.column{display:flex;flex-direction:column;gap:15px}.category{background:#fffdf8;border:1px solid #dfd2b7;border-radius:14px;padding:16px 19px 15px;break-inside:avoid}.category-head{border-bottom:1.5px solid #d7bd79;padding:0 0 9px;margin:0 0 4px}.category h2{font:700 25px/1.15 Georgia,'Times New Roman',serif;color:#741e25;margin:0 0 4px}.category-head p{font:italic 15px/1.35 Georgia,serif;color:#686256;margin:0}.category ul{list-style:none;margin:0;padding:0}.item{padding:9px 0 8px;border-bottom:1px solid #eee6d8;break-inside:avoid}.item:last-child{border-bottom:0;padding-bottom:1px}.item-line{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.item-name{font-size:20px;line-height:1.24;font-weight:700;color:#173e35}.price{flex:none;white-space:nowrap;font-size:20px;line-height:1.2;font-weight:700;color:#173e35;font-variant-numeric:tabular-nums}.description{font-size:16px;line-height:1.4;color:#625d52;margin:4px 0 0}.options{font-size:13px;line-height:1.35;color:#795c28;font-style:italic;margin:4px 0 0}.options b{font-style:normal}.tag{display:inline-block;margin:5px 5px 0 0;padding:2px 7px;border-radius:99px;background:#e6efe8;color:#0d5c4b;font-size:12px;font-weight:700}.footer{text-align:center;color:#625d52;font-size:13px;letter-spacing:.09em;text-transform:uppercase;margin:20px 0 0}
+</style></head><body><div class="frame"><header><div class="mark">✦</div><h1>__TITLE__</h1><p class="tagline">__TAGLINE__</p><p class="mode">__MODE__</p><div class="rule"></div><img class="art" src="data:image/png;base64,__ART__" alt=""></header><main class="columns"><div class="column">__LEFT__</div><div class="column">__RIGHT__</div></main><footer class="footer">__NOTICE__</footer></div></body></html>'''
+    replacements = {
+        "__TITLE__": esc(data["title"]),
+        "__TAGLINE__": esc(data["tagline"]),
+        "__MODE__": esc(mode),
+        "__ART__": art,
+        "__LEFT__": left,
+        "__RIGHT__": right,
+        "__NOTICE__": esc(data["notice"]),
+    }
+    for token, value in replacements.items():
+        page = page.replace(token, value)
+    return page
 
 
 def main() -> None:
     data = json.loads(DATA.read_text(encoding="utf-8"))
-    build(data, "menu-picture.svg", full=False)
-    build(data, "menu-full.svg", full=True)
-    print("Built matching picture and full menus from menu.json")
+    versions = [(False, "menu.png"), (True, "menu2.png")]
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        for full, filename in versions:
+            page = browser.new_page(viewport={"width": 1200, "height": 1000}, device_scale_factor=1.25)
+            page.set_content(build_document(data, full), wait_until="load")
+            page.screenshot(path=str(ASSETS / filename), full_page=True, animations="disabled")
+            page.close()
+        browser.close()
+    print(f"Rendered {sum(len(s['items']) for s in data['sections'])} matching menu items to menu.png and menu2.png")
 
 
 if __name__ == "__main__":
