@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets" / "forbidden_bite"
 DATA = ASSETS / "menu.json"
 ART = ASSETS / "menu-food-art.png"
+PICTURE_ART = ASSETS / "menu-picture-gallery.png"
 SPLIT = 4
 
 
@@ -84,7 +85,7 @@ header{text-align:center;padding:4px 8px 16px} .mark{width:42px;height:42px;bord
 
 def main() -> None:
     data = json.loads(DATA.read_text(encoding="utf-8"))
-    shutil.copyfile(ART, ASSETS / "menu.png")
+    shutil.copyfile(PICTURE_ART, ASSETS / "menu.png")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": 1200, "height": 1000}, device_scale_factor=1.25)
