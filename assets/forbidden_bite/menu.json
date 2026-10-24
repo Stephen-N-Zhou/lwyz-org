@@ -91,6 +91,14 @@
         {"name": "Lychee Sparkler", "description": "Lychee, citrus, and sparkling water over ice.", "price": 6, "tags": ["Nonalcoholic"]},
         {"name": "Mandarin Blossom Cold Brew", "description": "Cold-brew tea with mandarin and a bright citrus finish.", "price": 5}
       ]
+    },
+    {
+      "name": "Limited-Time Deals",
+      "description": "A few lavish, short-run feasts at special concept prices.",
+      "items": [
+        {"name": "Seafood Boil for Two", "description": "Crab, shrimp, mussels, corn, and potatoes tossed in a fragrant garlic-chili butter. Served family-style with rice.", "price": 58, "compare_at": 72, "tags": ["Limited time", "Serves 2"], "options": ["Garlic butter", "Chili butter"]},
+        {"name": "Peking Duck Celebration", "description": "Crisp-skinned roast duck carved for the table with thin pancakes, cucumber, scallions, and plum sauce.", "price": 88, "compare_at": 108, "tags": ["Limited time", "Serves 3–4"], "options": ["Pancakes and classic accompaniments"]}
+      ]
     }
   ],
   "footer_note": "Please tell your server about food allergies. Shared preparation areas are used."
