@@ -1,0 +1,93 @@
+{
+  "title": "The Forbidden Bite",
+  "sections": [
+    {
+      "name": "Small Plates",
+      "items": [
+        {"name": "Forbidden Popcorn Chicken", "description": "Crispy five-spice chicken with scallion and chili salt."},
+        {"name": "Pork & Chive Dumplings", "description": "Pan-seared dumplings with ginger soy dip."},
+        {"name": "Crispy Spring Rolls", "description": "Vegetable rolls with a sweet chili dip."},
+        {"name": "Scallion Pancake", "description": "Flaky layers served with sesame soy sauce."},
+        {"name": "Shrimp Toast", "description": "Golden toast topped with sesame shrimp."}
+      ]
+    },
+    {
+      "name": "Noodles",
+      "items": [
+        {"name": "Dragon Fire Noodles", "description": "Spicy broth, braised beef, bok choy, and chili crisp."},
+        {"name": "Empress’ Comfort", "description": "Soy broth, roast pork, bamboo shoots, and tea egg."},
+        {"name": "Silken Path (Vegan)", "description": "Sesame broth, tofu, mushrooms, and scallions."},
+        {"name": "Golden Chill Udon", "description": "Chilled udon, sesame sauce, cucumber, nori, and citrus."},
+        {"name": "Dan Dan Noodles", "description": "Savory sesame chili sauce, greens, and crushed peanuts."},
+        {"name": "Beef Lo Mein", "description": "Wok-tossed noodles, tender beef, and crisp vegetables."}
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {"name": "Spicy Wonton Soup", "description": "Pork wontons, greens, and warming chili broth."},
+        {"name": "Imperial Hot & Sour", "description": "A bright, savory soup with tofu and bamboo shoots."},
+        {"name": "Lotus Root & Pork Soup", "description": "Slow-simmered pork, lotus root, and ginger."},
+        {"name": "Tofu Seaweed Soup", "description": "Silken tofu, seaweed, and light ginger broth."}
+      ]
+    },
+    {
+      "name": "Rice Bowls",
+      "items": [
+        {"name": "Char Siu Pork Bowl", "description": "Roast pork, jasmine rice, greens, and sesame."},
+        {"name": "Mapo Tofu Bowl", "description": "Silky tofu in a savory, gently spicy sauce."},
+        {"name": "Dragon Beef Bowl", "description": "Braised beef, jasmine rice, and chili scallion sauce."},
+        {"name": "Golden Veggie Bowl", "description": "Seasonal vegetables, tofu, and sesame dressing."},
+        {"name": "Teriyaki Chicken Bowl", "description": "Grilled chicken, rice, and house teriyaki glaze."},
+        {"name": "Ginger Scallop Bowl", "description": "Seared scallops, ginger rice, and crisp greens."}
+      ]
+    },
+    {
+      "name": "Seafood & Wok Favorites",
+      "items": [
+        {"name": "Imperial Garlic Prawns", "description": "Garlic prawns with scallions and steamed rice."},
+        {"name": "Chili Crab Claws", "description": "Crab claws in a sweet, savory chili sauce."},
+        {"name": "Sweet & Sour Fish", "description": "Crisp fish with pineapple, peppers, and tangy sauce."},
+        {"name": "Crispy Orange Beef", "description": "Wok-tossed beef with a bright orange glaze."},
+        {"name": "Garlic Butter Shrimp", "description": "Tender shrimp with garlic, butter, and herbs."},
+        {"name": "Sichuan Eggplant", "description": "Soft eggplant in a fragrant garlic chili sauce."}
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {"name": "Golden Seafood Fried Rice", "description": "Wok-fried rice with seafood, egg, and scallion."},
+        {"name": "Moonlight Fried Rice", "description": "Jasmine rice, egg, scallion, and crisp garlic."},
+        {"name": "Charred Seasonal Greens", "description": "Market greens with garlic and sesame."},
+        {"name": "Steamed Bao Buns", "description": "Soft buns with a choice of savory filling."}
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {"name": "Sweet Sin", "description": "Black sesame panna cotta with toasted sesame."},
+        {"name": "Jade Pillows", "description": "Soft matcha mochi with a sweet red bean center."},
+        {"name": "Red Moon Ice Cream", "description": "A rotating scoop of creamy seasonal ice cream."},
+        {"name": "Mango Pudding", "description": "Chilled mango pudding with fresh fruit."}
+      ]
+    },
+    {
+      "name": "Drinks & Tea",
+      "items": [
+        {"name": "Chrysanthemum Tea", "description": "Fragrant, lightly sweet floral tea."},
+        {"name": "Jade Matcha Latte", "description": "Matcha whisked with milk or oat milk."},
+        {"name": "Lychee Sparkler", "description": "Lychee, citrus, and sparkling water."},
+        {"name": "Mandarin Blossom Cold Brew", "description": "Cold brew tea with a bright mandarin finish."}
+      ]
+    },
+    {
+      "name": "Kids & Combos",
+      "items": [
+        {"name": "Mini Noodle Bowl", "description": "A small noodle bowl with a mild broth."},
+        {"name": "Popcorn Chicken Bites", "description": "A kid-sized serving with a gentle seasoning."},
+        {"name": "Panda Dessert", "description": "A playful panda-shaped ice cream treat."},
+        {"name": "Family Feast", "description": "A shareable mix of noodles, rice, and small plates."}
+      ]
+    }
+  ]
+}
