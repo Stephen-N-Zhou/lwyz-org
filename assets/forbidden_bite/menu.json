@@ -94,10 +94,13 @@
     },
     {
       "name": "Limited-Time Deals",
-      "description": "A few lavish, short-run feasts at special concept prices.",
+      "description": "Five lavish, short-run feasts at special concept prices.",
       "items": [
         {"name": "Seafood Boil for Two", "description": "Crab, shrimp, mussels, corn, and potatoes tossed in a fragrant garlic-chili butter. Served family-style with rice.", "price": 58, "compare_at": 72, "tags": ["Limited time", "Serves 2"], "options": ["Garlic butter", "Chili butter"]},
-        {"name": "Peking Duck Celebration", "description": "Crisp-skinned roast duck carved for the table with thin pancakes, cucumber, scallions, and plum sauce.", "price": 88, "compare_at": 108, "tags": ["Limited time", "Serves 3–4"], "options": ["Pancakes and classic accompaniments"]}
+        {"name": "Peking Duck Celebration", "description": "Crisp-skinned roast duck carved for the table with thin pancakes, cucumber, scallions, and plum sauce.", "price": 88, "compare_at": 108, "tags": ["Limited time", "Serves 3–4"], "options": ["Pancakes and classic accompaniments"]},
+        {"name": "Lobster Ginger Hot Pot", "description": "Lobster, shrimp, tofu, mushrooms, and napa cabbage simmered in a fragrant ginger-scallion broth. Served with jasmine rice.", "price": 78, "compare_at": 96, "tags": ["Limited time", "Serves 2"], "options": ["Ginger-scallion broth", "Mild chili broth"]},
+        {"name": "Black Pepper Wagyu Clay Pot", "description": "Sliced wagyu beef seared with black pepper, mushrooms, and scallions, served sizzling in a clay pot with jasmine rice.", "price": 72, "compare_at": 88, "tags": ["Limited time", "Premium"], "options": ["Mild pepper", "Extra black pepper"]},
+        {"name": "Crispy Whole Sea Bass Feast", "description": "Whole sea bass fried until crisp, finished with ginger-scallion sauce, and served with rice and seasonal greens.", "price": 62, "compare_at": 76, "tags": ["Limited time", "Serves 2–3"], "options": ["Ginger-scallion sauce", "Light soy glaze"]}
       ]
     }
   ],
