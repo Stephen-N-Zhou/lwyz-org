@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import html
 import json
+import shutil
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -83,16 +84,15 @@ header{text-align:center;padding:4px 8px 16px} .mark{width:42px;height:42px;bord
 
 def main() -> None:
     data = json.loads(DATA.read_text(encoding="utf-8"))
-    versions = [(False, "menu.png"), (True, "menu2.png")]
+    shutil.copyfile(ART, ASSETS / "menu.png")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        for full, filename in versions:
-            page = browser.new_page(viewport={"width": 1200, "height": 1000}, device_scale_factor=1.25)
-            page.set_content(build_document(data, full), wait_until="load")
-            page.screenshot(path=str(ASSETS / filename), full_page=True, animations="disabled")
-            page.close()
+        page = browser.new_page(viewport={"width": 1200, "height": 1000}, device_scale_factor=1.25)
+        page.set_content(build_document(data, True), wait_until="load")
+        page.screenshot(path=str(ASSETS / "menu2.png"), full_page=True, animations="disabled")
+        page.close()
         browser.close()
-    print(f"Rendered {sum(len(s['items']) for s in data['sections'])} matching menu items to menu.png and menu2.png")
+    print(f"Copied image-only artwork to menu.png and rendered {sum(len(s['items']) for s in data['sections'])} items to menu2.png")
 
 
 if __name__ == "__main__":
