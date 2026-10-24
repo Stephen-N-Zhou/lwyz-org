@@ -61,7 +61,7 @@ def card_svg(section: dict, x: int, y: int, full: bool) -> tuple[str, int]:
 
 
 def build(data: dict, filename: str, full: bool) -> None:
-    column_y = [236, 236]
+    column_y = [900, 900]
     cards: list[str] = []
     for col, section_ids in enumerate(COLS):
         x = MARGIN + col * (CARD_W + GAP)
@@ -83,6 +83,9 @@ def build(data: dict, filename: str, full: bool) -> None:
 <text x="{WIDTH//2}" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="2" fill="#741e25">{esc(data['title'])}</text>
 <text x="{WIDTH//2}" y="173" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#0d5c4b">{esc(subtitle)}</text>
 <path d="M{MARGIN} 198 H{WIDTH-MARGIN}" stroke="#b8923c" stroke-width="2"/>
+<defs><clipPath id="food-art-clip"><rect x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" rx="20"/></clipPath></defs>
+<image href="menu-food-art.png" x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" preserveAspectRatio="xMidYMid slice" clip-path="url(#food-art-clip)"/>
+<rect x="{MARGIN}" y="216" width="{WIDTH-MARGIN*2}" height="664" rx="20" fill="none" stroke="#b8923c" stroke-width="3"/>
 {''.join(cards)}
 <text x="{WIDTH//2}" y="{canvas_h-43}" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="1.3" fill="#625d52">{esc(disclaimer)}</text>
 </svg>'''

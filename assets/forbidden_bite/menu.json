@@ -59,6 +59,7 @@
         {"name": "Golden Seafood Fried Rice", "description": "Wok-fried rice with seafood, egg, and scallion."},
         {"name": "Moonlight Fried Rice", "description": "Jasmine rice, egg, scallion, and crisp garlic."},
         {"name": "Charred Seasonal Greens", "description": "Market greens with garlic and sesame."},
+        {"name": "Smashed Cucumbers", "description": "Cool cucumber with garlic, black vinegar, sesame, and chili oil."},
         {"name": "Steamed Bao Buns", "description": "Soft buns with a choice of savory filling."}
       ]
     },

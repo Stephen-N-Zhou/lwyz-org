@@ -1,178 +1,185 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2081" viewBox="0 0 1080 2081">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2745" viewBox="0 0 1080 2745">
 <rect width="100%" height="100%" fill="#f5eddd"/>
-<rect x="18" y="18" width="1044" height="2045" rx="28" fill="none" stroke="#b8923c" stroke-width="4"/>
-<rect x="27" y="27" width="1026" height="2027" rx="22" fill="none" stroke="#d9c58f" stroke-width="1.5"/>
+<rect x="18" y="18" width="1044" height="2709" rx="28" fill="none" stroke="#b8923c" stroke-width="4"/>
+<rect x="27" y="27" width="1026" height="2691" rx="22" fill="none" stroke="#d9c58f" stroke-width="1.5"/>
 <circle cx="540" cy="67" r="25" fill="#0d5c4b"/>
 <path d="M528 68 q12 -19 24 0 q-12 19 -24 0" fill="none" stroke="#f1d889" stroke-width="3"/>
 <text x="540" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="2" fill="#741e25">The Forbidden Bite</text>
 <text x="540" y="173" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#0d5c4b">FULL MENU · ITEM NAMES &amp; DESCRIPTIONS</text>
 <path d="M42 198 H1038" stroke="#b8923c" stroke-width="2"/>
-<rect x="42" y="236" width="486" height="357" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M62 296 H508" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="74" cy="269" r="14" fill="#0d5c4b"/>
-<text x="74" y="275" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
-<text x="100" y="278" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Small Plates</text>
-<text x="66" y="304" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Forbidden Popcorn Chicken</text>
-<text x="66" y="327" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crispy five-spice chicken with scallion and</text>
-<text x="66" y="345" font-family="Arial,sans-serif" font-size="15" fill="#625d52">chili salt.</text>
-<path d="M66 369 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="373" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Pork &amp; Chive Dumplings</text>
-<text x="66" y="396" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Pan-seared dumplings with ginger soy dip.</text>
-<path d="M66 420 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="424" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Crispy Spring Rolls</text>
-<text x="66" y="447" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Vegetable rolls with a sweet chili dip.</text>
-<path d="M66 471 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="475" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Scallion Pancake</text>
-<text x="66" y="498" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Flaky layers served with sesame soy sauce.</text>
-<path d="M66 522 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="526" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Shrimp Toast</text>
-<text x="66" y="549" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Golden toast topped with sesame shrimp.</text><rect x="42" y="611" width="486" height="306" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M62 671 H508" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="74" cy="644" r="14" fill="#0d5c4b"/>
-<text x="74" y="650" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
-<text x="100" y="653" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Soups</text>
-<text x="66" y="679" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Spicy Wonton Soup</text>
-<text x="66" y="702" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Pork wontons, greens, and warming chili broth.</text>
-<path d="M66 726 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="730" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Imperial Hot &amp; Sour</text>
-<text x="66" y="753" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A bright, savory soup with tofu and bamboo</text>
-<text x="66" y="771" font-family="Arial,sans-serif" font-size="15" fill="#625d52">shoots.</text>
-<path d="M66 795 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="799" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Lotus Root &amp; Pork Soup</text>
-<text x="66" y="822" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Slow-simmered pork, lotus root, and ginger.</text>
-<path d="M66 846 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="850" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Tofu Seaweed Soup</text>
-<text x="66" y="873" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Silken tofu, seaweed, and light ginger broth.</text><rect x="42" y="935" width="486" height="408" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M62 995 H508" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="74" cy="968" r="14" fill="#0d5c4b"/>
-<text x="74" y="974" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
-<text x="100" y="977" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Seafood &amp; Wok Favorites</text>
-<text x="66" y="1003" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Imperial Garlic Prawns</text>
-<text x="66" y="1026" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Garlic prawns with scallions and steamed rice.</text>
-<path d="M66 1050 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1054" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Chili Crab Claws</text>
-<text x="66" y="1077" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crab claws in a sweet, savory chili sauce.</text>
-<path d="M66 1101 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1105" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sweet &amp; Sour Fish</text>
-<text x="66" y="1128" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crisp fish with pineapple, peppers, and tangy</text>
-<text x="66" y="1146" font-family="Arial,sans-serif" font-size="15" fill="#625d52">sauce.</text>
-<path d="M66 1170 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1174" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Crispy Orange Beef</text>
-<text x="66" y="1197" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-tossed beef with a bright orange glaze.</text>
-<path d="M66 1221 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1225" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Garlic Butter Shrimp</text>
-<text x="66" y="1248" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Tender shrimp with garlic, butter, and herbs.</text>
-<path d="M66 1272 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1276" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sichuan Eggplant</text>
-<text x="66" y="1299" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft eggplant in a fragrant garlic chili sauce.</text><rect x="42" y="1361" width="486" height="288" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M62 1421 H508" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="74" cy="1394" r="14" fill="#0d5c4b"/>
-<text x="74" y="1400" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">D</text>
-<text x="100" y="1403" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Desserts</text>
-<text x="66" y="1429" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sweet Sin</text>
-<text x="66" y="1452" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Black sesame panna cotta with toasted sesame.</text>
-<path d="M66 1476 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1480" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Jade Pillows</text>
-<text x="66" y="1503" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft matcha mochi with a sweet red bean center.</text>
-<path d="M66 1527 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1531" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Red Moon Ice Cream</text>
-<text x="66" y="1554" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A rotating scoop of creamy seasonal ice cream.</text>
-<path d="M66 1578 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1582" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mango Pudding</text>
-<text x="66" y="1605" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Chilled mango pudding with fresh fruit.</text><rect x="42" y="1667" width="486" height="306" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M62 1727 H508" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="74" cy="1700" r="14" fill="#0d5c4b"/>
-<text x="74" y="1706" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">K</text>
-<text x="100" y="1709" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Kids &amp; Combos</text>
-<text x="66" y="1735" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mini Noodle Bowl</text>
-<text x="66" y="1758" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A small noodle bowl with a mild broth.</text>
-<path d="M66 1782 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1786" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Popcorn Chicken Bites</text>
-<text x="66" y="1809" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A kid-sized serving with a gentle seasoning.</text>
-<path d="M66 1833 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1837" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Panda Dessert</text>
-<text x="66" y="1860" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A playful panda-shaped ice cream treat.</text>
-<path d="M66 1884 H504" stroke="#eee6d8" stroke-width="1"/>
-<text x="66" y="1888" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Family Feast</text>
-<text x="66" y="1911" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A shareable mix of noodles, rice, and small</text>
-<text x="66" y="1929" font-family="Arial,sans-serif" font-size="15" fill="#625d52">plates.</text><rect x="552" y="236" width="486" height="480" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M572 296 H1018" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="584" cy="269" r="14" fill="#0d5c4b"/>
-<text x="584" y="275" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">N</text>
-<text x="610" y="278" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Noodles</text>
-<text x="576" y="304" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dragon Fire Noodles</text>
-<text x="576" y="327" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Spicy broth, braised beef, bok choy, and chili</text>
-<text x="576" y="345" font-family="Arial,sans-serif" font-size="15" fill="#625d52">crisp.</text>
-<path d="M576 369 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="373" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Empress’ Comfort</text>
-<text x="576" y="396" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soy broth, roast pork, bamboo shoots, and tea</text>
-<text x="576" y="414" font-family="Arial,sans-serif" font-size="15" fill="#625d52">egg.</text>
-<path d="M576 438 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="442" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Silken Path (Vegan)</text>
-<text x="576" y="465" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Sesame broth, tofu, mushrooms, and scallions.</text>
-<path d="M576 489 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="493" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Chill Udon</text>
-<text x="576" y="516" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Chilled udon, sesame sauce, cucumber, nori, and</text>
-<text x="576" y="534" font-family="Arial,sans-serif" font-size="15" fill="#625d52">citrus.</text>
-<path d="M576 558 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="562" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dan Dan Noodles</text>
-<text x="576" y="585" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Savory sesame chili sauce, greens, and crushed</text>
-<text x="576" y="603" font-family="Arial,sans-serif" font-size="15" fill="#625d52">peanuts.</text>
-<path d="M576 627 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="631" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Beef Lo Mein</text>
-<text x="576" y="654" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-tossed noodles, tender beef, and crisp</text>
-<text x="576" y="672" font-family="Arial,sans-serif" font-size="15" fill="#625d52">vegetables.</text><rect x="552" y="734" width="486" height="408" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M572 794 H1018" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="584" cy="767" r="14" fill="#0d5c4b"/>
-<text x="584" y="773" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">R</text>
-<text x="610" y="776" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Rice Bowls</text>
-<text x="576" y="802" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Char Siu Pork Bowl</text>
-<text x="576" y="825" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Roast pork, jasmine rice, greens, and sesame.</text>
-<path d="M576 849 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="853" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mapo Tofu Bowl</text>
-<text x="576" y="876" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Silky tofu in a savory, gently spicy sauce.</text>
-<path d="M576 900 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="904" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dragon Beef Bowl</text>
-<text x="576" y="927" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Braised beef, jasmine rice, and chili scallion</text>
-<text x="576" y="945" font-family="Arial,sans-serif" font-size="15" fill="#625d52">sauce.</text>
-<path d="M576 969 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="973" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Veggie Bowl</text>
-<text x="576" y="996" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Seasonal vegetables, tofu, and sesame dressing.</text>
-<path d="M576 1020 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1024" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Teriyaki Chicken Bowl</text>
-<text x="576" y="1047" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Grilled chicken, rice, and house teriyaki glaze.</text>
-<path d="M576 1071 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1075" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Ginger Scallop Bowl</text>
-<text x="576" y="1098" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Seared scallops, ginger rice, and crisp greens.</text><rect x="552" y="1160" width="486" height="288" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M572 1220 H1018" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="584" cy="1193" r="14" fill="#0d5c4b"/>
-<text x="584" y="1199" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
-<text x="610" y="1202" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Sides</text>
-<text x="576" y="1228" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Seafood Fried Rice</text>
-<text x="576" y="1251" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-fried rice with seafood, egg, and scallion.</text>
-<path d="M576 1275 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1279" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Moonlight Fried Rice</text>
-<text x="576" y="1302" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Jasmine rice, egg, scallion, and crisp garlic.</text>
-<path d="M576 1326 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1330" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Charred Seasonal Greens</text>
-<text x="576" y="1353" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Market greens with garlic and sesame.</text>
-<path d="M576 1377 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1381" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Steamed Bao Buns</text>
-<text x="576" y="1404" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft buns with a choice of savory filling.</text><rect x="552" y="1466" width="486" height="288" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
-<path d="M572 1526 H1018" stroke="#d7bd79" stroke-width="2"/>
-<circle cx="584" cy="1499" r="14" fill="#0d5c4b"/>
-<text x="584" y="1505" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">D</text>
-<text x="610" y="1508" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Drinks &amp; Tea</text>
-<text x="576" y="1534" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Chrysanthemum Tea</text>
-<text x="576" y="1557" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Fragrant, lightly sweet floral tea.</text>
-<path d="M576 1581 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1585" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Jade Matcha Latte</text>
-<text x="576" y="1608" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Matcha whisked with milk or oat milk.</text>
-<path d="M576 1632 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1636" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Lychee Sparkler</text>
-<text x="576" y="1659" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Lychee, citrus, and sparkling water.</text>
-<path d="M576 1683 H1014" stroke="#eee6d8" stroke-width="1"/>
-<text x="576" y="1687" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mandarin Blossom Cold Brew</text>
-<text x="576" y="1710" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Cold brew tea with a bright mandarin finish.</text>
-<text x="540" y="2038" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="1.3" fill="#625d52">A FICTIONAL FOOD &amp; DESIGN CONCEPT · MENU ITEMS ARE ILLUSTRATIVE</text>
+<defs><clipPath id="food-art-clip"><rect x="42" y="216" width="996" height="664" rx="20"/></clipPath></defs>
+<image href="menu-food-art.png" x="42" y="216" width="996" height="664" preserveAspectRatio="xMidYMid slice" clip-path="url(#food-art-clip)"/>
+<rect x="42" y="216" width="996" height="664" rx="20" fill="none" stroke="#b8923c" stroke-width="3"/>
+<rect x="42" y="900" width="486" height="357" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M62 960 H508" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="74" cy="933" r="14" fill="#0d5c4b"/>
+<text x="74" y="939" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
+<text x="100" y="942" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Small Plates</text>
+<text x="66" y="968" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Forbidden Popcorn Chicken</text>
+<text x="66" y="991" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crispy five-spice chicken with scallion and</text>
+<text x="66" y="1009" font-family="Arial,sans-serif" font-size="15" fill="#625d52">chili salt.</text>
+<path d="M66 1033 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1037" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Pork &amp; Chive Dumplings</text>
+<text x="66" y="1060" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Pan-seared dumplings with ginger soy dip.</text>
+<path d="M66 1084 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1088" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Crispy Spring Rolls</text>
+<text x="66" y="1111" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Vegetable rolls with a sweet chili dip.</text>
+<path d="M66 1135 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1139" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Scallion Pancake</text>
+<text x="66" y="1162" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Flaky layers served with sesame soy sauce.</text>
+<path d="M66 1186 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1190" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Shrimp Toast</text>
+<text x="66" y="1213" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Golden toast topped with sesame shrimp.</text><rect x="42" y="1275" width="486" height="306" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M62 1335 H508" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="74" cy="1308" r="14" fill="#0d5c4b"/>
+<text x="74" y="1314" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
+<text x="100" y="1317" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Soups</text>
+<text x="66" y="1343" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Spicy Wonton Soup</text>
+<text x="66" y="1366" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Pork wontons, greens, and warming chili broth.</text>
+<path d="M66 1390 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1394" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Imperial Hot &amp; Sour</text>
+<text x="66" y="1417" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A bright, savory soup with tofu and bamboo</text>
+<text x="66" y="1435" font-family="Arial,sans-serif" font-size="15" fill="#625d52">shoots.</text>
+<path d="M66 1459 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1463" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Lotus Root &amp; Pork Soup</text>
+<text x="66" y="1486" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Slow-simmered pork, lotus root, and ginger.</text>
+<path d="M66 1510 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1514" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Tofu Seaweed Soup</text>
+<text x="66" y="1537" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Silken tofu, seaweed, and light ginger broth.</text><rect x="42" y="1599" width="486" height="408" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M62 1659 H508" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="74" cy="1632" r="14" fill="#0d5c4b"/>
+<text x="74" y="1638" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
+<text x="100" y="1641" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Seafood &amp; Wok Favorites</text>
+<text x="66" y="1667" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Imperial Garlic Prawns</text>
+<text x="66" y="1690" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Garlic prawns with scallions and steamed rice.</text>
+<path d="M66 1714 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1718" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Chili Crab Claws</text>
+<text x="66" y="1741" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crab claws in a sweet, savory chili sauce.</text>
+<path d="M66 1765 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1769" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sweet &amp; Sour Fish</text>
+<text x="66" y="1792" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Crisp fish with pineapple, peppers, and tangy</text>
+<text x="66" y="1810" font-family="Arial,sans-serif" font-size="15" fill="#625d52">sauce.</text>
+<path d="M66 1834 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1838" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Crispy Orange Beef</text>
+<text x="66" y="1861" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-tossed beef with a bright orange glaze.</text>
+<path d="M66 1885 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1889" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Garlic Butter Shrimp</text>
+<text x="66" y="1912" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Tender shrimp with garlic, butter, and herbs.</text>
+<path d="M66 1936 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="1940" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sichuan Eggplant</text>
+<text x="66" y="1963" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft eggplant in a fragrant garlic chili sauce.</text><rect x="42" y="2025" width="486" height="288" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M62 2085 H508" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="74" cy="2058" r="14" fill="#0d5c4b"/>
+<text x="74" y="2064" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">D</text>
+<text x="100" y="2067" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Desserts</text>
+<text x="66" y="2093" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Sweet Sin</text>
+<text x="66" y="2116" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Black sesame panna cotta with toasted sesame.</text>
+<path d="M66 2140 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2144" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Jade Pillows</text>
+<text x="66" y="2167" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft matcha mochi with a sweet red bean center.</text>
+<path d="M66 2191 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2195" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Red Moon Ice Cream</text>
+<text x="66" y="2218" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A rotating scoop of creamy seasonal ice cream.</text>
+<path d="M66 2242 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2246" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mango Pudding</text>
+<text x="66" y="2269" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Chilled mango pudding with fresh fruit.</text><rect x="42" y="2331" width="486" height="306" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M62 2391 H508" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="74" cy="2364" r="14" fill="#0d5c4b"/>
+<text x="74" y="2370" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">K</text>
+<text x="100" y="2373" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Kids &amp; Combos</text>
+<text x="66" y="2399" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mini Noodle Bowl</text>
+<text x="66" y="2422" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A small noodle bowl with a mild broth.</text>
+<path d="M66 2446 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2450" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Popcorn Chicken Bites</text>
+<text x="66" y="2473" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A kid-sized serving with a gentle seasoning.</text>
+<path d="M66 2497 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2501" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Panda Dessert</text>
+<text x="66" y="2524" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A playful panda-shaped ice cream treat.</text>
+<path d="M66 2548 H504" stroke="#eee6d8" stroke-width="1"/>
+<text x="66" y="2552" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Family Feast</text>
+<text x="66" y="2575" font-family="Arial,sans-serif" font-size="15" fill="#625d52">A shareable mix of noodles, rice, and small</text>
+<text x="66" y="2593" font-family="Arial,sans-serif" font-size="15" fill="#625d52">plates.</text><rect x="552" y="900" width="486" height="480" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M572 960 H1018" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="584" cy="933" r="14" fill="#0d5c4b"/>
+<text x="584" y="939" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">N</text>
+<text x="610" y="942" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Noodles</text>
+<text x="576" y="968" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dragon Fire Noodles</text>
+<text x="576" y="991" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Spicy broth, braised beef, bok choy, and chili</text>
+<text x="576" y="1009" font-family="Arial,sans-serif" font-size="15" fill="#625d52">crisp.</text>
+<path d="M576 1033 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1037" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Empress’ Comfort</text>
+<text x="576" y="1060" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soy broth, roast pork, bamboo shoots, and tea</text>
+<text x="576" y="1078" font-family="Arial,sans-serif" font-size="15" fill="#625d52">egg.</text>
+<path d="M576 1102 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1106" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Silken Path (Vegan)</text>
+<text x="576" y="1129" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Sesame broth, tofu, mushrooms, and scallions.</text>
+<path d="M576 1153 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1157" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Chill Udon</text>
+<text x="576" y="1180" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Chilled udon, sesame sauce, cucumber, nori, and</text>
+<text x="576" y="1198" font-family="Arial,sans-serif" font-size="15" fill="#625d52">citrus.</text>
+<path d="M576 1222 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1226" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dan Dan Noodles</text>
+<text x="576" y="1249" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Savory sesame chili sauce, greens, and crushed</text>
+<text x="576" y="1267" font-family="Arial,sans-serif" font-size="15" fill="#625d52">peanuts.</text>
+<path d="M576 1291 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1295" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Beef Lo Mein</text>
+<text x="576" y="1318" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-tossed noodles, tender beef, and crisp</text>
+<text x="576" y="1336" font-family="Arial,sans-serif" font-size="15" fill="#625d52">vegetables.</text><rect x="552" y="1398" width="486" height="408" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M572 1458 H1018" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="584" cy="1431" r="14" fill="#0d5c4b"/>
+<text x="584" y="1437" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">R</text>
+<text x="610" y="1440" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Rice Bowls</text>
+<text x="576" y="1466" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Char Siu Pork Bowl</text>
+<text x="576" y="1489" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Roast pork, jasmine rice, greens, and sesame.</text>
+<path d="M576 1513 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1517" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mapo Tofu Bowl</text>
+<text x="576" y="1540" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Silky tofu in a savory, gently spicy sauce.</text>
+<path d="M576 1564 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1568" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Dragon Beef Bowl</text>
+<text x="576" y="1591" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Braised beef, jasmine rice, and chili scallion</text>
+<text x="576" y="1609" font-family="Arial,sans-serif" font-size="15" fill="#625d52">sauce.</text>
+<path d="M576 1633 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1637" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Veggie Bowl</text>
+<text x="576" y="1660" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Seasonal vegetables, tofu, and sesame dressing.</text>
+<path d="M576 1684 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1688" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Teriyaki Chicken Bowl</text>
+<text x="576" y="1711" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Grilled chicken, rice, and house teriyaki glaze.</text>
+<path d="M576 1735 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1739" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Ginger Scallop Bowl</text>
+<text x="576" y="1762" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Seared scallops, ginger rice, and crisp greens.</text><rect x="552" y="1824" width="486" height="357" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M572 1884 H1018" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="584" cy="1857" r="14" fill="#0d5c4b"/>
+<text x="584" y="1863" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">S</text>
+<text x="610" y="1866" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Sides</text>
+<text x="576" y="1892" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Golden Seafood Fried Rice</text>
+<text x="576" y="1915" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Wok-fried rice with seafood, egg, and scallion.</text>
+<path d="M576 1939 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1943" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Moonlight Fried Rice</text>
+<text x="576" y="1966" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Jasmine rice, egg, scallion, and crisp garlic.</text>
+<path d="M576 1990 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="1994" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Charred Seasonal Greens</text>
+<text x="576" y="2017" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Market greens with garlic and sesame.</text>
+<path d="M576 2041 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="2045" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Smashed Cucumbers</text>
+<text x="576" y="2068" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Cool cucumber with garlic, black vinegar,</text>
+<text x="576" y="2086" font-family="Arial,sans-serif" font-size="15" fill="#625d52">sesame, and chili oil.</text>
+<path d="M576 2110 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="2114" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Steamed Bao Buns</text>
+<text x="576" y="2137" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Soft buns with a choice of savory filling.</text><rect x="552" y="2199" width="486" height="288" rx="20" fill="#fffdf8" stroke="#dfd2b7" stroke-width="2"/>
+<path d="M572 2259 H1018" stroke="#d7bd79" stroke-width="2"/>
+<circle cx="584" cy="2232" r="14" fill="#0d5c4b"/>
+<text x="584" y="2238" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">D</text>
+<text x="610" y="2241" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#741e25">Drinks &amp; Tea</text>
+<text x="576" y="2267" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Chrysanthemum Tea</text>
+<text x="576" y="2290" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Fragrant, lightly sweet floral tea.</text>
+<path d="M576 2314 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="2318" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Jade Matcha Latte</text>
+<text x="576" y="2341" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Matcha whisked with milk or oat milk.</text>
+<path d="M576 2365 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="2369" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Lychee Sparkler</text>
+<text x="576" y="2392" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Lychee, citrus, and sparkling water.</text>
+<path d="M576 2416 H1014" stroke="#eee6d8" stroke-width="1"/>
+<text x="576" y="2420" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#173e35">Mandarin Blossom Cold Brew</text>
+<text x="576" y="2443" font-family="Arial,sans-serif" font-size="15" fill="#625d52">Cold brew tea with a bright mandarin finish.</text>
+<text x="540" y="2702" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="1.3" fill="#625d52">A FICTIONAL FOOD &amp; DESIGN CONCEPT · MENU ITEMS ARE ILLUSTRATIVE</text>
 </svg>
