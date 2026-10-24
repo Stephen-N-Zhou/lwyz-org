@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets" / "forbidden_bite"
 DATA = ASSETS / "menu.json"
 ART = ASSETS / "menu-food-art.png"
-PICTURE_ART = ASSETS / "menu-picture-gallery.png"
+PICTURE_ART = ASSETS / "menu-picture-gallery-long.png"
 SPLIT = 4
 
 
