@@ -26,4 +26,43 @@
 .cart-demo-note{margin:.8rem 0 0;color:#71654c;font-size:.8rem;line-height:1.5}
 .cart-dialog .dialog-add{margin-top:.6rem}
 .dialog-price{margin:.7rem 0 0;color:#093d33;font-weight:700;font-size:1.05rem}
+.checkout-start,.checkout-submit,.success-done{width:100%;min-height:48px;margin-top:1rem;padding:.7rem 1rem;border:0;border-radius:8px;background:#0d5c4b;color:#fff;font:700 .95rem Inter,system-ui,sans-serif;cursor:pointer}
+.checkout-start:hover,.checkout-submit:hover,.success-done:hover{background:#093d33}
+.checkout-start:disabled{opacity:.5;cursor:not-allowed}
+.checkout-view[hidden],.cart-view[hidden],.checkout-success[hidden],.delivery-address[hidden],.pickup-time-label[hidden],.delivery-fee-row[hidden],.discount-row[hidden]{display:none!important}
+.checkout-back{margin:.8rem 0 0;padding:0;border:0;background:transparent;color:#0d5c4b;font:700 .85rem Inter,system-ui,sans-serif;cursor:pointer}
+.checkout-kicker{margin:.85rem 0 .3rem;color:#741e25;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;font-weight:700}
+.checkout-form{display:grid;gap:.85rem;margin-top:.7rem}
+.checkout-group{display:grid;gap:.65rem;margin:0;padding:.85rem;border:1px solid #e8e0d3;border-radius:10px;background:#fff}
+.checkout-group legend{padding:0 .3rem;color:#093d33;font-weight:700;font-size:.9rem}
+.checkout-group>label,.delivery-address label{display:grid;gap:.28rem;color:#49463f;font-size:.8rem;font-weight:700}
+.checkout-form input:not([type=radio]),.checkout-form select{width:100%;min-height:42px;padding:.55rem .65rem;border:1px solid #d9d2c6;border-radius:7px;background:#fbfaf7;color:#333;font:400 .9rem Inter,system-ui,sans-serif}
+.checkout-form input:focus-visible,.checkout-form select:focus-visible{outline:3px solid #c5a146;outline-offset:2px}
+.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+.choice-card{display:flex;align-items:center;gap:.45rem;min-height:48px;padding:.6rem;border:1px solid #ded6c7;border-radius:8px;background:#faf7f2;color:#093d33;font-weight:700;font-size:.83rem;cursor:pointer}
+.choice-card:has(input:checked){border-color:#0d5c4b;background:#eef5f0;box-shadow:inset 0 0 0 1px #0d5c4b}
+.choice-card input{accent-color:#0d5c4b}
+.choice-card small{padding:.1rem .3rem;border-radius:4px;background:#f3ecdc;color:#795c28;font-size:.64rem;text-transform:uppercase;letter-spacing:.04em}
+.payment-choices{grid-template-columns:1fr}
+.delivery-address{display:grid;gap:.6rem}
+.address-row{display:grid;grid-template-columns:1.4fr .8fr;gap:.6rem}
+.payment-note,.promo-status{margin:0;color:#71654c;font-size:.76rem;line-height:1.45}
+.promo-row{display:grid;grid-template-columns:1fr auto;gap:.5rem}
+.promo-apply{min-width:76px;padding:.45rem .7rem;border:1px solid #c5a146;border-radius:7px;background:#f3ecdc;color:#093d33;font:700 .8rem Inter,system-ui,sans-serif;cursor:pointer}
+.promo-status.is-error{color:#741e25}
+.review-box{padding:.85rem;border:1px solid #d8c58f;border-radius:10px;background:#f8f4e9}
+.review-box h3{margin:0 0 .55rem;color:#093d33;font:400 1.15rem Marcellus,Georgia,serif}
+.review-items{display:grid;gap:.35rem}
+.review-items p,.review-totals p{display:flex;justify-content:space-between;gap:.75rem;margin:.25rem 0;color:#55524b;font-size:.82rem}
+.review-items strong,.review-totals strong{white-space:nowrap;color:#093d33}
+.review-totals{padding-top:.45rem;border-top:1px solid #ded4bd}
+.review-totals .review-grand-total{padding-top:.5rem;border-top:1px solid #ded4bd;color:#093d33;font-size:.95rem;font-weight:700}
+.checkout-demo-note{margin:0;color:#71654c;font-size:.76rem;line-height:1.5}
+.checkout-submit{margin-top:.1rem;background:#c5a146;color:#171710}
+.checkout-submit:hover{background:#d8b65d}
+.checkout-success{text-align:center;padding:1.2rem .25rem .2rem}
+.success-mark{display:grid;place-items:center;width:54px;height:54px;margin:0 auto .5rem;border-radius:50%;background:#e8f2e9;color:#0d5c4b;font-size:1.7rem;font-weight:700}
+.checkout-success h3{margin:.2rem 0 .5rem;color:#093d33;font:400 1.55rem/1.2 Marcellus,Georgia,serif}
+.success-message{color:#55524b;font-size:.9rem;line-height:1.5}
+.checkout-success .checkout-demo-note{margin-top:.9rem;padding:.7rem;border-radius:8px;background:#f3ecdc}
 @media(max-width:520px){.cart-open{min-height:38px;padding:.35rem .55rem;font-size:.75rem}.cart-dialog{padding:.9rem}.cart-line{padding:.65rem}.card li{grid-template-columns:minmax(0,1fr) auto}.card .add-to-cart{grid-column:1/-1;justify-self:start}}
