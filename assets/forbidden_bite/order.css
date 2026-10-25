@@ -1,0 +1,29 @@
+.nav{gap:.6rem!important}
+.nav>a:not(.brand){color:#f0d88f;text-decoration:none;font-size:.88rem}
+.cart-open,.add-to-cart,.cart-qty button,.cart-remove{font:700 .82rem Inter,system-ui,sans-serif;cursor:pointer}
+.cart-open{flex:none;min-height:40px;padding:.45rem .8rem;border:1px solid #d8c58f;border-radius:8px;background:#f3ecdc;color:#173d33;white-space:nowrap}
+.card li{grid-template-columns:minmax(0,1fr) auto auto;align-items:center}
+.cart-count{display:inline-grid;place-items:center;min-width:1.35rem;height:1.35rem;margin-left:.25rem;padding:0 .25rem;border-radius:99px;background:#0d5c4b;color:white;font-size:.72rem}
+.add-to-cart{min-height:36px;padding:.4rem .7rem;border:1px solid #c5a146;border-radius:7px;background:#f3ecdc;color:#093d33;white-space:nowrap}
+.add-to-cart:hover,.cart-open:hover{background:#e8d49b}
+.cart-toast{position:fixed;z-index:20;right:1rem;bottom:1rem;max-width:min(24rem,calc(100vw - 2rem));padding:.8rem 1rem;border-radius:9px;background:#093d33;color:#fff;box-shadow:0 10px 30px #0003;font-weight:600}
+.cart-dialog{width:min(92vw,520px);max-width:none;max-height:85vh;overflow:auto;padding:1.2rem;border:1px solid #d8c58f;border-radius:16px;background:#fffdf8;color:#24231f;box-shadow:0 24px 80px #0005}
+.cart-dialog::backdrop{background:#09251fc9;backdrop-filter:blur(3px)}
+.cart-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.8rem;border-bottom:1px solid #e8e0d3}
+.cart-head h2{margin:0;color:#093d33;font:400 1.65rem/1.2 Marcellus,Georgia,serif}
+.cart-close{min-height:40px;padding:.4rem .7rem;border:1px solid #e8e0d3;border-radius:7px;background:#f8f5ee;color:#24231f;font:600 .85rem Inter,system-ui,sans-serif;cursor:pointer}
+.cart-items{display:grid;gap:.7rem;margin:1rem 0}
+.cart-empty{padding:1rem;text-align:center;color:#66645e}
+.cart-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.25rem .75rem;padding:.75rem;border:1px solid #eee8dd;border-radius:9px;background:#fff}
+.cart-line-name{font-weight:700;color:#093d33}
+.cart-line-price{white-space:nowrap;font-weight:700;color:#093d33}
+.cart-line-description{grid-column:1/-1;color:#66645e;font-size:.82rem}
+.cart-line-actions{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.cart-qty{display:flex;align-items:center;gap:.55rem}
+.cart-qty button,.cart-remove{min-width:34px;min-height:34px;border:1px solid #dcd3c3;border-radius:6px;background:#faf7f2;color:#093d33}
+.cart-remove{padding:.35rem .55rem;color:#741e25}
+.cart-summary{display:flex;justify-content:space-between;padding-top:.8rem;border-top:1px solid #e8e0d3;font-size:1.05rem;font-weight:700;color:#093d33}
+.cart-demo-note{margin:.8rem 0 0;color:#71654c;font-size:.8rem;line-height:1.5}
+.cart-dialog .dialog-add{margin-top:.6rem}
+.dialog-price{margin:.7rem 0 0;color:#093d33;font-weight:700;font-size:1.05rem}
+@media(max-width:520px){.cart-open{min-height:38px;padding:.35rem .55rem;font-size:.75rem}.cart-dialog{padding:.9rem}.cart-line{padding:.65rem}.card li{grid-template-columns:minmax(0,1fr) auto}.card .add-to-cart{grid-column:1/-1;justify-self:start}}

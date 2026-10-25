@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/forbidden_bite/order.css">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}
@@ -94,13 +95,13 @@
     <section class="experience" aria-labelledby="experience-title"><div><p class="section-label">The experience</p><h2 id="experience-title">Comfort, with a golden touch</h2><p>Jade and gold accents, welcoming tables, and a curated tea list shape the atmosphere. The goal is simple: memorable food, a relaxed welcome, and something for everyone to enjoy.</p></div><ul><li>Comforting classics and playful specials</li><li>Mini portions and family-friendly choices</li><li>Fresh, vivid flavors from first sip to sweet finish</li></ul></section>
     <section class="menu-preview" aria-labelledby="preview-title">
       <figure class="preview-card"><a href="/projects/restaurant-gallery.html" aria-label="Open the Forbidden Bite food picture gallery"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="A long 48-tile picture-only collage of Forbidden Bite dishes, snacks, drinks, and desserts" loading="lazy"></a></figure>
-      <div class="preview-copy"><p class="section-label">Food pictures &amp; complete menu</p><h2 id="preview-title">Browse Forbidden Bite</h2><p>Explore a 48-photo gallery, then open the full menu for dish names, descriptions, prices, and available choices.</p><div class="actions"><a class="button" href="/projects/restaurant-gallery.html">Open picture gallery</a><a class="button" href="/assets/forbidden_bite/menu2.png?v=picture-gallery-2" target="_blank" rel="noopener">Open full menu</a></div></div>
+      <div class="preview-copy"><p class="section-label">Food pictures &amp; complete menu</p><h2 id="preview-title">Browse Forbidden Bite</h2><p>Explore a 48-photo gallery, then open the full menu for dish names, descriptions, prices, and available choices.</p><div class="actions"><a class="button" href="/projects/restaurant-gallery.html">Open picture gallery</a><a class="button" href="#menu-title">Open full menu</a></div></div>
     </section>
     <section class="faq" aria-labelledby="faq-title">
       <p class="section-label">Questions &amp; answers</p><h2 id="faq-title" class="section-heading">Curious about Forbidden Bite?</h2>
       <div class="faq-grid">
         <details><summary>Is Forbidden Bite open?</summary><p>No. Forbidden Bite is a fictional restaurant concept created for food and design exploration.</p></details>
-        <details><summary>Can I place an order or make a reservation?</summary><p>This page does not take orders or reservations. The menu is illustrative and there is no operating location.</p></details>
+        <details><summary>Can I place an order or make a reservation?</summary><p>You can try the demo cart and reservation preview, but neither sends a real order or booking. The menu is illustrative and there is no operating location.</p></details>
         <details><summary>What does the picture menu show?</summary><p>The picture menu is an illustration gallery with no text. The full menu lists dish names, descriptions, prices, and customization choices.</p></details>
         <details><summary>Can I ask a question about the concept?</summary><p>Yes. Open a public question on GitHub. You can add a reply to the same conversation when you have an answer.</p><a class="button" href="https://github.com/Stephen-N-Zhou/lwyz-org/issues/new?title=Forbidden%20Bite%20question&amp;body=My%20question%20about%20Forbidden%20Bite%3A%0A%0A">Ask a question on GitHub</a><p class="small">GitHub sign-in is required. Questions and replies are public.</p></details>
       </div>
@@ -129,7 +130,8 @@
             const priceGroup=document.createElement('span');priceGroup.className='price-group';
             if(item.compare_at){const compareAt=document.createElement('del');compareAt.className='compare-at';compareAt.textContent='$'+item.compare_at;priceGroup.append(compareAt);}
             priceGroup.append(price);
-            row.append(name,priceGroup,detail);
+            const addButton=document.createElement('button');addButton.type='button';addButton.className='add-to-cart';addButton.textContent='Add to cart';addButton.dataset.orderItem=JSON.stringify({name:item.name,price:item.price});
+            row.append(name,priceGroup,addButton,detail);
             if(item.tags?.length){const tags=document.createElement('span');tags.className='meta';tags.textContent=item.tags.join(' · ');row.append(tags);}
             if(item.options?.length){const options=document.createElement('span');options.className='options';options.textContent='Options: '+item.options.join(' / ');row.append(options);}
             list.append(row);
@@ -154,5 +156,6 @@
       status.hidden=false;
     });
   </script>
+  <script src="/assets/forbidden_bite/order.js" defer></script>
 </body>
 </html>

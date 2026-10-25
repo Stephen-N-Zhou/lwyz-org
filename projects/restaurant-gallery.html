@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/forbidden_bite/order.css">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.7 Inter,system-ui,sans-serif}a{color:var(--jade-dark)}a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
@@ -27,12 +28,14 @@
     <p class="eyebrow">Forbidden Bite · Picture Gallery</p>
     <div class="title-row"><h1>A visual tour of the menu</h1><span class="count">48 food photos</span></div>
     <p class="description">The 48-tile gallery takes you from crisp small plates and steaming noodle bowls through hearty rice dishes and seafood feasts, then finishes with desserts and tea. Each photograph highlights the colors, textures, and serving style that give the Forbidden Bite concept its warm jade-and-gold mood. The long, phone-friendly layout makes it easy to scroll through the collection, while the artwork itself stays free of names, prices, and labels. For ingredients, dish names, prices, and customization options, open the full menu.</p>
-    <p class="hint">Tap any picture to enlarge it and read the dish description.</p>
+    <p class="hint">Tap a picture to enlarge it, read the description, and add that dish to your demo cart.</p>
     <div class="gallery" id="dish-gallery" aria-label="Tap a food picture to enlarge it"><p>Loading dish pictures…</p></div>
     <dialog class="dish-dialog" id="dish-dialog" aria-labelledby="dish-dialog-title" aria-describedby="dish-dialog-description">
       <div class="dialog-head"><h2 id="dish-dialog-title"></h2><button class="dialog-close" id="dialog-close" type="button">Close</button></div>
       <canvas class="dialog-photo" id="dialog-photo" width="720" height="720" role="img" aria-label="Selected dish photo"></canvas>
       <p class="dialog-description" id="dish-dialog-description"></p>
+      <p class="dialog-price" id="dish-dialog-price"></p>
+      <button class="add-to-cart dialog-add" id="dish-add-to-cart" type="button">Add to cart</button>
     </dialog>
     <div class="actions"><a class="button" href="/assets/forbidden_bite/menu2.png?v=picture-gallery-2" target="_blank" rel="noopener">Open the full menu</a><a class="button secondary" href="/projects/restaurant.html">Back to Forbidden Bite</a></div>
   </main>
@@ -72,6 +75,8 @@
     }
     const dialogTitle=document.getElementById('dish-dialog-title');
     const dialogDescription=document.getElementById('dish-dialog-description');
+    const dialogPrice=document.getElementById('dish-dialog-price');
+    const dialogAdd=document.getElementById('dish-add-to-cart');
     document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());
     gallery.addEventListener('click',event=>{
       const tile=event.target.closest('.dish-tile');
@@ -79,6 +84,8 @@
       const item=JSON.parse(tile.dataset.item);
       dialogTitle.textContent=item.name;
       dialogDescription.textContent=item.description;
+      dialogPrice.textContent=`$${item.price}`;
+      dialogAdd.dataset.orderItem=JSON.stringify({name:item.name,price:item.price});
       const index=Number(tile.dataset.index);
       drawDishCrop(dialogPhoto,index%4,Math.floor(index/4));
       dialogPhoto.setAttribute('aria-label',item.name);
@@ -90,15 +97,17 @@
         if(!response.ok)throw new Error('Menu details unavailable');
         const menu=await response.json();
         await galleryImage.decode();
-        const dishes=new Map(menu.sections.flatMap(section=>section.items).map(item=>[item.name,item]));
+        const allDishes=menu.sections.flatMap(section=>section.items);
+        const aliases={'Mini Noodles':'Mini Noodle Bowl'};
+        const dishes=new Map(allDishes.map(item=>[item.name,item]));
         gallery.replaceChildren();
         galleryOrder.forEach((name,index)=>{
-          const item=dishes.get(name)||{name,description:'A featured dish from the Forbidden Bite picture gallery.'};
+          const item=dishes.get(name)||dishes.get(aliases[name])||{name,description:'A featured dish from the Forbidden Bite picture gallery.',price:0};
           const tile=document.createElement('button');
           tile.type='button';tile.className='dish-tile';
           const col=index%4,row=Math.floor(index/4);
           tile.setAttribute('aria-label',`Enlarge ${item.name}`);
-          tile.dataset.item=JSON.stringify({name:item.name,description:item.description});tile.dataset.index=String(index);
+          tile.dataset.item=JSON.stringify({name:item.name,description:item.description,price:item.price});tile.dataset.index=String(index);
           const photo=document.createElement('canvas');photo.width=360;photo.height=360;photo.setAttribute('aria-hidden','true');
           drawDishCrop(photo,col,row);tile.append(photo);
           gallery.append(tile);
@@ -106,5 +115,6 @@
       }catch(error){gallery.innerHTML='<p>The picture gallery could not be loaded. Please return to the full menu.</p>';}
     })();
   </script>
+  <script src="/assets/forbidden_bite/order.js" defer></script>
 </body>
 </html>
