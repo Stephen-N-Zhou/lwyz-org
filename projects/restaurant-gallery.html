@@ -14,8 +14,10 @@
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.7 Inter,system-ui,sans-serif}a{color:var(--jade-dark)}a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
     .topbar{background:var(--jade-dark);color:#fff}.nav,.wrap{width:min(900px,calc(100% - 2rem));margin-inline:auto}.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em}.brand span{color:var(--gold)}.nav a:last-child{color:#f0d88f;text-decoration:none;font-size:.9rem}
-    main{padding:clamp(1.5rem,4vw,3rem) 0 4rem}.eyebrow{margin:0 0 .4rem;color:var(--wine);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:700}.title-row{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:.8rem}h1{font:400 clamp(2rem,5vw,3rem)/1.15 Marcellus,Georgia,serif;color:var(--jade-dark);margin:0}.count{flex:none;padding:.35rem .7rem;border:1px solid #d8c58f;border-radius:99px;background:#f3ecdc;color:#6a5521;font-size:.75rem;font-weight:700}.description{margin:0 0 1.5rem;color:#55524b;font-size:1rem;line-height:1.8}.gallery{margin:0;padding:.65rem;background:var(--white);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.gallery img{display:block;width:100%;height:auto;border-radius:7px}.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--gold);border-radius:8px;background:var(--gold);color:#171710;text-decoration:none;font-size:.9rem;font-weight:700}.button.secondary{background:transparent;color:var(--jade-dark)}
-    @media(max-width:520px){.nav,.wrap{width:calc(100% - 1.25rem)}.title-row{align-items:flex-start;flex-direction:column;gap:.6rem}.description{font-size:.95rem}}
+    main{padding:clamp(1.5rem,4vw,3rem) 0 4rem}.eyebrow{margin:0 0 .4rem;color:var(--wine);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:700}.title-row{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:.8rem}h1{font:400 clamp(2rem,5vw,3rem)/1.15 Marcellus,Georgia,serif;color:var(--jade-dark);margin:0}.count{flex:none;padding:.35rem .7rem;border:1px solid #d8c58f;border-radius:99px;background:#f3ecdc;color:#6a5521;font-size:.75rem;font-weight:700}.description{margin:0 0 .6rem;color:#55524b;font-size:1rem;line-height:1.8}.hint{margin:0 0 1.2rem;color:var(--jade);font-size:.88rem;font-weight:700}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem;margin:0;padding:.65rem;background:var(--white);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.dish-tile{display:block;width:100%;aspect-ratio:1;border:1px solid #c9b77e;border-radius:8px;background-color:#f1eadb;background-image:url('/assets/forbidden_bite/menu.png?v=picture-gallery-5');background-repeat:no-repeat;background-size:400% 1200%;background-position:var(--x) var(--y);cursor:zoom-in;transition:transform .15s,box-shadow .15s}.dish-tile:hover{transform:translateY(-2px);box-shadow:0 6px 14px #17251b2b}.dish-tile:focus-visible{outline:3px solid var(--gold);outline-offset:2px}.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--gold);border-radius:8px;background:var(--gold);color:#171710;text-decoration:none;font-size:.9rem;font-weight:700}.button.secondary{background:transparent;color:var(--jade-dark)}
+    .dish-dialog{width:min(92vw,560px);max-width:none;padding:1.2rem;border:1px solid #d8c58f;border-radius:16px;background:#fffdf8;color:var(--ink);box-shadow:0 24px 80px #0005}.dish-dialog::backdrop{background:#09251fc9;backdrop-filter:blur(3px)}.dialog-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}.dialog-head h2{font:400 clamp(1.35rem,4vw,1.8rem)/1.2 Marcellus,Georgia,serif;color:var(--jade-dark);margin:0}.dialog-close{flex:none;min-height:40px;padding:.45rem .75rem;border:1px solid var(--line);border-radius:7px;background:#f8f5ee;color:var(--ink);font:600 .85rem Inter,system-ui,sans-serif;cursor:pointer}.dialog-photo{width:min(100%,500px);aspect-ratio:1;margin:1rem auto .75rem;border:1px solid var(--line);border-radius:10px;background-color:#f1eadb;background-image:url('/assets/forbidden_bite/menu.png?v=picture-gallery-5');background-repeat:no-repeat;background-size:400% 1200%;background-position:var(--x) var(--y)}.dialog-description{margin:.25rem 0 0;color:var(--muted);line-height:1.65}.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--gold);border-radius:8px;background:var(--gold);color:#171710;text-decoration:none;font-size:.9rem;font-weight:700}.button.secondary{background:transparent;color:var(--jade-dark)}
+    @media(max-width:700px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:520px){.nav,.wrap{width:calc(100% - 1.25rem)}.title-row{align-items:flex-start;flex-direction:column;gap:.6rem}.description{font-size:.95rem}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}.dish-dialog{padding:.9rem}}
   </style>
 </head>
 <body>
@@ -24,8 +26,67 @@
     <p class="eyebrow">Forbidden Bite · Picture Gallery</p>
     <div class="title-row"><h1>A visual tour of the menu</h1><span class="count">48 food photos</span></div>
     <p class="description">The 48-tile gallery takes you from crisp small plates and steaming noodle bowls through hearty rice dishes and seafood feasts, then finishes with desserts and tea. Each photograph highlights the colors, textures, and serving style that give the Forbidden Bite concept its warm jade-and-gold mood. The long, phone-friendly layout makes it easy to scroll through the collection, while the artwork itself stays free of names, prices, and labels. For ingredients, dish names, prices, and customization options, open the full menu.</p>
-    <figure class="gallery"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="Forty-eight food and drink photographs arranged in a long four-column gallery" width="726" height="2167"></figure>
+    <p class="hint">Tap any picture to enlarge it and read the dish description.</p>
+    <div class="gallery" id="dish-gallery" aria-label="Tap a food picture to enlarge it"><p>Loading dish pictures…</p></div>
+    <dialog class="dish-dialog" id="dish-dialog" aria-labelledby="dish-dialog-title" aria-describedby="dish-dialog-description">
+      <div class="dialog-head"><h2 id="dish-dialog-title"></h2><button class="dialog-close" id="dialog-close" type="button">Close</button></div>
+      <div class="dialog-photo" id="dialog-photo" role="img"></div>
+      <p class="dialog-description" id="dish-dialog-description"></p>
+    </dialog>
     <div class="actions"><a class="button" href="/assets/forbidden_bite/menu2.png?v=picture-gallery-2" target="_blank" rel="noopener">Open the full menu</a><a class="button secondary" href="/projects/restaurant.html">Back to Forbidden Bite</a></div>
   </main>
+  <script>
+    const galleryOrder=[
+      'Smashed Cucumbers','Forbidden Popcorn Chicken','Pork & Chive Dumplings','Crispy Spring Rolls',
+      'Scallion Pancake','Five-Spice Wings','Shrimp Toast','Seasonal Bao Buns (2)',
+      'Dragon Fire Noodles','Empress’ Comfort','Silken Path (Vegan)','Golden Chill Udon',
+      'Imperial Hot & Sour','Lotus Root & Pork','Spicy Wonton Soup','Tofu Seaweed Soup',
+      'Char Siu Bowl','Mapo Tofu Bowl','Dragon Beef Bowl','Golden Veggie Bowl',
+      'Imperial Garlic Prawns','Chili Crab Claws','Ginger-Scallion Steamed Fish','Golden Seafood Fried Rice',
+      'Moonlight Fried Rice','Charred Seasonal Greens','Silken Path (Vegan)','Forbidden Popcorn Chicken',
+      'Kids’ Fried Rice Cup','Panda Dessert','Family Feast','Sweet Sin',
+      'Jade Pillows','Red Moon Ice Cream','Wolfberry Chrysanthemum Tea','Jade Matcha Latte',
+      'Lychee Sparkler','Mandarin Blossom Cold Brew','Seafood Boil for Two','Peking Duck Celebration',
+      'Lobster Ginger Hot Pot','Black Pepper Wagyu Clay Pot','Crispy Whole Sea Bass Feast','Peking Duck Celebration',
+      'Pork & Chive Dumplings','Silken Path (Vegan)','Wolfberry Chrysanthemum Tea','Red Moon Ice Cream'
+    ];
+    const gallery=document.getElementById('dish-gallery');
+    const dialog=document.getElementById('dish-dialog');
+    const dialogPhoto=document.getElementById('dialog-photo');
+    const dialogTitle=document.getElementById('dish-dialog-title');
+    const dialogDescription=document.getElementById('dish-dialog-description');
+    document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());
+    gallery.addEventListener('click',event=>{
+      const tile=event.target.closest('.dish-tile');
+      if(!tile)return;
+      const item=JSON.parse(tile.dataset.item);
+      dialogTitle.textContent=item.name;
+      dialogDescription.textContent=item.description;
+      dialogPhoto.style.setProperty('--x',tile.style.getPropertyValue('--x'));
+      dialogPhoto.style.setProperty('--y',tile.style.getPropertyValue('--y'));
+      dialogPhoto.setAttribute('aria-label',item.name);
+      dialog.showModal();
+    });
+    (async function renderGallery(){
+      try{
+        const response=await fetch('/assets/forbidden_bite/menu.json');
+        if(!response.ok)throw new Error('Menu details unavailable');
+        const menu=await response.json();
+        const dishes=new Map(menu.sections.flatMap(section=>section.items).map(item=>[item.name,item]));
+        gallery.replaceChildren();
+        galleryOrder.forEach((name,index)=>{
+          const item=dishes.get(name)||{name,description:'A featured dish from the Forbidden Bite picture gallery.'};
+          const tile=document.createElement('button');
+          tile.type='button';tile.className='dish-tile';
+          const col=index%4,row=Math.floor(index/4);
+          tile.style.setProperty('--x',`${col*100/3}%`);
+          tile.style.setProperty('--y',`${row*100/11}%`);
+          tile.setAttribute('aria-label',`Enlarge ${item.name}`);
+          tile.dataset.item=JSON.stringify({name:item.name,description:item.description});
+          gallery.append(tile);
+        });
+      }catch(error){gallery.innerHTML='<p>The picture gallery could not be loaded. Please return to the full menu.</p>';}
+    })();
+  </script>
 </body>
 </html>
