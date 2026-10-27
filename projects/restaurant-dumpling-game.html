@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#093d33">
   <title>Dumpling Dash | Forbidden Bite</title>
-  <meta name="description" content="Play ten increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
+  <meta name="description" content="Play 100 increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-3">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-4">
 </head>
 <body class="game-page">
   <main class="game-shell">
     <header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Forbidden Bite mini-game</span></header>
-    <p class="game-label">Ten levels of dumpling mayhem</p>
+    <p class="game-label">100 levels of dumpling mayhem</p>
     <h1 class="game-title">Dumpling Dash</h1>
     <p class="game-instructions" id="level-instructions">Tap the dumpling before time runs out. Clear each round to unlock the next level.</p>
     <div class="game-scorebar" aria-label="Game progress">
-      <div class="game-stat"><span>Level</span><strong id="game-level">1/10</strong></div>
+      <div class="game-stat"><span>Level</span><strong id="game-level">1/100</strong></div>
       <div class="game-stat"><span>Caught / Goal</span><strong id="game-score">0 / 5</strong></div>
       <div class="game-stat"><span>Time</span><strong id="game-time">20</strong></div>
       <div class="game-stat"><span>Best level</span><strong id="game-best">0</strong></div>
@@ -29,29 +29,28 @@
     <section class="game-arena" id="game-arena" aria-label="Dumpling Dash play area">
       <div class="target-layer" id="target-layer"></div>
       <div class="game-overlay" id="game-overlay">
-        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all ten levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
+        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all 100 levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
       </div>
     </section>
     <details class="achievement-panel">
-      <summary><span>Achievements</span><span class="achievement-count" id="achievement-count">0 of 10 unlocked</span></summary>
+      <summary><span>Achievements</span><span class="achievement-count" id="achievement-count">0 of 25 unlocked</span></summary>
       <div class="achievement-grid" id="achievement-grid" aria-live="polite"></div>
     </details>
-    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only.</p>
+    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Fifteen achievements are marked very hard.</p>
   </main>
   <script>
     (()=>{
-      const levels=[
-        {goal:5,dumplings:1,decoys:0,golden:0,hop:0,powers:[],hint:'One dumpling, no tricks. Catch five before the timer ends.'},
-        {goal:8,dumplings:2,decoys:0,golden:0,hop:0,powers:[],hint:'Two dumplings are on the table now. Catch eight.'},
-        {goal:11,dumplings:3,decoys:0,golden:0,hop:0,powers:[],hint:'Three dumplings at once. Keep your eyes moving.'},
-        {goal:13,dumplings:3,decoys:0,golden:0,hop:1450,powers:['tea'],hint:'The dumplings start hopping. Jade Tea can pause their jumps for a moment.'},
-        {goal:15,dumplings:3,decoys:0,golden:1,hop:1300,powers:['tea'],hint:'Golden dumplings are worth triple points. The hopping gets quicker.'},
-        {goal:17,dumplings:4,decoys:0,golden:1,hop:1200,powers:['tea','chili'],hint:'Four dumplings join the dash. Chili Burst adds five seconds.'},
-        {goal:19,dumplings:4,decoys:1,golden:1,hop:1100,powers:['tea','chili'],hint:'Watch out for mooncake decoys. Tap one and lose a point.'},
-        {goal:21,dumplings:5,decoys:1,golden:1,hop:1000,powers:['tea','chili','chopsticks'],hint:'Five targets, faster hops, and Golden Chopsticks unlock double points.'},
-        {goal:24,dumplings:5,decoys:2,golden:2,hop:900,powers:['tea','chili','chopsticks'],hint:'Two decoys and two golden dumplings. Pick your targets carefully.'},
-        {goal:28,dumplings:6,decoys:2,golden:2,hop:780,powers:['tea','chili','chopsticks'],hint:'The Feast Rush: six targets, two decoys, faster hops, and every power-up.'}
-      ];
+      const levels=Array.from({length:100},(_,index)=>{
+        const n=index+1;
+        const dumplings=Math.min(8,1+Math.floor((n-1)/12));
+        const decoys=n<7?0:Math.min(5,Math.floor((n-5)/16)+1);
+        const golden=n<5?0:Math.min(3,1+Math.floor((n-5)/35));
+        const hop=n<4?0:Math.max(430,1500-Math.floor((n-4)*10));
+        const powers=n<4?[]:n<6?['tea']:n<8?['tea','chili']:['tea','chili','chopsticks'];
+        const goal=5+Math.floor((n-1)*0.28)+Math.floor((n-1)/20);
+        const hint=n===1?'One dumpling, no tricks. Catch five before the timer ends.':`Round ${n}: ${dumplings} dumplings, ${decoys} mooncake decoy${decoys===1?'':'s'}, and a goal of ${goal}. Keep moving and use your power-ups wisely.`;
+        return {goal,dumplings,decoys,golden,hop,powers,hint};
+      });
       const arena=document.getElementById('game-arena');
       const targetLayer=document.getElementById('target-layer');
       const overlay=document.getElementById('game-overlay');
@@ -76,10 +75,25 @@
         {id:'speedy-server',icon:'⚡',name:'Speedy Server',detail:'Clear a level with at least 8 seconds left.'},
         {id:'halfway-hero',icon:'🏮',name:'Halfway Hero',detail:'Reach level 5.'},
         {id:'century-club',icon:'💯',name:'Century Club',detail:'Score 100 points in one run.'},
-        {id:'feast-champion',icon:'🏆',name:'Feast Champion',detail:'Clear all ten levels.'}
+        {id:'feast-champion',icon:'🏆',name:'Ten-Level Feast',detail:'Clear the original ten-level feast.'},
+        {id:'level-15',icon:'🥢',name:'Kitchen Regular',detail:'Reach level 15.',hard:true},
+        {id:'level-25',icon:'🌟',name:'Quarter-Century Dash',detail:'Reach level 25.',hard:true},
+        {id:'level-40',icon:'🐉',name:'Dragon’s Pace',detail:'Reach level 40.',hard:true},
+        {id:'level-50',icon:'🏮',name:'Golden Halfway',detail:'Reach level 50.',hard:true},
+        {id:'level-60',icon:'🌕',name:'Moonlit Marathon',detail:'Reach level 60.',hard:true},
+        {id:'level-75',icon:'🎖️',name:'Three-Quarter Feast',detail:'Reach level 75.',hard:true},
+        {id:'level-85',icon:'🔥',name:'Kitchen Legend',detail:'Reach level 85.',hard:true},
+        {id:'level-100',icon:'👑',name:'Hundred-Level Legend',detail:'Clear level 100.',hard:true},
+        {id:'score-250',icon:'📈',name:'Big Appetite',detail:'Score 250 points in one run.',hard:true},
+        {id:'score-500',icon:'💎',name:'Golden Feast',detail:'Score 500 points in one run.',hard:true},
+        {id:'score-1000',icon:'💰',name:'Thousand-Point Banquet',detail:'Score 1,000 points in one run.',hard:true},
+        {id:'combo-15',icon:'🧨',name:'Unbroken Rhythm',detail:'Catch 15 dumplings in a row.',hard:true},
+        {id:'combo-25',icon:'⚡',name:'Perfect Flow',detail:'Catch 25 dumplings in a row.',hard:true},
+        {id:'clean-streak-10',icon:'🧼',name:'Decoy-Free Ten',detail:'Clear 10 decoy levels in a row without a mistake.',hard:true},
+        {id:'lightning-clear',icon:'⏱️',name:'Lightning Service',detail:'Clear a level 10 or higher with 15+ seconds left.',hard:true}
       ];
       let levelNumber=1,levelScore=0,totalScore=0,timeLeft=20,running=false,timer=null,hopTimer=null;
-      let freezeUntil=0,doubleUntil=0,powerUses={},catchStreak=0,decoysHitThisLevel=0,runPowersUsed=new Set();
+      let freezeUntil=0,doubleUntil=0,powerUses={},catchStreak=0,decoysHitThisLevel=0,cleanDecoyStreak=0,runPowersUsed=new Set();
       const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
       const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
       const readAchievements=()=>{try{const value=JSON.parse(localStorage.getItem(achievementKey)||'[]');return new Set(Array.isArray(value)?value.filter(id=>achievements.some(item=>item.id===id)):[])}catch{return new Set()}};
@@ -95,8 +109,8 @@
           const text=document.createElement('div');text.className='achievement-copy';
           const name=document.createElement('strong');name.textContent=achievement.name;
           const detail=document.createElement('span');detail.textContent=achievement.detail;
-          const state=document.createElement('span');state.className='achievement-state';state.textContent=unlocked.has(achievement.id)?'Unlocked':'Locked';
-          text.append(name,detail);card.append(icon,text,state);grid.append(card);
+          const state=document.createElement('span');state.className=`achievement-state${achievement.hard?' is-hard':''}`;state.textContent=unlocked.has(achievement.id)?'Unlocked':achievement.hard?'Very hard':'Locked';
+          text.append(name,detail);card.append(icon,text,state);if(achievement.hard)card.classList.add('achievement-hard');grid.append(card);
         }
       };
       const unlockAchievement=id=>{
@@ -122,7 +136,7 @@
       };
       const updateStats=()=>{
         const config=levels[levelNumber-1];
-        levelText.textContent=`${levelNumber}/10`;scoreText.textContent=`${levelScore} / ${config.goal}`;timeText.textContent=String(timeLeft);
+        levelText.textContent=`${levelNumber}/100`;scoreText.textContent=`${levelScore} / ${config.goal}`;timeText.textContent=String(timeLeft);
         progress.style.width=`${Math.min(100,levelScore/config.goal*100)}%`;
       };
       const moveTargets=()=>{
@@ -168,12 +182,14 @@
       const finishLevel=()=>{
         running=false;clearTimers();targetLayer.replaceChildren();
         const config=levels[levelNumber-1];
-        if(config.decoys>0&&decoysHitThisLevel===0)unlockAchievement('decoy-dodger');
+        if(config.decoys>0&&decoysHitThisLevel===0){unlockAchievement('decoy-dodger');cleanDecoyStreak++;if(cleanDecoyStreak>=10)unlockAchievement('clean-streak-10')}else if(config.decoys>0)cleanDecoyStreak=0;
         if(timeLeft>=8)unlockAchievement('speedy-server');
+        if(levelNumber>=10&&timeLeft>=15)unlockAchievement('lightning-clear');
         if(levelNumber>bestLevel){bestLevel=levelNumber;bestText.textContent=String(bestLevel);writeBest(bestLevel)}
-        if(levelNumber===10){
-          unlockAchievement('feast-champion');
-          showOverlay('Feast champion!',`You cleared all ten levels and scored ${totalScore} points. The Forbidden Bite kitchen salutes you.`,[makeButton('Play the whole run again','game-primary',()=>beginLevel(1,true)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
+        if(levelNumber===10)unlockAchievement('feast-champion');
+        if(levelNumber===100){
+          unlockAchievement('level-100');
+          showOverlay('Feast champion!',`You cleared all 100 levels and scored ${totalScore} points. The Forbidden Bite kitchen salutes you.`,[makeButton('Play the whole run again','game-primary',()=>beginLevel(1,true)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
         }else{
           showOverlay(`Level ${levelNumber} cleared!`,`You scored ${levelScore} points this round and ${totalScore} overall. Ready for the next challenge?`,[makeButton('Next level','game-primary',()=>beginLevel(levelNumber+1)),makeButton('Replay this level','game-secondary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
         }
@@ -187,6 +203,7 @@
         decoysHitThisLevel=0;
         if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set()}
         if(levelNumber>=5)unlockAchievement('halfway-hero');
+        for(const milestone of [15,25,40,50,60,75,85])if(levelNumber>=milestone)unlockAchievement(`level-${milestone}`);
         const config=levels[levelNumber-1];powerUses={tea:config.powers.includes('tea')?1:0,chili:config.powers.includes('chili')?1:0,chopsticks:config.powers.includes('chopsticks')?1:0};
         instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
         updateStats();renderTargets();renderPowerups();overlay.hidden=true;
@@ -197,14 +214,14 @@
       function catchTarget(target){
         if(!running)return;
         if(target.dataset.kind==='decoy'){
-          levelScore=Math.max(0,levelScore-1);decoysHitThisLevel++;catchStreak=0;powerStatus.textContent='Mooncake decoy! One point lost.';
+          levelScore=Math.max(0,levelScore-1);decoysHitThisLevel++;catchStreak=0;cleanDecoyStreak=0;powerStatus.textContent='Mooncake decoy! One point lost.';
         }else{
-          catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');
+          catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');if(catchStreak>=15)unlockAchievement('combo-15');if(catchStreak>=25)unlockAchievement('combo-25');
           if(target.dataset.kind==='golden')unlockAchievement('golden-grab');
           let points=target.dataset.kind==='golden'?3:1;
           if(Date.now()<doubleUntil)points*=2;
           levelScore+=points;totalScore+=points;
-          if(totalScore>=100)unlockAchievement('century-club');
+          if(totalScore>=100)unlockAchievement('century-club');if(totalScore>=250)unlockAchievement('score-250');if(totalScore>=500)unlockAchievement('score-500');if(totalScore>=1000)unlockAchievement('score-1000');
           powerStatus.textContent=target.dataset.kind==='golden'?`Golden dumpling! +${points} points.`:`Nice catch! +${points} point${points===1?'':'s'}.`;
         }
         updateStats();moveTargets();
