@@ -21,6 +21,11 @@
 .fortune-art span{z-index:1;color:#fff4c9;font-size:1.25rem}
 .fortune-message{display:grid;place-items:center;min-height:5.5rem;margin:.6rem 0!important;padding:.8rem;border:1px dashed #d7bd76;border-radius:9px;background:#fffdf8;color:#6b5422!important;font:400 1.05rem/1.45 Marcellus,Georgia,serif}
 .game-teaser{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:linear-gradient(145deg,#f4efe3,#fff)}
+.game-icon-launch{display:grid;justify-items:center;gap:.35rem;margin:.1rem auto .65rem;color:var(--jade-dark);font-size:.72rem;font-weight:800;text-decoration:none}
+.game-launch-icon{display:grid;place-items:center;width:88px;height:88px;border:3px solid #d5ae4b;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fffdf2,#f2d98f);box-shadow:0 6px 16px #694d1e25;font-size:3rem;animation:dumpling-bob 1.8s ease-in-out infinite;transition:transform .18s ease,box-shadow .18s ease}
+.game-icon-launch:hover .game-launch-icon,.game-icon-launch:focus-visible .game-launch-icon{transform:scale(1.12) rotate(-5deg);box-shadow:0 9px 22px #694d1e40}
+.game-icon-launch:focus-visible{outline:3px solid var(--jade);outline-offset:4px;border-radius:10px}
+@keyframes dumpling-bob{50%{transform:translateY(-5px)}}
 .game-launch{min-height:36px;padding:.4rem .65rem;font-size:.76rem}
 .soup-builder{grid-column:1/-1;display:grid;grid-template-columns:.8fr 1.2fr;gap:1.4rem;padding:clamp(1.1rem,3vw,1.6rem);background:#f5f0e5;border-color:#d8c58f}
 .soup-builder-intro h3{font-size:1.75rem}
@@ -110,3 +115,4 @@
 @keyframes achievement-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:520px){.game-arena{height:48vh;min-height:230px}.game-stat{min-width:74px;padding:.45rem}.game-scorebar{gap:.45rem}.game-stat strong{font-size:1.1rem}.dumpling-target{width:66px;height:66px}.dumpling-target.dumpling-boss{width:104px;height:104px}.game-top{align-items:flex-start}.achievement-grid{grid-template-columns:1fr}.achievement-card{grid-template-columns:36px minmax(0,1fr) auto}.achievement-panel summary{padding:.7rem}.achievement-copy>span{font-size:.72rem}.collection-heading{align-items:flex-start}.collection-tools>*{flex:1}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.dumpling-target{transition:none}}
+@media(prefers-reduced-motion:reduce){.game-launch-icon{animation:none;transition:none}}
