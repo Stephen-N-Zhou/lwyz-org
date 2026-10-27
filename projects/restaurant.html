@@ -39,6 +39,11 @@
     @media(max-width:500px){body{font-size:15px}.wrap,.nav,.hero-inner{width:min(100% - 1.5rem,1100px)}.nav{height:56px}.grid{grid-template-columns:1fr}.hero h1{font-size:3rem}.actions{display:grid;grid-template-columns:1fr}.button{width:100%}.section-head{display:block}.footer{align-items:flex-start;flex-direction:column}.preview-copy{padding:.75rem}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
   </style>
+  <style>
+    .editorial-section{padding:2rem 0}.editorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.editorial-card{padding:1.2rem;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.editorial-card h3{margin:.15rem 0 .45rem;color:var(--jade-dark);font:400 1.3rem/1.25 Marcellus,Georgia,serif}.editorial-card p{margin:.35rem 0;color:var(--muted)}.editorial-card .story-tag{color:var(--wine);font-size:.72rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}.chef-picks{padding:1.4rem;background:#f3ecdc;border:1px solid #d8c58f;border-radius:14px}.diet-note{padding:1rem 1.1rem;background:#fff;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;color:#59554d}.photo-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}.photo-wall a{position:relative;display:block;overflow:hidden;min-height:190px;border-radius:12px;background-image:url('/assets/forbidden_bite/menu.png?v=picture-gallery-5');background-size:400% 1200%;border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none}.photo-wall a:after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#09251fe0)}.photo-wall span{position:absolute;z-index:1;left:.8rem;right:.8rem;bottom:.6rem;color:#fff;font-weight:700}.review-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:1rem}.review-list{display:grid;gap:.7rem;align-content:start}.review-card{padding:1rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}.review-card p{margin:.4rem 0;color:#55524b}.review-card strong{color:var(--jade-dark)}.review-card small,.demo-label{color:#776b55;font-size:.75rem}.review-form{padding:1.1rem;background:#f0eadf;border:1px solid var(--line);border-radius:12px}.review-form label{display:grid;gap:.3rem;margin:.65rem 0;color:#49463f;font-size:.82rem;font-weight:700}.review-form input,.review-form select,.review-form textarea{width:100%;min-height:42px;padding:.6rem .7rem;border:1px solid #d9d2c6;border-radius:7px;background:#fff;color:var(--ink);font:inherit}.review-form textarea{min-height:95px;resize:vertical}.review-form button{min-height:44px;padding:.6rem .9rem;border:0;border-radius:7px;background:var(--jade);color:white;font:700 .88rem Inter,system-ui,sans-serif;cursor:pointer}.review-form button:hover{background:var(--jade-dark)}.review-tools{display:flex;gap:.6rem;flex-wrap:wrap}.review-tools button:last-child{background:transparent;color:var(--jade-dark);border:1px solid var(--jade)}.review-empty{padding:1rem;background:#fff;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}.seasonal-banner{padding:1.3rem clamp(1rem,4vw,1.7rem);background:linear-gradient(120deg,#093d33,#0d5c4b);border-radius:14px;color:#fff}.seasonal-banner h3{margin:.1rem 0 .4rem;font:400 1.5rem Marcellus,Georgia,serif;color:#f0d88f}.seasonal-banner p{margin:.4rem 0;color:#f2eee6}.tip-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;padding:0;list-style:none}.tip-list li{padding:1rem;background:#fff;border:1px solid var(--line);border-radius:10px;color:#55524b}.tip-list strong{display:block;margin-bottom:.2rem;color:var(--jade-dark)}
+    @media(max-width:760px){.editorial-grid,.photo-wall,.tip-list{grid-template-columns:repeat(2,minmax(0,1fr))}.review-layout{grid-template-columns:1fr}}
+    @media(max-width:500px){.editorial-grid,.photo-wall,.tip-list{grid-template-columns:1fr}.photo-wall a{min-height:220px}}
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -54,6 +59,8 @@
           <a class="button" href="/projects/restaurant-gallery.html">View picture menu</a>
           <a class="button secondary" href="/assets/forbidden_bite/menu2.png?v=picture-gallery-3" target="_blank" rel="noopener">View full menu</a>
           <a class="button secondary" href="#limited-time-deals">See limited-time deals</a>
+          <a class="button secondary" href="#chef-picks-title">See chef’s picks</a>
+          <a class="button secondary" href="#reviews-title">Write a pretend review</a>
           <a class="button secondary" href="#reservation-preview">Reservation preview</a>
           <a class="button secondary" href="/assets/forbidden_bite_qr.png" download>Download QR code</a>
         </div>
@@ -126,7 +133,71 @@
       </div>
       <p class="fun-disclaimer">These playful features are part of a fictional restaurant concept. Prices are examples, and the cart is only a demo.</p>
     </section>
-    <section class="experience" aria-labelledby="experience-title"><div><p class="section-label">The experience</p><h2 id="experience-title">Comfort, with a golden touch</h2><p>Jade and gold accents, welcoming tables, and a curated tea list shape the atmosphere. The goal is simple: memorable food, a relaxed welcome, and something for everyone to enjoy.</p></div><ul><li>Comforting classics and playful specials</li><li>Mini portions and family-friendly choices</li><li>Fresh, vivid flavors from first sip to sweet finish</li></ul></section>
+    <section class="editorial-section" aria-labelledby="stories-title">
+      <div class="section-head"><div><p class="section-label">From the concept kitchen</p><h2 id="stories-title" class="section-heading">A story behind every favorite</h2></div><p>Little notes about the flavors and ideas on this imagined menu.</p></div>
+      <div class="editorial-grid">
+        <article class="editorial-card"><span class="story-tag">Dish story</span><h3>Dragon Fire Noodles</h3><p>This bowl is built around contrast: warming chili broth, tender beef, crisp greens, and a bright spoonful of chili crisp. The “dragon fire” name is a playful nod to its bold, adjustable heat.</p></article>
+        <article class="editorial-card"><span class="story-tag">Dish story</span><h3>Smashed Cucumbers</h3><p>Cracking the cucumbers creates plenty of edges for garlic, rice vinegar, sesame, and chili oil to cling to. It’s a cool, tangy first bite designed to wake up the palate.</p></article>
+        <article class="editorial-card"><span class="story-tag">Dish story</span><h3>Jade Pillows</h3><p>These soft matcha mochi are imagined as a gentle finish: earthy green tea on the outside, sweet red bean at the center, and a small nod to the restaurant’s jade-and-gold palette.</p></article>
+      </div>
+    </section>
+    <section class="editorial-section chef-picks" aria-labelledby="chef-picks-title">
+      <div class="section-head"><div><p class="section-label">A playful chef’s shortlist</p><h2 id="chef-picks-title" class="section-heading">Three picks for your next visit</h2></div><p>Rotating recommendations for this fictional menu.</p></div>
+      <div class="editorial-grid">
+        <article class="editorial-card"><span class="story-tag">Start here</span><h3>Pork &amp; Chive Dumplings</h3><p>Pan-seared edges, a juicy center, and ginger-soy dip make this an easy dish to share.</p></article>
+        <article class="editorial-card"><span class="story-tag">For the table</span><h3>Peking Duck Celebration</h3><p>A special-occasion centerpiece with crisp-skinned duck, thin pancakes, cucumber, scallions, and plum sauce.</p></article>
+        <article class="editorial-card"><span class="story-tag">Sweet finish</span><h3>Sweet Sin</h3><p>Black sesame panna cotta brings a smooth, nutty finish with toasted sesame on top.</p></article>
+      </div>
+    </section>
+    <section class="editorial-section" aria-labelledby="diet-title">
+      <div class="section-head"><div><p class="section-label">Menu guide · illustrative only</p><h2 id="diet-title" class="section-heading">Dietary notes &amp; ingredient guide</h2></div><p>Use the full menu for dish-level tags and options.</p></div>
+      <div class="editorial-grid">
+        <article class="editorial-card"><h3>Plant-based picks</h3><p>Menu examples tagged vegan include Smashed Cucumbers, Crispy Spring Rolls, Silken Path, Tofu Seaweed Soup, Golden Veggie Bowl, and Jade Pillows.</p></article>
+        <article class="editorial-card"><h3>Spice your way</h3><p>Some noodle and seafood dishes offer mild, medium, or hot options. Ask for no chili when the menu lists that choice.</p></article>
+        <article class="editorial-card"><h3>Allergen awareness</h3><p>Sesame, soy, wheat, egg, shellfish, and other allergens may appear in these concept dishes. The fictional menu cannot confirm ingredient sourcing or prevent cross-contact.</p></article>
+      </div>
+      <p class="diet-note"><strong>Concept note:</strong> These are sample descriptions, not medical or food-safety advice. Forbidden Bite is not an operating restaurant, so no real allergen checks are available.</p>
+    </section>
+    <section class="editorial-section" aria-labelledby="seasonal-title">
+      <div class="section-head"><div><p class="section-label">Seasonal menu · rotating imagination</p><h2 id="seasonal-title" class="section-heading">A little taste of the season</h2></div></div>
+      <div class="seasonal-banner"><p class="eyebrow">Autumn concept collection</p><h3>Moonlit Harvest Supper</h3><p>Imagine a cozy table with Emperor’s Midnight Bowl, ginger-scallion steamed fish, seasonal greens, and warm chrysanthemum tea. The menu is a creative seasonal feature; dishes and availability are fictional.</p></div>
+    </section>
+    <section class="experience" aria-labelledby="experience-title"><div><p class="section-label">The experience</p><h2 id="experience-title">Comfort, with a golden touch</h2><p>Picture a relaxed dining room with jade accents, warm lantern light, welcoming tables, and a tea list for lingering after dinner. The imagined space is designed for family meals, cozy dates, and lively groups sharing dishes at the center of the table.</p></div><ul><li>Comforting classics and playful specials</li><li>Mini portions and family-friendly choices</li><li>Fresh, vivid flavors from first sip to sweet finish</li><li>A calm corner for tea and conversation</li></ul></section>
+    <section class="editorial-section" aria-labelledby="tea-title">
+      <div class="section-head"><div><p class="section-label">A pot for every plate</p><h2 id="tea-title" class="section-heading">Tea pairing guide</h2></div><p>Simple pairings for the flavors on the menu.</p></div>
+      <div class="editorial-grid">
+        <article class="editorial-card"><h3>Chrysanthemum with chili</h3><p>Wolfberry Chrysanthemum Tea’s gentle floral character makes a refreshing companion to Dragon Fire Noodles or spicy wonton soup.</p></article>
+        <article class="editorial-card"><h3>Mandarin with rich bites</h3><p>The bright citrus notes in Mandarin Blossom Cold Brew offer a crisp contrast to Peking duck, popcorn chicken, and savory fried rice.</p></article>
+        <article class="editorial-card"><h3>Matcha with dessert</h3><p>A Jade Matcha Latte echoes the green tea in Jade Pillows and balances the sweet, nutty flavor of Sweet Sin.</p></article>
+      </div>
+    </section>
+    <section class="editorial-section" aria-labelledby="photo-wall-title">
+      <div class="section-head"><div><p class="section-label">A few bites at a glance</p><h2 id="photo-wall-title" class="section-heading">Forbidden Bite photo wall</h2></div><p>Tap any picture to explore the full gallery.</p></div>
+      <div class="photo-wall" aria-label="Selected dishes from the Forbidden Bite picture menu">
+        <a href="/projects/restaurant-gallery.html" aria-label="View popcorn chicken in the picture gallery" style="background-position:33.333% 0%"><span>Popcorn Chicken</span></a>
+        <a href="/projects/restaurant-gallery.html" aria-label="View dumplings in the picture gallery" style="background-position:66.666% 0%"><span>Pork &amp; Chive Dumplings</span></a>
+        <a href="/projects/restaurant-gallery.html" aria-label="View noodles in the picture gallery" style="background-position:0% 18.181%"><span>Dragon Fire Noodles</span></a>
+        <a href="/projects/restaurant-gallery.html" aria-label="View a rice bowl in the picture gallery" style="background-position:33.333% 36.363%"><span>Mapo Tofu Bowl</span></a>
+        <a href="/projects/restaurant-gallery.html" aria-label="View seafood boil in the picture gallery" style="background-position:66.666% 81.818%"><span>Seafood Boil for Two</span></a>
+        <a href="/projects/restaurant-gallery.html" aria-label="View dessert in the picture gallery" style="background-position:100% 63.636%"><span>Sweet Sin</span></a>
+      </div>
+    </section>
+    <section class="editorial-section" aria-labelledby="reviews-title">
+      <div class="section-head"><div><p class="section-label">Play along · fictional feedback</p><h2 id="reviews-title" class="section-heading">The pretend guestbook</h2></div><p>Leave a silly review for this imaginary restaurant.</p></div>
+      <div class="review-layout"><div><div class="review-list" id="review-list" aria-live="polite"></div><p class="demo-label">Every review here is fictional. Visitor reviews are saved only in this browser and are never sent to a restaurant or published online.</p></div>
+        <form class="review-form" id="review-form"><h3>Write a fun fake review</h3><p class="demo-label">Make up a character, a dish, or an over-the-top food adventure.</p>
+          <label for="review-name">Your pretend name<input id="review-name" name="name" maxlength="32" placeholder="e.g. Noodle Knight" required></label>
+          <label for="review-rating">Silly star rating<select id="review-rating" name="rating"><option value="5">★★★★★ · A legendary feast</option><option value="4">★★★★☆ · Very tasty tale</option><option value="3">★★★☆☆ · A cozy nibble</option><option value="2">★★☆☆☆ · The dumpling escaped</option><option value="1">★☆☆☆☆ · My chopsticks were too slow</option></select></label>
+          <label for="review-text">Your pretend review<textarea id="review-text" name="review" maxlength="240" placeholder="The noodles were so magical, my soup asked for an encore…" required></textarea></label>
+          <div class="review-tools"><button type="submit">Add pretend review</button><button type="button" id="clear-reviews">Clear my reviews</button></div>
+          <p class="demo-label" id="review-status" role="status" aria-live="polite">Nothing is sent or shared. Keep it kind and make-believe.</p>
+        </form>
+      </div>
+    </section>
+    <section class="editorial-section" aria-labelledby="tips-title">
+      <div class="section-head"><div><p class="section-label">A few table ideas</p><h2 id="tips-title" class="section-heading">Friendly dining tips</h2></div></div>
+      <ul class="tip-list"><li><strong>Order for the middle</strong>Choose a few different plates to share, so the table gets a mix of flavors and textures.</li><li><strong>Cool the chili</strong>Pair spicy noodles with a refreshing tea or a crisp cucumber starter.</li><li><strong>Save room for one more bite</strong>Split a dessert so everyone can try a sweet finish.</li></ul>
+    </section>
     <section class="menu-preview" aria-labelledby="preview-title">
       <figure class="preview-card"><a href="/projects/restaurant-gallery.html" aria-label="Open the Forbidden Bite food picture gallery"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="A long 48-tile picture-only collage of Forbidden Bite dishes, snacks, drinks, and desserts" loading="lazy"></a></figure>
       <div class="preview-copy"><p class="section-label">Food pictures &amp; complete menu</p><h2 id="preview-title">Browse Forbidden Bite</h2><p>Explore a 48-photo gallery, then open the full menu for dish names, descriptions, prices, and available choices.</p><div class="actions"><a class="button" href="/projects/restaurant-gallery.html">Open picture gallery</a><a class="button" href="#menu-title">Open full menu</a></div></div>
@@ -138,6 +209,9 @@
         <details><summary>Can I place an order or make a reservation?</summary><p>You can try the demo cart and reservation preview, but neither sends a real order or booking. The menu is illustrative and there is no operating location.</p></details>
         <details><summary>What does the picture menu show?</summary><p>The picture menu is an illustration gallery with no text. The full menu lists dish names, descriptions, prices, and customization choices.</p></details>
         <details><summary>Can I ask a question about the concept?</summary><p>Yes. Open a public question on GitHub. You can add a reply to the same conversation when you have an answer.</p><a class="button" href="https://github.com/Stephen-N-Zhou/lwyz-org/issues/new?title=Forbidden%20Bite%20question&amp;body=My%20question%20about%20Forbidden%20Bite%3A%0A%0A">Ask a question on GitHub</a><p class="small">GitHub sign-in is required. Questions and replies are public.</p></details>
+        <details><summary>Is there a real location or parking?</summary><p>No. This is an imaginary restaurant, so there is no address, parking, real opening hours, takeout service, or group booking.</p></details>
+        <details><summary>Are the seasonal menu and chef picks real offers?</summary><p>No. They are sample ideas created for the Forbidden Bite concept and are not available to order.</p></details>
+        <details><summary>Are the reviews from real customers?</summary><p>No. The guestbook contains playful fictional examples and visitor-created pretend reviews saved only in the current browser.</p></details>
       </div>
     </section>
   </main>
@@ -189,6 +263,40 @@
       status.textContent=`Demo request sent for ${date} at ${time} for ${guests} (${seating}). No reservation was actually sent or saved.`;
       status.hidden=false;
     });
+    (function setupPretendGuestbook(){
+      const reviewKey='forbidden-bite-pretend-reviews-v1';
+      const list=document.getElementById('review-list');
+      const form=document.getElementById('review-form');
+      const status=document.getElementById('review-status');
+      const starterReviews=[
+        {name:'Noodle Knight',rating:5,text:'The noodles were so brave they rescued my appetite from a very boring Tuesday.',dish:'Dragon Fire Noodles'},
+        {name:'Captain Crunchy',rating:5,text:'The dumplings arrived in a tiny parade. I appointed one of them mayor of the table.',dish:'Pork & Chive Dumplings'},
+        {name:'Tea-Time Traveler',rating:4,text:'My chrysanthemum tea was so calming that my chopsticks took a little vacation.',dish:'Wolfberry Chrysanthemum Tea'}
+      ];
+      const readReviews=()=>{try{const value=JSON.parse(localStorage.getItem(reviewKey));return Array.isArray(value)?value.filter(item=>item&&typeof item.name==='string'&&typeof item.text==='string').slice(0,30):[]}catch{return []}};
+      let reviews=readReviews();
+      const saveReviews=()=>{try{localStorage.setItem(reviewKey,JSON.stringify(reviews));return true}catch{return false}};
+      const renderReviews=()=>{
+        list.replaceChildren();
+        for(const review of [...starterReviews,...reviews]){
+          const card=document.createElement('article');card.className='review-card';
+          const title=document.createElement('strong');title.textContent=`${review.name} · ${'★'.repeat(Math.max(1,Math.min(5,Number(review.rating)||5)))}${'☆'.repeat(5-Math.max(1,Math.min(5,Number(review.rating)||5)))}`;
+          const copy=document.createElement('p');copy.textContent=`“${review.text}”`;
+          const source=document.createElement('small');source.textContent=review.dish?`Pretend review · ${review.dish}`:'Visitor-created pretend review';
+          card.append(title,copy,source);list.append(card);
+        }
+      };
+      renderReviews();
+      form.addEventListener('submit',event=>{
+        event.preventDefault();
+        const data=new FormData(form);
+        reviews.unshift({name:String(data.get('name')||'').trim(),rating:Number(data.get('rating'))||5,text:String(data.get('review')||'').trim()});
+        reviews=reviews.slice(0,27);
+        const saved=saveReviews();renderReviews();form.reset();
+        status.textContent=saved?'Your pretend review was added on this device only. Nothing was sent or posted.':'Your pretend review is visible for this visit, but browser storage is unavailable.';
+      });
+      document.getElementById('clear-reviews').addEventListener('click',()=>{reviews=[];try{localStorage.removeItem(reviewKey)}catch{}renderReviews();status.textContent='Your pretend reviews were cleared from this browser.'});
+    })();
   </script>
   <script src="/assets/forbidden_bite/fun.js?v=fun-1" defer></script>
   <script src="/assets/forbidden_bite/order.js?v=checkout-1" defer></script>
