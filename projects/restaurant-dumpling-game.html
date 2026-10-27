@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-2">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-3">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -32,7 +32,11 @@
         <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all ten levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
       </div>
     </section>
-    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level is saved on this device only.</p>
+    <details class="achievement-panel">
+      <summary><span>Achievements</span><span class="achievement-count" id="achievement-count">0 of 10 unlocked</span></summary>
+      <div class="achievement-grid" id="achievement-grid" aria-live="polite"></div>
+    </details>
+    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only.</p>
   </main>
   <script>
     (()=>{
@@ -61,11 +65,54 @@
       const powerBar=document.getElementById('powerup-bar');
       const powerStatus=document.getElementById('powerup-status');
       const bestKey='forbidden-bite-dumpling-dash-best-level';
+      const achievementKey='forbidden-bite-dumpling-dash-achievements-v1';
+      const achievements=[
+        {id:'first-bite',icon:'🥟',name:'First Bite',detail:'Catch your first dumpling.'},
+        {id:'combo-five',icon:'🔥',name:'Combo of Five',detail:'Catch five targets in a row without a decoy.'},
+        {id:'golden-grab',icon:'✨',name:'Golden Grab',detail:'Catch a golden dumpling.'},
+        {id:'power-play',icon:'🍵',name:'Power Play',detail:'Use your first power-up.'},
+        {id:'full-arsenal',icon:'🪄',name:'Full Arsenal',detail:'Use all three power-ups in one run.'},
+        {id:'decoy-dodger',icon:'🛡️',name:'Decoy Dodger',detail:'Clear a decoy level without tapping a decoy.'},
+        {id:'speedy-server',icon:'⚡',name:'Speedy Server',detail:'Clear a level with at least 8 seconds left.'},
+        {id:'halfway-hero',icon:'🏮',name:'Halfway Hero',detail:'Reach level 5.'},
+        {id:'century-club',icon:'💯',name:'Century Club',detail:'Score 100 points in one run.'},
+        {id:'feast-champion',icon:'🏆',name:'Feast Champion',detail:'Clear all ten levels.'}
+      ];
       let levelNumber=1,levelScore=0,totalScore=0,timeLeft=20,running=false,timer=null,hopTimer=null;
-      let freezeUntil=0,doubleUntil=0,powerUses={};
+      let freezeUntil=0,doubleUntil=0,powerUses={},catchStreak=0,decoysHitThisLevel=0,runPowersUsed=new Set();
       const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
       const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
+      const readAchievements=()=>{try{const value=JSON.parse(localStorage.getItem(achievementKey)||'[]');return new Set(Array.isArray(value)?value.filter(id=>achievements.some(item=>item.id===id)):[])}catch{return new Set()}};
+      const unlocked=readAchievements();
       let bestLevel=readBest();bestText.textContent=String(bestLevel);
+      const renderAchievements=()=>{
+        const grid=document.getElementById('achievement-grid');
+        document.getElementById('achievement-count').textContent=`${unlocked.size} of ${achievements.length} unlocked`;
+        grid.replaceChildren();
+        for(const achievement of achievements){
+          const card=document.createElement('article');card.className=`achievement-card${unlocked.has(achievement.id)?' is-unlocked':''}`;
+          const icon=document.createElement('span');icon.className='achievement-icon';icon.textContent=achievement.icon;icon.setAttribute('aria-hidden','true');
+          const text=document.createElement('div');text.className='achievement-copy';
+          const name=document.createElement('strong');name.textContent=achievement.name;
+          const detail=document.createElement('span');detail.textContent=achievement.detail;
+          const state=document.createElement('span');state.className='achievement-state';state.textContent=unlocked.has(achievement.id)?'Unlocked':'Locked';
+          text.append(name,detail);card.append(icon,text,state);grid.append(card);
+        }
+      };
+      const unlockAchievement=id=>{
+        if(unlocked.has(id))return;
+        const achievement=achievements.find(item=>item.id===id);if(!achievement)return;
+        unlocked.add(id);try{localStorage.setItem(achievementKey,JSON.stringify([...unlocked]))}catch{}
+        renderAchievements();powerStatus.textContent=`Achievement unlocked: ${achievement.name}!`;
+        let toast=document.querySelector('.achievement-toast');
+        if(!toast){toast=document.createElement('div');toast.className='achievement-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');document.body.append(toast)}
+        toast.textContent=`Achievement unlocked: ${achievement.icon} ${achievement.name}`;clearTimeout(unlockAchievement.toastTimer);unlockAchievement.toastTimer=setTimeout(()=>toast.remove(),3200);
+      };
+      const recordPowerup=key=>{
+        runPowersUsed.add(key);unlockAchievement('power-play');
+        if(['tea','chili','chopsticks'].every(item=>runPowersUsed.has(item)))unlockAchievement('full-arsenal');
+      };
+      renderAchievements();
       const makeButton=(label,className,onClick)=>{const button=document.createElement('button');button.type='button';button.className=className;button.textContent=label;button.addEventListener('click',onClick);return button};
       const showOverlay=(title,copy,actions)=>{
         document.getElementById('overlay-title').textContent=title;
@@ -108,20 +155,24 @@
           button.disabled=left===0;button.title=description;button.setAttribute('aria-label',`${label}, ${left} uses left. ${description}`);powerBar.append(button);
         };
         if(config.powers.includes('tea'))addPower('tea','Jade Tea','Freeze hopping dumplings for 4 seconds.',()=>{
-          if(!powerUses.tea)return;powerUses.tea--;freezeUntil=Date.now()+4000;powerStatus.textContent='Jade Tea: dumpling hopping paused for 4 seconds.';renderPowerups();
+          if(!powerUses.tea)return;powerUses.tea--;freezeUntil=Date.now()+4000;powerStatus.textContent='Jade Tea: dumpling hopping paused for 4 seconds.';recordPowerup('tea');renderPowerups();
         });
         if(config.powers.includes('chili'))addPower('chili','Chili Burst','Add five seconds to the clock.',()=>{
-          if(!powerUses.chili)return;powerUses.chili--;timeLeft+=5;updateStats();powerStatus.textContent='Chili Burst: five seconds added.';renderPowerups();
+          if(!powerUses.chili)return;powerUses.chili--;timeLeft+=5;updateStats();powerStatus.textContent='Chili Burst: five seconds added.';recordPowerup('chili');renderPowerups();
         });
         if(config.powers.includes('chopsticks'))addPower('chopsticks','Golden Chopsticks','Double points for 5 seconds.',()=>{
-          if(!powerUses.chopsticks)return;powerUses.chopsticks--;doubleUntil=Date.now()+5000;powerStatus.textContent='Golden Chopsticks: double points for 5 seconds.';renderPowerups();
+          if(!powerUses.chopsticks)return;powerUses.chopsticks--;doubleUntil=Date.now()+5000;powerStatus.textContent='Golden Chopsticks: double points for 5 seconds.';recordPowerup('chopsticks');renderPowerups();
         });
       };
       const clearTimers=()=>{clearInterval(timer);clearInterval(hopTimer);timer=null;hopTimer=null};
       const finishLevel=()=>{
         running=false;clearTimers();targetLayer.replaceChildren();
+        const config=levels[levelNumber-1];
+        if(config.decoys>0&&decoysHitThisLevel===0)unlockAchievement('decoy-dodger');
+        if(timeLeft>=8)unlockAchievement('speedy-server');
         if(levelNumber>bestLevel){bestLevel=levelNumber;bestText.textContent=String(bestLevel);writeBest(bestLevel)}
         if(levelNumber===10){
+          unlockAchievement('feast-champion');
           showOverlay('Feast champion!',`You cleared all ten levels and scored ${totalScore} points. The Forbidden Bite kitchen salutes you.`,[makeButton('Play the whole run again','game-primary',()=>beginLevel(1,true)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
         }else{
           showOverlay(`Level ${levelNumber} cleared!`,`You scored ${levelScore} points this round and ${totalScore} overall. Ready for the next challenge?`,[makeButton('Next level','game-primary',()=>beginLevel(levelNumber+1)),makeButton('Replay this level','game-secondary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
@@ -133,7 +184,9 @@
       };
       function beginLevel(number,freshRun=false){
         clearTimers();levelNumber=number;levelScore=0;timeLeft=20;running=true;freezeUntil=0;doubleUntil=0;powerStatus.textContent='';
-        if(freshRun)totalScore=0;
+        decoysHitThisLevel=0;
+        if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set()}
+        if(levelNumber>=5)unlockAchievement('halfway-hero');
         const config=levels[levelNumber-1];powerUses={tea:config.powers.includes('tea')?1:0,chili:config.powers.includes('chili')?1:0,chopsticks:config.powers.includes('chopsticks')?1:0};
         instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
         updateStats();renderTargets();renderPowerups();overlay.hidden=true;
@@ -144,11 +197,14 @@
       function catchTarget(target){
         if(!running)return;
         if(target.dataset.kind==='decoy'){
-          levelScore=Math.max(0,levelScore-1);powerStatus.textContent='Mooncake decoy! One point lost.';
+          levelScore=Math.max(0,levelScore-1);decoysHitThisLevel++;catchStreak=0;powerStatus.textContent='Mooncake decoy! One point lost.';
         }else{
+          catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');
+          if(target.dataset.kind==='golden')unlockAchievement('golden-grab');
           let points=target.dataset.kind==='golden'?3:1;
           if(Date.now()<doubleUntil)points*=2;
           levelScore+=points;totalScore+=points;
+          if(totalScore>=100)unlockAchievement('century-club');
           powerStatus.textContent=target.dataset.kind==='golden'?`Golden dumpling! +${points} points.`:`Nice catch! +${points} point${points===1?'':'s'}.`;
         }
         updateStats();moveTargets();
