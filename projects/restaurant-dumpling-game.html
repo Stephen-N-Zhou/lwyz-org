@@ -5,70 +5,157 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#093d33">
   <title>Dumpling Dash | Forbidden Bite</title>
-  <meta name="description" content="Play Dumpling Dash, a quick full-screen Forbidden Bite mini-game.">
+  <meta name="description" content="Play ten increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-2">
 </head>
 <body class="game-page">
   <main class="game-shell">
     <header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Forbidden Bite mini-game</span></header>
-    <p class="game-label">Quick fingers, hungry dumplings</p>
+    <p class="game-label">Ten levels of dumpling mayhem</p>
     <h1 class="game-title">Dumpling Dash</h1>
-    <p class="game-instructions">Tap or click the dumpling as it hops around the table. Catch as many as you can in 20 seconds.</p>
-    <div class="game-scorebar" aria-label="Game score">
-      <div class="game-stat"><span>Time left</span><strong id="game-time">20</strong></div>
-      <div class="game-stat"><span>Score</span><strong id="game-score">0</strong></div>
-      <div class="game-stat"><span>Best</span><strong id="game-best">0</strong></div>
+    <p class="game-instructions" id="level-instructions">Tap the dumpling before time runs out. Clear each round to unlock the next level.</p>
+    <div class="game-scorebar" aria-label="Game progress">
+      <div class="game-stat"><span>Level</span><strong id="game-level">1/10</strong></div>
+      <div class="game-stat"><span>Caught / Goal</span><strong id="game-score">0 / 5</strong></div>
+      <div class="game-stat"><span>Time</span><strong id="game-time">20</strong></div>
+      <div class="game-stat"><span>Best level</span><strong id="game-best">0</strong></div>
     </div>
+    <div class="game-progress" aria-hidden="true"><span id="game-progress-fill"></span></div>
+    <div class="powerup-bar" id="powerup-bar" aria-label="Power-ups" hidden></div>
+    <p class="powerup-status" id="powerup-status" role="status" aria-live="polite"></p>
     <section class="game-arena" id="game-arena" aria-label="Dumpling Dash play area">
-      <button class="dumpling-target" id="dumpling-target" type="button" aria-label="Catch the dumpling" hidden>🥟</button>
+      <div class="target-layer" id="target-layer"></div>
       <div class="game-overlay" id="game-overlay">
-        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Catch the dumpling each time it hops to a new spot. You have 20 seconds.</p><div class="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
+        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all ten levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
       </div>
     </section>
-    <p class="game-footer">Just for fun. No scores or personal details are sent anywhere.</p>
+    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level is saved on this device only.</p>
   </main>
   <script>
     (()=>{
+      const levels=[
+        {goal:5,dumplings:1,decoys:0,golden:0,hop:0,powers:[],hint:'One dumpling, no tricks. Catch five before the timer ends.'},
+        {goal:8,dumplings:2,decoys:0,golden:0,hop:0,powers:[],hint:'Two dumplings are on the table now. Catch eight.'},
+        {goal:11,dumplings:3,decoys:0,golden:0,hop:0,powers:[],hint:'Three dumplings at once. Keep your eyes moving.'},
+        {goal:13,dumplings:3,decoys:0,golden:0,hop:1450,powers:['tea'],hint:'The dumplings start hopping. Jade Tea can pause their jumps for a moment.'},
+        {goal:15,dumplings:3,decoys:0,golden:1,hop:1300,powers:['tea'],hint:'Golden dumplings are worth triple points. The hopping gets quicker.'},
+        {goal:17,dumplings:4,decoys:0,golden:1,hop:1200,powers:['tea','chili'],hint:'Four dumplings join the dash. Chili Burst adds five seconds.'},
+        {goal:19,dumplings:4,decoys:1,golden:1,hop:1100,powers:['tea','chili'],hint:'Watch out for mooncake decoys. Tap one and lose a point.'},
+        {goal:21,dumplings:5,decoys:1,golden:1,hop:1000,powers:['tea','chili','chopsticks'],hint:'Five targets, faster hops, and Golden Chopsticks unlock double points.'},
+        {goal:24,dumplings:5,decoys:2,golden:2,hop:900,powers:['tea','chili','chopsticks'],hint:'Two decoys and two golden dumplings. Pick your targets carefully.'},
+        {goal:28,dumplings:6,decoys:2,golden:2,hop:780,powers:['tea','chili','chopsticks'],hint:'The Feast Rush: six targets, two decoys, faster hops, and every power-up.'}
+      ];
       const arena=document.getElementById('game-arena');
-      const target=document.getElementById('dumpling-target');
+      const targetLayer=document.getElementById('target-layer');
       const overlay=document.getElementById('game-overlay');
-      const timeText=document.getElementById('game-time');
+      const controls=document.getElementById('game-controls');
       const scoreText=document.getElementById('game-score');
+      const timeText=document.getElementById('game-time');
+      const levelText=document.getElementById('game-level');
       const bestText=document.getElementById('game-best');
-      const bestKey='forbidden-bite-dumpling-dash-best';
-      let score=0,timeLeft=20,timer=null,running=false,recordBroken=false;
+      const progress=document.getElementById('game-progress-fill');
+      const instructions=document.getElementById('level-instructions');
+      const powerBar=document.getElementById('powerup-bar');
+      const powerStatus=document.getElementById('powerup-status');
+      const bestKey='forbidden-bite-dumpling-dash-best-level';
+      let levelNumber=1,levelScore=0,totalScore=0,timeLeft=20,running=false,timer=null,hopTimer=null;
+      let freezeUntil=0,doubleUntil=0,powerUses={};
       const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
       const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
-      let best=readBest();bestText.textContent=String(best);
-      const moveTarget=()=>{
-        const bounds=arena.getBoundingClientRect(),padding=46;
-        const x=padding+Math.random()*Math.max(0,bounds.width-padding*2);
-        const y=padding+Math.random()*Math.max(0,bounds.height-padding*2);
-        target.style.left=`${x/bounds.width*100}%`;target.style.top=`${y/bounds.height*100}%`;
+      let bestLevel=readBest();bestText.textContent=String(bestLevel);
+      const makeButton=(label,className,onClick)=>{const button=document.createElement('button');button.type='button';button.className=className;button.textContent=label;button.addEventListener('click',onClick);return button};
+      const showOverlay=(title,copy,actions)=>{
+        document.getElementById('overlay-title').textContent=title;
+        document.getElementById('overlay-copy').textContent=copy;
+        controls.replaceChildren(...actions);
+        overlay.hidden=false;
       };
-      const finishGame=()=>{
-        running=false;clearInterval(timer);target.hidden=true;overlay.hidden=false;
-        document.getElementById('overlay-title').textContent='Time is up!';
-        document.getElementById('overlay-copy').textContent=`You caught ${score} dumpling${score===1?'':'s'}${recordBroken?' — a new personal best!':''} Play again or head back to the menu.`;
-        document.querySelector('.game-controls').innerHTML='<button class="game-primary" id="game-restart" type="button">Play again</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a>';
-        document.getElementById('game-restart').addEventListener('click',startGame);
+      const updateStats=()=>{
+        const config=levels[levelNumber-1];
+        levelText.textContent=`${levelNumber}/10`;scoreText.textContent=`${levelScore} / ${config.goal}`;timeText.textContent=String(timeLeft);
+        progress.style.width=`${Math.min(100,levelScore/config.goal*100)}%`;
       };
-      function startGame(){
-        clearInterval(timer);score=0;timeLeft=20;running=true;recordBroken=false;
-        scoreText.textContent=String(score);timeText.textContent=String(timeLeft);overlay.hidden=true;target.hidden=false;moveTarget();
+      const moveTargets=()=>{
+        const bounds=arena.getBoundingClientRect(),padding=42;
+        for(const target of targetLayer.children){
+          const x=padding+Math.random()*Math.max(0,bounds.width-padding*2);
+          const y=padding+Math.random()*Math.max(0,bounds.height-padding*2);
+          target.style.left=`${x/bounds.width*100}%`;target.style.top=`${y/bounds.height*100}%`;
+        }
+      };
+      const addTarget=(kind,index)=>{
+        const target=document.createElement('button');target.type='button';target.className='dumpling-target';
+        if(kind==='decoy'){target.classList.add('dumpling-decoy');target.textContent='🥮';target.setAttribute('aria-label','Mooncake decoy: avoid this');}
+        else if(kind==='golden'){target.classList.add('dumpling-golden');target.textContent='🥟';target.setAttribute('aria-label','Golden dumpling: worth three points');}
+        else{target.textContent='🥟';target.setAttribute('aria-label','Catch dumpling');}
+        target.dataset.kind=kind;target.dataset.index=String(index);
+        target.addEventListener('click',()=>catchTarget(target));targetLayer.append(target);
+      };
+      const renderTargets=()=>{
+        const config=levels[levelNumber-1];targetLayer.replaceChildren();
+        for(let i=0;i<config.dumplings;i++)addTarget(i<config.golden?'golden':'dumpling',i);
+        for(let i=0;i<config.decoys;i++)addTarget('decoy',config.dumplings+i);
+        moveTargets();
+      };
+      const renderPowerups=()=>{
+        const config=levels[levelNumber-1];powerBar.replaceChildren();powerBar.hidden=config.powers.length===0;
+        const addPower=(key,label,description,action)=>{
+          const left=powerUses[key]||0;
+          const button=makeButton(`${label} · ${left}`, 'powerup-button',action);
+          button.disabled=left===0;button.title=description;button.setAttribute('aria-label',`${label}, ${left} uses left. ${description}`);powerBar.append(button);
+        };
+        if(config.powers.includes('tea'))addPower('tea','Jade Tea','Freeze hopping dumplings for 4 seconds.',()=>{
+          if(!powerUses.tea)return;powerUses.tea--;freezeUntil=Date.now()+4000;powerStatus.textContent='Jade Tea: dumpling hopping paused for 4 seconds.';renderPowerups();
+        });
+        if(config.powers.includes('chili'))addPower('chili','Chili Burst','Add five seconds to the clock.',()=>{
+          if(!powerUses.chili)return;powerUses.chili--;timeLeft+=5;updateStats();powerStatus.textContent='Chili Burst: five seconds added.';renderPowerups();
+        });
+        if(config.powers.includes('chopsticks'))addPower('chopsticks','Golden Chopsticks','Double points for 5 seconds.',()=>{
+          if(!powerUses.chopsticks)return;powerUses.chopsticks--;doubleUntil=Date.now()+5000;powerStatus.textContent='Golden Chopsticks: double points for 5 seconds.';renderPowerups();
+        });
+      };
+      const clearTimers=()=>{clearInterval(timer);clearInterval(hopTimer);timer=null;hopTimer=null};
+      const finishLevel=()=>{
+        running=false;clearTimers();targetLayer.replaceChildren();
+        if(levelNumber>bestLevel){bestLevel=levelNumber;bestText.textContent=String(bestLevel);writeBest(bestLevel)}
+        if(levelNumber===10){
+          showOverlay('Feast champion!',`You cleared all ten levels and scored ${totalScore} points. The Forbidden Bite kitchen salutes you.`,[makeButton('Play the whole run again','game-primary',()=>beginLevel(1,true)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
+        }else{
+          showOverlay(`Level ${levelNumber} cleared!`,`You scored ${levelScore} points this round and ${totalScore} overall. Ready for the next challenge?`,[makeButton('Next level','game-primary',()=>beginLevel(levelNumber+1)),makeButton('Replay this level','game-secondary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
+        }
+      };
+      const finishAttempt=()=>{
+        running=false;clearTimers();targetLayer.replaceChildren();
+        showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
+      };
+      function beginLevel(number,freshRun=false){
+        clearTimers();levelNumber=number;levelScore=0;timeLeft=20;running=true;freezeUntil=0;doubleUntil=0;powerStatus.textContent='';
+        if(freshRun)totalScore=0;
+        const config=levels[levelNumber-1];powerUses={tea:config.powers.includes('tea')?1:0,chili:config.powers.includes('chili')?1:0,chopsticks:config.powers.includes('chopsticks')?1:0};
+        instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
+        updateStats();renderTargets();renderPowerups();overlay.hidden=true;
         if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
-        timer=setInterval(()=>{timeLeft-=1;timeText.textContent=String(timeLeft);if(timeLeft<=0)finishGame()},1000);
+        timer=setInterval(()=>{timeLeft-=1;updateStats();if(timeLeft<=0)finishAttempt()},1000);
+        if(config.hop)hopTimer=setInterval(()=>{if(running&&Date.now()>=freezeUntil)moveTargets()},config.hop);
       }
-      document.getElementById('game-start').addEventListener('click',startGame);
-      target.addEventListener('click',()=>{
-        if(!running)return;score+=1;scoreText.textContent=String(score);
-        if(score>best){best=score;recordBroken=true;bestText.textContent=String(best);writeBest(best)}
-        moveTarget();
-      });
-      window.addEventListener('resize',()=>{if(running)moveTarget()});
+      function catchTarget(target){
+        if(!running)return;
+        if(target.dataset.kind==='decoy'){
+          levelScore=Math.max(0,levelScore-1);powerStatus.textContent='Mooncake decoy! One point lost.';
+        }else{
+          let points=target.dataset.kind==='golden'?3:1;
+          if(Date.now()<doubleUntil)points*=2;
+          levelScore+=points;totalScore+=points;
+          powerStatus.textContent=target.dataset.kind==='golden'?`Golden dumpling! +${points} points.`:`Nice catch! +${points} point${points===1?'':'s'}.`;
+        }
+        updateStats();moveTargets();
+        if(levelScore>=levels[levelNumber-1].goal)finishLevel();
+      }
+      document.getElementById('game-start').addEventListener('click',()=>beginLevel(1,true));
+      window.addEventListener('resize',()=>{if(running)moveTargets()});
     })();
   </script>
 </body>
