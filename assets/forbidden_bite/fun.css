@@ -70,6 +70,8 @@
 .dumpling-target:hover{transform:translate(-50%,-50%) scale(1.12)}
 .dumpling-target.dumpling-golden{border:3px solid #d49b19;background:#fff0bc;box-shadow:0 0 0 5px #f4d47455,0 7px 20px #8a621b55}
 .dumpling-target.dumpling-decoy{border:3px dashed #8b5a37;background:#f2dcc7;filter:saturate(.72)}
+.dumpling-target.dumpling-boss{width:clamp(96px,16vw,148px);height:clamp(96px,16vw,148px);border:5px solid #c66f48;background:radial-gradient(circle at 35% 28%,#fff6d9,#eabf82);box-shadow:0 0 0 8px #bf634044,0 10px 25px #56351e66;font-size:clamp(2.4rem,6vw,4.3rem);animation:boss-wiggle .55s ease-in-out infinite alternate}
+@keyframes boss-wiggle{from{filter:drop-shadow(0 0 0 #f5b34c)}to{filter:drop-shadow(0 0 12px #f5b34c)}}
 .dumpling-target[hidden]{display:none}
 .game-overlay{position:absolute;inset:0;z-index:2;display:grid;place-items:center;padding:1rem;background:#093d33b8;backdrop-filter:blur(3px)}
 .game-overlay[hidden]{display:none}
@@ -80,6 +82,14 @@
 .game-primary,.game-secondary{min-height:46px;padding:.6rem 1rem;border:1px solid #c5a146;border-radius:8px;background:#c5a146;color:#171710;font:700 .88rem Inter,system-ui,sans-serif;cursor:pointer}
 .game-secondary{display:inline-flex;align-items:center;justify-content:center;border-color:#ffffff80;background:transparent;color:#fff;text-decoration:none}
 .game-footer{margin-top:1rem;color:#e4e8df;font-size:.78rem}
+.collection-panel{width:min(900px,100%);margin:1.2rem auto 0;padding:1rem;border:1px solid #ffffff45;border-radius:14px;background:#ffffff0b;text-align:left}
+.collection-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem}.collection-heading .game-label{margin:0}.collection-heading h2{margin:.2rem 0;color:#fff;font:400 1.65rem Marcellus,Georgia,serif}
+.coin-counter{padding:.45rem .7rem;border:1px solid #e0bd59;border-radius:999px;background:#e0bd5922;color:#ffe28a;white-space:nowrap}
+.collection-tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:.65rem 0}.collection-tools button:disabled{opacity:.5;cursor:not-allowed}.sound-toggle{min-height:46px}
+.collection-note{margin:.5rem 0;color:#e4e8df;font-size:.78rem;line-height:1.5}.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.55rem;margin-top:.8rem}
+.collection-card{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:.15rem .55rem;padding:.65rem;border:1px solid #ffffff35;border-radius:10px;background:#ffffff09}.collection-icon{grid-row:span 2;font-size:1.7rem}.collection-card strong{font-size:.77rem;line-height:1.25}.collection-card small{color:#bfcfc5;font-size:.67rem}.collection-empty{grid-column:1/-1;color:#d9e0d9;font-size:.85rem}
+.rarity-common{border-color:#ffffff40}.rarity-uncommon{border-color:#79c88e}.rarity-rare{border-color:#72bdf0}.rarity-epic{border-color:#bd8bff}.rarity-legendary{border-color:#e8bc4e;box-shadow:inset 0 0 16px #e8bc4e18}.rarity-chroma{border-color:#fa8be6;box-shadow:inset 0 0 20px #b15bff35;animation:chroma-glow 3s linear infinite alternate}
+@keyframes chroma-glow{to{box-shadow:inset 0 0 24px #49d9db55;border-color:#8af6d3}}
 .achievement-panel{width:min(900px,100%);margin:1rem auto 0;border:1px solid #ffffff45;border-radius:12px;background:#ffffff0b;color:#fff}
 .achievement-panel summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 1rem;color:#f0d88f;font-weight:700;cursor:pointer;list-style:none}
 .achievement-panel summary::-webkit-details-marker{display:none}
@@ -98,5 +108,5 @@
 .achievement-state{color:#f0d88f;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 .achievement-toast{position:fixed;z-index:10;right:1rem;bottom:1rem;max-width:min(25rem,calc(100vw - 2rem));padding:.85rem 1rem;border:1px solid #f0d88f;border-radius:10px;background:#093d33;color:#fff;box-shadow:0 12px 35px #0005;font-weight:700;animation:achievement-pop .2s ease-out}
 @keyframes achievement-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:520px){.game-arena{height:48vh;min-height:230px}.game-stat{min-width:74px;padding:.45rem}.game-scorebar{gap:.45rem}.game-stat strong{font-size:1.1rem}.dumpling-target{width:66px;height:66px}.game-top{align-items:flex-start}.achievement-grid{grid-template-columns:1fr}.achievement-card{grid-template-columns:36px minmax(0,1fr) auto}.achievement-panel summary{padding:.7rem}.achievement-copy>span{font-size:.72rem}}
+@media(max-width:520px){.game-arena{height:48vh;min-height:230px}.game-stat{min-width:74px;padding:.45rem}.game-scorebar{gap:.45rem}.game-stat strong{font-size:1.1rem}.dumpling-target{width:66px;height:66px}.dumpling-target.dumpling-boss{width:104px;height:104px}.game-top{align-items:flex-start}.achievement-grid{grid-template-columns:1fr}.achievement-card{grid-template-columns:36px minmax(0,1fr) auto}.achievement-panel summary{padding:.7rem}.achievement-copy>span{font-size:.72rem}.collection-heading{align-items:flex-start}.collection-tools>*{flex:1}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.dumpling-target{transition:none}}
