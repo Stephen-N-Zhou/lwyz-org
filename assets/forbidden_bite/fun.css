@@ -86,7 +86,7 @@
 .achievement-panel summary:after{content:"＋";margin-left:.5rem;color:#f0d88f}
 .achievement-panel[open] summary:after{content:"−"}
 .achievement-panel summary:focus-visible{outline:3px solid #f0d88f;outline-offset:2px;border-radius:10px}
-.achievement-count{margin-left:auto;color:#e4e8df;font-size:.78rem;font-weight:500}
+.achievement-count{margin-left:auto;color:#e4e8df;font-size:.78rem;font-weight:500}.achievement-legend{display:block;margin-top:.25rem;color:#d9e0d9;font-size:.68rem;font-weight:500}.achievement-state.tier-easy{color:#9ee0b0}.achievement-state.tier-medium{color:#a9d7ff}.achievement-state.tier-hard{color:#ffd47a}.achievement-state.tier-very-hard{color:#ff9b91}.achievement-easy{border-left:3px solid #73bd89}.achievement-medium{border-left:3px solid #77b8ed}.achievement-hard{border-left:3px solid #e4b847}.achievement-very-hard{border:1px dashed #ff9b91}.achievement-card.is-unlocked.achievement-very-hard{border-style:solid;background:#ff9b9114}
 .achievement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;padding:0 .7rem .7rem}
 .achievement-card{display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:.55rem;padding:.65rem;border:1px solid #ffffff35;border-radius:9px;background:#ffffff09;opacity:.62}
 .achievement-card.is-unlocked{border-color:#c5a146;background:#f0d88f14;opacity:1}
@@ -95,7 +95,7 @@
 .achievement-copy{display:grid;gap:.12rem;min-width:0}
 .achievement-copy strong{color:#fff;font-size:.8rem}
 .achievement-copy>span{color:#d9e0d9;font-size:.69rem;line-height:1.35}
-.achievement-state{color:#f0d88f;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}.achievement-state.is-hard{color:#ffb3a8}.achievement-hard{border-style:dashed}.achievement-card.is-unlocked.achievement-hard{border-style:solid;border-color:#ffb3a8;background:#ffb3a812}
+.achievement-state{color:#f0d88f;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 .achievement-toast{position:fixed;z-index:10;right:1rem;bottom:1rem;max-width:min(25rem,calc(100vw - 2rem));padding:.85rem 1rem;border:1px solid #f0d88f;border-radius:10px;background:#093d33;color:#fff;box-shadow:0 12px 35px #0005;font-weight:700;animation:achievement-pop .2s ease-out}
 @keyframes achievement-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:520px){.game-arena{height:48vh;min-height:230px}.game-stat{min-width:74px;padding:.45rem}.game-scorebar{gap:.45rem}.game-stat strong{font-size:1.1rem}.dumpling-target{width:66px;height:66px}.game-top{align-items:flex-start}.achievement-grid{grid-template-columns:1fr}.achievement-card{grid-template-columns:36px minmax(0,1fr) auto}.achievement-panel summary{padding:.7rem}.achievement-copy>span{font-size:.72rem}}

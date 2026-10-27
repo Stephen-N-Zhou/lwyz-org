@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-4">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-5">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -33,10 +33,10 @@
       </div>
     </section>
     <details class="achievement-panel">
-      <summary><span>Achievements</span><span class="achievement-count" id="achievement-count">0 of 25 unlocked</span></summary>
+      <summary><span>Achievements <small class="achievement-legend">Easy · Medium · Hard · Very hard</small></span><span class="achievement-count" id="achievement-count">0 of 25 unlocked</span></summary>
       <div class="achievement-grid" id="achievement-grid" aria-live="polite"></div>
     </details>
-    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Fifteen achievements are marked very hard.</p>
+    <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Achievements are grouped by difficulty, from easy to very hard. New power-ups unlock as you advance.</p>
   </main>
   <script>
     (()=>{
@@ -47,6 +47,9 @@
         const golden=n<5?0:Math.min(3,1+Math.floor((n-5)/35));
         const hop=n<4?0:Math.max(430,1500-Math.floor((n-4)*10));
         const powers=n<4?[]:n<6?['tea']:n<8?['tea','chili']:['tea','chili','chopsticks'];
+        if(n>=12)powers.push('shield');
+        if(n>=18)powers.push('wok');
+        if(n>=25)powers.push('cookie');
         const goal=5+Math.floor((n-1)*0.28)+Math.floor((n-1)/20);
         const hint=n===1?'One dumpling, no tricks. Catch five before the timer ends.':`Round ${n}: ${dumplings} dumplings, ${decoys} mooncake decoy${decoys===1?'':'s'}, and a goal of ${goal}. Keep moving and use your power-ups wisely.`;
         return {goal,dumplings,decoys,golden,hop,powers,hint};
@@ -66,34 +69,34 @@
       const bestKey='forbidden-bite-dumpling-dash-best-level';
       const achievementKey='forbidden-bite-dumpling-dash-achievements-v1';
       const achievements=[
-        {id:'first-bite',icon:'🥟',name:'First Bite',detail:'Catch your first dumpling.'},
-        {id:'combo-five',icon:'🔥',name:'Combo of Five',detail:'Catch five targets in a row without a decoy.'},
-        {id:'golden-grab',icon:'✨',name:'Golden Grab',detail:'Catch a golden dumpling.'},
-        {id:'power-play',icon:'🍵',name:'Power Play',detail:'Use your first power-up.'},
-        {id:'full-arsenal',icon:'🪄',name:'Full Arsenal',detail:'Use all three power-ups in one run.'},
-        {id:'decoy-dodger',icon:'🛡️',name:'Decoy Dodger',detail:'Clear a decoy level without tapping a decoy.'},
-        {id:'speedy-server',icon:'⚡',name:'Speedy Server',detail:'Clear a level with at least 8 seconds left.'},
-        {id:'halfway-hero',icon:'🏮',name:'Halfway Hero',detail:'Reach level 5.'},
-        {id:'century-club',icon:'💯',name:'Century Club',detail:'Score 100 points in one run.'},
-        {id:'feast-champion',icon:'🏆',name:'Ten-Level Feast',detail:'Clear the original ten-level feast.'},
-        {id:'level-15',icon:'🥢',name:'Kitchen Regular',detail:'Reach level 15.',hard:true},
-        {id:'level-25',icon:'🌟',name:'Quarter-Century Dash',detail:'Reach level 25.',hard:true},
-        {id:'level-40',icon:'🐉',name:'Dragon’s Pace',detail:'Reach level 40.',hard:true},
-        {id:'level-50',icon:'🏮',name:'Golden Halfway',detail:'Reach level 50.',hard:true},
-        {id:'level-60',icon:'🌕',name:'Moonlit Marathon',detail:'Reach level 60.',hard:true},
-        {id:'level-75',icon:'🎖️',name:'Three-Quarter Feast',detail:'Reach level 75.',hard:true},
-        {id:'level-85',icon:'🔥',name:'Kitchen Legend',detail:'Reach level 85.',hard:true},
-        {id:'level-100',icon:'👑',name:'Hundred-Level Legend',detail:'Clear level 100.',hard:true},
-        {id:'score-250',icon:'📈',name:'Big Appetite',detail:'Score 250 points in one run.',hard:true},
-        {id:'score-500',icon:'💎',name:'Golden Feast',detail:'Score 500 points in one run.',hard:true},
-        {id:'score-1000',icon:'💰',name:'Thousand-Point Banquet',detail:'Score 1,000 points in one run.',hard:true},
-        {id:'combo-15',icon:'🧨',name:'Unbroken Rhythm',detail:'Catch 15 dumplings in a row.',hard:true},
-        {id:'combo-25',icon:'⚡',name:'Perfect Flow',detail:'Catch 25 dumplings in a row.',hard:true},
-        {id:'clean-streak-10',icon:'🧼',name:'Decoy-Free Ten',detail:'Clear 10 decoy levels in a row without a mistake.',hard:true},
-        {id:'lightning-clear',icon:'⏱️',name:'Lightning Service',detail:'Clear a level 10 or higher with 15+ seconds left.',hard:true}
+        {id:'first-bite',icon:'🥟',name:'First Bite',detail:'Catch your first dumpling.',tier:'easy'},
+        {id:'combo-five',icon:'🔥',name:'Combo of Five',detail:'Catch five targets in a row without a decoy.',tier:'easy'},
+        {id:'golden-grab',icon:'✨',name:'Golden Grab',detail:'Catch a golden dumpling.',tier:'easy'},
+        {id:'power-play',icon:'🍵',name:'Power Play',detail:'Use your first power-up.',tier:'easy'},
+        {id:'full-arsenal',icon:'🪄',name:'Full Arsenal',detail:'Use all six power-ups in one run.',tier:'hard'},
+        {id:'decoy-dodger',icon:'🛡️',name:'Decoy Dodger',detail:'Clear a decoy level without taking a decoy penalty.',tier:'medium'},
+        {id:'speedy-server',icon:'⚡',name:'Speedy Server',detail:'Clear a level with at least 8 seconds left.',tier:'medium'},
+        {id:'halfway-hero',icon:'🏮',name:'Halfway Hero',detail:'Reach level 5.',tier:'easy'},
+        {id:'century-club',icon:'💯',name:'Century Club',detail:'Score 100 points in one run.',tier:'medium'},
+        {id:'feast-champion',icon:'🏆',name:'Ten-Level Feast',detail:'Clear the original ten-level feast.',tier:'medium'},
+        {id:'level-15',icon:'🥢',name:'Kitchen Regular',detail:'Reach level 15.',tier:'medium'},
+        {id:'level-25',icon:'🌟',name:'Quarter-Century Dash',detail:'Reach level 25.',tier:'hard'},
+        {id:'level-40',icon:'🐉',name:'Dragon’s Pace',detail:'Reach level 40.',tier:'hard'},
+        {id:'level-50',icon:'🏮',name:'Golden Halfway',detail:'Reach level 50.',tier:'hard'},
+        {id:'level-60',icon:'🌕',name:'Moonlit Marathon',detail:'Reach level 60.',tier:'hard'},
+        {id:'level-75',icon:'🎖️',name:'Three-Quarter Feast',detail:'Reach level 75.',tier:'very-hard'},
+        {id:'level-85',icon:'🔥',name:'Kitchen Legend',detail:'Reach level 85.',tier:'very-hard'},
+        {id:'level-100',icon:'👑',name:'Hundred-Level Legend',detail:'Clear level 100.',tier:'very-hard'},
+        {id:'score-250',icon:'📈',name:'Big Appetite',detail:'Score 250 points in one run.',tier:'medium'},
+        {id:'score-500',icon:'💎',name:'Golden Feast',detail:'Score 500 points in one run.',tier:'hard'},
+        {id:'score-1000',icon:'💰',name:'Thousand-Point Banquet',detail:'Score 1,000 points in one run.',tier:'very-hard'},
+        {id:'combo-15',icon:'🧨',name:'Unbroken Rhythm',detail:'Catch 15 dumplings in a row.',tier:'hard'},
+        {id:'combo-25',icon:'⚡',name:'Perfect Flow',detail:'Catch 25 dumplings in a row.',tier:'very-hard'},
+        {id:'clean-streak-10',icon:'🧼',name:'Decoy-Free Ten',detail:'Clear 10 decoy levels in a row without taking a decoy penalty.',tier:'hard'},
+        {id:'lightning-clear',icon:'⏱️',name:'Lightning Service',detail:'Clear a level 10 or higher with 15+ seconds left.',tier:'hard'}
       ];
       let levelNumber=1,levelScore=0,totalScore=0,timeLeft=20,running=false,timer=null,hopTimer=null;
-      let freezeUntil=0,doubleUntil=0,powerUses={},catchStreak=0,decoysHitThisLevel=0,cleanDecoyStreak=0,runPowersUsed=new Set();
+      let freezeUntil=0,doubleUntil=0,tripleUntil=0,bambooShield=false,powerUses={},catchStreak=0,decoysHitThisLevel=0,cleanDecoyStreak=0,runPowersUsed=new Set();
       const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
       const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
       const readAchievements=()=>{try{const value=JSON.parse(localStorage.getItem(achievementKey)||'[]');return new Set(Array.isArray(value)?value.filter(id=>achievements.some(item=>item.id===id)):[])}catch{return new Set()}};
@@ -109,8 +112,8 @@
           const text=document.createElement('div');text.className='achievement-copy';
           const name=document.createElement('strong');name.textContent=achievement.name;
           const detail=document.createElement('span');detail.textContent=achievement.detail;
-          const state=document.createElement('span');state.className=`achievement-state${achievement.hard?' is-hard':''}`;state.textContent=unlocked.has(achievement.id)?'Unlocked':achievement.hard?'Very hard':'Locked';
-          text.append(name,detail);card.append(icon,text,state);if(achievement.hard)card.classList.add('achievement-hard');grid.append(card);
+          const state=document.createElement('span');state.className=`achievement-state tier-${achievement.tier}`;state.textContent=unlocked.has(achievement.id)?'Unlocked':achievement.tier;
+          text.append(name,detail);card.append(icon,text,state);card.classList.add(`achievement-${achievement.tier}`);grid.append(card);
         }
       };
       const unlockAchievement=id=>{
@@ -124,7 +127,7 @@
       };
       const recordPowerup=key=>{
         runPowersUsed.add(key);unlockAchievement('power-play');
-        if(['tea','chili','chopsticks'].every(item=>runPowersUsed.has(item)))unlockAchievement('full-arsenal');
+        if(['tea','chili','chopsticks','shield','wok','cookie'].every(item=>runPowersUsed.has(item)))unlockAchievement('full-arsenal');
       };
       renderAchievements();
       const makeButton=(label,className,onClick)=>{const button=document.createElement('button');button.type='button';button.className=className;button.textContent=label;button.addEventListener('click',onClick);return button};
@@ -177,6 +180,16 @@
         if(config.powers.includes('chopsticks'))addPower('chopsticks','Golden Chopsticks','Double points for 5 seconds.',()=>{
           if(!powerUses.chopsticks)return;powerUses.chopsticks--;doubleUntil=Date.now()+5000;powerStatus.textContent='Golden Chopsticks: double points for 5 seconds.';recordPowerup('chopsticks');renderPowerups();
         });
+        if(config.powers.includes('shield'))addPower('shield','Bamboo Shield','Block the next mooncake decoy you tap.',()=>{
+          if(!powerUses.shield)return;powerUses.shield--;bambooShield=true;powerStatus.textContent='Bamboo Shield ready! It will bonk one mooncake decoy away.';recordPowerup('shield');renderPowerups();
+        });
+        if(config.powers.includes('wok'))addPower('wok','Wok Whirlwind','Sweep every dumpling currently on screen into your basket.',()=>{
+          if(!powerUses.wok)return;powerUses.wok--;recordPowerup('wok');renderPowerups();powerStatus.textContent='Wok Whirlwind! The dumplings are going for a spin!';
+          for(const target of [...targetLayer.children].filter(item=>item.dataset.kind!=='decoy')){if(running)catchTarget(target)}
+        });
+        if(config.powers.includes('cookie'))addPower('cookie','Lucky Cookie','Triple points for 5 seconds. May contain extra luck.',()=>{
+          if(!powerUses.cookie)return;powerUses.cookie--;tripleUntil=Date.now()+5000;powerStatus.textContent='Lucky Cookie activated: triple points for 5 seconds!';recordPowerup('cookie');renderPowerups();
+        });
       };
       const clearTimers=()=>{clearInterval(timer);clearInterval(hopTimer);timer=null;hopTimer=null};
       const finishLevel=()=>{
@@ -199,12 +212,12 @@
         showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
       };
       function beginLevel(number,freshRun=false){
-        clearTimers();levelNumber=number;levelScore=0;timeLeft=20;running=true;freezeUntil=0;doubleUntil=0;powerStatus.textContent='';
+        clearTimers();levelNumber=number;levelScore=0;timeLeft=20;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;powerStatus.textContent='';
         decoysHitThisLevel=0;
         if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set()}
         if(levelNumber>=5)unlockAchievement('halfway-hero');
         for(const milestone of [15,25,40,50,60,75,85])if(levelNumber>=milestone)unlockAchievement(`level-${milestone}`);
-        const config=levels[levelNumber-1];powerUses={tea:config.powers.includes('tea')?1:0,chili:config.powers.includes('chili')?1:0,chopsticks:config.powers.includes('chopsticks')?1:0};
+        const config=levels[levelNumber-1];powerUses={};for(const power of config.powers)powerUses[power]=1;
         instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
         updateStats();renderTargets();renderPowerups();overlay.hidden=true;
         if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
@@ -214,15 +227,16 @@
       function catchTarget(target){
         if(!running)return;
         if(target.dataset.kind==='decoy'){
-          levelScore=Math.max(0,levelScore-1);decoysHitThisLevel++;catchStreak=0;cleanDecoyStreak=0;powerStatus.textContent='Mooncake decoy! One point lost.';
+          if(bambooShield){bambooShield=false;powerStatus.textContent='Bonk! Bamboo Shield bounced that sneaky mooncake away.'}
+          else{levelScore=Math.max(0,levelScore-1);decoysHitThisLevel++;catchStreak=0;cleanDecoyStreak=0;const quips=['Mooncake impostor! One point lost.','That was a very convincing mooncake. -1 point!','The mooncake wins this round. -1 point!'];powerStatus.textContent=quips[Math.floor(Math.random()*quips.length)]}
         }else{
           catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');if(catchStreak>=15)unlockAchievement('combo-15');if(catchStreak>=25)unlockAchievement('combo-25');
           if(target.dataset.kind==='golden')unlockAchievement('golden-grab');
           let points=target.dataset.kind==='golden'?3:1;
-          if(Date.now()<doubleUntil)points*=2;
+          if(Date.now()<doubleUntil)points*=2;if(Date.now()<tripleUntil)points*=3;
           levelScore+=points;totalScore+=points;
           if(totalScore>=100)unlockAchievement('century-club');if(totalScore>=250)unlockAchievement('score-250');if(totalScore>=500)unlockAchievement('score-500');if(totalScore>=1000)unlockAchievement('score-1000');
-          powerStatus.textContent=target.dataset.kind==='golden'?`Golden dumpling! +${points} points.`:`Nice catch! +${points} point${points===1?'':'s'}.`;
+          powerStatus.textContent=catchStreak>=5&&catchStreak%5===0?`🔥 ${catchStreak} in a row! The kitchen is cheering!`:target.dataset.kind==='golden'?`Golden dumpling! +${points} points.`:`Nice catch! +${points} point${points===1?'':'s'}.`;
         }
         updateStats();moveTargets();
         if(levelScore>=levels[levelNumber-1].goal)finishLevel();
