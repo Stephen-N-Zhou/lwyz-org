@@ -9,13 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-7">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-8">
 </head>
 <body class="game-page">
   <main class="game-shell">
     <header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Forbidden Bite mini-game</span></header>
     <p class="game-label">100 levels of dumpling mayhem</p>
     <h1 class="game-title">Dumpling Dash</h1>
+    <p class="favorite-display" id="favorite-display" hidden></p>
     <p class="game-instructions" id="level-instructions">Tap the dumpling before time runs out. Clear each round to unlock the next level.</p>
     <div class="game-scorebar" aria-label="Game progress">
       <div class="game-stat"><span>Level</span><strong id="game-level">1/100</strong></div>
@@ -38,10 +39,14 @@
     </details>
     <section class="collection-panel" aria-labelledby="collection-title">
       <div class="collection-heading"><div><p class="game-label">Your little dumpling collection</p><h2 id="collection-title">Dumpling Collection Book</h2><span class="collection-total" id="collection-total">0 unique dumplings</span></div><strong class="coin-counter" id="coin-count">0 coins</strong></div>
-      <div class="collection-tools"><div class="pack-quantities" id="pack-quantities" role="group" aria-label="Choose pack quantity"><button class="pack-quantity is-selected" type="button" data-pack-count="1" aria-pressed="true">1 pack</button><button class="pack-quantity" type="button" data-pack-count="5" aria-pressed="false">5 packs</button><button class="pack-quantity" type="button" data-pack-count="10" aria-pressed="false">10 packs</button><button class="pack-quantity" type="button" data-pack-count="100" aria-pressed="false">100 packs</button></div><button class="game-primary" id="open-pack" type="button">Buy 1 pack · 1 coin</button><button class="game-secondary sound-toggle" id="sound-toggle" type="button" aria-pressed="false">Sound effects: Off</button></div>
-      <p class="collection-note" id="collection-status" role="status" aria-live="polite">Clear rounds to earn coins. Bronze earns 1, silver 2, and gold 3. Packs cost 1 coin each. Duplicate dumplings disappear from the book.</p>
+      <div class="collection-tools"><div class="pack-quantities" id="pack-quantities" role="group" aria-label="Choose pack quantity"><button class="pack-quantity is-selected" type="button" data-pack-count="1" aria-pressed="true">1 pack</button><button class="pack-quantity" type="button" data-pack-count="5" aria-pressed="false">5 packs</button><button class="pack-quantity" type="button" data-pack-count="10" aria-pressed="false">10 packs</button><button class="pack-quantity" type="button" data-pack-count="100" aria-pressed="false">100 packs</button></div><button class="game-primary" id="open-pack" type="button">Buy 1 pack · 1 coin</button><label class="sound-theme-control" for="sound-theme">Sound theme<select id="sound-theme"><option value="off">Off</option><option value="kitchen">Cozy kitchen</option><option value="arcade">Arcade</option><option value="bamboo">Bamboo bells</option></select></label></div>
+      <div class="daily-reward"><span class="daily-icon" aria-hidden="true">🥟</span><div><strong>Daily Dumpling</strong><span id="daily-status">Claim one free coin today.</span></div><button class="game-primary" id="claim-daily" type="button">Claim today’s coin</button></div>
+      <p class="collection-note" id="collection-status" role="status" aria-live="polite">Clear rounds to earn coins. Bronze earns 1, silver 2, and gold 3. Packs cost 1 coin each. Duplicate dumplings disappear. Complete a rarity set to earn a bonus pack; beat 3 bosses in a row for a badge and exclusive dumpling.</p>
       <p class="collection-note">Pack odds: Common 80.9% · Uncommon 10% · Rare 5% · Epic 3% · Legendary 1% · Chroma 0.1%.</p>
+      <div class="pack-reveal" id="pack-reveal" hidden aria-live="polite"></div>
+      <div class="collection-filters"><label>Show<select id="collection-filter"><option value="all">All dumplings</option><option value="missing">Missing dumplings</option><option value="Common">Common</option><option value="Uncommon">Uncommon</option><option value="Rare">Rare</option><option value="Epic">Epic</option><option value="Legendary">Legendary</option><option value="Chroma">Chroma</option><option value="Boss Exclusive">Boss exclusives</option></select></label><label>Sort<select id="collection-sort"><option value="newest">Newest first</option><option value="name">Name A–Z</option></select></label></div>
       <div class="collection-grid" id="collection-grid" aria-live="polite"></div>
+      <div class="badge-shelf"><h3>Kitchen badges</h3><div class="badge-grid" id="badge-grid"></div></div>
     </section>
     <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Achievements are grouped by difficulty, from easy to very hard. New power-ups unlock as you advance.</p>
   </main>
@@ -82,12 +87,23 @@
       const coinText=document.getElementById('coin-count');
       const collectionStatus=document.getElementById('collection-status');
       const collectionGrid=document.getElementById('collection-grid');
-      const soundButton=document.getElementById('sound-toggle');
+      const soundThemeSelect=document.getElementById('sound-theme');
+      const collectionFilter=document.getElementById('collection-filter');
+      const collectionSort=document.getElementById('collection-sort');
+      const favoriteDisplay=document.getElementById('favorite-display');
+      const dailyStatus=document.getElementById('daily-status');
+      const dailyButton=document.getElementById('claim-daily');
+      const badgeGrid=document.getElementById('badge-grid');
+      const packReveal=document.getElementById('pack-reveal');
       const bestKey='forbidden-bite-dumpling-dash-best-level';
       const achievementKey='forbidden-bite-dumpling-dash-achievements-v1';
       const coinKey='forbidden-bite-dumpling-dash-coins-v1';
       const collectionKey='forbidden-bite-dumpling-dash-collection-v1';
       const soundKey='forbidden-bite-dumpling-dash-sound-v1';
+      const favoriteKey='forbidden-bite-dumpling-dash-favorite-v1';
+      const dailyKey='forbidden-bite-dumpling-dash-daily-v1';
+      const rarityBonusKey='forbidden-bite-dumpling-dash-rarity-bonuses-v1';
+      const badgeKey='forbidden-bite-dumpling-dash-badges-v1';
       const achievements=[
         {id:'first-bite',icon:'🥟',name:'First Bite',detail:'Catch your first dumpling.',tier:'easy'},
         {id:'combo-five',icon:'🔥',name:'Combo of Five',detail:'Catch five targets in a row without a decoy.',tier:'easy'},
@@ -121,8 +137,12 @@
       let coins=Math.max(0,Number(safeRead(coinKey,0))||0);
       let collection=Array.isArray(safeRead(collectionKey,[]))?safeRead(collectionKey,[]):[];
       const uniqueCollection=[];const seenCollection=new Set();for(const item of collection){const key=item&&typeof item.name==='string'?item.name:'';if(key&&!seenCollection.has(key)){seenCollection.add(key);uniqueCollection.push(item)}}collection=uniqueCollection;try{localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}
-      let soundOn=safeRead(soundKey,false)===true;
-      let selectedPackCount=1;
+      const savedTheme=safeRead(soundKey,'off');
+      let soundTheme=typeof savedTheme==='string'?savedTheme:(savedTheme?'arcade':'off');
+      let selectedPackCount=1,favoriteName=String(safeRead(favoriteKey,'')),bossStreak=0,lastBossLevel=0;
+      const claimedRarityBonuses=new Set(Array.isArray(safeRead(rarityBonusKey,[]))?safeRead(rarityBonusKey,[]):[]);
+      const badges=Array.isArray(safeRead(badgeKey,[]))?safeRead(badgeKey,[]):[];
+      const todayKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
       const packPools={
         Common:[['Classic Pork Bao','🥟'],['Chive Pocket','🥬'],['Tiny Soup Dumpling','🍲'],['Sesame Tofu Parcel','🟤'],['Scallion Chicken Bao','🍗'],['Cabbage Garden Dumpling','🥬']],
         Uncommon:[['Jade Shrimp Dumpling','🦐'],['Crispy Golden Bao','✨'],['Lucky Mushroom Momo','🍄'],['Sizzling Pork Gyoza','🥟'],['Sweet Corn Dumpling','🌽'],['Bamboo Grove Bao','🎋']],
@@ -131,13 +151,30 @@
         Legendary:[['Imperial Gold Dumpling','👑'],['Celestial Soup Treasure','💫'],['Dragon Crown Bao','🐲'],['Jade Emperor’s Feast','🏵️'],['Golden Moon Rabbit Bao','🌕'],['Phoenix Crown Gyoza','🪷']],
         Chroma:[['Rainbow Chroma Dumpling','🌈'],['Prismatic Phoenix Bao','🦚'],['Aurora Crystal Momo','🔮'],['Spectrum Star Bao','🌠'],['Iridescent Dragon Parcel','🐉'],['Cosmic Colorburst Gyoza','💖']]
       };
+      const bossCollectionPool=Array.from({length:10},(_,i)=>{const boss=['Speedy Steamer','Mooncake Mimic','Golden Glider','Chili Champion','Mega Momo','Crystal Crimper','Dragon Bao','Turbo Tangbao','Chaos Chef','The Forbidden Bite'][i];return [{name:`${boss} Pork Bao`,icon:'🥟',rarity:'Boss Exclusive',bossNumber:i+1},{name:`${boss} Crystal Dumpling`,icon:'💎',rarity:'Boss Exclusive',bossNumber:i+1},{name:`${boss} Chili Gyoza`,icon:'🌶️',rarity:'Boss Exclusive',bossNumber:i+1}]});
+      const streakRewards=[{streak:3,badge:{id:'boss-streak-3',name:'Three-Boss Hot Streak',icon:'🔥'},item:{name:'Three-Boss Blaze Bao',icon:'🔥',rarity:'Boss Exclusive'}},{streak:6,badge:{id:'boss-streak-6',name:'Six-Boss Supper Club',icon:'🏅'},item:{name:'Six-Boss Feast Dumpling',icon:'🏆',rarity:'Boss Exclusive'}},{streak:9,badge:{id:'boss-streak-9',name:'Nine-Boss Legend',icon:'👑'},item:{name:'Nine-Boss Crown Gyoza',icon:'👑',rarity:'Boss Exclusive'}}];
+      const collectionCatalog=[...Object.entries(packPools).flatMap(([rarity,items])=>items.map(([name,icon])=>({name,icon,rarity}))),...bossCollectionPool.flat(),...streakRewards.map(reward=>reward.item)];
       let audioContext=null;
       const updatePackButton=()=>{const button=document.getElementById('open-pack');button.textContent=`Buy ${selectedPackCount} pack${selectedPackCount===1?'':'s'} · ${selectedPackCount} coin${selectedPackCount===1?'':'s'}`;button.disabled=coins<selectedPackCount};
       const setCoins=value=>{coins=Math.max(0,value);try{localStorage.setItem(coinKey,JSON.stringify(coins))}catch{}coinText.textContent=`${coins} coin${coins===1?'':'s'}`;updatePackButton()};
-      const renderCollection=()=>{collectionGrid.replaceChildren();document.getElementById('collection-total').textContent=`${collection.length} unique dumpling${collection.length===1?'':'s'}`;if(!collection.length){const empty=document.createElement('p');empty.className='collection-empty';empty.textContent='Your collection is waiting for its first dumpling!';collectionGrid.append(empty);return}for(const item of collection){const card=document.createElement('article');card.className=`collection-card rarity-${item.rarity.toLowerCase().replaceAll(' ','-')}`;const icon=document.createElement('span');icon.className='collection-icon';icon.textContent=item.icon;const name=document.createElement('strong');name.textContent=item.name;const rarity=document.createElement('small');rarity.textContent=item.rarity;card.append(icon,name,rarity);collectionGrid.append(card)}};
-      const addToCollection=(item,options={})=>{if(collection.some(found=>found.name===item.name)){if(options.notify!==false)collectionStatus.textContent=`Duplicate removed: ${item.name} is already in your collection.`;return false}collection.push({...item,obtainedAt:Date.now()});if(options.persist!==false)try{localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}if(options.render!==false)renderCollection();return true};
-      const playSound=kind=>{if(!soundOn)return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;audioContext??=new Audio();if(audioContext.state==='suspended')audioContext.resume();const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();const tones={catch:[660,.07],boss:[220,.16],decoy:[150,.11],reward:[880,.2],pack:[520,.13]};const [frequency,duration]=tones[kind]||tones.catch;oscillator.type=kind==='decoy'?'sawtooth':'sine';oscillator.frequency.setValueAtTime(frequency,audioContext.currentTime);if(kind==='reward'||kind==='pack')oscillator.frequency.exponentialRampToValueAtTime(frequency*1.45,audioContext.currentTime+duration);gain.gain.setValueAtTime(.0001,audioContext.currentTime);gain.gain.exponentialRampToValueAtTime(.08,audioContext.currentTime+.01);gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+duration);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start();oscillator.stop(audioContext.currentTime+duration)}catch{}};
-      const updateSoundButton=()=>{soundButton.textContent=`Sound effects: ${soundOn?'On':'Off'}`;soundButton.setAttribute('aria-pressed',String(soundOn))};
+      const updateFavoriteDisplay=()=>{const item=collection.find(entry=>entry.name===favoriteName);favoriteDisplay.hidden=!item;favoriteDisplay.textContent=item?`★ Favorite dumpling: ${item.icon} ${item.name}`:''};
+      const renderBadges=()=>{badgeGrid.replaceChildren();if(!badges.length){const empty=document.createElement('span');empty.className='badge-empty';empty.textContent='Beat three bosses in a row to earn a kitchen badge.';badgeGrid.append(empty);return}for(const badge of badges){const card=document.createElement('span');card.className='kitchen-badge';card.textContent=`${badge.icon} ${badge.name}`;badgeGrid.append(card)}};
+      const addBadge=badge=>{if(badges.some(item=>item.id===badge.id))return;badges.push(badge);try{localStorage.setItem(badgeKey,JSON.stringify(badges))}catch{}renderBadges();collectionStatus.textContent=`Badge unlocked: ${badge.icon} ${badge.name}!`};
+      const renderCollection=()=>{
+        collectionGrid.replaceChildren();const possibleCount=new Set([...collectionCatalog.map(item=>item.name),...collection.map(item=>item.name)]).size;document.getElementById('collection-total').textContent=`${collection.length} / ${possibleCount} unique dumplings`;
+        const owned=new Set(collection.map(item=>item.name));const filter=collectionFilter.value;let shown=filter==='missing'?collectionCatalog.filter(item=>!owned.has(item.name)):filter==='all'?collection:[...collection].filter(item=>item.rarity===filter);
+        shown=[...shown].sort((a,b)=>collectionSort.value==='name'?a.name.localeCompare(b.name):(b.obtainedAt||0)-(a.obtainedAt||0));
+        if(!shown.length){const empty=document.createElement('p');empty.className='collection-empty';empty.textContent=filter==='missing'?'Amazing! You found every dumpling in the book.':'No dumplings in this category yet. Keep playing and opening packs!';collectionGrid.append(empty);updateFavoriteDisplay();return}
+        for(const item of shown){const isMissing=!owned.has(item.name);const card=document.createElement('article');card.className=`collection-card rarity-${item.rarity.toLowerCase().replaceAll(' ','-')}${isMissing?' is-missing':''}`;const icon=document.createElement('span');icon.className='collection-icon';icon.textContent=isMissing?'❔':item.icon;const name=document.createElement('strong');name.textContent=isMissing?'Undiscovered dumpling':item.name;const rarity=document.createElement('small');rarity.textContent=item.rarity;card.append(icon,name,rarity);if(!isMissing){const favorite=document.createElement('button');favorite.type='button';favorite.className='favorite-button';favorite.setAttribute('aria-pressed',String(favoriteName===item.name));favorite.textContent=favoriteName===item.name?'★ Favorite':'☆ Make favorite';favorite.addEventListener('click',()=>{favoriteName=favoriteName===item.name?'':item.name;try{localStorage.setItem(favoriteKey,favoriteName)}catch{}renderCollection()});card.append(favorite)}collectionGrid.append(card)}updateFavoriteDisplay();
+      };
+      const addToCollection=(item,options={})=>{if(collection.some(found=>found.name===item.name)){if(options.notify!==false)collectionStatus.textContent=`Duplicate removed: ${item.name} is already in your collection.`;return false}collection.push({...item,obtainedAt:Date.now()});const bonusPacks=options.bonuses===false?[]:checkRarityBonuses();if(options.persist!==false)try{localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}if(options.render!==false)renderCollection();if(bonusPacks.length&&options.notify!==false){renderPackReveal(bonusPacks);playDrumroll(bonusPacks[0].rarity);collectionStatus.textContent=`Rarity set complete! A bonus pack opened: ${bonusPacks.map(item=>item.name).join(', ')}.`}return true};
+      const pullPack=()=>{const roll=Math.random()*100;let rarity;if(roll<.1)rarity='Chroma';else if(roll<1.1)rarity='Legendary';else if(roll<4.1)rarity='Epic';else if(roll<9.1)rarity='Rare';else if(roll<19.1)rarity='Uncommon';else rarity='Common';const [name,icon]=packPools[rarity][Math.floor(Math.random()*packPools[rarity].length)];const added=addToCollection({name,icon,rarity},{persist:false,render:false,notify:false,bonuses:false});return {name,icon,rarity,duplicate:!added,bonus:true}};
+      const checkRarityBonuses=()=>{const bonusPacks=[];let foundNewSet=true;while(foundNewSet){foundNewSet=false;for(const [rarity,items] of Object.entries(packPools)){if(claimedRarityBonuses.has(rarity)||!items.every(([name])=>collection.some(item=>item.name===name)))continue;claimedRarityBonuses.add(rarity);foundNewSet=true;bonusPacks.push(pullPack())}}if(bonusPacks.length){try{localStorage.setItem(rarityBonusKey,JSON.stringify([...claimedRarityBonuses]));localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}}return bonusPacks};
+      const updateDailyReward=()=>{const claimed=safeRead(dailyKey,'')===todayKey();dailyButton.disabled=claimed;dailyButton.textContent=claimed?'Claimed today':'Claim today’s coin';dailyStatus.textContent=claimed?'Your daily dumpling coin is claimed. Come back tomorrow!':'Claim one free coin today.'};
+      const playSound=kind=>{if(soundTheme==='off')return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;audioContext??=new Audio();if(audioContext.state==='suspended')audioContext.resume();const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();const tones={catch:[660,.07],boss:[220,.16],decoy:[150,.11],reward:[880,.2],pack:[320,.3],drum:[110,.05]};const [base,duration]=tones[kind]||tones.catch;const theme=soundTheme==='arcade'?{wave:'square',pitch:1.35,volume:.045}:soundTheme==='bamboo'?{wave:'triangle',pitch:1.75,volume:.055}:{wave:kind==='decoy'?'sawtooth':'sine',pitch:1,volume:.07};oscillator.type=theme.wave;const frequency=base*theme.pitch;oscillator.frequency.setValueAtTime(frequency,audioContext.currentTime);if(kind==='reward'||kind==='pack')oscillator.frequency.exponentialRampToValueAtTime(frequency*1.6,audioContext.currentTime+duration);gain.gain.setValueAtTime(.0001,audioContext.currentTime);gain.gain.exponentialRampToValueAtTime(theme.volume,audioContext.currentTime+.01);gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+duration);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start();oscillator.stop(audioContext.currentTime+duration)}catch{}};
+      const playDrumroll=rarity=>{for(let i=0;i<6;i++)setTimeout(()=>playSound('drum'),i*48);setTimeout(()=>playSound(['Rare','Epic','Legendary','Chroma'].includes(rarity)?'reward':'pack'),340)};
+      const renderPackReveal=results=>{packReveal.replaceChildren();packReveal.hidden=false;const heading=document.createElement('h3');heading.textContent='Pack reveal';packReveal.append(heading);const grid=document.createElement('div');grid.className='pack-reveal-grid';for(const [index,result] of results.entries()){const card=document.createElement('article');card.className=`pack-reveal-item rarity-${result.rarity.toLowerCase().replaceAll(' ','-')}${result.duplicate?' reveal-duplicate':''}`;card.style.animationDelay=`${Math.min(index*35,900)}ms`;const icon=document.createElement('span');icon.textContent=result.icon;const name=document.createElement('strong');name.textContent=result.name;const rarity=document.createElement('small');rarity.textContent=result.duplicate?'Duplicate · removed':result.rarity;card.append(icon,name,rarity);grid.append(card)}packReveal.append(grid)};
+      const updateSoundTheme=()=>{soundThemeSelect.value=soundTheme};
       const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
       const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
       const readAchievements=()=>{try{const value=JSON.parse(localStorage.getItem(achievementKey)||'[]');return new Set(Array.isArray(value)?value.filter(id=>achievements.some(item=>item.id===id)):[])}catch{return new Set()}};
@@ -170,7 +207,7 @@
         runPowersUsed.add(key);unlockAchievement('power-play');
         if(['tea','chili','chopsticks','shield','wok','cookie'].every(item=>runPowersUsed.has(item)))unlockAchievement('full-arsenal');
       };
-      setCoins(coins);renderCollection();updateSoundButton();
+      setCoins(coins);renderCollection();renderBadges();updateSoundTheme();updateDailyReward();const welcomeBonusPacks=checkRarityBonuses();if(welcomeBonusPacks.length){renderCollection();renderPackReveal(welcomeBonusPacks);playDrumroll(welcomeBonusPacks[0].rarity);collectionStatus.textContent='Welcome back! A completed rarity set earned a bonus pack.'}
       renderAchievements();
       const makeButton=(label,className,onClick)=>{const button=document.createElement('button');button.type='button';button.className=className;button.textContent=label;button.addEventListener('click',onClick);return button};
       const showOverlay=(title,copy,actions)=>{
@@ -255,6 +292,7 @@
         if(levelNumber>=10&&timeLeft>=15)unlockAchievement('lightning-clear');
         if(levelNumber>bestLevel){bestLevel=levelNumber;bestText.textContent=String(bestLevel);writeBest(bestLevel)}
         if(levelNumber===10)unlockAchievement('feast-champion');
+        if(config.boss){bossStreak=levelNumber===lastBossLevel+10?bossStreak+1:1;lastBossLevel=levelNumber;const reward=streakRewards.find(item=>item.streak===bossStreak);if(reward){addBadge(reward.badge);addToCollection(reward.item);collectionStatus.textContent=`${reward.badge.icon} Boss streak reward! ${reward.badge.name} badge and ${reward.item.name}.`}}
         const rating=roundRating();setCoins(coins+rating.coins);collectionStatus.textContent=`Level ${levelNumber}: ${rating.name} rating — earned ${rating.coins} coin${rating.coins===1?'':'s'}!`;playSound('reward');
         if(levelNumber===100){
           unlockAchievement('level-100');
@@ -266,13 +304,13 @@
         }
       };
       const finishAttempt=()=>{
-        running=false;clearTimers();targetLayer.replaceChildren();
+        running=false;clearTimers();targetLayer.replaceChildren();bossStreak=0;lastBossLevel=0;
         showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
       };
       function beginLevel(number,freshRun=false){
         clearTimers();levelNumber=number;levelScore=0;const config=levels[levelNumber-1];timeLeft=config.timeLimit;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;bossHitsLeft=config.bossHits;powerStatus.textContent='';
         decoysHitThisLevel=0;
-        if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set()}
+        if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set();bossStreak=0;lastBossLevel=0}
         if(levelNumber>=5)unlockAchievement('halfway-hero');
         for(const milestone of [15,25,40,50,60,75,85])if(levelNumber>=milestone)unlockAchievement(`level-${milestone}`);
         powerUses={};for(const power of config.powers)powerUses[power]=1;
@@ -304,20 +342,19 @@
         if(levelScore>=levels[levelNumber-1].goal)finishLevel();
       }
       document.getElementById('game-start').addEventListener('click',()=>beginLevel(1,true));
+      dailyButton.addEventListener('click',()=>{if(safeRead(dailyKey,'')===todayKey()){updateDailyReward();return}try{localStorage.setItem(dailyKey,todayKey())}catch{}setCoins(coins+1);updateDailyReward();collectionStatus.textContent='Daily Dumpling claimed! +1 coin added to your purse.';playSound('reward')});
+      collectionFilter.addEventListener('change',renderCollection);collectionSort.addEventListener('change',renderCollection);
       document.getElementById('open-pack').addEventListener('click',()=>{
         if(coins<selectedPackCount){collectionStatus.textContent=`You need ${selectedPackCount} coins to buy ${selectedPackCount} packs.`;return}
-        const before=collection.length,duplicates={count:0},rarityCounts={};setCoins(coins-selectedPackCount);
+        const before=collection.length,duplicates={count:0},rarityCounts={},results=[];setCoins(coins-selectedPackCount);
         for(let i=0;i<selectedPackCount;i++){
-          const roll=Math.random()*100;let rarity;
-          if(roll<.1)rarity='Chroma';else if(roll<1.1)rarity='Legendary';else if(roll<4.1)rarity='Epic';else if(roll<9.1)rarity='Rare';else if(roll<19.1)rarity='Uncommon';else rarity='Common';
-          rarityCounts[rarity]=(rarityCounts[rarity]||0)+1;const [name,icon]=packPools[rarity][Math.floor(Math.random()*packPools[rarity].length)];
-          if(!addToCollection({name,icon,rarity},{persist:false,render:false,notify:false}))duplicates.count++;
+          const pull=pullPack();rarityCounts[pull.rarity]=(rarityCounts[pull.rarity]||0)+1;if(pull.duplicate)duplicates.count++;results.push(pull);
         }
-        try{localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}renderCollection();playSound('pack');
-        const pullSummary=Object.entries(rarityCounts).map(([rarity,count])=>`${rarity} ×${count}`).join(' · ');collectionStatus.textContent=`Opened ${selectedPackCount} pack${selectedPackCount===1?'':'s'}: ${collection.length-before} new dumpling${collection.length-before===1?'':'s'} added${duplicates.count?`; ${duplicates.count} duplicate${duplicates.count===1?' was':'s were'} removed`:''}. ${pullSummary}.`;
+        try{localStorage.setItem(collectionKey,JSON.stringify(collection))}catch{}const bonusPacks=checkRarityBonuses();for(const pull of bonusPacks){rarityCounts[pull.rarity]=(rarityCounts[pull.rarity]||0)+1;if(pull.duplicate)duplicates.count++;results.push(pull)}renderCollection();renderPackReveal(results);const rarityOrder=['Chroma','Legendary','Epic','Rare','Uncommon','Common'];const rarest=results.reduce((best,item)=>rarityOrder.indexOf(item.rarity)<rarityOrder.indexOf(best.rarity)?item:best,results[0]);playDrumroll(rarest?.rarity||'Common');
+        const pullSummary=Object.entries(rarityCounts).map(([rarity,count])=>`${rarity} ×${count}`).join(' · ');collectionStatus.textContent=`Opened ${selectedPackCount} paid pack${selectedPackCount===1?'':'s'}${bonusPacks.length?` and earned ${bonusPacks.length} bonus pack${bonusPacks.length===1?'':'s'}`:''}: ${collection.length-before} new dumpling${collection.length-before===1?'':'s'} added${duplicates.count?`; ${duplicates.count} duplicate${duplicates.count===1?' was':'s were'} removed`:''}. ${pullSummary}.`;
       });
       document.querySelectorAll('.pack-quantity').forEach(button=>button.addEventListener('click',()=>{selectedPackCount=Number(button.dataset.packCount)||1;document.querySelectorAll('.pack-quantity').forEach(option=>{const selected=option===button;option.classList.toggle('is-selected',selected);option.setAttribute('aria-pressed',String(selected))});updatePackButton();collectionStatus.textContent=`Selected ${selectedPackCount} pack${selectedPackCount===1?'':'s'} for ${selectedPackCount} coin${selectedPackCount===1?'':'s'}.`}));
-      soundButton.addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem(soundKey,JSON.stringify(soundOn))}catch{}updateSoundButton();if(soundOn)playSound('reward')});
+      soundThemeSelect.addEventListener('change',()=>{soundTheme=soundThemeSelect.value;try{localStorage.setItem(soundKey,JSON.stringify(soundTheme))}catch{}if(soundTheme!=='off')playSound('reward')});
       window.addEventListener('resize',()=>{if(running)moveTargets()});
     })();
   </script>
