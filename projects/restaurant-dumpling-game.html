@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-8">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-9">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -59,7 +59,7 @@
         const dumplings=boss?1:Math.min(8,1+Math.floor((n-1)/12));
         const decoys=n<7?0:Math.min(5,Math.floor((n-5)/16)+1)+(boss?Math.min(2,bossNumber%3):0);
         const golden=n<5?0:Math.min(3,1+Math.floor((n-5)/35));
-        const hop=n<4?0:Math.max(430,1500-Math.floor((n-4)*10));
+        const hop=Math.max(420,1850-Math.floor(n*13));
         const powers=n<4?[]:n<6?['tea']:n<8?['tea','chili']:['tea','chili','chopsticks'];
         if(n>=12)powers.push('shield');
         if(n>=18)powers.push('wok');
@@ -70,7 +70,7 @@
         const bossChallenges=['Keep up with its rapid hops!','Extra mooncakes are in the arena.','The boss shuffles after every hit.','A shorter clock means quick taps.','The kitchen is packed with distractions.','Watch the fast hops and protect your streak.','The boss is quicker and tougher this time.','Use your power-ups before time gets tight.','Decoys and a speedy boss—stay sharp!','Final feast: the toughest boss of all.'];
         const timeLimit=boss?Math.max(12,20-bossNumber):20;
         const hint=n===1?'One dumpling, no tricks. Catch five before the timer ends.':boss?`BOSS ${bossNumber}: ${bossNames[bossNumber-1]} needs ${bossHits} hits. ${bossChallenges[bossNumber-1]}`:`Round ${n}: ${dumplings} dumplings, ${decoys} mooncake decoy${decoys===1?'':'s'}, and a goal of ${goal}. Keep moving and use your power-ups wisely.`;
-        return {goal,dumplings,decoys,golden,hop:boss?Math.min(hop||650,620):hop,powers,hint,boss,bossNumber,bossHits,timeLimit,bossName:boss?bossNames[bossNumber-1]:''};
+        return {goal,dumplings,decoys,golden,hop:boss?Math.max(400,650-bossNumber*22):hop,powers,hint,boss,bossNumber,bossHits,timeLimit,bossName:boss?bossNames[bossNumber-1]:''};
       });
       const arena=document.getElementById('game-arena');
       const targetLayer=document.getElementById('target-layer');

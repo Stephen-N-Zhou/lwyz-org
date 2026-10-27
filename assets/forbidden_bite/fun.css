@@ -72,7 +72,7 @@
 .powerup-status{min-height:1.4em;margin:0 0 .45rem;color:#f0d88f;font-size:.8rem;font-weight:600}
 .game-arena{position:relative;width:min(900px,100%);height:min(52vh,440px);min-height:260px;overflow:hidden;border:2px solid #d8c58f;border-radius:18px;background:radial-gradient(ellipse at 50% 30%,#f3ead2,#d8c58f);box-shadow:0 18px 55px #0004;touch-action:manipulation}
 .target-layer{position:absolute;inset:0;z-index:1}
-.dumpling-target{position:absolute;display:grid;place-items:center;width:72px;height:72px;border:0;border-radius:50%;background:#fff9e9;box-shadow:0 5px 14px #795c2838;font-size:2.6rem;cursor:pointer;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease,transform .12s ease}
+.dumpling-target{position:absolute;display:grid;place-items:center;width:72px;height:72px;border:0;border-radius:50%;background:#fff9e9;box-shadow:0 5px 14px #795c2838;font-size:2.6rem;cursor:pointer;transform:translate(-50%,-50%);transition:left .48s cubic-bezier(.2,.75,.3,1),top .48s cubic-bezier(.2,.75,.3,1),transform .12s ease}
 .dumpling-target:hover{transform:translate(-50%,-50%) scale(1.12)}
 .dumpling-target.dumpling-golden{border:3px solid #d49b19;background:#fff0bc;box-shadow:0 0 0 5px #f4d47455,0 7px 20px #8a621b55}
 .dumpling-target.dumpling-decoy{border:3px dashed #8b5a37;background:#f2dcc7;filter:saturate(.72)}
