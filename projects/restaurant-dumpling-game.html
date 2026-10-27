@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#093d33">
+  <title>Dumpling Dash | Forbidden Bite</title>
+  <meta name="description" content="Play Dumpling Dash, a quick full-screen Forbidden Bite mini-game.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-1">
+</head>
+<body class="game-page">
+  <main class="game-shell">
+    <header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Forbidden Bite mini-game</span></header>
+    <p class="game-label">Quick fingers, hungry dumplings</p>
+    <h1 class="game-title">Dumpling Dash</h1>
+    <p class="game-instructions">Tap or click the dumpling as it hops around the table. Catch as many as you can in 20 seconds.</p>
+    <div class="game-scorebar" aria-label="Game score">
+      <div class="game-stat"><span>Time left</span><strong id="game-time">20</strong></div>
+      <div class="game-stat"><span>Score</span><strong id="game-score">0</strong></div>
+      <div class="game-stat"><span>Best</span><strong id="game-best">0</strong></div>
+    </div>
+    <section class="game-arena" id="game-arena" aria-label="Dumpling Dash play area">
+      <button class="dumpling-target" id="dumpling-target" type="button" aria-label="Catch the dumpling" hidden>🥟</button>
+      <div class="game-overlay" id="game-overlay">
+        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Catch the dumpling each time it hops to a new spot. You have 20 seconds.</p><div class="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
+      </div>
+    </section>
+    <p class="game-footer">Just for fun. No scores or personal details are sent anywhere.</p>
+  </main>
+  <script>
+    (()=>{
+      const arena=document.getElementById('game-arena');
+      const target=document.getElementById('dumpling-target');
+      const overlay=document.getElementById('game-overlay');
+      const timeText=document.getElementById('game-time');
+      const scoreText=document.getElementById('game-score');
+      const bestText=document.getElementById('game-best');
+      const bestKey='forbidden-bite-dumpling-dash-best';
+      let score=0,timeLeft=20,timer=null,running=false,recordBroken=false;
+      const readBest=()=>{try{return Number(localStorage.getItem(bestKey))||0}catch{return 0}};
+      const writeBest=value=>{try{localStorage.setItem(bestKey,String(value))}catch{}};
+      let best=readBest();bestText.textContent=String(best);
+      const moveTarget=()=>{
+        const bounds=arena.getBoundingClientRect(),padding=46;
+        const x=padding+Math.random()*Math.max(0,bounds.width-padding*2);
+        const y=padding+Math.random()*Math.max(0,bounds.height-padding*2);
+        target.style.left=`${x/bounds.width*100}%`;target.style.top=`${y/bounds.height*100}%`;
+      };
+      const finishGame=()=>{
+        running=false;clearInterval(timer);target.hidden=true;overlay.hidden=false;
+        document.getElementById('overlay-title').textContent='Time is up!';
+        document.getElementById('overlay-copy').textContent=`You caught ${score} dumpling${score===1?'':'s'}${recordBroken?' — a new personal best!':''} Play again or head back to the menu.`;
+        document.querySelector('.game-controls').innerHTML='<button class="game-primary" id="game-restart" type="button">Play again</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a>';
+        document.getElementById('game-restart').addEventListener('click',startGame);
+      };
+      function startGame(){
+        clearInterval(timer);score=0;timeLeft=20;running=true;recordBroken=false;
+        scoreText.textContent=String(score);timeText.textContent=String(timeLeft);overlay.hidden=true;target.hidden=false;moveTarget();
+        if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+        timer=setInterval(()=>{timeLeft-=1;timeText.textContent=String(timeLeft);if(timeLeft<=0)finishGame()},1000);
+      }
+      document.getElementById('game-start').addEventListener('click',startGame);
+      target.addEventListener('click',()=>{
+        if(!running)return;score+=1;scoreText.textContent=String(score);
+        if(score>best){best=score;recordBroken=true;bestText.textContent=String(best);writeBest(best)}
+        moveTarget();
+      });
+      window.addEventListener('resize',()=>{if(running)moveTarget()});
+    })();
+  </script>
+</body>
+</html>

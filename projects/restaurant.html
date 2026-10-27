@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/forbidden_bite/order.css?v=checkout-1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-1">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}
@@ -92,6 +93,38 @@
       <div id="menu-grid" class="grid" aria-live="polite"><p>Loading the menu…</p></div>
       <noscript><p>Please open the <a href="/assets/forbidden_bite/menu2.png?v=picture-gallery-3">full menu image</a> to see all menu options.</p></noscript>
     </section>
+    <section class="fun-zone" aria-labelledby="fun-title" id="little-delights">
+      <p class="section-label">A little extra fun</p><h2 id="fun-title" class="section-heading">Little delights from Forbidden Bite</h2>
+      <div class="fun-grid">
+        <article class="fun-card mystery-card" aria-labelledby="mystery-title">
+          <p class="fun-kicker">Surprise me</p><h3 id="mystery-title">Mystery dish picker</h3><p>Let the kitchen choose something tasty from the menu.</p>
+          <canvas class="mystery-photo" id="mystery-photo" width="480" height="480" role="img" aria-label="Mystery dish photo"></canvas>
+          <h4 class="mystery-name" id="mystery-name">Ready for a surprise?</h4><p class="mystery-description" id="mystery-description">Tap the button and see what turns up.</p><p class="mystery-price" id="mystery-price"></p>
+          <div class="fun-actions"><button class="fun-button" id="mystery-pick" type="button">Pick a mystery dish</button><button class="add-to-cart" id="mystery-add" type="button" disabled>Add to cart</button></div>
+        </article>
+        <article class="fun-card fortune-card" aria-labelledby="fortune-title">
+          <p class="fun-kicker">A tiny bit of wisdom</p><h3 id="fortune-title">Fortune cookie</h3><p>Open a cookie to reveal your Forbidden Bite fortune.</p>
+          <div class="fortune-art" aria-hidden="true"><span>✦</span></div>
+          <p class="fortune-message" id="fortune-message" role="status" aria-live="polite">Your fortune is tucked inside.</p>
+          <button class="fun-button" id="fortune-open" type="button">Open a fortune cookie</button>
+        </article>
+        <article class="fun-card game-teaser" aria-labelledby="game-teaser-title">
+          <p class="fun-kicker">Quick break</p><h3 id="game-teaser-title">Dumpling Dash</h3><p>Catch as many dumplings as you can before time runs out.</p>
+          <a class="game-launch" href="/projects/restaurant-dumpling-game.html">Play the full-screen game</a>
+        </article>
+        <article class="fun-card soup-builder" aria-labelledby="soup-title">
+          <div class="soup-builder-intro"><p class="fun-kicker">Made your way</p><h3 id="soup-title">Build your own soup noodles</h3><p>Choose a broth, your proteins, a spice level, and extras for 50¢ each.</p><div class="soup-preview" id="soup-preview" aria-live="polite">Your custom bowl: Ginger scallion broth · Choose up to two proteins · Mild spice</div><p class="soup-total">Estimated demo price: <strong id="soup-total">$13.50</strong></p></div>
+          <form id="soup-builder-form" class="soup-form">
+            <label class="builder-label" for="soup-base">Choose a soup base<select id="soup-base" name="base"><option>Ginger scallion broth</option><option>Rich pork bone broth</option><option>Sesame vegetable broth</option><option>Chili garlic broth</option></select></label>
+            <fieldset class="builder-group"><legend>Choose your meats &amp; proteins <span>(up to two, included)</span></legend><div class="builder-options"><label><input type="checkbox" name="protein" value="Chicken"> Chicken</label><label><input type="checkbox" name="protein" value="Char siu pork"> Char siu pork</label><label><input type="checkbox" name="protein" value="Braised beef"> Braised beef</label><label><input type="checkbox" name="protein" value="Shrimp"> Shrimp</label><label><input type="checkbox" name="protein" value="Tofu"> Tofu</label></div></fieldset>
+            <label class="builder-label" for="soup-spice">Choose your spice level<select id="soup-spice" name="spice"><option>Mild</option><option>Medium</option><option>Hot</option></select></label>
+            <fieldset class="builder-group"><legend>Add extras <span>50¢ each</span></legend><div class="builder-options"><label><input type="checkbox" name="extra" value="Soft-boiled egg"> Soft-boiled egg</label><label><input type="checkbox" name="extra" value="Bok choy"> Bok choy</label><label><input type="checkbox" name="extra" value="Mushrooms"> Mushrooms</label><label><input type="checkbox" name="extra" value="Sweet corn"> Sweet corn</label><label><input type="checkbox" name="extra" value="Extra noodles"> Extra noodles</label><label><input type="checkbox" name="extra" value="Chili crisp"> Chili crisp</label></div></fieldset>
+            <p class="builder-error" id="soup-error" role="alert" hidden>Please choose at least one meat or protein.</p><button class="fun-button" type="submit">Add my soup noodles to cart</button>
+          </form>
+        </article>
+      </div>
+      <p class="fun-disclaimer">These playful features are part of a fictional restaurant concept. Prices are examples, and the cart is only a demo.</p>
+    </section>
     <section class="experience" aria-labelledby="experience-title"><div><p class="section-label">The experience</p><h2 id="experience-title">Comfort, with a golden touch</h2><p>Jade and gold accents, welcoming tables, and a curated tea list shape the atmosphere. The goal is simple: memorable food, a relaxed welcome, and something for everyone to enjoy.</p></div><ul><li>Comforting classics and playful specials</li><li>Mini portions and family-friendly choices</li><li>Fresh, vivid flavors from first sip to sweet finish</li></ul></section>
     <section class="menu-preview" aria-labelledby="preview-title">
       <figure class="preview-card"><a href="/projects/restaurant-gallery.html" aria-label="Open the Forbidden Bite food picture gallery"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="A long 48-tile picture-only collage of Forbidden Bite dishes, snacks, drinks, and desserts" loading="lazy"></a></figure>
@@ -156,6 +189,7 @@
       status.hidden=false;
     });
   </script>
+  <script src="/assets/forbidden_bite/fun.js?v=fun-1" defer></script>
   <script src="/assets/forbidden_bite/order.js?v=checkout-1" defer></script>
 </body>
 </html>
