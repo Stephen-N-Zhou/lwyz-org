@@ -47,6 +47,33 @@
 .fun-disclaimer{margin:.8rem 0 0;color:var(--muted);font-size:.76rem}
 @media(max-width:760px){.fun-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.soup-builder{grid-template-columns:1fr}.game-teaser{min-height:240px}}
 @media(max-width:520px){.fun-grid{grid-template-columns:1fr}.soup-builder{grid-column:auto;padding:1rem}.mystery-photo{width:min(100%,210px)}.builder-options{grid-template-columns:1fr 1fr}.fun-actions>*{flex:1}}
+.passport-card,.soundboard-card,.mailbox-card{background:linear-gradient(155deg,#fffdf8,#f5efe3)}
+.passport-progress{margin:.5rem 0;padding:.45rem .6rem;border-radius:7px;background:#f0eadf;color:var(--jade-dark)!important;font-size:.78rem!important;font-weight:750}
+.passport-stamps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem}
+.passport-stamp{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.45rem;min-width:0;min-height:48px;padding:.45rem;border:1px dashed #cbb875;border-radius:8px;background:#fff;color:#554f42;text-align:left;cursor:pointer;transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.passport-stamp:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 5px 12px #6b54221b}
+.passport-stamp>span{font-size:1.35rem;filter:grayscale(.8);transition:filter .2s ease,transform .2s ease}
+.passport-stamp small{font-size:.68rem;font-weight:700;line-height:1.25}
+.passport-stamp[data-stamped="true"]{border:1px solid #c5a146;background:#fff4ca;color:#493b1c}
+.passport-stamp[data-stamped="true"]>span{filter:none;transform:rotate(-8deg) scale(1.1)}
+.passport-stamp:disabled{cursor:default}
+.passport-reset{margin-top:.55rem;padding:.25rem .45rem;border:0;background:transparent;color:var(--muted);font-size:.68rem;text-decoration:underline;cursor:pointer}
+.soundboard-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.sound-button{display:flex;align-items:center;justify-content:center;gap:.45rem;min-height:48px;padding:.55rem .65rem;border:1px solid #d8c58f;border-radius:9px;background:#fff;color:var(--jade-dark);font:700 .78rem Inter,system-ui,sans-serif;cursor:pointer;transition:transform .12s ease,background .12s ease}
+.sound-button:hover{background:#f4ecd9}.sound-button:active{transform:scale(.96)}.sound-button span{font-size:1.1rem}
+.sound-status{min-height:1.3em;margin:.4rem 0 0!important;color:var(--muted)!important;font-size:.7rem!important}
+.mailbox-open{display:grid;justify-items:center;gap:.55rem;width:100%;margin:.8rem 0 .2rem;padding:.25rem;border:0;background:transparent;color:var(--jade-dark);font:750 .78rem Inter,system-ui,sans-serif;cursor:pointer}
+.mailbox-art{position:relative;display:block;width:88px;height:62px;border:3px solid #8d352e;border-radius:13px 13px 9px 9px;background:linear-gradient(145deg,#b95043,#812e2c);box-shadow:inset -7px -6px 10px #3d10192b,0 8px 14px #27181724;transition:transform .2s ease}
+.mailbox-art::before{position:absolute;right:14px;bottom:-17px;width:8px;height:17px;background:#927039;box-shadow:-22px 14px 0 -2px #927039,22px 14px 0 -2px #927039;content:""}
+.mailbox-art::after{position:absolute;inset:11px 0 auto;color:#ffe6ad;content:"✉";font-size:1.8rem;text-align:center}
+.mailbox-flag{position:absolute;z-index:1;top:-13px;right:11px;width:4px;height:23px;border-radius:4px;background:#d9c17e;transform:rotate(5deg);transform-origin:bottom;transition:transform .25s ease}
+.mailbox-flag::after{position:absolute;top:0;left:1px;width:18px;height:10px;border-radius:2px 7px 2px 2px;background:#741e25;content:""}
+.mailbox-open:hover .mailbox-art,.mailbox-open.has-mail .mailbox-art{transform:translateY(-2px) rotate(-2deg)}.mailbox-open.has-mail .mailbox-flag{transform:rotate(78deg)}
+.mailbox-letters{display:grid;gap:.45rem;margin-top:.75rem}.mailbox-letters[hidden]{display:none}
+.mail-letter{padding:.7rem .75rem;border:1px solid #d9c98e;border-radius:8px;background:linear-gradient(160deg,#fffdf3,#f5e8bc);box-shadow:0 5px 12px #59481a18;color:#55472a;font:400 .85rem/1.45 Marcellus,Georgia,serif;animation:mail-arrive .4s ease-out both}
+.mail-letter:nth-child(2){animation-delay:.16s}.mail-letter::before{display:block;margin-bottom:.2rem;color:#8a6421;content:"A note from the kitchen";font:700 .58rem Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+@keyframes mail-arrive{from{opacity:0;transform:translateY(-8px) rotate(2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@media(prefers-reduced-motion:reduce){.passport-stamp,.passport-stamp>span,.sound-button,.mailbox-art,.mailbox-flag,.mail-letter{transition:none!important;animation:none!important}}
 
 /* Full-screen Dumpling Dash page */
 .game-page{min-height:100vh;min-height:100svh;margin:0;background:radial-gradient(ellipse at 50% 0%,#275d4c,#092f29 70%);color:#fff;font-family:Inter,system-ui,sans-serif}

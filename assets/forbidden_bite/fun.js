@@ -78,4 +78,62 @@
     add.addEventListener('click',()=>{const {items,total}=update();add.dataset.orderItem=JSON.stringify({name:`${form.dataset.builderName} — ${items.map(item=>item.name).join('; ')}`,price:total})});
     update();
   });
+  (function setupDishPassport(){
+    const storageKey='forbidden-bite-dish-passport-v1',buttons=[...document.querySelectorAll('[data-passport-dish]')],status=document.getElementById('passport-progress'),reset=document.getElementById('passport-reset');
+    if(!buttons.length)return;
+    const read=()=>{try{return new Set(JSON.parse(localStorage.getItem(storageKey)||'[]'))}catch{return new Set()}};
+    let stamps=read();
+    const render=()=>{
+      buttons.forEach(button=>{const earned=stamps.has(button.dataset.passportDish);button.dataset.stamped=String(earned);button.disabled=earned;button.setAttribute('aria-label',`${button.dataset.passportDish}${earned?' · stamp collected':' · collect stamp'}`)});
+      status.textContent=stamps.size===buttons.length?'Passport complete · all 8 dish stamps collected!':`${stamps.size} of ${buttons.length} dish stamps collected`;
+    };
+    buttons.forEach(button=>button.addEventListener('click',()=>{stamps.add(button.dataset.passportDish);try{localStorage.setItem(storageKey,JSON.stringify([...stamps]))}catch{}render()}));
+    reset.addEventListener('click',()=>{stamps.clear();try{localStorage.removeItem(storageKey)}catch{}render()});
+    render();
+  })();
+  (function setupKitchenSoundboard(){
+    const buttons=[...document.querySelectorAll('[data-kitchen-sound]')],status=document.getElementById('sound-status');
+    if(!buttons.length)return;
+    let context=null;
+    const getContext=()=>{const AudioContextType=window.AudioContext||window.webkitAudioContext;if(!AudioContextType)throw Error('Audio is not supported in this browser.');context??=new AudioContextType();if(context.state==='suspended')context.resume();return context};
+    const noise=(duration,{filterType='bandpass',frequency=1800,endFrequency=frequency,volume=.12}={})=>{
+      const audio=getContext(),length=Math.floor(audio.sampleRate*duration),buffer=audio.createBuffer(1,length,audio.sampleRate),data=buffer.getChannelData(0);
+      for(let i=0;i<length;i++)data[i]=Math.random()*2-1;
+      const source=audio.createBufferSource(),filter=audio.createBiquadFilter(),gain=audio.createGain(),now=audio.currentTime;
+      source.buffer=buffer;filter.type=filterType;filter.frequency.setValueAtTime(frequency,now);filter.frequency.linearRampToValueAtTime(endFrequency,now+duration);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.04);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);source.connect(filter);filter.connect(gain);gain.connect(audio.destination);source.start(now);source.stop(now+duration);
+    };
+    const bell=(frequency,start,duration,volume)=>{
+      const audio=getContext(),oscillator=audio.createOscillator(),gain=audio.createGain(),now=audio.currentTime+start;
+      oscillator.type='sine';oscillator.frequency.value=frequency;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.012);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);oscillator.connect(gain);gain.connect(audio.destination);oscillator.start(now);oscillator.stop(now+duration);
+    };
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      try{
+        const sound=button.dataset.kitchenSound;
+        if(sound==='sizzle')noise(.72,{filterType:'bandpass',frequency:2800,endFrequency:1800,volume:.15});
+        if(sound==='chop'){noise(.08,{filterType:'highpass',frequency:850,endFrequency:420,volume:.2});setTimeout(()=>noise(.065,{filterType:'highpass',frequency:900,endFrequency:430,volume:.16}),115)}
+        if(sound==='steam')noise(1.05,{filterType:'lowpass',frequency:450,endFrequency:1850,volume:.12});
+        if(sound==='bell'){bell(880,0,.48,.12);bell(1320,.025,.35,.055)}
+        status.textContent=`Playing ${button.textContent.trim().toLowerCase()}.`;
+      }catch{status.textContent='Kitchen sounds are unavailable in this browser.'}
+    }));
+  })();
+  (function setupSurpriseMailbox(){
+    const button=document.getElementById('mailbox-open'),lettersHost=document.getElementById('mailbox-letters');
+    if(!button)return;
+    const notes=[
+      'The chef says your next noodle bowl should be extra cozy.',
+      'A dumpling left a note: good things are better when shared.',
+      'Tonight’s tiny secret: save a little room for something sweet.',
+      'The tea kettle predicts a calm moment and a very good sip.',
+      'A little bird says the crispy dish at your table will disappear first.',
+      'You have been officially invited to linger over one more cup of tea.',
+      'A secret kitchen wish: may your next meal come with great company.'
+    ];
+    button.addEventListener('click',()=>{
+      const count=Math.random()<.42?2:1,picked=[];
+      while(picked.length<count){const note=notes[Math.floor(Math.random()*notes.length)];if(!picked.includes(note))picked.push(note)}
+      lettersHost.replaceChildren(...picked.map(message=>{const letter=document.createElement('article');letter.className='mail-letter';letter.textContent=message;return letter}));
+      lettersHost.hidden=false;button.classList.add('has-mail');button.setAttribute('aria-label',`Mailbox opened · ${count} ${count===1?'letter':'letters'} inside`);
+    });
+  })();
 })();

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/forbidden_bite/order.css?v=checkout-1">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-2">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-3">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}
@@ -47,6 +47,10 @@
     @media(max-width:760px){.feast-groups{grid-template-columns:1fr}.build-own-grid{grid-template-columns:1fr}}
     .review-disclosure{margin:.2rem 0}.review-disclosure>summary{display:inline-flex;align-items:center;gap:.4rem;min-height:36px;padding:.4rem .7rem;border:1px solid var(--jade);border-radius:7px;background:var(--jade);color:#fff;font-size:.78rem;font-weight:750;cursor:pointer;list-style:none}.review-disclosure>summary::-webkit-details-marker{display:none}.review-disclosure>summary::before{content:'＋';color:#f1d787}.review-disclosure[open]>summary::before{content:'−'}.review-disclosure>summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.review-disclosure-content{padding-top:.8rem}
     .secret-menu{margin:1rem 0 1.4rem;padding:1rem clamp(.85rem,3vw,1.2rem);border:1px solid #b69547;border-radius:13px;background:linear-gradient(135deg,#092f29,#12483d 58%,#15362f);box-shadow:0 12px 28px #09251f20;color:#fff}.secret-menu>summary{display:inline-flex;align-items:center;gap:.45rem;min-height:34px;padding:.35rem .65rem;border:1px solid #d6b65e;border-radius:7px;background:#d8b95f;color:#17352e;font-size:.76rem;font-weight:800;letter-spacing:.02em;cursor:pointer;list-style:none}.secret-menu>summary::-webkit-details-marker{display:none}.secret-menu>summary::before{content:'✦';font-size:.9rem}.secret-menu[open]>summary::before{content:'✧'}.secret-menu>summary:focus-visible{outline:3px solid #fff1b7;outline-offset:3px}.secret-menu-intro{margin:.8rem 0 1rem;color:#eee7d5;font-size:.86rem}.secret-menu-intro h2{margin:.1rem 0 .3rem;color:#f1d787;font:400 clamp(1.45rem,3.2vw,1.9rem)/1.2 Marcellus,Georgia,serif}.secret-menu-intro p{margin:.3rem 0}.secret-menu-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.65rem}.secret-dish{position:relative;isolation:isolate;min-width:0;overflow:hidden;padding:.85rem .8rem;border:1px solid #d8c58f66;border-radius:10px;background:linear-gradient(155deg,#fffdf5,#f1e5c9);color:#28281f;box-shadow:0 5px 14px #0002;animation:secret-arrive .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--dish-order,0)*90ms)}.secret-dish::before{position:absolute;z-index:-1;inset:-45% -25%;background:linear-gradient(110deg,transparent 38%,#fff9 48%,transparent 58%);content:'';transform:translateX(-100%) rotate(8deg)}.secret-menu[open] .secret-dish::before{animation:secret-shimmer 1.2s .35s ease-out both;animation-delay:calc(350ms + var(--dish-order,0)*90ms)}.secret-dish .secret-number{display:inline-block;margin-bottom:.35rem;color:#85651d;font-size:.62rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.secret-dish h3{margin:.1rem 0 .4rem;color:#12483d;font:400 1.05rem/1.2 Marcellus,Georgia,serif}.secret-dish p{margin:.25rem 0 .65rem;color:#5e594c;font-size:.75rem;line-height:1.5}.secret-dish .secret-price{color:#7a5918;font-size:.85rem;font-weight:800}.secret-dish .add-to-cart{min-height:34px;margin-top:.35rem;padding:.35rem .55rem;border:1px solid #0d5c4b;border-radius:6px;background:#0d5c4b;color:#fff;font-size:.7rem;font-weight:750;cursor:pointer}.secret-dish .add-to-cart:hover{background:#093d33}.secret-menu-note{margin:.8rem 0 0;color:#eee7d5;font-size:.7rem}.secret-dish:nth-child(1){--dish-order:0}.secret-dish:nth-child(2){--dish-order:1}.secret-dish:nth-child(3){--dish-order:2}.secret-dish:nth-child(4){--dish-order:3}.secret-dish:nth-child(5){--dish-order:4}@keyframes secret-arrive{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes secret-shimmer{to{transform:translateX(120%) rotate(8deg)}}@media(max-width:850px){.secret-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.secret-menu{padding:.75rem}.secret-menu-grid{grid-template-columns:1fr}.secret-dish{padding:.8rem}.secret-dish h3{font-size:1.1rem}}@media(prefers-reduced-motion:reduce){.secret-dish,.secret-menu[open] .secret-dish::before{animation:none!important}}
+  </style>
+  <style>
+    .reservation-fields .planner-wide{grid-column:1/-1}.reservation-fields textarea{width:100%;min-height:74px;padding:.6rem .7rem;border:1px solid #d9d2c6;border-radius:7px;background:#fbfaf7;color:#57544d;font:400 .82rem/1.45 Inter,system-ui,sans-serif;resize:vertical}.reservation-checks{display:flex;flex-wrap:wrap;gap:.55rem .9rem;margin:0;padding:.7rem .8rem;border:1px solid #dfd2b7;border-radius:8px}.reservation-checks legend{padding:0 .3rem;color:var(--jade-dark);font-size:.76rem;font-weight:750}.reservation-fields .reservation-checks label{display:flex;grid-template-columns:auto 1fr;align-items:center;gap:.35rem;color:#57544d;font-size:.72rem;font-weight:600}.reservation-checks input{width:auto;min-height:0;accent-color:var(--jade)}.reservation-estimate{margin:0;padding:.65rem .75rem;border-left:3px solid var(--gold);border-radius:0 7px 7px 0;background:#f3ecdc;color:var(--jade-dark);font-size:.78rem;font-weight:750}
+    @media(max-width:520px){.reservation-fields .planner-wide{grid-column:1/-1}.reservation-checks{gap:.55rem;flex-direction:column}}
   </style>
 </head>
 <body>
@@ -89,18 +93,24 @@
     </section>
     <section class="reservation" id="reservation-preview" aria-labelledby="reservation-title">
       <div class="reservation-layout">
-        <div><p class="section-label">Reservations · concept preview</p><h2 id="reservation-title">Save a seat for something special</h2><p class="reservation-intro">Set the scene for a relaxed evening with a polished reservation request preview.</p></div>
+        <div><p class="section-label">Reservations · party planner preview</p><h2 id="reservation-title">Plan a celebration at Forbidden Bite</h2><p class="reservation-intro">Choose a date, party size, menu, table style, and little extras for a pretend event plan.</p></div>
         <form class="reservation-panel" id="reservation-form" aria-label="Reservation request demo">
-          <div class="reservation-brand"><strong>Forbidden Bite</strong><span>Table request</span></div>
+          <div class="reservation-brand"><strong>Forbidden Bite</strong><span>Party &amp; table planner</span></div>
           <div class="reservation-fields">
             <label for="reservation-date">Date<input id="reservation-date" name="date" type="date" required></label>
             <label for="reservation-time">Time<select id="reservation-time" name="time" required><option value="" selected disabled>Choose a time</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option></select></label>
-            <label for="reservation-guests">Party size<select id="reservation-guests" name="guests" required><option value="" selected disabled>Choose guests</option><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7 guests</option><option>8 guests</option></select></label>
+            <label for="reservation-guests">Party size<select id="reservation-guests" name="guests" required><option value="" selected disabled>Choose guests</option><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option><option value="7">7 guests</option><option value="8">8 guests</option><option value="9">9 guests</option><option value="10">10 guests</option><option value="12">12 guests</option><option value="15">15 guests</option><option value="20">20 guests</option></select></label>
             <label for="reservation-seating">Seating preference<select id="reservation-seating" name="seating"><option>Any available table</option><option>Window table</option><option>Quiet corner</option></select></label>
-            <label for="reservation-occasion">Occasion (optional)<select id="reservation-occasion" name="occasion"><option>No special occasion</option><option>Birthday</option><option>Anniversary</option><option>Other celebration</option></select></label>
+            <label for="reservation-occasion">Party occasion<select id="reservation-occasion" name="occasion"><option>No special occasion</option><option>Birthday</option><option>Anniversary</option><option>Family reunion</option><option>Graduation</option><option>Other celebration</option></select></label>
+            <label for="party-style">Party style<select id="party-style" name="partyStyle"><option>Jade lantern celebration</option><option>Dumpling party</option><option>Noodle night</option><option>Family-style feast</option><option>Tea and dessert gathering</option></select></label>
+            <label for="party-menu">Menu plan<select id="party-menu" name="partyMenu" required><option value="" selected disabled>Choose a menu plan</option><option data-per-person="42">Build-a-feast · $42 per guest</option><option data-per-person="32">Noodle tasting · $32 per guest</option><option data-per-person="28">Dumpling and bao table · $28 per guest</option><option data-per-person="18">Tea and dessert party · $18 per guest</option></select></label>
+            <label for="party-duration">Party length<select id="party-duration" name="duration"><option>90 minutes</option><option selected>2 hours</option><option>3 hours</option></select></label>
+            <fieldset class="reservation-checks planner-wide"><legend>Party extras</legend><label><input type="checkbox" name="partyExtras" value="Lantern table decor" data-flat-cost="12"> Lantern table decor · $12</label><label><input type="checkbox" name="partyExtras" value="Birthday dessert platter" data-per-guest="6"> Birthday dessert platter · $6 per guest</label><label><input type="checkbox" name="partyExtras" value="Tea service" data-per-guest="4"> Tea service · $4 per guest</label></fieldset>
+            <label for="party-notes" class="planner-wide">Dietary needs or party notes<textarea id="party-notes" name="partyNotes" maxlength="240" placeholder="Optional notes for your pretend plan"></textarea></label>
+            <p class="reservation-estimate planner-wide" id="reservation-estimate" aria-live="polite">Choose your party size and menu plan for a pretend estimate.</p>
           </div>
-          <button class="reservation-action" type="submit">Send reservation request</button>
-          <p class="reservation-note"><strong>Demo only:</strong> You can try the reservation preview, but no real booking is created and nothing is sent or saved.</p>
+          <button class="reservation-action" type="submit">Preview my party plan</button>
+          <p class="reservation-note"><strong>Demo only:</strong> This planner makes a preview only. No reservation is created and nothing is sent or saved.</p>
           <p class="reservation-status" id="reservation-status" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
@@ -184,6 +194,31 @@
           <p class="fun-kicker">Quick break</p><h3 id="game-teaser-title">Dumpling Dash</h3><p>Catch as many dumplings as you can before time runs out.</p>
           <a class="game-icon-launch" href="/projects/restaurant-dumpling-game.html" aria-label="Tap the dumpling icon to play Dumpling Dash"><span class="game-launch-icon" aria-hidden="true">🥟</span><span>Tap to play</span></a>
           <a class="game-launch" href="/projects/restaurant-dumpling-game.html">Play the full-screen game</a>
+        </article>
+        <article class="fun-card passport-card" aria-labelledby="passport-title">
+          <p class="fun-kicker">Collect little memories</p><h3 id="passport-title">Dish Passport</h3><p>Tap a dish to collect its stamp. Your passport stays on this device.</p>
+          <p class="passport-progress" id="passport-progress" role="status" aria-live="polite">0 of 8 dish stamps collected</p>
+          <div class="passport-stamps" id="passport-stamps">
+            <button type="button" class="passport-stamp" data-passport-dish="Smashed Cucumbers"><span aria-hidden="true">🥒</span><small>Smashed Cucumbers</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Pork &amp; Chive Dumplings"><span aria-hidden="true">🥟</span><small>Dumplings</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Dragon Fire Noodles"><span aria-hidden="true">🍜</span><small>Dragon Fire Noodles</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Mapo Tofu Bowl"><span aria-hidden="true">🍚</span><small>Mapo Tofu Bowl</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Peking Duck Celebration"><span aria-hidden="true">🦆</span><small>Peking Duck</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Seafood Boil for Two"><span aria-hidden="true">🦐</span><small>Seafood Boil</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Sweet Sin"><span aria-hidden="true">🍮</span><small>Sweet Sin</small></button>
+            <button type="button" class="passport-stamp" data-passport-dish="Wolfberry Chrysanthemum Tea"><span aria-hidden="true">🍵</span><small>Chrysanthemum Tea</small></button>
+          </div>
+          <button type="button" class="passport-reset" id="passport-reset">Reset passport</button>
+        </article>
+        <article class="fun-card soundboard-card" aria-labelledby="soundboard-title">
+          <p class="fun-kicker">A tiny trip to the kitchen</p><h3 id="soundboard-title">Kitchen Soundboard</h3><p>Tap a button to hear a little kitchen sound.</p>
+          <div class="soundboard-buttons"><button type="button" class="sound-button" data-kitchen-sound="sizzle"><span aria-hidden="true">♨</span>Sizzle</button><button type="button" class="sound-button" data-kitchen-sound="chop"><span aria-hidden="true">🔪</span>Chop</button><button type="button" class="sound-button" data-kitchen-sound="steam"><span aria-hidden="true">〰</span>Steam</button><button type="button" class="sound-button" data-kitchen-sound="bell"><span aria-hidden="true">🔔</span>Service bell</button></div>
+          <p class="sound-status" id="sound-status" role="status" aria-live="polite">Sounds play only when you tap.</p>
+        </article>
+        <article class="fun-card mailbox-card" aria-labelledby="mailbox-title">
+          <p class="fun-kicker">A little note from the kitchen</p><h3 id="mailbox-title">Surprise Mailbox</h3><p>Sometimes there’s one letter inside. Sometimes there are two.</p>
+          <button type="button" class="mailbox-open" id="mailbox-open" aria-controls="mailbox-letters"><span class="mailbox-art" aria-hidden="true"><span class="mailbox-flag"></span><span class="mailbox-slot"></span></span><span>Check the mailbox</span></button>
+          <div class="mailbox-letters" id="mailbox-letters" aria-live="polite" hidden></div>
         </article>
 
       </div>
@@ -287,15 +322,29 @@
     const reservationDate=document.getElementById('reservation-date');
     const today=new Date();
     reservationDate.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+    const reservationGuests=document.getElementById('reservation-guests');
+    const partyMenu=document.getElementById('party-menu');
+    const partyEstimate=document.getElementById('reservation-estimate');
+    const updatePartyEstimate=()=>{
+      const guests=Number(reservationGuests.value||0),perPerson=Number(partyMenu.selectedOptions[0]?.dataset.perPerson||0);
+      if(!guests||!perPerson){partyEstimate.textContent='Choose your party size and menu plan for a pretend estimate.';return {guests,total:0}}
+      const extras=[...reservationForm.querySelectorAll('input[name="partyExtras"]:checked')];
+      const flatExtras=extras.reduce((sum,input)=>sum+Number(input.dataset.flatCost||0),0),perGuestExtras=extras.reduce((sum,input)=>sum+Number(input.dataset.perGuest||0),0);
+      const total=Math.round((guests*(perPerson+perGuestExtras)+flatExtras)*100)/100;
+      partyEstimate.textContent=`Pretend menu estimate: $${total.toFixed(2)} for ${guests} guest${guests===1?'':'s'} including selected extras.`;
+      return {guests,total};
+    };
+    reservationForm.addEventListener('input',updatePartyEstimate);reservationForm.addEventListener('change',updatePartyEstimate);
     reservationForm.addEventListener('submit',event=>{
       event.preventDefault();
       const formData=new FormData(reservationForm);
       const date=new Intl.DateTimeFormat(undefined,{dateStyle:'long'}).format(new Date(`${formData.get('date')}T12:00:00`));
       const time=formData.get('time');
-      const guests=formData.get('guests');
+      const {guests,total}=updatePartyEstimate();
       const seating=formData.get('seating');
+      const occasion=formData.get('occasion'),style=formData.get('partyStyle'),menu=formData.get('partyMenu'),duration=formData.get('duration'),extras=formData.getAll('partyExtras'),notes=String(formData.get('partyNotes')||'').trim();
       const status=document.getElementById('reservation-status');
-      status.textContent=`Demo request sent for ${date} at ${time} for ${guests} (${seating}). No reservation was actually sent or saved.`;
+      status.textContent=`Pretend party plan: ${occasion} for ${guests} guest${guests===1?'':'s'} on ${date} at ${time}. ${style}; ${menu}; ${duration}; ${seating}. ${extras.length?`Extras: ${extras.join(', ')}. `:''}${notes?`Notes: ${notes}. `:''}Estimated sample menu total: $${total.toFixed(2)}. No reservation was sent or saved.`;
       status.hidden=false;
     });
     (function setupFeastBuilder(){
@@ -403,7 +452,7 @@
       });
     })();
   </script>
-  <script src="/assets/forbidden_bite/fun.js?v=fun-2" defer></script>
+  <script src="/assets/forbidden_bite/fun.js?v=fun-3" defer></script>
   <script src="/assets/forbidden_bite/order.js?v=checkout-1" defer></script>
 </body>
 </html>
