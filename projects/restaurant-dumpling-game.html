@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-9">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-11">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -200,9 +200,6 @@
         const achievement=achievements.find(item=>item.id===id);if(!achievement)return;
         unlocked.add(id);try{localStorage.setItem(achievementKey,JSON.stringify([...unlocked]))}catch{}
         renderAchievements();powerStatus.textContent=`Achievement unlocked: ${achievement.name}!`;
-        let toast=document.querySelector('.achievement-toast');
-        if(!toast){toast=document.createElement('div');toast.className='achievement-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');document.body.append(toast)}
-        toast.textContent=`Achievement unlocked: ${achievement.icon} ${achievement.name}`;clearTimeout(unlockAchievement.toastTimer);unlockAchievement.toastTimer=setTimeout(()=>toast.remove(),3200);
       };
       const recordPowerup=key=>{
         runPowersUsed.add(key);unlockAchievement('power-play');

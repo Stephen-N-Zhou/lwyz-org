@@ -147,8 +147,6 @@
 .achievement-copy strong{color:#fff;font-size:.8rem}
 .achievement-copy>span{color:#d9e0d9;font-size:.69rem;line-height:1.35}
 .achievement-state{color:#f0d88f;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.achievement-toast{position:fixed;z-index:10;right:1rem;bottom:1rem;max-width:min(25rem,calc(100vw - 2rem));padding:.85rem 1rem;border:1px solid #f0d88f;border-radius:10px;background:#093d33;color:#fff;box-shadow:0 12px 35px #0005;font-weight:700;animation:achievement-pop .2s ease-out}
-@keyframes achievement-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:520px){.game-arena{height:48vh;min-height:230px}.game-stat{min-width:74px;padding:.45rem}.game-scorebar{gap:.45rem}.game-stat strong{font-size:1.1rem}.dumpling-target{width:66px;height:66px}.dumpling-target.dumpling-boss{width:104px;height:104px}.game-top{align-items:flex-start}.achievement-grid{grid-template-columns:1fr}.achievement-card{grid-template-columns:36px minmax(0,1fr) auto}.achievement-panel summary{padding:.7rem}.achievement-copy>span{font-size:.72rem}.collection-heading{align-items:flex-start}.collection-tools>*{flex:1}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.daily-reward{grid-template-columns:34px 1fr}.daily-reward button{grid-column:1/-1;width:100%}.collection-filters>*{flex:1}.collection-filters select{min-width:0;width:100%}.sound-theme-control{min-width:125px}}
 @media(prefers-reduced-motion:reduce){.dumpling-target{transition:none}}
 @media(prefers-reduced-motion:reduce){.game-launch-icon{animation:none;transition:none}}

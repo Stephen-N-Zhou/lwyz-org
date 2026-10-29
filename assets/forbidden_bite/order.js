@@ -108,7 +108,6 @@
     dialog.querySelector('.discount-row').hidden=!promoApplied;dialog.querySelector('.discount-amount').textContent=`−${money(discount)}`;
     dialog.querySelector('.review-total').textContent=money(Math.max(0,subtotalAmount+(delivery?4.99:0)-discount));
   };
-  const showToast=name=>{let toast=document.querySelector('.cart-toast');if(!toast){toast=document.createElement('div');toast.className='cart-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');document.body.append(toast)}toast.textContent=`${name} added to your cart`;toast.classList.remove('toast-pop');void toast.offsetWidth;toast.classList.add('toast-pop');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.remove(),2200)};
   const tapTimers=new WeakMap(),orderTimers=new WeakMap();
   document.addEventListener('click',event=>{
     const control=event.target.closest('button,a,summary,[role="button"]');if(!control||control.disabled||control.getAttribute('aria-disabled')==='true')return;
@@ -121,7 +120,7 @@
     add.classList.remove('cart-added');void add.offsetWidth;add.classList.add('cart-added');clearTimeout(orderTimers.get(add));orderTimers.set(add,setTimeout(()=>add.classList.remove('cart-added'),900));
     const existing=cart.find(item=>item.name===selectedItem.name);
     if(existing)existing.quantity+=1;else cart.push({name:selectedItem.name,price:Number(selectedItem.price),quantity:1});
-    saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);showToast(selectedItem.name);
+    saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);
   });
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
