@@ -1,7 +1,10 @@
 (()=>{
   const storageKey='forbidden-bite-demo-cart-v1';
+  const stampStorageKey='forbidden-bite-demo-stamps-v1';
   const readCart=()=>{try{const value=JSON.parse(localStorage.getItem(storageKey)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
   let cart=readCart();
+  const readStamps=()=>{try{const value=Number(localStorage.getItem(stampStorageKey)||0);return Number.isInteger(value)&&value>=0?value:0}catch{return 0}};
+  let stamps=readStamps();
   let promoApplied=false;
   const money=value=>new Intl.NumberFormat(undefined,{style:'currency',currency:'USD'}).format(value);
   const nav=document.querySelector('.nav');
@@ -15,6 +18,13 @@
     <section class="cart-view" aria-label="Shopping cart">
       <div class="cart-items"></div>
       <div class="cart-summary"><span>Demo total</span><span class="cart-total">$0.00</span></div>
+      <section class="stamp-card" aria-labelledby="stamp-title">
+        <div class="stamp-card-head"><div><p class="stamp-kicker">Forbidden Bite rewards · demo</p><h3 id="stamp-title">Little Bite Stamp Card</h3></div><span class="stamp-reward-icon" aria-hidden="true">🥟</span></div>
+        <div class="stamp-track" role="img" aria-label="Six stamps complete one reward card"><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🥟</span></div>
+        <p class="stamp-status" role="status" aria-live="polite"></p>
+        <button class="stamp-redeem" type="button" disabled>Redeem 6 stamps for a dumpling treat</button>
+        <p class="stamp-demo-note">Add pretend menu items to collect stamps. Six stamps unlock one free pretend dumpling treat. Progress is stored only in this browser.</p>
+      </section>
       <p class="cart-demo-note"><strong>Demo only:</strong> Browse the checkout preview, but no real order or payment will be processed.</p>
       <button class="checkout-start" type="button">Continue to checkout</button>
     </section>
@@ -70,6 +80,13 @@
   const successView=dialog.querySelector('.checkout-success');
   const checkoutForm=dialog.querySelector('.checkout-form');
   const persist=()=>{try{localStorage.setItem(storageKey,JSON.stringify(cart))}catch{}};
+  const persistStamps=()=>{try{localStorage.setItem(stampStorageKey,String(stamps))}catch{}};
+  const renderStamps=()=>{
+    const progress=stamps%6,ready=Math.floor(stamps/6),track=dialog.querySelector('.stamp-track'),button=dialog.querySelector('.stamp-redeem'),status=dialog.querySelector('.stamp-status');
+    [...track.children].forEach((stamp,index)=>{stamp.classList.toggle('is-earned',index<progress||ready>0);stamp.setAttribute('aria-hidden','true')});
+    status.textContent=ready?`${progress}/6 stamps on your next card · ${ready} dumpling reward${ready===1?' is':'s are'} ready to claim.`:`${progress}/6 stamps · Add ${6-progress} more pretend menu item${6-progress===1?'':'s'} to unlock a dumpling treat.`;
+    button.disabled=ready===0;button.textContent=ready?`Redeem 6 stamps for a dumpling treat${ready>1?` (${ready} ready)`:''}`:'Redeem 6 stamps for a dumpling treat';
+  };
   const subtotal=()=>cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
   const saveAndRender=()=>{persist();render()};
   const render=()=>{
@@ -81,7 +98,7 @@
       const line=document.createElement('article');line.className='cart-line';
       const name=document.createElement('span');name.className='cart-line-name';name.textContent=item.name;
       const price=document.createElement('span');price.className='cart-line-price';price.textContent=money(item.price*item.quantity);
-      const desc=document.createElement('span');desc.className='cart-line-description';desc.textContent=`${money(item.price)} each`;
+      const desc=document.createElement('span');desc.className='cart-line-description';desc.textContent=item.reward?'Stamp card reward · redeemed with 6 stamps':`${money(item.price)} each`;
       const actions=document.createElement('div');actions.className='cart-line-actions';
       const qty=document.createElement('div');qty.className='cart-qty';
       const minus=document.createElement('button');minus.type='button';minus.textContent='−';minus.setAttribute('aria-label',`Remove one ${item.name}`);minus.addEventListener('click',()=>changeQty(item.name,-1));
@@ -93,6 +110,7 @@
     }
     cartTotal.textContent=money(subtotal());
     dialog.querySelector('.checkout-start').disabled=cart.length===0;
+    renderStamps();
     updateReview();
   };
   const changeQty=(name,delta)=>{const item=cart.find(entry=>entry.name===name);if(!item)return;item.quantity+=delta;if(item.quantity<1)cart=cart.filter(entry=>entry!==item);saveAndRender()};
@@ -121,7 +139,16 @@
     add.classList.remove('cart-added');void add.offsetWidth;add.classList.add('cart-added');clearTimeout(orderTimers.get(add));orderTimers.set(add,setTimeout(()=>add.classList.remove('cart-added'),900));
     const existing=cart.find(item=>item.name===selectedItem.name);
     if(existing)existing.quantity+=1;else cart.push({name:selectedItem.name,price:Number(selectedItem.price),quantity:1});
+    stamps+=1;persistStamps();
     saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);showToast(selectedItem.name);
+  });
+  dialog.querySelector('.stamp-redeem').addEventListener('click',()=>{
+    if(stamps<6)return;
+    stamps-=6;persistStamps();
+    const rewardName='Stamp Card Reward: Free Pork & Chive Dumplings';
+    const reward=cart.find(item=>item.name===rewardName);
+    if(reward)reward.quantity+=1;else cart.push({name:rewardName,price:0,quantity:1,reward:true});
+    saveAndRender();showToast('Free dumpling reward');
   });
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
