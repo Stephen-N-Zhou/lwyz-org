@@ -52,10 +52,25 @@
     .reservation-fields .planner-wide{grid-column:1/-1}.reservation-fields textarea{width:100%;min-height:74px;padding:.6rem .7rem;border:1px solid #d9d2c6;border-radius:7px;background:#fbfaf7;color:#57544d;font:400 .82rem/1.45 Inter,system-ui,sans-serif;resize:vertical}.reservation-checks{display:flex;flex-wrap:wrap;gap:.55rem .9rem;margin:0;padding:.7rem .8rem;border:1px solid #dfd2b7;border-radius:8px}.reservation-checks legend{padding:0 .3rem;color:var(--jade-dark);font-size:.76rem;font-weight:750}.reservation-fields .reservation-checks label{display:flex;grid-template-columns:auto 1fr;align-items:center;gap:.35rem;color:#57544d;font-size:.72rem;font-weight:600}.reservation-checks input{width:auto;min-height:0;accent-color:var(--jade)}.reservation-estimate{margin:0;padding:.65rem .75rem;border-left:3px solid var(--gold);border-radius:0 7px 7px 0;background:#f3ecdc;color:var(--jade-dark);font-size:.78rem;font-weight:750}
     @media(max-width:520px){.reservation-fields .planner-wide{grid-column:1/-1}.reservation-checks{gap:.55rem;flex-direction:column}}
   </style>
+  <style>
+    .quick-scroller{position:sticky;top:0;z-index:30;border-bottom:1px solid #e3dbc9;background:#faf7f2f2;backdrop-filter:blur(10px)}.quick-scroller-inner{display:flex;align-items:center;gap:.6rem;width:min(1100px,calc(100% - 2.5rem));margin-inline:auto}.quick-scroller-title{flex:none;color:var(--jade-dark);font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.quick-scroller-track{display:flex;min-width:0;gap:.35rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin}.quick-jump{display:grid;flex:0 0 82px;justify-items:center;gap:.13rem;padding:.38rem .15rem;color:var(--jade-dark);font-size:.64rem;font-weight:750;line-height:1.15;text-align:center;text-decoration:none;scroll-snap-align:start}.quick-jump:hover{color:#7b5c18}.quick-jump:focus-visible{outline:3px solid var(--gold);outline-offset:-2px;border-radius:7px}.quick-thumb{position:relative;display:block;width:68px;height:42px;overflow:hidden;border:1px solid #d8c58f;border-radius:7px;background:#f3ecdc;box-shadow:0 2px 5px #17251b1a}.quick-thumb img{display:block;width:100%;height:100%;object-fit:cover}.quick-thumb b{position:absolute;right:3px;bottom:2px;display:grid;place-items:center;width:21px;height:21px;border:1px solid #fff8;border-radius:50%;background:#fffdf0ed;font-size:.78rem;font-weight:400;box-shadow:0 1px 4px #0003}.quick-jump>span:last-child{max-width:82px;white-space:nowrap}.quick-scroller::-webkit-scrollbar{height:4px}.quick-scroller::-webkit-scrollbar-thumb{border-radius:99px;background:#c5a146}.quick-scroller-inner{scroll-margin-top:100px}#limited-time-deals,#menu-title,#build-your-own-disclosure,#feast-disclosure,#secret-menu,#review-disclosure{scroll-margin-top:110px}
+    @media(max-width:520px){.quick-scroller-inner{width:calc(100% - .7rem);gap:.35rem}.quick-scroller-title{font-size:.57rem;letter-spacing:.05em}.quick-jump{flex-basis:74px;font-size:.6rem}.quick-thumb{width:60px;height:38px}.quick-thumb b{width:19px;height:19px;font-size:.7rem}}
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">Projects</a></nav></header>
+  <nav class="quick-scroller" aria-label="Quick section links">
+    <div class="quick-scroller-inner"><span class="quick-scroller-title">Quick jump</span><div class="quick-scroller-track">
+      <a class="quick-jump" href="#limited-time-deals"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 5%"><b aria-hidden="true">✨</b></span><span>Deals</span></a>
+      <a class="quick-jump" href="#menu-title"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 24%"><b aria-hidden="true">🍜</b></span><span>Full menu</span></a>
+      <a class="quick-jump" href="/projects/restaurant-gallery.html#gallery-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 47%"><b aria-hidden="true">📷</b></span><span>Picture gallery</span></a>
+      <a class="quick-jump" href="#build-your-own-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 63%"><b aria-hidden="true">🥢</b></span><span>Build your own</span></a>
+      <a class="quick-jump" href="#feast-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 70%"><b aria-hidden="true">🥟</b></span><span>Build a Feast</span></a>
+      <a class="quick-jump" href="#secret-menu"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 83%"><b aria-hidden="true">🔐</b></span><span>Secret menu</span></a>
+      <a class="quick-jump" href="#review-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/menu.png?v=picture-gallery-5" alt="" aria-hidden="true" style="object-position:center 96%"><b aria-hidden="true">💌</b></span><span>Guestbook</span></a>
+    </div></div>
+  </nav>
   <section class="hero" aria-labelledby="page-title">
     <div class="hero-inner">
       <div>
@@ -116,7 +131,7 @@
       </div>
     </section>
 
-    <details class="secret-menu">
+    <details class="secret-menu" id="secret-menu">
       <summary>Secret menu</summary>
       <div class="secret-menu-intro"><h2>Five dishes from the hidden menu</h2><p>Tap a dish to add it to your pretend cart. These secret specials are exclusive to this page.</p></div>
       <div class="secret-menu-grid">
@@ -130,10 +145,10 @@
     </details>
     <section class="build-own-section" id="build-your-own" aria-labelledby="build-own-title">
       <div class="section-head"><div><p class="section-label">Make it your own · demo builders</p><h2 id="build-own-title" class="section-heading">Build your own</h2></div><p>Open only the builder you want. Every button adds a pretend item to the demo cart.</p></div>
-      <details class="builder-disclosure">
+      <details class="builder-disclosure" id="build-your-own-disclosure">
         <summary>Open build-your-own choices</summary>
         <div class="builder-disclosure-content">
-    <details class="feast-disclosure">
+    <details class="feast-disclosure" id="feast-disclosure">
       <summary>Build a Feast</summary>
     <section class="feast-builder" aria-labelledby="feast-title">
       <div class="section-head"><div><p class="section-label">Build a feast · demo menu</p><h2 id="feast-title" class="section-heading">Pick six dishes for the table</h2></div><p>Choose exactly two from each course. Your bundle saves 10%.</p></div>
@@ -248,7 +263,7 @@
 
     <section class="editorial-section" aria-labelledby="reviews-title">
       <div class="section-head"><div><p class="section-label">Play along · fictional feedback</p><h2 id="reviews-title" class="section-heading">The pretend guestbook</h2></div><p>Leave a silly review for this imaginary restaurant.</p></div>
-      <details class="review-disclosure">
+      <details class="review-disclosure" id="review-disclosure">
         <summary>Open guestbook</summary>
         <div class="review-disclosure-content">
       <div class="review-layout"><div><div class="review-tools"><button type="button" class="public-review" id="refresh-reviews">Refresh public reviews</button><a class="public-review" href="https://github.com/Stephen-N-Zhou/lwyz-org/issues?q=is%3Aissue+%5BPretend+Review%5D" target="_blank" rel="noopener">Browse all public reviews</a></div><p class="demo-label" id="review-load-status" role="status" aria-live="polite">Loading public pretend reviews…</p><div class="review-list" id="review-list" aria-live="polite"></div><p class="demo-label">Sample reviews are fictional. Visitor reviews are posted publicly to this project’s GitHub Issues and can be seen by anyone.</p></div>
