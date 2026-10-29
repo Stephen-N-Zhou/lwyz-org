@@ -67,4 +67,15 @@
     });
     updateSoup();
   }
+  document.querySelectorAll('.custom-builder-form').forEach(form=>{
+    const add=form.querySelector('[data-builder-add]'),priceOutput=add.querySelector('[data-builder-price]'),preview=form.querySelector('.custom-builder-preview'),buttonLabel=add.firstChild.textContent.replace(/[·\s]+$/,'');
+    const update=()=>{
+      const selects=[...form.querySelectorAll('select')],chosenOptions=selects.map(select=>({name:select.selectedOptions[0].textContent.replace(/\s*·\s*\$\d+(?:\.\d{1,2})?.*$/,''),price:Number(select.selectedOptions[0].dataset.price||0)})),checked=[...form.querySelectorAll('input[type="checkbox"]:checked')],extras=checked.map(input=>({name:input.value,price:Number(input.dataset.price||0)})),items=[...chosenOptions,...extras],total=Math.round((Number(form.dataset.basePrice||0)+items.reduce((sum,item)=>sum+item.price,0))*100)/100;
+      priceOutput.textContent=`$${total.toFixed(2)}`;preview.textContent=items.map(item=>item.name).join(' · ');add.firstChild.textContent=`${buttonLabel} · `;
+      return {items,total};
+    };
+    form.addEventListener('change',update);form.addEventListener('input',update);
+    add.addEventListener('click',()=>{const {items,total}=update();add.dataset.orderItem=JSON.stringify({name:`${form.dataset.builderName} — ${items.map(item=>item.name).join('; ')}`,price:total})});
+    update();
+  });
 })();
