@@ -25,6 +25,8 @@
 .game-launch-icon{display:grid;place-items:center;width:88px;height:88px;border:3px solid #d5ae4b;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fffdf2,#f2d98f);box-shadow:0 6px 16px #694d1e25;font-size:3rem;animation:dumpling-bob 1.8s ease-in-out infinite;transition:transform .18s ease,box-shadow .18s ease}
 .game-icon-launch:hover .game-launch-icon,.game-icon-launch:focus-visible .game-launch-icon{transform:scale(1.12) rotate(-5deg);box-shadow:0 9px 22px #694d1e40}
 .game-icon-launch:focus-visible{outline:3px solid var(--jade);outline-offset:4px;border-radius:10px}
+.game-icon-launch.game-locked .game-launch-icon{filter:saturate(.55);box-shadow:0 5px 14px #694d1e1c}.game-launch.game-locked{background:#ede4cf;color:#5d5136;border-color:#c8b888}
+.stamp-game-lock{max-width:700px;margin:clamp(2rem,8vw,6rem) auto;padding:clamp(1.3rem,5vw,2.5rem);border:1px solid #d5ae4b;border-radius:18px;background:linear-gradient(145deg,#103f36,#0d5c4b);box-shadow:0 20px 50px #031b18;color:#fff;text-align:center}.stamp-game-lock .game-title{margin:.4rem 0 .9rem}.stamp-game-lock .game-instructions{margin:0 auto 1.2rem}.stamp-game-lock .game-primary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem 1rem;border:1px solid #dfc087;border-radius:8px;background:#dfc087;color:#15221d;font-weight:800;text-decoration:none}
 @keyframes dumpling-bob{50%{transform:translateY(-5px)}}
 .game-launch{min-height:36px;padding:.4rem .65rem;font-size:.76rem}
 .soup-builder{grid-column:1/-1;display:grid;grid-template-columns:.8fr 1.2fr;gap:1.4rem;padding:clamp(1.1rem,3vw,1.6rem);background:#f5f0e5;border-color:#d8c58f}

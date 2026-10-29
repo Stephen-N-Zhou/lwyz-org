@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-9">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-10">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -51,6 +51,9 @@
     <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Achievements are grouped by difficulty, from easy to very hard. New power-ups unlock as you advance.</p>
   </main>
   <script>
+    const unlockedDash=(()=>{try{const games=JSON.parse(localStorage.getItem('forbidden-bite-unlocked-games-v1')||'[]'),legacy=['forbidden-bite-dumpling-dash-best-level','forbidden-bite-dumpling-dash-achievements-v1','forbidden-bite-dumpling-dash-collection-v1'].some(key=>localStorage.getItem(key)!==null);return Array.isArray(games)&&games.includes('dumpling-dash')||legacy}catch{return false}})();
+    if(!unlockedDash){document.querySelector('.game-shell').innerHTML=`<header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Stamp Card Game Unlock</span></header><section class="stamp-game-lock"><p class="game-label">A little game is waiting</p><h1 class="game-title">Unlock Dumpling Dash</h1><p class="game-instructions">Collect six stamps by adding pretend menu items to your cart, then redeem them for this 100-level full-screen game.</p><a class="game-primary" href="/projects/restaurant.html#little-delights">Go collect stamps</a></section>`}
+    else {
     (()=>{
       const levels=Array.from({length:100},(_,index)=>{
         const n=index+1;
@@ -358,6 +361,7 @@
       soundThemeSelect.addEventListener('change',()=>{soundTheme=soundThemeSelect.value;try{localStorage.setItem(soundKey,JSON.stringify(soundTheme))}catch{}if(soundTheme!=='off')playSound('reward')});
       window.addEventListener('resize',()=>{if(running)moveTargets()});
     })();
+    }
   </script>
 </body>
 </html>

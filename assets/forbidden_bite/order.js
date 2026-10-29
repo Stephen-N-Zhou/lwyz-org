@@ -1,10 +1,15 @@
 (()=>{
   const storageKey='forbidden-bite-demo-cart-v1';
   const stampStorageKey='forbidden-bite-demo-stamps-v1';
+  const gameUnlockStorageKey='forbidden-bite-unlocked-games-v1';
   const readCart=()=>{try{const value=JSON.parse(localStorage.getItem(storageKey)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
   let cart=readCart();
   const readStamps=()=>{try{const value=Number(localStorage.getItem(stampStorageKey)||0);return Number.isInteger(value)&&value>=0?value:0}catch{return 0}};
   let stamps=readStamps();
+  const readUnlockedGames=()=>{try{const value=JSON.parse(localStorage.getItem(gameUnlockStorageKey)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
+  let unlockedGames=readUnlockedGames();
+  const legacyDashProgress=['forbidden-bite-dumpling-dash-best-level','forbidden-bite-dumpling-dash-achievements-v1','forbidden-bite-dumpling-dash-collection-v1'].some(key=>{try{return localStorage.getItem(key)!==null}catch{return false}});
+  if(legacyDashProgress&&!unlockedGames.includes('dumpling-dash')){unlockedGames.push('dumpling-dash');try{localStorage.setItem(gameUnlockStorageKey,JSON.stringify(unlockedGames))}catch{}}
   let promoApplied=false;
   const money=value=>new Intl.NumberFormat(undefined,{style:'currency',currency:'USD'}).format(value);
   const nav=document.querySelector('.nav');
@@ -19,11 +24,12 @@
       <div class="cart-items"></div>
       <div class="cart-summary"><span>Demo total</span><span class="cart-total">$0.00</span></div>
       <section class="stamp-card" aria-labelledby="stamp-title">
-        <div class="stamp-card-head"><div><p class="stamp-kicker">Forbidden Bite rewards · demo</p><h3 id="stamp-title">Little Bite Stamp Card</h3></div><span class="stamp-reward-icon" aria-hidden="true">🥟</span></div>
-        <div class="stamp-track" role="img" aria-label="Six stamps complete one reward card"><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🥟</span></div>
+        <div class="stamp-card-head"><div><p class="stamp-kicker">Forbidden Bite rewards · demo</p><h3 id="stamp-title">Game Unlock Stamp Card</h3></div><span class="stamp-reward-icon" aria-hidden="true">🎮</span></div>
+        <div class="stamp-track" role="img" aria-label="Six stamps unlock Dumpling Dash"><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🥢</span><span>🎮</span></div>
         <p class="stamp-status" role="status" aria-live="polite"></p>
-        <button class="stamp-redeem" type="button" disabled>Redeem 6 stamps for a dumpling treat</button>
-        <p class="stamp-demo-note">Add pretend menu items to collect stamps. Six stamps unlock one free pretend dumpling treat. Progress is stored only in this browser.</p>
+        <button class="stamp-redeem" type="button" disabled>Unlock Dumpling Dash · 6 stamps</button>
+        <a class="stamp-game-link" href="/projects/restaurant-dumpling-game.html" hidden>Play Dumpling Dash · 100 levels</a>
+        <p class="stamp-demo-note">Add pretend menu items to collect stamps. Redeem six to unlock the full-screen game. Progress is stored only in this browser.</p>
       </section>
       <p class="cart-demo-note"><strong>Demo only:</strong> Browse the checkout preview, but no real order or payment will be processed.</p>
       <button class="checkout-start" type="button">Continue to checkout</button>
@@ -81,11 +87,13 @@
   const checkoutForm=dialog.querySelector('.checkout-form');
   const persist=()=>{try{localStorage.setItem(storageKey,JSON.stringify(cart))}catch{}};
   const persistStamps=()=>{try{localStorage.setItem(stampStorageKey,String(stamps))}catch{}};
+  const persistUnlockedGames=()=>{try{localStorage.setItem(gameUnlockStorageKey,JSON.stringify(unlockedGames))}catch{}};
   const renderStamps=()=>{
-    const progress=stamps%6,ready=Math.floor(stamps/6),track=dialog.querySelector('.stamp-track'),button=dialog.querySelector('.stamp-redeem'),status=dialog.querySelector('.stamp-status');
-    [...track.children].forEach((stamp,index)=>{stamp.classList.toggle('is-earned',index<progress||ready>0);stamp.setAttribute('aria-hidden','true')});
-    status.textContent=ready?`${progress}/6 stamps on your next card · ${ready} dumpling reward${ready===1?' is':'s are'} ready to claim.`:`${progress}/6 stamps · Add ${6-progress} more pretend menu item${6-progress===1?'':'s'} to unlock a dumpling treat.`;
-    button.disabled=ready===0;button.textContent=ready?`Redeem 6 stamps for a dumpling treat${ready>1?` (${ready} ready)`:''}`:'Redeem 6 stamps for a dumpling treat';
+    const progress=stamps%6,unlocked=unlockedGames.includes('dumpling-dash'),track=dialog.querySelector('.stamp-track'),button=dialog.querySelector('.stamp-redeem'),link=dialog.querySelector('.stamp-game-link'),status=dialog.querySelector('.stamp-status');
+    [...track.children].forEach((stamp,index)=>{stamp.classList.toggle('is-earned',index<Math.min(progress,5)||stamps>=6&&!unlocked||unlocked);stamp.setAttribute('aria-hidden','true')});
+    track.children[5].classList.toggle('is-earned',unlocked||progress===5||stamps>=6);
+    status.textContent=unlocked?'Dumpling Dash is unlocked on this browser. Your stamps helped open the game!':`${progress}/6 stamps · Add ${6-progress} more pretend menu item${6-progress===1?'':'s'} to unlock Dumpling Dash.`;
+    button.hidden=unlocked;button.disabled=unlocked||stamps<6;link.hidden=!unlocked;
   };
   const subtotal=()=>cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
   const saveAndRender=()=>{persist();render()};
@@ -143,13 +151,14 @@
     saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);showToast(selectedItem.name);
   });
   dialog.querySelector('.stamp-redeem').addEventListener('click',()=>{
-    if(stamps<6)return;
+    if(stamps<6||unlockedGames.includes('dumpling-dash'))return;
     stamps-=6;persistStamps();
-    const rewardName='Stamp Card Reward: Free Pork & Chive Dumplings';
-    const reward=cart.find(item=>item.name===rewardName);
-    if(reward)reward.quantity+=1;else cart.push({name:rewardName,price:0,quantity:1,reward:true});
-    saveAndRender();showToast('Free dumpling reward');
+    unlockedGames=[...new Set([...unlockedGames,'dumpling-dash'])];persistUnlockedGames();
+    saveAndRender();renderGameLinks();showToast('Dumpling Dash unlocked');
   });
+  const gameLinks=[...document.querySelectorAll('[data-stamp-game="dumpling-dash"]')];
+  gameLinks.forEach(link=>link.addEventListener('click',event=>{if(!unlockedGames.includes('dumpling-dash')){event.preventDefault();setView('cart');dialog.showModal()}}));
+  const renderGameLinks=()=>gameLinks.forEach(link=>{const unlocked=unlockedGames.includes('dumpling-dash'),label=unlocked?link.dataset.unlockedLabel:link.dataset.lockedLabel,child=link.querySelector('span:last-child');link.classList.toggle('game-locked',!unlocked);if(child)child.textContent=label;else link.textContent=label;link.setAttribute('aria-label',unlocked?'Play Dumpling Dash':`${label}; opens your stamp card`);link.href='/projects/restaurant-dumpling-game.html';if(!unlocked)link.title='Collect and redeem 6 stamps in the cart to unlock Dumpling Dash';else link.removeAttribute('title')});
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
@@ -167,5 +176,5 @@
     cart=[];promoApplied=false;saveAndRender();setView('success');
   });
   dialog.addEventListener('close',()=>{if(successView.hidden===false){checkoutForm.reset();promoApplied=false}setView('cart')});
-  render();updateDelivery();
+  render();renderGameLinks();updateDelivery();
 })();
