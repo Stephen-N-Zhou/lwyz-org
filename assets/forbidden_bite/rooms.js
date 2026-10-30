@@ -78,7 +78,7 @@
     ['surprise-photo-01.jpg','Dumplings under the teapot','A bamboo steamer of golden dumplings joins a quiet pot of tea.','surprises'],
     ['surprise-photo-02.jpg','Lanterns in the tea','A warm lantern glow shimmers across a freshly poured cup.','surprises'],
     ['surprise-photo-03.jpg','A basket made for sharing','Steamed dumplings and a little teapot wait at the table.','surprises'],
-    ['surprise-photo-04.jpg','The host stand greeter','A curious orange cat keeps watch beside the welcome bell.','surprises'],
+    ['surprise-photo-04.jpg','Lantern-lit koi fountain','A red-and-jade ceramic koi fountain welcomes guests beneath the lanterns.','surprises'],
     ['surprise-photo-05.jpg','Noodles reaching for the sky','A playful lift of long noodles rises above a steaming bowl.','surprises'],
     ['surprise-photo-06.jpg','Mango cloud tower','A tall, sunny mango dessert with layers of fruit and cream.','surprises'],
     ['surprise-photo-07.jpg','A mountain view after dusk','A peaceful waterside dining table glows in the evening.','surprises'],
