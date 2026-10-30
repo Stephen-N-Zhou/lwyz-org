@@ -487,6 +487,7 @@ body.game-page {
 .restaurant-page .concept-stats span{color:#68685f;font-size:.68rem;line-height:1.35}
 .restaurant-page .concept-stats-note,.restaurant-page .kitchen-tour-note,.restaurant-page .visit-note{margin:.6rem 0 0;color:#787467;font-size:.7rem;line-height:1.5}
 .restaurant-page .kitchen-tour{padding-block:2.3rem}
+.restaurant-page .kitchen-gallery-link{display:inline-flex;align-items:center;gap:.35rem;margin-top:.2rem;padding:.35rem .62rem;border:1px solid #d5c184;border-radius:99px;background:#fffaf0;color:#164a3b;font-size:.7rem;font-weight:800;text-decoration:none;transition:background .18s ease,border-color .18s ease,transform .18s ease}.restaurant-page .kitchen-gallery-link:hover{transform:translateY(-1px);border-color:#b89b4e;background:#f7efd9}.restaurant-page .kitchen-gallery-link:focus-visible{outline:3px solid #c5a146;outline-offset:3px}
 .restaurant-page .kitchen-tour-panel{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);overflow:hidden;border:1px solid #ded5c1;border-radius:18px;background:#fff;box-shadow:0 14px 38px rgb(24 48 37 / 9%)}
 .restaurant-page .kitchen-tour-figure{display:grid;grid-template-rows:1fr auto;min-width:0;margin:0;background:#173d32}
 .restaurant-page .kitchen-tour-figure img{display:block;width:100%;height:100%;min-height:300px;max-height:460px;aspect-ratio:3/2;object-fit:cover}.restaurant-page .kitchen-tour-figure img.tour-image-in{animation:kitchen-picture-in .35s ease-out both}
