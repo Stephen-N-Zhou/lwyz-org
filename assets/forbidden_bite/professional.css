@@ -470,6 +470,7 @@ body.game-page {
 .restaurant-page .chef-profile{position:relative;overflow:hidden;min-width:0;padding:1.15rem;border:1px solid #e7dfcf;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgb(24 48 37 / 6%);transition:transform .2s ease,box-shadow .2s ease}
 .restaurant-page .chef-profile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(24 48 37 / 12%)}
 .restaurant-page .chef-profile::before{position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#0d5c4b,#c5a146);content:""}
+.restaurant-page .chef-portrait{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 32%;border-radius:10px;margin:0 0 .9rem;background:#eee8dc}
 .restaurant-page .chef-wok::before{background:linear-gradient(90deg,#a84335,#e8a65d)}.restaurant-page .chef-tea::before{background:linear-gradient(90deg,#6e5887,#d6ad61)}
 .restaurant-page .chef-profile-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
 .restaurant-page .chef-mark{display:grid;place-items:center;width:46px;height:46px;border:1px solid #e6ddc5;border-radius:14px;background:linear-gradient(145deg,#fff8df,#e6f1e8);font-size:1.5rem}
