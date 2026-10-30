@@ -1,0 +1,205 @@
+/* Shared brand polish for the Forbidden Bite restaurant, gallery, and game pages. */
+:root {
+  --jade: #145846;
+  --jade-dark: #103d32;
+  --gold: #bf9a48;
+  --wine: #713b3c;
+  --paper: #f7f5ef;
+  --ink: #252b27;
+  --muted: #666f69;
+  --line: #e2ded4;
+  --shadow-soft: 0 10px 28px rgb(25 42 34 / 8%);
+  --shadow-hover: 0 16px 36px rgb(25 42 34 / 13%);
+}
+
+body.restaurant-page,
+body.gallery-page {
+  background: var(--paper);
+  color: var(--ink);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.restaurant-page :where(h1, h2, h3, p),
+body.gallery-page :where(h1, h2, h3, p) { text-wrap: pretty; }
+
+body.restaurant-page :where(a, button, input, select, textarea, summary),
+body.gallery-page :where(a, button, input, select, textarea, summary),
+body.game-page :where(a, button, input, select, textarea, summary) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.restaurant-page :where(a, button, input, select, textarea, summary):focus-visible,
+body.gallery-page :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #bf9a48;
+  outline-offset: 3px;
+}
+
+/* Restaurant landing page */
+.restaurant-page .topbar { background: #10372e; box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
+.restaurant-page .nav { min-height: 66px; }
+.restaurant-page .brand { font-size: 1.04rem; letter-spacing: .12em; }
+.restaurant-page .nav > a:not(.brand) { font-weight: 600; }
+.restaurant-page .hero {
+  background:
+    radial-gradient(ellipse at 78% 8%, rgb(211 176 91 / 19%), transparent 28%),
+    radial-gradient(ellipse at 10% 100%, rgb(229 241 224 / 7%), transparent 40%),
+    linear-gradient(125deg, #10382f 0%, #155947 58%, #1b644f 100%);
+}
+.restaurant-page .hero-inner { min-height: 430px; padding-block: clamp(3.6rem, 8vw, 6rem); }
+.restaurant-page .hero h1 { letter-spacing: .025em; text-shadow: 0 3px 24px rgb(0 0 0 / 17%); }
+.restaurant-page .hero-copy { max-width: 39rem; color: #edf1e8; line-height: 1.75; }
+.restaurant-page .eyebrow { letter-spacing: .18em; }
+.restaurant-page .logo { border-color: rgb(255 255 255 / 55%); box-shadow: 0 22px 55px rgb(0 0 0 / 22%); }
+.restaurant-page main.wrap { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+.restaurant-page .section-heading,
+.restaurant-page .intro h2 { letter-spacing: -.015em; }
+.restaurant-page .section-label { letter-spacing: .16em; }
+.restaurant-page .section-head { align-items: end; margin-bottom: 1.2rem; }
+.restaurant-page .section-head > p { max-width: 35rem; line-height: 1.65; }
+.restaurant-page .intro,
+.restaurant-page .experience {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff 0%, #f4f0e5 100%);
+  box-shadow: var(--shadow-soft);
+}
+.restaurant-page .notice { border-radius: 0 10px 10px 0; background: #fffdf8; }
+.restaurant-page .menu-section { padding-block: 2rem; }
+.restaurant-page .grid { gap: 1rem; }
+.restaurant-page .card,
+.restaurant-page .fun-card,
+.restaurant-page .editorial-card,
+.restaurant-page .faq details {
+  border-color: #e4dfd4;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgb(27 44 36 / 5%);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.restaurant-page .card:hover,
+.restaurant-page .fun-card:hover,
+.restaurant-page .editorial-card:hover {
+  transform: translateY(-3px);
+  border-color: #d5c796;
+  box-shadow: var(--shadow-hover);
+}
+.restaurant-page .card h3 { color: var(--jade-dark); font-size: 1.32rem; }
+.restaurant-page .card li { padding-block: .68rem; }
+.restaurant-page .card .detail { line-height: 1.58; }
+.restaurant-page .deals,
+.restaurant-page .reservation,
+.restaurant-page .seasonal-menu,
+.restaurant-page .dish-week {
+  border-radius: 17px;
+  box-shadow: var(--shadow-soft);
+}
+.restaurant-page .deals { background: linear-gradient(145deg, #f4efdf, #fbf9f2); }
+.restaurant-page .deal-card { background: #fff; box-shadow: 0 6px 20px rgb(36 41 34 / 6%); }
+.restaurant-page .reservation-panel,
+.restaurant-page .build-own-card,
+.restaurant-page .menu-tool,
+.restaurant-page .flavor-map-extras > section { border-radius: 13px; }
+.restaurant-page .reservation-panel { box-shadow: var(--shadow-soft); }
+.restaurant-page .prize-spinner { border-radius: 17px; }
+.restaurant-page .flavor-map { box-shadow: var(--shadow-soft); }
+.restaurant-page .flavor-stop { min-height: 116px; }
+.restaurant-page .flavor-stop:focus-visible,
+.restaurant-page .finale-close:focus-visible { outline-color: #bf9a48; }
+.restaurant-page .quick-scroller { border-color: #e2ded4; background: rgb(250 249 244 / 94%); box-shadow: 0 4px 14px rgb(25 42 34 / 6%); }
+.restaurant-page .quick-jump { color: #29443a; font-weight: 700; }
+.restaurant-page .quick-thumb { border-color: #d8cba6; border-radius: 9px; }
+.restaurant-page .button,
+.restaurant-page .fun-button,
+.restaurant-page .game-launch,
+.restaurant-page .add-to-cart,
+.restaurant-page .review-form button,
+.restaurant-page .cart-open {
+  min-height: 42px;
+  border-radius: 9px;
+  font-weight: 700;
+  letter-spacing: .005em;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+}
+.restaurant-page .button:not(.secondary),
+.restaurant-page .fun-button,
+.restaurant-page .game-launch {
+  border-color: #b6903c;
+  background: linear-gradient(180deg, #d9bb6d, #c6a44d);
+  color: #24291f;
+  box-shadow: 0 3px 9px rgb(108 79 20 / 13%);
+}
+.restaurant-page .button:not(.secondary):hover,
+.restaurant-page .fun-button:hover,
+.restaurant-page .game-launch:hover { transform: translateY(-1px); box-shadow: 0 7px 16px rgb(108 79 20 / 20%); }
+.restaurant-page .add-to-cart,
+.restaurant-page .review-form button,
+.restaurant-page .cart-open { border-color: #145846; background: #145846; color: #fff; }
+.restaurant-page .add-to-cart:hover,
+.restaurant-page .review-form button:hover,
+.restaurant-page .cart-open:hover { background: #103d32; box-shadow: 0 5px 13px rgb(16 61 50 / 18%); }
+.restaurant-page :where(input, select, textarea) { border-color: #d8d5ca; border-radius: 8px; }
+.restaurant-page :where(input, select, textarea):focus { border-color: #145846; box-shadow: 0 0 0 3px rgb(20 88 70 / 13%); outline: 0; }
+.restaurant-page .editorial-section { padding-block: 2.4rem; }
+.restaurant-page .editorial-card { padding: 1.35rem; }
+.restaurant-page .faq { padding-top: 2rem; }
+.restaurant-page footer { background: #10372e; }
+
+/* Dish gallery */
+.gallery-page .topbar { background: #10372e; box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
+.gallery-page .brand { letter-spacing: .12em; }
+.gallery-page main.wrap { width: min(1040px, calc(100% - 2.5rem)); }
+.gallery-page main { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.gallery-page .title-row { margin-bottom: 1rem; }
+.gallery-page .description { max-width: 74ch; color: #58625b; font-size: .98rem; line-height: 1.75; }
+.gallery-page .hint { display: inline-flex; align-items: center; gap: .5rem; margin-block: .35rem 1rem; padding: .65rem .8rem; border: 1px solid #e4decf; border-radius: 10px; background: #fff; color: #425b4e; font-size: .82rem; }
+.gallery-page .gallery-disclosure > summary { border-color: #b6903c; border-radius: 9px; background: linear-gradient(180deg, #d9bb6d, #c6a44d); box-shadow: 0 3px 9px rgb(108 79 20 / 13%); }
+.gallery-page .gallery { gap: .6rem; padding: .8rem; border-color: #e2ded4; border-radius: 15px; box-shadow: var(--shadow-soft); }
+.gallery-page .dish-tile { border-color: #e2ded4; border-radius: 11px; transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+.gallery-page .dish-tile:hover { transform: translateY(-3px); border-color: #c4ab68; box-shadow: 0 10px 24px rgb(27 44 36 / 16%); }
+.gallery-page .dish-dialog { border-color: #e2ded4; border-radius: 18px; box-shadow: 0 28px 90px rgb(0 0 0 / 28%); }
+.gallery-page .dialog-photo { border-color: #e2ded4; border-radius: 13px; }
+.gallery-page .button { border-radius: 9px; }
+
+/* Full-screen mini-game */
+.game-page { background: radial-gradient(ellipse at 50% -10%, #2d6957 0%, #123d33 45%, #092b25 100%); }
+.game-page .game-shell { justify-content: flex-start; gap: .15rem; padding: clamp(1.25rem, 3vw, 2.5rem); }
+.game-page .game-top { margin-bottom: 1.25rem; }
+.game-page .game-back { color: #f3df9c; }
+.game-page .game-title { margin-block: .15rem .25rem; letter-spacing: .025em; text-shadow: 0 5px 28px rgb(0 0 0 / 18%); }
+.game-page .game-instructions { max-width: 620px; color: #e8eee8; }
+.game-page .game-scorebar { gap: .65rem; }
+.game-page .game-stat { min-width: 112px; border-color: rgb(244 228 170 / 28%); border-radius: 13px; background: linear-gradient(145deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 5%)); box-shadow: inset 0 1px rgb(255 255 255 / 9%); }
+.game-page .game-stat strong { font-size: 1.42rem; }
+.game-page .game-progress { height: 9px; border: 1px solid rgb(255 255 255 / 12%); background: rgb(0 0 0 / 20%); }
+.game-page .game-progress span { background: linear-gradient(90deg, #c69f45, #f4da82); box-shadow: 0 0 14px rgb(230 194 91 / 42%); }
+.game-page .game-arena { border: 3px solid #d7c17d; border-radius: 20px; box-shadow: 0 22px 60px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 60%); }
+.game-page .game-overlay { background: rgb(8 39 32 / 72%); backdrop-filter: blur(7px); }
+.game-page .game-overlay-card { border-color: rgb(232 208 131 / 50%); border-radius: 19px; box-shadow: 0 22px 60px rgb(0 0 0 / 26%); }
+.game-page .game-primary { border-radius: 9px; box-shadow: 0 4px 12px rgb(0 0 0 / 15%); transition: transform .18s ease, box-shadow .18s ease; }
+.game-page .game-primary:hover { transform: translateY(-1px); box-shadow: 0 7px 17px rgb(0 0 0 / 22%); }
+.game-page .achievement-panel,
+.game-page .collection-panel { border-color: rgb(232 208 131 / 27%); border-radius: 16px; background: linear-gradient(145deg, rgb(255 255 255 / 9%), rgb(255 255 255 / 4%)); box-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
+.game-page .achievement-card,
+.game-page .collection-card { border-radius: 11px; }
+.game-page .collection-panel { padding: clamp(1rem, 2vw, 1.5rem); }
+.game-page .daily-reward { border-radius: 13px; box-shadow: inset 0 1px rgb(255 255 255 / 12%); }
+.game-page .game-footer { color: #cbd7ce; line-height: 1.7; }
+
+@media (max-width: 700px) {
+  .restaurant-page .hero-inner { min-height: auto; }
+  .restaurant-page .section-head { align-items: start; }
+  .game-page .game-shell { padding-inline: .85rem; }
+  .game-page .game-stat { min-width: 94px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page *, .gallery-page *, .game-page * { scroll-behavior: auto !important; }
+  .restaurant-page .card, .restaurant-page .fun-card, .restaurant-page .editorial-card,
+  .restaurant-page .button, .restaurant-page .fun-button, .restaurant-page .game-launch,
+  .restaurant-page .add-to-cart, .restaurant-page .review-form button,
+  .gallery-page .dish-tile, .game-page .game-primary { transition: none !important; }
+  .restaurant-page .card:hover, .restaurant-page .fun-card:hover, .restaurant-page .editorial-card:hover,
+  .gallery-page .dish-tile:hover { transform: none !important; }
+}
