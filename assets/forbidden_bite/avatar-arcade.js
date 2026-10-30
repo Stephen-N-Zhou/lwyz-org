@@ -17,6 +17,38 @@
     trailblazer:'Choose adjacent route tiles by tapping/clicking · Power: Shift / button',
     ace:'Strike: Space / Enter / tap · Power: Shift / button'
   };
+  const instructions={
+    noodle:[
+      ['Move the bowl left or right to line it up under falling food.'],
+      ['Look at the recipe strip: the gold circle is the ONE ingredient to catch next. The strip runs left to right.'],
+      ['Catch 16 gold-highlighted ingredients in order. Avoid every other ingredient and the chili bomb; a wrong catch or missed ingredient costs one heart.'],
+      'Move with ← → or A / D, or drag across the play area. Use Recipe Peek once to show the next ingredient and slow falling food for a moment.'
+    ],
+    dragon:[
+      ['Stay on the ground to run automatically; you do not steer left or right.'],
+      ['Jump over floor flames. Duck under steam vents. Jade sparks are bonus targets to collect.'],
+      ['Survive 45 seconds and collect 8 sparks. You have 3 hearts; collisions cost a heart.'],
+      'Jump with Space / ↑ or tap the game. Duck with ↓ or swipe down. Dragon Shield blocks one collision; use it once.'
+    ],
+    roadster:[
+      ['Your car stays near the bottom. Move between the three lanes before objects reach it.'],
+      ['Collect the glowing flavor tokens and avoid trucks. Tokens and trucks use the same lanes.'],
+      ['Collect 12 tokens before the 38-second timer ends. Three collisions end the run.'],
+      'Press ← → or A / D, or tap the left, middle, or right part of the road to choose a lane. Turbo Brake slows traffic once.'
+    ],
+    trailblazer:[
+      ['Watch the numbered tiles during the short preview. They show the route from start to finish.'],
+      ['When the numbers disappear, tap the same tiles in number order. Each next tile must share an edge with the last one; diagonal moves do not count.'],
+      ['Complete all 3 routes before their timers run out. A wrong tile or timeout costs one heart.'],
+      'Tap or click a tile to choose it. Lantern Hint briefly shows the next tile once.'
+    ],
+    ace:[
+      ['Watch the red needle circle the wheel and the gold target move around it.'],
+      ['Strike only when the red tip is inside the gold arc. A miss costs one heart.'],
+      ['Land 12 hits. Three misses end the challenge, and the target window gets narrower.'],
+      'Press Space / Enter or tap the game to strike. Focus slows the needle once.'
+    ]
+  };
   const powers={noodle:'🍵 Recipe Peek',dragon:'🛡️ Dragon Shield',roadster:'🐢 Turbo Brake',trailblazer:'🏮 Lantern Hint',ace:'🧘 Focus'};
   const bestKey='forbidden-bite-avatar-arcade-best-v1';
   let best=safeBest(),mode='noodle',state=null,lastFrame=0,keys=new Set(),pointerStart=null,runToken=0;
@@ -25,9 +57,9 @@
   function renderRecords(){const host=$('record-grid');host.replaceChildren();for(const id of Object.keys(titles)){const chip=document.createElement('div');chip.className='record-chip';const label=document.createElement('span');label.textContent=titles[id].toUpperCase();const value=document.createElement('strong');value.textContent=best[id]?String(best[id]):'No record';chip.append(label,value);host.append(chip)}}
 
 
-  function setMode(next){if(!titles[next])return;runToken++;mode=next;document.querySelectorAll('.mode-card').forEach(btn=>{const active=btn.dataset.mode===mode;btn.classList.toggle('is-selected',active);btn.setAttribute('aria-pressed',String(active))});$('game-title').textContent=titles[mode];$('game-rule').textContent=rules[mode];$('control-copy').textContent=controls[mode];$('overlay-icon').textContent=icons[mode];$('overlay-kicker').textContent=`VERY HARD · ${titles[mode].toUpperCase()}`;$('overlay-title').textContent=overlayTitle(mode);$('overlay-copy').textContent=overlayCopy(mode);$('start-game').textContent=`Start ${titles[mode]}`;$('power-button').textContent=`${powers[mode]} · ready`;$('power-button').disabled=false;bestEl.textContent=String(best[mode]||0);clockEl.textContent=mode==='trailblazer'?'3 routes':mode==='ace'?'0 / 12':'Ready';statusEl.textContent=`${titles[mode]} selected. Very Hard mode is always on.`;state=null;overlay.hidden=false;renderRecords();drawAttract()}
+  function setMode(next){if(!titles[next])return;runToken++;mode=next;document.querySelectorAll('.mode-card').forEach(btn=>{const active=btn.dataset.mode===mode;btn.classList.toggle('is-selected',active);btn.setAttribute('aria-pressed',String(active))});$('game-title').textContent=titles[mode];$('game-rule').textContent=rules[mode];$('control-copy').textContent=controls[mode];const how= instructions[mode];const list=$('instruction-steps');list.replaceChildren(...how.slice(0,3).map(([text])=>{const li=document.createElement('li');li.textContent=text;return li}));$('instruction-controls').textContent=how[3];$('overlay-icon').textContent=icons[mode];$('overlay-kicker').textContent=`VERY HARD · ${titles[mode].toUpperCase()}`;$('overlay-title').textContent=overlayTitle(mode);$('overlay-copy').textContent=overlayCopy(mode);$('start-game').textContent=`Start ${titles[mode]}`;$('power-button').textContent=`${powers[mode]} · ready`;$('power-button').disabled=false;bestEl.textContent=String(best[mode]||0);clockEl.textContent=mode==='trailblazer'?'3 routes':mode==='ace'?'0 / 12':'Ready';statusEl.textContent=`${titles[mode]} selected. Very Hard mode is always on.`;state=null;overlay.hidden=false;renderRecords();drawAttract()}
   function overlayTitle(m){return {noodle:'Keep the recipe in order.',dragon:'Read the hazards. React fast.',roadster:'Pick a lane and commit.',trailblazer:'Memorize the path.',ace:'Wait for the perfect window.'}[m]}
-  function overlayCopy(m){return {noodle:'Catch 16 ingredients in the shown sequence. A wrong ingredient, missed order item, or chili bomb costs a heart. The wok gets faster every few catches.',dragon:'Survive for 45 seconds and collect 8 jade sparks. Floor traps need a jump; steam jets need a duck. Speed rises every few seconds.',roadster:'Collect 12 flavor tokens in a 38-second rush. Traffic shifts lanes and the road gets faster. Three collisions end the run.',trailblazer:'Repeat 3 hidden routes of 8–12 adjacent tiles. You only get a short preview, and three wrong turns end the expedition.',ace:'Land 12 hits inside a narrow moving target. Needle speed increases after each hit; three misses end the challenge.'}[m]}
+  function overlayCopy(m){return {noodle:'Move the bowl under ONLY the gold-highlighted next ingredient in the recipe strip. Catch the 16 highlighted ingredients from left to right. Wrong food, missed ingredients, and chili bombs cost hearts.',dragon:'The dragon runs automatically. Jump over floor flames and duck under steam vents. Collect 8 jade sparks and survive for 45 seconds; collisions cost hearts.',roadster:'Move between the three lanes to collect 12 glowing flavor tokens and avoid trucks. Finish before the 38-second timer ends; three collisions end the run.',trailblazer:'Memorize each numbered path, then tap its tiles in number order. Tiles must touch by an edge. Finish all three routes before time runs out; mistakes cost hearts.',ace:'Press strike when the red needle tip is inside the moving gold arc. Land 12 hits; three misses end the challenge.'}[m]}
   function resize(){const r=canvas.getBoundingClientRect();if(!r.width)return;const dpr=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.round(960*dpr);canvas.height=Math.round(540*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);if(!state)drawAttract()}
   function drawAttract(){drawBase();ctx.textAlign='center';ctx.fillStyle='#1b5b4a';ctx.font='800 34px Inter,system-ui';ctx.fillText(`${icons[mode]}  ${titles[mode]}`,480,270);ctx.fillStyle='#65736a';ctx.font='600 17px Inter,system-ui';ctx.fillText('Select a challenge above, then press Start.',480,308)}
   function drawBase(){const g=ctx.createLinearGradient(0,0,0,540);g.addColorStop(0,'#f8f0da');g.addColorStop(1,'#dfcfaa');ctx.fillStyle=g;ctx.fillRect(0,0,960,540);ctx.fillStyle='rgba(18,65,51,.045)';for(let x=0;x<960;x+=32)ctx.fillRect(x,0,1,540);for(let y=0;y<540;y+=32)ctx.fillRect(0,y,960,1)}
