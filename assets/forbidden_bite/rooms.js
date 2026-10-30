@@ -74,7 +74,32 @@
     ['food-photo-22.jpg','Jade Pillows','Golden sesame dessert bites with a tender, sweet center.','food'],
     ['food-photo-23.jpg','Mango Cloud Pudding','Cool mango pudding topped with fresh fruit and cream.','food'],
     ['food-photo-24.jpg','Lychee Sparkler','A bright lychee drink with bubbles, ice, and fresh fruit.','food'],
-    ['food-photo-25.jpg','Forbidden Popcorn Chicken','Five-spice chicken bites with a crisp coating and chili dip.','food']
+    ['food-photo-25.jpg','Forbidden Popcorn Chicken','Five-spice chicken bites with a crisp coating and chili dip.','food'],
+    ['surprise-photo-01.jpg','Dumplings under the teapot','A bamboo steamer of golden dumplings joins a quiet pot of tea.','surprises'],
+    ['surprise-photo-02.jpg','Lanterns in the tea','A warm lantern glow shimmers across a freshly poured cup.','surprises'],
+    ['surprise-photo-03.jpg','A basket made for sharing','Steamed dumplings and a little teapot wait at the table.','surprises'],
+    ['surprise-photo-04.jpg','The host stand greeter','A curious orange cat keeps watch beside the welcome bell.','surprises'],
+    ['surprise-photo-05.jpg','Noodles reaching for the sky','A playful lift of long noodles rises above a steaming bowl.','surprises'],
+    ['surprise-photo-06.jpg','Mango cloud tower','A tall, sunny mango dessert with layers of fruit and cream.','surprises'],
+    ['surprise-photo-07.jpg','A mountain view after dusk','A peaceful waterside dining table glows in the evening.','surprises'],
+    ['surprise-photo-08.jpg','The long-spout tea pour','A traditional kettle sends a ribbon of tea into waiting cups.','surprises'],
+    ['surprise-photo-09.jpg','Panda bun parade','Steamed buns get a playful panda makeover.','surprises'],
+    ['surprise-photo-10.jpg','The house chili collection','Colorful spice jars line up for guests who like a little heat.','surprises'],
+    ['surprise-photo-11.jpg','Rainy window, warm table','A cozy spread of noodles and tea on a drizzly evening.','surprises'],
+    ['surprise-photo-12.jpg','A lucky cookie, a blank wish','Fortune cookies wait beside a little bowl for your message.','surprises'],
+    ['surprise-photo-13.jpg','Wok-fire moment','A chef sends a bright wok flame dancing over dinner.','surprises'],
+    ['surprise-photo-14.jpg','Seven teacups, seven glazes','A colorful collection of handmade cups ready for tea.','surprises'],
+    ['surprise-photo-15.jpg','The little festival dragon','A festive dragon puppet visits the dining room.','surprises'],
+    ['surprise-photo-16.jpg','Koi napkin fold','A folded red-and-jade napkin takes the shape of a koi.','surprises'],
+    ['surprise-photo-17.jpg','Scallion pancake in flight','Fresh dough spins above the counter before hitting the pan.','surprises'],
+    ['surprise-photo-18.jpg','A quiet chessboard','A Chinese chessboard waits in a peaceful lounge corner.','surprises'],
+    ['surprise-photo-19.jpg','Jasmine leaves opening','Jasmine blossoms unfurl slowly inside a glass teapot.','surprises'],
+    ['surprise-photo-20.jpg','Fox-shaped sauce pourer','A little ceramic fox brings soy sauce to the table.','surprises'],
+    ['surprise-photo-21.jpg','Sugar lantern dessert','A delicate spun-sugar lantern crowns a sesame sweet.','surprises'],
+    ['surprise-photo-22.jpg','Koi tile wall','A bright wall of hand-painted koi brings the room to life.','surprises'],
+    ['surprise-photo-23.jpg','Lychee lantern sparkler','A fizzy lychee drink dressed with mint and citrus.','surprises'],
+    ['surprise-photo-24.jpg','Lantern painting in progress','A maker paints gold blossoms onto a red paper lantern.','surprises'],
+    ['surprise-photo-25.jpg','Cloud-shaped sesame mochi','A soft, snowy dessert floats above a plate of fresh fruit.','surprises']
   ];
   const gallery=document.getElementById('rooms-gallery');
   const count=document.getElementById('gallery-count');
@@ -91,12 +116,12 @@
       button.setAttribute('aria-label',`Open large picture: ${title}`);
       const image=document.createElement('img');image.src=root+file;image.alt=title;image.width=760;image.height=504;image.loading='lazy';image.decoding='async';
       const text=document.createElement('span');text.className='room-card-copy';
-      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':category==='feasts'?'Family feasts':category==='kitchen'?'Kitchen':category==='food'?'Menu dish':'Entry & details';
+      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':category==='feasts'?'Family feasts':category==='kitchen'?'Kitchen':category==='food'?'Menu dish':category==='surprises'?'Surprise scene':'Entry & details';
       const label=document.createElement('strong');label.textContent=title;
       const caption=document.createElement('span');caption.textContent=description;
       text.append(tag,label,caption);button.append(image,text);button.addEventListener('click',()=>openPhoto(Number(button.dataset.photo)));gallery.append(button);
     }
-    count.textContent=`Showing ${items.length} of 75 dining, feast, kitchen, and food pictures.`;
+    count.textContent=`Showing ${items.length} of 100 dining, feast, kitchen, food, and surprise pictures.`;
   }
   function openPhoto(index){openIndex=(index+photos.length)%photos.length;const [file,title,description]=photos[openIndex];largeImage.src=root+file;largeImage.alt=title;document.getElementById('lightbox-title').textContent=title;document.getElementById('lightbox-description').textContent=description;document.getElementById('lightbox-count').textContent=`PICTURE ${openIndex+1} OF ${photos.length}`;if(!dialog.open)dialog.showModal()}
   function filter(value){visiblePhotos=value==='all'?photos.slice():photos.filter(photo=>photo[3]===value);document.querySelectorAll('.room-filter').forEach(button=>{const active=button.dataset.filter===value;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active))});render(visiblePhotos);document.querySelector('.rooms-gallery-section').scrollIntoView({behavior:'smooth',block:'start'})}
@@ -108,5 +133,5 @@
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
   dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();openPhoto(openIndex+1)}if(event.key==='ArrowLeft'){event.preventDefault();openPhoto(openIndex-1)}});
   const initialFilter=new URLSearchParams(window.location.search).get('filter');
-  if(initialFilter&&['main','windows','private','tea','gatherings','feasts','details','kitchen','food'].includes(initialFilter))filter(initialFilter);else render(photos);
+  if(initialFilter&&['main','windows','private','tea','gatherings','feasts','details','kitchen','food','surprises'].includes(initialFilter))filter(initialFilter);else render(photos);
 })();
