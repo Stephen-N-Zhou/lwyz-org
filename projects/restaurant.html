@@ -100,7 +100,7 @@
   <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">Projects</a></nav></header>
   <nav class="quick-scroller" aria-label="Quick section links">
     <div class="quick-scroller-inner"><span class="quick-scroller-title">Quick jump</span><div class="quick-scroller-track">
-      <a class="quick-jump" href="#my-profile"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">👤</b></span><span>My profile</span></a>
+      <a class="quick-jump" href="#my-profile"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">👤</b></span><span>Profile &amp; progress</span></a>
       <a class="quick-jump" href="/projects/restaurant-arcade.html"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🎮</b></span><span>Avatar arcade</span></a>
       <a class="quick-jump" href="#halloween-menu"><span class="quick-thumb quick-thumb-symbol halloween-thumb"><b aria-hidden="true">🎃</b></span><span>Halloween</span></a>
       <a class="quick-jump" href="#limited-time-deals"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="39" aria-hidden="true"></canvas><b aria-hidden="true">✨</b></span><span>Deals</span></a>
@@ -138,6 +138,25 @@
     </div>
   </section>
   <main id="main" class="wrap">
+    <section class="profile-section" id="my-profile" aria-labelledby="profile-title">
+      <div class="section-head"><div><p class="section-label">Your browser-only demo</p><h2 class="section-heading" id="profile-title">Your Forbidden Bite profile</h2></div><p>This is a pretend profile for this website. Choose a name and avatar, see your demo orders, reviews, and game progress, and unlock more avatars. Your profile saves in this browser only.</p></div>
+      <div class="profile-layout">
+        <article class="profile-card" aria-label="Profile name, level, avatar collection, and history">
+          <div class="profile-identity"><div class="profile-avatar-shell"><span class="profile-avatar" id="profile-avatar" aria-hidden="true">🍜</span><span class="profile-avatar-spark" aria-hidden="true">✦</span></div><div><span class="profile-card-kicker">YOUR DEMO PROFILE</span><label for="profile-name">Display name</label><input id="profile-name" maxlength="24" value="Flavor Explorer" autocomplete="nickname"><p id="profile-avatar-status" role="status" aria-live="polite">Noodle Pal is ready for your adventures.</p></div></div>
+          <div class="profile-rank"><div class="profile-rank-top"><span class="profile-rank-emblem" id="profile-rank-emblem" aria-hidden="true">🥢</span><div><small id="profile-rank-label">LEVEL 1 · NOODLE ROOKIE</small><strong id="profile-rank-title">Your flavor journey begins</strong></div><b id="profile-xp-count">0 flavor points</b></div><div class="profile-xp-track" role="progressbar" aria-label="Progress toward the next flavor level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profile-xp-fill"></span></div><p id="profile-xp-caption">Complete pretend checkouts, reviews, games, and flavor-map stops to earn points and level up.</p></div>
+          <div class="profile-stats"><div><strong id="profile-order-count">0</strong><span>pretend checkouts</span></div><div><strong id="profile-review-count">0</strong><span>reviews saved</span></div><div><strong id="profile-achievement-count">0</strong><span>game achievements</span></div></div>
+          <div class="profile-badges-block"><h3>Badges you have earned</h3><div class="profile-badges" id="profile-badges" aria-live="polite"></div></div>
+          <div class="profile-avatar-heading"><h3>Avatar collection</h3><button type="button" id="profile-refresh" class="profile-refresh">Check for unlocks</button></div>
+          <div class="profile-avatar-grid" id="profile-avatar-grid" aria-label="Choose an unlocked profile avatar"></div>
+          <a class="profile-arcade-link" href="/projects/restaurant-arcade.html">Play the five avatar challenges <span aria-hidden="true">→</span></a>
+          <p class="profile-note">This profile is a demo: orders are not sent and payments are not taken. Profile details and progress stay in this browser. Reviews appear publicly only if you choose to submit one through the guestbook.</p>
+        </article>
+        <div class="profile-history">
+          <section class="profile-history-card" aria-labelledby="profile-orders-title"><div class="profile-history-head"><h3 id="profile-orders-title">Recent demo orders</h3><span aria-hidden="true">🧾</span></div><div id="profile-orders" class="profile-history-list" aria-live="polite"><p>No pretend checkouts yet. Your completed demo orders will appear here.</p></div></section>
+          <section class="profile-history-card" aria-labelledby="profile-reviews-title"><div class="profile-history-head"><h3 id="profile-reviews-title">Your recent reviews</h3><span aria-hidden="true">💌</span></div><div id="profile-reviews" class="profile-history-list" aria-live="polite"><p>No review drafts yet. Write one in the guestbook to see it here.</p></div><a class="profile-write-review" href="#review-disclosure">Write a pretend review</a></section>
+        </div>
+      </div>
+    </section>
     <section class="seasonal-menu" id="halloween-menu" aria-labelledby="halloween-menu-title">
       <div class="seasonal-menu-heading"><div><p class="section-label">Seasonal menu · October 29–31, 2026</p><h2 id="halloween-menu-title">Forbidden Bite Halloween Feast</h2><p>Lantern-lit bowls, a little midnight spice, and sweets from the moonlit kitchen.</p></div><span class="pumpkin-mark" aria-hidden="true">🎃</span></div>
       <div class="seasonal-grid" id="seasonal-menu-grid" aria-live="polite"><p>Preparing the Halloween specials…</p></div>
@@ -292,25 +311,6 @@
     <dialog class="flavor-finale" id="flavor-finale" aria-labelledby="flavor-finale-title">
       <div class="finale-sparkles" id="finale-sparkles" aria-hidden="true"></div><div class="finale-card"><p class="section-label">Flavor trail complete</p><h2 id="flavor-finale-title">You found every flavor!</h2><p>Five stops, a whole menu of tastes, and a table full of possibilities. Your Forbidden Bite tasting trail is complete.</p><button class="finale-close" type="button" id="finale-close">Back to the menu</button></div>
     </dialog>
-    <section class="profile-section" id="my-profile" aria-labelledby="profile-title">
-      <div class="section-head"><div><p class="section-label">Saved on this device</p><h2 class="section-heading" id="profile-title">Your Forbidden Bite profile</h2></div><p>Pick an avatar, track your pretend orders and reviews, unlock profile pictures, and play its very hard challenge in the Avatar Arcade.</p></div>
-      <div class="profile-layout">
-        <article class="profile-card" aria-label="Your profile and avatar collection">
-          <div class="profile-identity"><div class="profile-avatar-shell"><span class="profile-avatar" id="profile-avatar" aria-hidden="true">🍜</span><span class="profile-avatar-spark" aria-hidden="true">✦</span></div><div><span class="profile-card-kicker">YOUR DINING ADVENTURER</span><label for="profile-name">Display name</label><input id="profile-name" maxlength="24" value="Flavor Explorer" autocomplete="nickname"><p id="profile-avatar-status" role="status" aria-live="polite">Noodle Pal is ready for your adventures.</p></div></div>
-          <div class="profile-rank"><div class="profile-rank-top"><span class="profile-rank-emblem" id="profile-rank-emblem" aria-hidden="true">🥢</span><div><small id="profile-rank-label">LEVEL 1 · NOODLE ROOKIE</small><strong id="profile-rank-title">Your flavor journey begins</strong></div><b id="profile-xp-count">0 XP</b></div><div class="profile-xp-track" role="progressbar" aria-label="Progress to next flavor rank" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profile-xp-fill"></span></div><p id="profile-xp-caption">Complete pretend orders, write reviews, play Dash, and explore the map to earn XP.</p></div>
-          <div class="profile-stats"><div><strong id="profile-order-count">0</strong><span>demo orders</span></div><div><strong id="profile-review-count">0</strong><span>review drafts</span></div><div><strong id="profile-achievement-count">0</strong><span>Dash achievements</span></div></div>
-          <div class="profile-badges-block"><h3>Milestone pins</h3><div class="profile-badges" id="profile-badges" aria-live="polite"></div></div>
-          <div class="profile-avatar-heading"><h3>Avatar collection</h3><button type="button" id="profile-refresh" class="profile-refresh">Refresh unlocks</button></div>
-          <div class="profile-avatar-grid" id="profile-avatar-grid" aria-label="Choose an unlocked profile avatar"></div>
-          <a class="profile-arcade-link" href="/projects/restaurant-arcade.html">Play the five avatar challenges <span aria-hidden="true">→</span></a>
-          <p class="profile-note">Game progress, profile details, and history stay in this browser. Guestbook reviews become public only after you submit them on GitHub.</p>
-        </article>
-        <div class="profile-history">
-          <section class="profile-history-card" aria-labelledby="profile-orders-title"><div class="profile-history-head"><h3 id="profile-orders-title">Recent demo orders</h3><span aria-hidden="true">🧾</span></div><div id="profile-orders" class="profile-history-list" aria-live="polite"><p>No pretend checkouts yet. Your completed demo orders will appear here.</p></div></section>
-          <section class="profile-history-card" aria-labelledby="profile-reviews-title"><div class="profile-history-head"><h3 id="profile-reviews-title">Your recent reviews</h3><span aria-hidden="true">💌</span></div><div id="profile-reviews" class="profile-history-list" aria-live="polite"><p>No review drafts yet. Write one in the guestbook to see it here.</p></div><a class="profile-write-review" href="#review-disclosure">Write a pretend review</a></section>
-        </div>
-      </div>
-    </section>
     <section class="fun-zone" aria-labelledby="fun-title" id="little-delights">
       <p class="section-label">A little extra fun</p><h2 id="fun-title" class="section-heading">Little delights from Forbidden Bite</h2>
       <div class="fun-grid">
@@ -734,6 +734,6 @@
   </script>
   <script src="/assets/forbidden_bite/fun.js?v=fun-3" defer></script>
   <script src="/assets/forbidden_bite/order.js?v=checkout-6" defer></script>
-  <script src="/assets/forbidden_bite/profile.js?v=profile-2" defer></script>
+  <script src="/assets/forbidden_bite/profile.js?v=profile-3" defer></script>
 </body>
 </html>
