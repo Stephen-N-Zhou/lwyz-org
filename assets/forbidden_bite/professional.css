@@ -454,7 +454,9 @@ body.game-page {
 }
 .restaurant-page .profile-arcade-link,
 .restaurant-page .arcade-launch { display: inline-flex; align-items: center; justify-content: space-between; gap: .6rem; min-height: 40px; padding: .55rem .75rem; border: 1px solid #b99c4d; border-radius: 8px; background: linear-gradient(120deg, #fff8df, #f2e6bd); color: #23473a; font-size: .7rem; font-weight: 800; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-.restaurant-page .profile-arcade-link { width: 100%; margin-top: .65rem; }
+.restaurant-page .profile-arcade-link { width: 100%; min-height: 76px; margin-top: .8rem; flex-direction: column; justify-content: center; gap: .1rem; border-radius: 12px; background: linear-gradient(125deg, #16483c, #0d5c4b); color: #fff2bf; box-shadow: 0 6px 16px rgb(17 64 49 / 20%); }
+.restaurant-page .profile-arcade-title { display: inline-flex; align-items: center; gap: .5rem; font-size: 1.15rem; letter-spacing: .08em; }
+.restaurant-page .profile-arcade-subtitle { color: #e8e3d3; font-size: .68rem; font-weight: 650; }
 .restaurant-page .arcade-launch { width: 100%; margin-top: .6rem; background: linear-gradient(125deg, #16483c, #0d5c4b); color: #fff2bf; }
 .restaurant-page .profile-arcade-link:hover,
 .restaurant-page .arcade-launch:hover { transform: translateY(-2px); border-color: #d5b653; box-shadow: 0 7px 16px rgb(25 42 34 / 14%); }
