@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-11">
-  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=2">
+  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=3">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -320,7 +320,7 @@
         targetLayer.querySelector('button')?.focus({preventScroll:true});
         if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
         timer=setInterval(()=>{timeLeft-=1;updateStats();if(timeLeft<=0)finishAttempt()},1000);
-        if(config.hop)hopTimer=setInterval(()=>{if(running&&Date.now()>=freezeUntil)moveTargets()},config.hop);
+        if(config.hop&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)hopTimer=setInterval(()=>{if(running&&Date.now()>=freezeUntil)moveTargets()},config.hop);
       }
       function catchTarget(target){
         if(!running)return;
