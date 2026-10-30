@@ -24,7 +24,22 @@
     ['dining-room-22.jpg','Lantern-lit passage','A warm corridor leads past carved screens to the dining tables.','details'],
     ['dining-room-23.jpg','Jade tile and brass','A closer look at the green tile, brass sconce, and intimate table setting.','details'],
     ['dining-room-24.jpg','The waiting nook','A calm bench, a leafy planter, and a softly lit arrival corner.','details'],
-    ['dining-room-25.jpg','The imagined street entrance','A glowing jade-tile facade hints at the warm dining room inside.','details']
+    ['dining-room-25.jpg','The imagined street entrance','A glowing jade-tile facade hints at the warm dining room inside.','details'],
+    ['feast-01.jpg','A sunny multigenerational lunch','Grandparents, parents, and a child pass dumplings and shared plates around a bright window table.','feasts'],
+    ['feast-02.jpg','Noodle night with the kids','A family leans in over bowls of noodles and baskets of dumplings beneath the evening lanterns.','feasts'],
+    ['feast-03.jpg','A birthday table for everyone','Three generations gather around a colorful celebratory spread and a whole fish.','feasts'],
+    ['feast-04.jpg','A cozy hot-pot evening','Grandparents and cousins share bubbling hot pot, vegetables, and thin-sliced meats.','feasts'],
+    ['feast-05.jpg','Birthday wishes and shared plates','A family celebrates with a small cake surrounded by dumplings and favorite dishes.','feasts'],
+    ['feast-06.jpg','Sunday lunch with the cousins','A long conversation unfolds as relatives pass noodles, greens, and serving chopsticks.','feasts'],
+    ['feast-07.jpg','A weekday noodle supper','Parents and children enjoy a relaxed meal of noodles, dumplings, and greens.','feasts'],
+    ['feast-08.jpg','Lunar New Year reunion','A festive family table brings together dumplings, a whole fish, and bright red details.','feasts'],
+    ['feast-09.jpg','Tea with the visiting grandparents','A family shares a generous meal while one grandparent pours a quiet cup of tea.','feasts'],
+    ['feast-10.jpg','Seafood feast for the family','Crab, prawns, vegetables, and shared plates make this a special family dinner.','feasts'],
+    ['feast-11.jpg','A graduation dinner','A proud family celebrates a graduate over roast duck, noodles, and dumplings.','feasts'],
+    ['feast-12.jpg','Rainy-day dumpling lunch','A child offers a bun across the table while a warm soup steams nearby.','feasts'],
+    ['feast-13.jpg','Four generations at brunch','Baskets of buns and small plates bring four generations together for a slow brunch.','feasts'],
+    ['feast-14.jpg','Passing plates around the table','A family reaches for greens, noodles, and dumplings in the middle of lunch.','feasts'],
+    ['feast-15.jpg','An anniversary dinner together','An older couple celebrates with their grown children over tea and a shared feast.','feasts']
   ];
   const gallery=document.getElementById('rooms-gallery');
   const count=document.getElementById('gallery-count');
@@ -41,12 +56,12 @@
       button.setAttribute('aria-label',`Open large picture: ${title}`);
       const image=document.createElement('img');image.src=root+file;image.alt=title;image.width=760;image.height=504;image.loading='lazy';image.decoding='async';
       const text=document.createElement('span');text.className='room-card-copy';
-      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':'Entry & details';
+      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':category==='feasts'?'Family feasts':'Entry & details';
       const label=document.createElement('strong');label.textContent=title;
       const caption=document.createElement('span');caption.textContent=description;
       text.append(tag,label,caption);button.append(image,text);button.addEventListener('click',()=>openPhoto(Number(button.dataset.photo)));gallery.append(button);
     }
-    count.textContent=`Showing ${items.length} of 25 dining-space pictures.`;
+    count.textContent=`Showing ${items.length} of 40 dining and family-feast pictures.`;
   }
   function openPhoto(index){openIndex=(index+photos.length)%photos.length;const [file,title,description]=photos[openIndex];largeImage.src=root+file;largeImage.alt=title;document.getElementById('lightbox-title').textContent=title;document.getElementById('lightbox-description').textContent=description;document.getElementById('lightbox-count').textContent=`PICTURE ${openIndex+1} OF ${photos.length}`;if(!dialog.open)dialog.showModal()}
   function filter(value){visiblePhotos=value==='all'?photos.slice():photos.filter(photo=>photo[3]===value);document.querySelectorAll('.room-filter').forEach(button=>{const active=button.dataset.filter===value;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active))});render(visiblePhotos);document.querySelector('.rooms-gallery-section').scrollIntoView({behavior:'smooth',block:'start'})}
