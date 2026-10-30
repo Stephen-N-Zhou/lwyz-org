@@ -478,9 +478,8 @@ body.game-page {
 .restaurant-page .chef-role{color:#876b2e;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .restaurant-page .chef-profile h3{margin:.1rem 0 .35rem;color:var(--jade-dark);font:400 1.45rem/1.2 Marcellus,Georgia,serif}
 .restaurant-page .chef-profile>p:not(.chef-favorite){min-height:4.6em;margin:.25rem 0 .9rem;color:#5f625a;font-size:.82rem;line-height:1.6}
-.restaurant-page .chef-favorite{display:grid;gap:.16rem;margin:0;padding:.7rem .75rem;border-radius:9px;background:#f7f3e8}
+.restaurant-page .chef-favorite{display:grid;gap:.16rem;margin:0;padding:.7rem .75rem;border-radius:9px;background:#f7f3e8}.restaurant-page .chef-favorite ol{display:grid;gap:.2rem;margin:0;padding:0;list-style:none;counter-reset:chef-pick}.restaurant-page .chef-favorite li{display:flex;align-items:baseline;gap:.48rem;color:#314f40;font-size:.78rem;line-height:1.4;counter-increment:chef-pick}.restaurant-page .chef-favorite li::before{content:counter(chef-pick,decimal-leading-zero);color:#9b7c31;font-size:.62rem;font-weight:850;letter-spacing:.04em}
 .restaurant-page .chef-favorite span{color:#857a63;font-size:.61rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.restaurant-page .chef-favorite strong{color:#314f40;font-size:.83rem}
 .restaurant-page .concept-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin-top:1rem}
 .restaurant-page .concept-stats>div{display:grid;gap:.08rem;padding:.65rem .75rem;border:1px solid #e9e2d2;border-radius:10px;background:linear-gradient(145deg,#fff,#f9f6ed)}
 .restaurant-page .concept-stats strong{color:#164a3b;font:400 1.55rem/1.15 Marcellus,Georgia,serif;font-variant-numeric:tabular-nums}
