@@ -136,7 +136,7 @@
     const detail=fulfillment==='Delivery'?'Delivery details are shown for the preview.':`Pickup time: ${formData.get('pickupTime')}.`;
     const demoNumber=`DEMO-${Math.random().toString(36).slice(2,8).toUpperCase()}`;
     dialog.querySelector('.success-message').textContent=`Reference ${demoNumber}. ${detail} No order was sent and no payment was processed.`;
-    cart=[];promoApplied=false;saveAndRender();setView('success');window.dispatchEvent(new Event('forbidden-bite:demo-order-complete'));
+    cart=[];promoApplied=false;saveAndRender();setView('success');
   });
   dialog.addEventListener('close',()=>{if(successView.hidden===false){checkoutForm.reset();promoApplied=false}setView('cart')});
   render();updateDelivery();
