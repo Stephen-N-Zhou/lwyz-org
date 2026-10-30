@@ -120,7 +120,7 @@
     add.classList.remove('cart-added');void add.offsetWidth;add.classList.add('cart-added');clearTimeout(orderTimers.get(add));orderTimers.set(add,setTimeout(()=>add.classList.remove('cart-added'),900));
     const existing=cart.find(item=>item.name===selectedItem.name);
     if(existing)existing.quantity+=1;else cart.push({name:selectedItem.name,price:Number(selectedItem.price),quantity:1});
-    saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);
+    saveAndRender();const count=cartButton.querySelector('.cart-count');count.classList.remove('cart-count-pop');void count.offsetWidth;count.classList.add('cart-count-pop');setTimeout(()=>count.classList.remove('cart-count-pop'),650);window.dispatchEvent(new CustomEvent('forbidden-bite:item-added',{detail:{name:selectedItem.name,flavorStop:add.dataset.flavorStopOrder||''}}));
   });
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
