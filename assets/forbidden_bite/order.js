@@ -138,9 +138,11 @@
     const formData=new FormData(checkoutForm);const fulfillment=formData.get('fulfillment');
     const detail=fulfillment==='Delivery'?'Delivery details are shown for the preview.':`Pickup time: ${formData.get('pickupTime')}.`;
     const demoNumber=`DEMO-${Math.random().toString(36).slice(2,8).toUpperCase()}`;
+    const subtotalAmount=subtotal(),discount=promoApplied==='DEMO10'?subtotalAmount*.1:(flavorRewardAmounts[promoApplied]||0),total=Math.max(0,subtotalAmount+(fulfillment==='Delivery'?4.99:0)-discount);
+    window.dispatchEvent(new CustomEvent('forbidden-bite:demo-order-completed',{detail:{id:demoNumber,total,items:cart.map(item=>({...item})),promo:promoApplied||''}}));
     dialog.querySelector('.success-message').textContent=`Reference ${demoNumber}. ${detail} No order was sent and no payment was processed.`;
-    cart=[];promoApplied=false;saveAndRender();setView('success');
+    cart=[];promoApplied='';saveAndRender();setView('success');
   });
-  dialog.addEventListener('close',()=>{if(successView.hidden===false){checkoutForm.reset();promoApplied=false}setView('cart')});
+  dialog.addEventListener('close',()=>{if(successView.hidden===false){checkoutForm.reset();promoApplied=''}setView('cart')});
   render();updateDelivery();
 })();
