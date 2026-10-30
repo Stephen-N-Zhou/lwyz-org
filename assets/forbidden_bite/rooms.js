@@ -39,7 +39,17 @@
     ['feast-12.jpg','Rainy-day dumpling lunch','A child offers a bun across the table while a warm soup steams nearby.','feasts'],
     ['feast-13.jpg','Four generations at brunch','Baskets of buns and small plates bring four generations together for a slow brunch.','feasts'],
     ['feast-14.jpg','Passing plates around the table','A family reaches for greens, noodles, and dumplings in the middle of lunch.','feasts'],
-    ['feast-15.jpg','An anniversary dinner together','An older couple celebrates with their grown children over tea and a shared feast.','feasts']
+    ['feast-15.jpg','An anniversary dinner together','An older couple celebrates with their grown children over tea and a shared feast.','feasts'],
+    ['kitchen-photo-01.jpg','Stretching fresh noodles','A cook draws long strands of fresh dough across a floured counter.','kitchen'],
+    ['kitchen-photo-02.jpg','A quick wok toss','Vegetables leap through a hot wok in a bright burst of flame.','kitchen'],
+    ['kitchen-photo-03.jpg','Folding dumplings by hand','Two cooks shape dumplings beside trays ready for steaming.','kitchen'],
+    ['kitchen-photo-04.jpg','The final touch at the pass','A chef garnishes noodle bowls while the next plates are lined up.','kitchen'],
+    ['kitchen-photo-05.jpg','Building a fragrant broth','A cook tends a gently simmering pot of broth and fresh aromatics.','kitchen'],
+    ['kitchen-photo-06.jpg','The vegetable prep counter','Fresh greens, tofu, herbs, and noodles are arranged for service.','kitchen'],
+    ['kitchen-photo-07.jpg','Cutting noodles from fresh dough','A chef slices fresh dough into even ribbons at the worktop.','kitchen'],
+    ['kitchen-photo-08.jpg','Tea and sesame sweets','Tea is poured and black-sesame desserts are arranged for the pass.','kitchen'],
+    ['kitchen-photo-09.jpg','Tasting the house broth','A chef checks the seasoning beside the steaming stock pots.','kitchen'],
+    ['kitchen-photo-10.jpg','Ready for the dinner rush','A cook organizes fresh vegetables and noodles across the prep line.','kitchen']
   ];
   const gallery=document.getElementById('rooms-gallery');
   const count=document.getElementById('gallery-count');
@@ -52,16 +62,16 @@
     for(const photo of items){
       const [file,title,description,category]=photo;
       const button=document.createElement('button');
-      button.type='button';button.className='room-card';button.dataset.photo=String(photos.indexOf(photo));
+      button.type='button';button.className=category==='kitchen'?'room-card kitchen-photo-card':'room-card';button.dataset.photo=String(photos.indexOf(photo));
       button.setAttribute('aria-label',`Open large picture: ${title}`);
       const image=document.createElement('img');image.src=root+file;image.alt=title;image.width=760;image.height=504;image.loading='lazy';image.decoding='async';
       const text=document.createElement('span');text.className='room-card-copy';
-      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':category==='feasts'?'Family feasts':'Entry & details';
+      const tag=document.createElement('small');tag.textContent=category==='main'?'Dining room':category==='windows'?'Windows & booths':category==='private'?'Private dining':category==='tea'?'Tea & quiet corners':category==='gatherings'?'Group tables':category==='feasts'?'Family feasts':category==='kitchen'?'Kitchen':'Entry & details';
       const label=document.createElement('strong');label.textContent=title;
       const caption=document.createElement('span');caption.textContent=description;
       text.append(tag,label,caption);button.append(image,text);button.addEventListener('click',()=>openPhoto(Number(button.dataset.photo)));gallery.append(button);
     }
-    count.textContent=`Showing ${items.length} of 40 dining and family-feast pictures.`;
+    count.textContent=`Showing ${items.length} of 50 dining, feast, and kitchen pictures.`;
   }
   function openPhoto(index){openIndex=(index+photos.length)%photos.length;const [file,title,description]=photos[openIndex];largeImage.src=root+file;largeImage.alt=title;document.getElementById('lightbox-title').textContent=title;document.getElementById('lightbox-description').textContent=description;document.getElementById('lightbox-count').textContent=`PICTURE ${openIndex+1} OF ${photos.length}`;if(!dialog.open)dialog.showModal()}
   function filter(value){visiblePhotos=value==='all'?photos.slice():photos.filter(photo=>photo[3]===value);document.querySelectorAll('.room-filter').forEach(button=>{const active=button.dataset.filter===value;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active))});render(visiblePhotos);document.querySelector('.rooms-gallery-section').scrollIntoView({behavior:'smooth',block:'start'})}
@@ -72,5 +82,6 @@
   document.getElementById('lightbox-next').addEventListener('click',()=>openPhoto(openIndex+1));
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
   dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();openPhoto(openIndex+1)}if(event.key==='ArrowLeft'){event.preventDefault();openPhoto(openIndex-1)}});
-  render(photos);
+  const initialFilter=new URLSearchParams(window.location.search).get('filter');
+  if(initialFilter&&['main','windows','private','tea','gatherings','feasts','details','kitchen'].includes(initialFilter))filter(initialFilter);else render(photos);
 })();
