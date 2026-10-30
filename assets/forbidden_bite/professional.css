@@ -499,6 +499,20 @@ body.game-page {
 .restaurant-page .chef-favorite span{color:#857a63;font-size:.61rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .restaurant-page .chef-note{display:grid;gap:.12rem;margin:0 0 .65rem;padding:.65rem .75rem;border-left:3px solid #c5a146;border-radius:0 9px 9px 0;background:linear-gradient(120deg,#f7f3e8,#fffaf0)}.restaurant-page .chef-note strong{margin-top:.18rem;color:#174b3c;font-size:.64rem;letter-spacing:.035em}.restaurant-page .chef-note span{color:#65665d;font-size:.72rem;line-height:1.45}
 .restaurant-page .chef-mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35rem;margin-top:.65rem}.restaurant-page .chef-mini-stats>div{display:grid;gap:.12rem;min-width:0;padding:.48rem .4rem;border:1px solid #eee6d7;border-radius:8px;background:linear-gradient(145deg,#fffefa,#f7f3e8);text-align:center}.restaurant-page .chef-mini-stats strong{color:#164a3b;font:400 1.05rem/1.1 Marcellus,Georgia,serif;font-variant-numeric:tabular-nums}.restaurant-page .chef-mini-stats span{color:#68685f;font-size:.57rem;line-height:1.25}
+.restaurant-page .chef-feature-notes{display:grid;gap:.4rem;margin:.7rem 0 .5rem}
+.restaurant-page .chef-feature-item{padding:.55rem .65rem;border:1px solid #eee6d7;border-radius:9px;background:linear-gradient(145deg,#fffefa,#f8f5ed)}
+.restaurant-page .chef-feature-label{display:block;margin-bottom:.15rem;color:#96732b;font-size:.57rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+.restaurant-page .chef-feature-item strong{color:#174b3c;font-size:.75rem}
+.restaurant-page .chef-feature-item p{margin:.18rem 0 0;color:#65665d;font-size:.69rem;line-height:1.45}
+.restaurant-page .chef-ask{margin:.35rem 0 .6rem;border:1px solid #dce5da;border-radius:9px;background:#f5f8f2}
+.restaurant-page .chef-ask>summary{padding:.55rem .65rem;color:#174b3c;font-size:.7rem;font-weight:800;cursor:pointer;list-style:none}
+.restaurant-page .chef-ask>summary::-webkit-details-marker{display:none}
+.restaurant-page .chef-ask>summary::after{float:right;content:"＋";color:#96732b}
+.restaurant-page .chef-ask[open]>summary::after{content:"−"}
+.restaurant-page .chef-ask>summary:focus-visible{outline:3px solid #c5a146;outline-offset:2px;border-radius:7px}
+.restaurant-page .chef-ask-answer{padding:0 .65rem .6rem;color:#5f625a;font-size:.69rem;line-height:1.5}
+.restaurant-page .chef-ask-answer p{margin:.2rem 0}
+.restaurant-page .chef-ask-question{color:#174b3c;font-weight:750}
 .restaurant-page .concept-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin-top:1rem}
 .restaurant-page .concept-stats>div{display:grid;gap:.08rem;padding:.65rem .75rem;border:1px solid #e9e2d2;border-radius:10px;background:linear-gradient(145deg,#fff,#f9f6ed)}
 .restaurant-page .concept-stats strong{color:#164a3b;font:400 1.55rem/1.15 Marcellus,Georgia,serif;font-variant-numeric:tabular-nums}
