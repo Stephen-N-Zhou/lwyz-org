@@ -462,3 +462,58 @@ body.game-page {
 .restaurant-page .profile-arcade-link:hover,
 .restaurant-page .arcade-launch:hover { transform: translateY(-2px); border-color: #d5b653; box-shadow: 0 7px 16px rgb(25 42 34 / 14%); }
 @media (prefers-reduced-motion: reduce) { .restaurant-page .profile-arcade-link, .restaurant-page .arcade-launch { transition: none !important; } .restaurant-page .profile-arcade-link:hover, .restaurant-page .arcade-launch:hover { transform: none !important; } }
+
+/* Fictional chef team, concept stats, kitchen tour, and visit details */
+.restaurant-page .chef-team,.restaurant-page .kitchen-tour,.restaurant-page .visit-concept{scroll-margin-top:110px}
+.restaurant-page .chef-team{padding:clamp(1.2rem,3vw,2rem);border:1px solid #e6decc;border-radius:18px;background:linear-gradient(145deg,#fffefa,#f8f3e7);box-shadow:0 14px 38px rgb(24 48 37 / 7%)}
+.restaurant-page .chef-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+.restaurant-page .chef-profile{position:relative;overflow:hidden;min-width:0;padding:1.15rem;border:1px solid #e7dfcf;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgb(24 48 37 / 6%);transition:transform .2s ease,box-shadow .2s ease}
+.restaurant-page .chef-profile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(24 48 37 / 12%)}
+.restaurant-page .chef-profile::before{position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#0d5c4b,#c5a146);content:""}
+.restaurant-page .chef-wok::before{background:linear-gradient(90deg,#a84335,#e8a65d)}.restaurant-page .chef-tea::before{background:linear-gradient(90deg,#6e5887,#d6ad61)}
+.restaurant-page .chef-profile-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
+.restaurant-page .chef-mark{display:grid;place-items:center;width:46px;height:46px;border:1px solid #e6ddc5;border-radius:14px;background:linear-gradient(145deg,#fff8df,#e6f1e8);font-size:1.5rem}
+.restaurant-page .chef-wok .chef-mark{background:linear-gradient(145deg,#fff0dc,#f8ded8)}.restaurant-page .chef-tea .chef-mark{background:linear-gradient(145deg,#f0e7f7,#fbf0d6)}
+.restaurant-page .chef-role{color:#876b2e;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.restaurant-page .chef-profile h3{margin:.1rem 0 .35rem;color:var(--jade-dark);font:400 1.45rem/1.2 Marcellus,Georgia,serif}
+.restaurant-page .chef-profile>p:not(.chef-favorite){min-height:4.6em;margin:.25rem 0 .9rem;color:#5f625a;font-size:.82rem;line-height:1.6}
+.restaurant-page .chef-favorite{display:grid;gap:.16rem;margin:0;padding:.7rem .75rem;border-radius:9px;background:#f7f3e8}
+.restaurant-page .chef-favorite span{color:#857a63;font-size:.61rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.restaurant-page .chef-favorite strong{color:#314f40;font-size:.83rem}
+.restaurant-page .concept-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin-top:1rem}
+.restaurant-page .concept-stats>div{display:grid;gap:.08rem;padding:.65rem .75rem;border:1px solid #e9e2d2;border-radius:10px;background:linear-gradient(145deg,#fff,#f9f6ed)}
+.restaurant-page .concept-stats strong{color:#164a3b;font:400 1.55rem/1.15 Marcellus,Georgia,serif;font-variant-numeric:tabular-nums}
+.restaurant-page .concept-stats span{color:#68685f;font-size:.68rem;line-height:1.35}
+.restaurant-page .concept-stats-note,.restaurant-page .kitchen-tour-note,.restaurant-page .visit-note{margin:.6rem 0 0;color:#787467;font-size:.7rem;line-height:1.5}
+.restaurant-page .kitchen-tour{padding-block:2.3rem}
+.restaurant-page .kitchen-tour-panel{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);overflow:hidden;border:1px solid #ded5c1;border-radius:18px;background:#fff;box-shadow:0 14px 38px rgb(24 48 37 / 9%)}
+.restaurant-page .kitchen-tour-figure{display:grid;grid-template-rows:1fr auto;min-width:0;margin:0;background:#173d32}
+.restaurant-page .kitchen-tour-figure img{display:block;width:100%;height:100%;min-height:300px;max-height:460px;aspect-ratio:3/2;object-fit:cover}.restaurant-page .kitchen-tour-figure img.tour-image-in{animation:kitchen-picture-in .35s ease-out both}
+.restaurant-page .kitchen-tour-figure figcaption{padding:.62rem .85rem;background:#143d32;color:#f7e9c2;font-size:.7rem;font-weight:750;letter-spacing:.06em}
+.restaurant-page .kitchen-tour-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(1rem,2.5vw,1.6rem)}
+.restaurant-page .tour-stop-count{margin:0 0 .4rem;color:#9a7628;font-size:.63rem;font-weight:900;letter-spacing:.14em}
+.restaurant-page .kitchen-tour-copy h3{margin:0 0 .5rem;color:var(--jade-dark);font:400 clamp(1.4rem,2.5vw,1.9rem)/1.2 Marcellus,Georgia,serif}
+.restaurant-page .kitchen-tour-copy>p:not(.tour-stop-count){min-height:5.5em;margin:.2rem 0 1rem;color:#5b625a;font-size:.83rem;line-height:1.65}
+.restaurant-page .kitchen-stop-list{display:grid;gap:.45rem}
+.restaurant-page .kitchen-stop{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:0 .55rem;width:100%;padding:.52rem .62rem;border:1px solid #e8e2d5;border-radius:10px;background:#fcfbf7;color:#30392f;text-align:left;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease}
+.restaurant-page .kitchen-stop:hover{transform:translateX(2px);border-color:#c8ad61;box-shadow:0 4px 12px rgb(40 49 35 / 7%)}
+.restaurant-page .kitchen-stop:focus-visible{outline:3px solid #c5a146;outline-offset:2px}
+.restaurant-page .kitchen-stop>span{grid-row:span 2;display:grid;place-items:center;width:30px;height:30px;border:1px solid #dfd4b4;border-radius:9px;background:#f4eedc;color:#785f24;font-size:.65rem;font-weight:850}
+.restaurant-page .kitchen-stop strong{font-size:.76rem}.restaurant-page .kitchen-stop small{color:#77776d;font-size:.64rem}
+.restaurant-page .kitchen-stop.is-active{border-color:#1c6952;background:linear-gradient(100deg,#eaf4ed,#f9f7ec);box-shadow:inset 0 0 0 1px #1c695233}
+.restaurant-page .kitchen-stop.is-active>span{border-color:#1c6952;background:#1c6952;color:#fff}
+.restaurant-page .visit-concept{padding-block:1.2rem 2.3rem}
+.restaurant-page .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:.85rem}
+.restaurant-page .visit-card{display:grid;grid-template-columns:52px 1fr;align-content:start;gap:.8rem;padding:1rem 1.1rem;border:1px solid #e5dcc9;border-radius:14px;background:linear-gradient(145deg,#fff,#f8f4e9);box-shadow:0 8px 22px rgb(24 48 37 / 5%)}
+.restaurant-page .visit-icon{display:grid;place-items:center;width:48px;height:48px;border:1px solid #e2d7b8;border-radius:14px;background:#fff7dc;font-size:1.45rem}
+.restaurant-page .visit-card-label{margin:0;color:#96732b;font-size:.63rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.restaurant-page .visit-card h3{margin:.18rem 0 .35rem;color:var(--jade-dark);font:400 1.3rem/1.2 Marcellus,Georgia,serif}
+.restaurant-page .visit-location>div>p:not(.visit-card-label){margin:.3rem 0;color:#4f5b51;font-size:.88rem;line-height:1.7}
+.restaurant-page .visit-detail{display:inline-flex;margin-top:.4rem;padding:.28rem .48rem;border:1px solid #e4dbc5;border-radius:99px;background:#fff;color:#746b58;font-size:.61rem;font-weight:700}
+.restaurant-page .hours-list{display:grid;gap:.32rem;margin:.55rem 0 0}
+.restaurant-page .hours-list>div{display:flex;justify-content:space-between;gap:1rem;padding:.3rem 0;border-top:1px solid #ece6da;font-size:.75rem;line-height:1.4}
+.restaurant-page .hours-list dt{color:#5d6259}.restaurant-page .hours-list dd{margin:0;color:#254d3d;font-weight:750;text-align:right;white-space:nowrap}
+.restaurant-page .visit-note{padding:.65rem .8rem;border-left:3px solid #c5a146;border-radius:0 8px 8px 0;background:#f3ecdc;color:#5e5a50}
+@keyframes kitchen-picture-in{from{opacity:.45;transform:scale(1.015)}to{opacity:1;transform:scale(1)}}
+@media(max-width:760px){.restaurant-page .chef-team-grid{grid-template-columns:1fr}.restaurant-page .chef-profile>p:not(.chef-favorite){min-height:0}.restaurant-page .concept-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.restaurant-page .kitchen-tour-panel{grid-template-columns:1fr}.restaurant-page .kitchen-tour-figure img{min-height:0;max-height:none}.restaurant-page .kitchen-tour-copy>p:not(.tour-stop-count){min-height:0}.restaurant-page .visit-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.restaurant-page .chef-profile,.restaurant-page .kitchen-stop,.restaurant-page .kitchen-tour-figure img{transition:none!important;animation:none!important}.restaurant-page .chef-profile:hover,.restaurant-page .kitchen-stop:hover{transform:none!important}}
