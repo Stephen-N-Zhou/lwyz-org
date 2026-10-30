@@ -452,3 +452,10 @@ body.game-page {
 @media (prefers-reduced-motion: reduce) {
   .restaurant-page .quick-jump:hover { transform: none !important; }
 }
+.restaurant-page .profile-arcade-link,
+.restaurant-page .arcade-launch { display: inline-flex; align-items: center; justify-content: space-between; gap: .6rem; min-height: 40px; padding: .55rem .75rem; border: 1px solid #b99c4d; border-radius: 8px; background: linear-gradient(120deg, #fff8df, #f2e6bd); color: #23473a; font-size: .7rem; font-weight: 800; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.restaurant-page .profile-arcade-link { width: 100%; margin-top: .65rem; }
+.restaurant-page .arcade-launch { width: 100%; margin-top: .6rem; background: linear-gradient(125deg, #16483c, #0d5c4b); color: #fff2bf; }
+.restaurant-page .profile-arcade-link:hover,
+.restaurant-page .arcade-launch:hover { transform: translateY(-2px); border-color: #d5b653; box-shadow: 0 7px 16px rgb(25 42 34 / 14%); }
+@media (prefers-reduced-motion: reduce) { .restaurant-page .profile-arcade-link, .restaurant-page .arcade-launch { transition: none !important; } .restaurant-page .profile-arcade-link:hover, .restaurant-page .arcade-launch:hover { transform: none !important; } }
