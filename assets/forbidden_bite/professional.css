@@ -470,8 +470,25 @@ body.game-page {
 .restaurant-page .chef-profile{position:relative;overflow:hidden;min-width:0;padding:1.15rem;border:1px solid #e7dfcf;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgb(24 48 37 / 6%);transition:transform .2s ease,box-shadow .2s ease}
 .restaurant-page .chef-profile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(24 48 37 / 12%)}
 .restaurant-page .chef-profile::before{position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#0d5c4b,#c5a146);content:""}
+.restaurant-page .chef-origin-story{margin:0 0 1.1rem;overflow:hidden;border:1px solid #d8c58f;border-radius:13px;background:linear-gradient(130deg,#103f35,#155346 58%,#80652e);color:#fff}
+.restaurant-page .chef-origin-story>summary{display:flex;align-items:center;gap:.6rem;min-height:52px;padding:.8rem 1rem;color:#f3dc94;font-weight:800;cursor:pointer;list-style:none}
+.restaurant-page .chef-origin-story>summary::-webkit-details-marker{display:none}
+.restaurant-page .chef-origin-story>summary::before{content:"＋";display:grid;place-items:center;width:27px;height:27px;border:1px solid #f3dc9480;border-radius:50%;font-size:.8rem}
+.restaurant-page .chef-origin-story[open]>summary::before{content:"−"}
+.restaurant-page .chef-origin-story>summary:focus-visible{outline:3px solid #fff1b7;outline-offset:-4px}
+.restaurant-page .chef-origin-copy{max-width:900px;padding:0 1rem 1rem 3.8rem;color:#f4f0e6;line-height:1.65}
+.restaurant-page .chef-origin-copy p{margin:.35rem 0 .7rem;font-size:.84rem}
+.restaurant-page .chef-origin-copy .section-label{margin-top:0;color:#f3dc94;font-size:.63rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.restaurant-page .chef-origin-copy h3{margin:.15rem 0 .55rem;color:#fff8df;font:400 clamp(1.25rem,2.6vw,1.65rem)/1.25 Marcellus,Georgia,serif}
+.restaurant-page .chef-origin-copy .chef-origin-note{margin:0;color:#e2d4a9;font-size:.68rem}
 .restaurant-page .chef-portrait-frame{position:relative;isolation:isolate;display:grid;place-items:center;min-height:158px;margin:0 0 .85rem;overflow:hidden;border:1px solid #e6dcc4;border-radius:11px;background:linear-gradient(135deg,#e9f1e7,#e9dfc8)}.restaurant-page .chef-portrait-frame::before{position:absolute;z-index:-1;inset:-8px;background-size:cover;background-position:center 38%;content:"";filter:blur(9px);transform:scale(1.08)}.restaurant-page .chef-noodles .chef-portrait-frame::before{background-image:linear-gradient(120deg,#164c3c55,#c9a65b77),url('/assets/forbidden_bite/chef-mei-lin.jpg')}.restaurant-page .chef-wok .chef-portrait-frame::before{background-image:linear-gradient(120deg,#713a2e55,#c78e4e77),url('/assets/forbidden_bite/chef-jun-park.jpg')}.restaurant-page .chef-tea .chef-portrait-frame::before{background-image:linear-gradient(120deg,#4e435f55,#c9a65b77),url('/assets/forbidden_bite/chef-anya-zhao.jpg')}.restaurant-page .chef-portrait{display:block;width:112px;height:136px;object-fit:cover;object-position:center 25%;border:3px solid #fff8e8;border-radius:58px 58px 14px 14px;background:#eee8dc;box-shadow:0 5px 18px #15291b55}
 .restaurant-page .chef-wok::before{background:linear-gradient(90deg,#a84335,#e8a65d)}.restaurant-page .chef-tea::before{background:linear-gradient(90deg,#6e5887,#d6ad61)}
+.restaurant-page .chef-soup .chef-portrait-frame::before{background-image:linear-gradient(120deg,#235b4c66,#c9a65b77),url('/assets/forbidden_bite/chef-lian-chen.jpg')}
+.restaurant-page .chef-sauce .chef-portrait-frame::before{background-image:linear-gradient(120deg,#713a2e55,#c78e4e77),url('/assets/forbidden_bite/chef-david-wu.jpg')}
+.restaurant-page .chef-greens .chef-portrait-frame::before{background-image:linear-gradient(120deg,#255b3a55,#b4bd6a77),url('/assets/forbidden_bite/chef-sofia-tran.jpg')}
+.restaurant-page .chef-seafood .chef-portrait-frame::before{background-image:linear-gradient(120deg,#315b6b55,#c9a65b77),url('/assets/forbidden_bite/chef-marcus-lee.jpg')}
+.restaurant-page .chef-dumplings .chef-portrait-frame::before{background-image:linear-gradient(120deg,#733a3b55,#c9a65b77),url('/assets/forbidden_bite/chef-priya-shah.jpg')}
+.restaurant-page .chef-soup .chef-mark{background:linear-gradient(145deg,#e6f1e8,#f8ead0)}.restaurant-page .chef-sauce .chef-mark{background:linear-gradient(145deg,#fff0dc,#f8ded8)}.restaurant-page .chef-greens .chef-mark{background:linear-gradient(145deg,#e6f2dc,#fff8df)}.restaurant-page .chef-seafood .chef-mark{background:linear-gradient(145deg,#e1eef0,#fff8df)}.restaurant-page .chef-dumplings .chef-mark{background:linear-gradient(145deg,#fff0e9,#f8ead0)}
 .restaurant-page .chef-profile-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
 .restaurant-page .chef-mark{display:grid;place-items:center;width:46px;height:46px;border:1px solid #e6ddc5;border-radius:14px;background:linear-gradient(145deg,#fff8df,#e6f1e8);font-size:1.5rem}
 .restaurant-page .chef-wok .chef-mark{background:linear-gradient(145deg,#fff0dc,#f8ded8)}.restaurant-page .chef-tea .chef-mark{background:linear-gradient(145deg,#f0e7f7,#fbf0d6)}
