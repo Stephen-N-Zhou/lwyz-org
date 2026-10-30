@@ -9,7 +9,7 @@
   const avatars=[
     {id:'noodle',icon:'🍜',name:'Noodle Pal',unlock:'Ready now',unlocked:()=>true},
     {id:'dumpling',icon:'🥟',name:'Dash Dumpling',unlock:'Catch your first dumpling',unlocked:game=>game.achievements.includes('first-bite')||game.best>=1},
-    {id:'dragon',icon:'🐉',name:'Dragon Dash',unlock:'Reach level 10',unlocked:game=>game.best>=10||game.achievements.includes('feast-champion')},
+    {id:'dish-match',icon:'🥟',name:'Dish Match',unlock:'Find your first pair',unlocked:game=>game.best>=1||game.achievements.includes('first-bite')},
     {id:'roadster',icon:'🏎️',name:'Flavor Roadster',unlock:'Order from 3 flavor stops',unlocked:game=>game.flavorCount>=3},
     {id:'trailblazer',icon:'🏆',name:'Trailblazer',unlock:'Complete the 5-stop map',unlocked:game=>game.flavorCount>=5},
     {id:'arcade',icon:'🌟',name:'Arcade Ace',unlock:'Earn 10 Dash achievements',unlocked:game=>game.achievements.length>=10}

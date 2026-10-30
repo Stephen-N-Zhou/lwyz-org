@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a3029">
+  <meta name="theme-color" content="#168348">
   <title>Avatar Arcade | Forbidden Bite</title>
-  <meta name="description" content="Five colorful skill games starring the Forbidden Bite avatars.">
+  <meta name="description" content="Five colorful skill games starring the Forbidden Bite avatars, including a ten-level dish matching challenge.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/avatar-arcade.css?v=8">
+  <link rel="stylesheet" href="/assets/forbidden_bite/avatar-arcade.css?v=9">
 </head>
 <body class="avatar-arcade-page">
   <main class="arcade-shell">
     <header class="arcade-nav"><a class="arcade-back" href="/projects/restaurant.html#my-profile">← Forbidden Bite profile</a><span class="arcade-brand">FORBIDDEN BITE <i>ARCADE</i></span></header>
-    <section class="arcade-heading" aria-labelledby="arcade-title"><p class="arcade-kicker">Five new avatar challenges</p><h1 id="arcade-title">Avatar Arcade</h1><p>Every game is built around a different skill: ingredient catching, split-second movement, lane strategy, route memory, or precise timing. All five start at <strong>Very Hard</strong>.</p></section>
-    <nav class="mode-grid" id="mode-grid" aria-label="Choose a very hard game">
-      <button class="mode-card is-selected" data-mode="noodle" aria-pressed="true"><span class="mode-icon">🍜</span><span class="mode-copy"><strong>Noodle Pal</strong><small>Catch falling food and dodge chili bombs.</small></span><span class="difficulty">VERY HARD</span></button>
-      <button class="mode-card" data-mode="dragon" aria-pressed="false"><span class="mode-icon">🐉</span><span class="mode-copy"><strong>Dragon Dash</strong><small>Jump floor flames, duck steam, collect sparks.</small></span><span class="difficulty">VERY HARD</span></button>
-      <button class="mode-card" data-mode="roadster" aria-pressed="false"><span class="mode-icon">🏎️</span><span class="mode-copy"><strong>Flavor Roadster</strong><small>Collect each level’s flavor tokens and avoid trucks.</small></span><span class="difficulty">VERY HARD</span></button>
-      <button class="mode-card" data-mode="trailblazer" aria-pressed="false"><span class="mode-icon">🏆</span><span class="mode-copy"><strong>Trailblazer</strong><small>Remember numbered tiles; tap the route in order.</small></span><span class="difficulty">VERY HARD</span></button>
-      <button class="mode-card" data-mode="ace" aria-pressed="false"><span class="mode-icon">🌟</span><span class="mode-copy"><strong>Arcade Ace</strong><small>Strike when the needle reaches the gold arc.</small></span><span class="difficulty">VERY HARD</span></button>
+    <section class="arcade-heading" aria-labelledby="arcade-title"><p class="arcade-kicker">Five avatar challenges</p><h1 id="arcade-title">Avatar Arcade</h1><p>Catch ingredients, match Forbidden Bite dishes, race through a glowing city, remember a garden path, and master your timing. Each game has a distinct animated scene and ten increasingly tricky levels.</p></section>
+    <nav class="mode-grid" id="mode-grid" aria-label="Choose a ten-level game">
+      <button class="mode-card is-selected" data-mode="noodle" aria-pressed="true"><span class="mode-icon">🍜</span><span class="mode-copy"><strong>Noodle Pal</strong><small>Catch ingredients in a bright kitchen and dodge chili bombs.</small></span><span class="difficulty">10 LEVELS</span></button>
+      <button class="mode-card" data-mode="match" aria-pressed="false"><span class="mode-icon">🥟</span><span class="mode-copy"><strong>Dish Match</strong><small>Flip cards, remember dishes, and find every pair.</small></span><span class="difficulty">10 LEVELS</span></button>
+      <button class="mode-card" data-mode="roadster" aria-pressed="false"><span class="mode-icon">🏎️</span><span class="mode-copy"><strong>Flavor Roadster</strong><small>Collect tokens through a glowing city and avoid trucks.</small></span><span class="difficulty">10 LEVELS</span></button>
+      <button class="mode-card" data-mode="trailblazer" aria-pressed="false"><span class="mode-icon">🏆</span><span class="mode-copy"><strong>Trailblazer</strong><small>Remember a garden path and tap the route in order.</small></span><span class="difficulty">10 LEVELS</span></button>
+      <button class="mode-card" data-mode="ace" aria-pressed="false"><span class="mode-icon">🌟</span><span class="mode-copy"><strong>Arcade Ace</strong><small>Strike at the right moment in a lantern-lit festival.</small></span><span class="difficulty">10 LEVELS</span></button>
     </nav>
     <section class="arcade-stage" aria-labelledby="game-title">
-      <div class="stage-head"><div><p class="arcade-kicker" id="stage-kicker">AVATAR CHALLENGE · VERY HARD</p><h2 id="game-title">Noodle Pal</h2></div><div class="stage-stats"><div><span>SCORE</span><strong id="score">0</strong></div><div><span>BEST</span><strong id="best">0</strong></div><div><span>HEARTS</span><strong id="lives">♥♥♥</strong></div><div><span>LEVEL / GOAL</span><strong id="clock">—</strong></div></div><button class="exit-fullscreen" id="exit-fullscreen" type="button" hidden>Exit full screen <span aria-hidden="true">↙</span></button></div>
+      <div class="stage-head"><div><p class="arcade-kicker" id="stage-kicker">AVATAR CHALLENGE · 10 LEVELS</p><h2 id="game-title">Noodle Pal</h2></div><div class="stage-stats"><div><span>SCORE</span><strong id="score">0</strong></div><div><span>BEST</span><strong id="best">0</strong></div><div><span>HEARTS</span><strong id="lives">♥♥♥</strong></div><div><span>LEVEL / GOAL</span><strong id="clock">—</strong></div></div><button class="exit-fullscreen" id="exit-fullscreen" type="button" hidden>Exit full screen <span aria-hidden="true">↙</span></button></div>
       <p class="game-rule" id="game-rule">Catch any falling food to fill the counter. Dodge chili bombs; missed food is safe.</p>
       <section class="how-to-play" aria-labelledby="how-to-title">
         <h3 id="how-to-title">How to play</h3>
@@ -31,13 +31,13 @@
         <p id="instruction-controls">Move with ← → or A / D, or touch and drag the bowl. Use Soup Slowdown with the power-up button or Shift.</p>
         <p class="power-guide" id="power-guide">Soup Slowdown slows falling items, Ingredient Magnet pulls food toward your bowl, and Wok Sweep clears chili bombs. New powers unlock as you progress.</p>
       </section>
-      <div class="arena-wrap"><canvas id="arena" width="960" height="540" tabindex="0" aria-label="Game play field"></canvas><div class="stage-overlay" id="stage-overlay"><div class="overlay-card"><span class="overlay-icon" id="overlay-icon">🍜</span><p class="arcade-kicker" id="overlay-kicker">10 LEVELS · VERY HARD · NOODLE PAL</p><h3 id="overlay-title">Catch food. Dodge chili bombs.</h3><p id="overlay-copy" role="status" aria-live="polite" aria-atomic="true">Catch any falling food to fill the counter. Dodge red chili bombs. Missed food is safe; there is no recipe order. Play starts here in the page, so you can return to the rest of the page with normal scrolling.</p><button class="arcade-button" id="start-game">Start Noodle Pal · 10 levels</button></div></div></div>
+      <div class="arena-wrap"><canvas id="arena" width="960" height="540" tabindex="0" aria-label="Game play field"></canvas><div class="stage-overlay" id="stage-overlay"><div class="overlay-card"><span class="overlay-icon" id="overlay-icon">🍜</span><p class="arcade-kicker" id="overlay-kicker">10 LEVELS · NOODLE PAL</p><h3 id="overlay-title">Catch food. Dodge chili bombs.</h3><p id="overlay-copy" role="status" aria-live="polite" aria-atomic="true">Catch any falling food to fill the counter. Dodge red chili bombs. Missed food is safe; there is no recipe order. Play starts here in the page, so you can return to the rest of the page with normal scrolling.</p><button class="arcade-button" id="start-game">Start Noodle Pal · 10 levels</button></div></div></div>
       <div class="stage-controls"><div class="control-copy" id="control-copy">Move: ← → or A / D · Power-up: Shift</div><label class="power-select-wrap" for="power-select"><span>Power-up</span><select id="power-select" aria-label="Choose a power-up"><option>Loading power-ups…</option></select></label><button class="power-button" id="power-button" type="button">Use power-up</button><button class="restart-button" id="restart-game" type="button">Restart 10 levels</button></div>
       <p class="game-status" id="game-status" role="status" aria-live="polite">Choose a challenge and press Start. Personal bests save on this device.</p>
     </section>
     <section class="scoreboard" aria-labelledby="scoreboard-title"><div><p class="arcade-kicker">LOCAL RECORDS</p><h2 id="scoreboard-title">Your best runs</h2></div><div class="record-grid" id="record-grid"></div></section>
     <footer class="arcade-footer">Avatar Arcade is a fictional, local-only collection. Scores are saved in this browser; nothing is sent to a server. <a href="/projects/restaurant-dumpling-game.html">Play Dumpling Dash</a></footer>
   </main>
-  <script src="/assets/forbidden_bite/avatar-arcade.js?v=8" defer></script>
+  <script src="/assets/forbidden_bite/avatar-arcade.js?v=9" defer></script>
 </body>
 </html>
