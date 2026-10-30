@@ -2,7 +2,8 @@
   const storageKey='forbidden-bite-demo-cart-v1';
   const readCart=()=>{try{const value=JSON.parse(localStorage.getItem(storageKey)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
   let cart=readCart();
-  let promoApplied=false;
+  let promoApplied='';
+  const flavorRewardAmounts={FLAVOR1:1,FLAVOR2:3,FLAVOR3:5,FLAVOR4:8,FLAVOR5:12};
   const money=value=>new Intl.NumberFormat(undefined,{style:'currency',currency:'USD'}).format(value);
   const nav=document.querySelector('.nav');
   const cartButton=document.createElement('button');
@@ -50,7 +51,7 @@
         </fieldset>
         <fieldset class="checkout-group promo-group">
           <legend>Promo code</legend>
-          <div class="promo-row"><input name="promo" autocomplete="off" placeholder="Try DEMO10" aria-label="Promo code"><button type="button" class="promo-apply">Apply</button></div>
+          <div class="promo-row"><input name="promo" autocomplete="off" placeholder="DEMO10 or your FLAVOR reward" aria-label="Promo code"><button type="button" class="promo-apply">Apply</button></div>
           <p class="promo-status" role="status" aria-live="polite"></p>
         </fieldset>
         <div class="review-box"><h3>Order review</h3><div class="review-items"></div><div class="review-totals"><p><span>Subtotal</span><strong class="review-subtotal"></strong></p><p class="delivery-fee-row" hidden><span>Delivery</span><strong>$4.99</strong></p><p class="discount-row" hidden><span>Demo discount</span><strong class="discount-amount"></strong></p><p class="review-grand-total"><span>Estimated total</span><strong class="review-total"></strong></p></div></div>
@@ -103,7 +104,7 @@
     if(!checkoutForm)return;
     const reviewItems=dialog.querySelector('.review-items');reviewItems.replaceChildren();
     for(const item of cart){const row=document.createElement('p');const label=document.createElement('span');label.textContent=`${item.quantity} × ${item.name}`;const price=document.createElement('strong');price.textContent=money(item.quantity*item.price);row.append(label,price);reviewItems.append(row)}
-    const delivery=selected('fulfillment')==='Delivery';const subtotalAmount=subtotal();const discount=promoApplied?subtotalAmount*.1:0;
+    const delivery=selected('fulfillment')==='Delivery';const subtotalAmount=subtotal();const discount=promoApplied==='DEMO10'?subtotalAmount*.1:(flavorRewardAmounts[promoApplied]||0);
     dialog.querySelector('.review-subtotal').textContent=money(subtotalAmount);
     dialog.querySelector('.discount-row').hidden=!promoApplied;dialog.querySelector('.discount-amount').textContent=`−${money(discount)}`;
     dialog.querySelector('.review-total').textContent=money(Math.max(0,subtotalAmount+(delivery?4.99:0)-discount));
@@ -125,11 +126,13 @@
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
-  dialog.querySelector('.checkout-start').addEventListener('click',()=>{promoApplied=false;dialog.querySelector('[name="promo"]').value='';dialog.querySelector('.promo-status').textContent='';setView('checkout');updateDelivery();updateReview()});
+  const applyPromoCode=()=>{const code=checkoutForm.elements.promo.value.trim().toUpperCase();const status=dialog.querySelector('.promo-status');if(code==='DEMO10'){promoApplied=code;status.textContent='DEMO10 applied: 10% off your demo subtotal.'}else if(flavorRewardAmounts[code]){promoApplied=code;status.textContent=`${code} applied: ${money(flavorRewardAmounts[code])} off your demo total.`}else{promoApplied='';status.textContent=code?'That demo code was not recognized. Try DEMO10 or your unlocked FLAVOR code.':'Enter DEMO10 or an unlocked FLAVOR code.'}status.classList.toggle('is-error',!promoApplied);updateReview()};
+  window.addEventListener('forbidden-bite:flavor-reward-unlocked',event=>{const code=event.detail?.code;if(flavorRewardAmounts[code]){try{localStorage.setItem('forbidden-bite-flavor-reward-v1',code)}catch{}}});
+  dialog.querySelector('.checkout-start').addEventListener('click',()=>{promoApplied='';let code='';try{code=localStorage.getItem('forbidden-bite-flavor-reward-v1')||''}catch{};dialog.querySelector('[name="promo"]').value=code;dialog.querySelector('.promo-status').textContent='';setView('checkout');updateDelivery();if(code)applyPromoCode();else updateReview()});
   dialog.querySelector('.checkout-back').addEventListener('click',()=>setView('cart'));
   dialog.querySelector('.success-done').addEventListener('click',()=>dialog.close());
   checkoutForm.addEventListener('change',event=>{if(event.target.name==='fulfillment')updateDelivery();else updateReview()});
-  dialog.querySelector('.promo-apply').addEventListener('click',()=>{const code=checkoutForm.elements.promo.value.trim().toUpperCase();const status=dialog.querySelector('.promo-status');promoApplied=code==='DEMO10';status.textContent=promoApplied?'DEMO10 applied: 10% off your demo subtotal.':code?'That demo code was not recognized. Try DEMO10.':'Enter DEMO10 to try the sample discount.';status.classList.toggle('is-error',!!code&&!promoApplied);updateReview()});
+  dialog.querySelector('.promo-apply').addEventListener('click',applyPromoCode);
   checkoutForm.addEventListener('submit',event=>{
     event.preventDefault();if(!cart.length)return;
     const formData=new FormData(checkoutForm);const fulfillment=formData.get('fulfillment');
