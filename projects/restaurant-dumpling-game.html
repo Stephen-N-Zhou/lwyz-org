@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-11">
-  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=2">
 </head>
 <body class="game-page">
   <main class="game-shell">
@@ -25,13 +25,13 @@
       <div class="game-stat"><span>Time</span><strong id="game-time">20</strong></div>
       <div class="game-stat"><span>Best level</span><strong id="game-best">0</strong></div>
     </div>
-    <div class="game-progress" aria-hidden="true"><span id="game-progress-fill"></span></div>
+    <div class="game-progress" id="game-progress" role="progressbar" aria-label="Round catch goal" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="game-progress-fill"></span></div>
     <div class="powerup-bar" id="powerup-bar" aria-label="Power-ups" hidden></div>
     <p class="powerup-status" id="powerup-status" role="status" aria-live="polite"></p>
     <section class="game-arena" id="game-arena" aria-label="Dumpling Dash play area">
       <div class="target-layer" id="target-layer"></div>
       <div class="game-overlay" id="game-overlay">
-        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all 100 levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
+        <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy" role="status" aria-live="polite" aria-atomic="true">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all 100 levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
       </div>
     </section>
     <details class="achievement-panel">
@@ -82,6 +82,7 @@
       const levelText=document.getElementById('game-level');
       const bestText=document.getElementById('game-best');
       const progress=document.getElementById('game-progress-fill');
+      const progressBar=document.getElementById('game-progress');
       const instructions=document.getElementById('level-instructions');
       const powerBar=document.getElementById('powerup-bar');
       const powerStatus=document.getElementById('powerup-status');
@@ -214,11 +215,12 @@
         document.getElementById('overlay-copy').textContent=copy;
         controls.replaceChildren(...actions);
         overlay.hidden=false;
+        controls.querySelector('button, a')?.focus({preventScroll:true});
       };
       const updateStats=()=>{
         const config=levels[levelNumber-1];
         levelText.textContent=`${levelNumber}/100`;scoreText.textContent=`${levelScore} / ${config.goal}`;timeText.textContent=String(timeLeft);
-        progress.style.width=`${Math.min(100,levelScore/config.goal*100)}%`;
+        const progressPercent=Math.min(100,levelScore/config.goal*100);progress.style.width=`${progressPercent}%`;progressBar.setAttribute('aria-valuemax',String(config.goal));progressBar.setAttribute('aria-valuenow',String(Math.min(levelScore,config.goal)));progressBar.setAttribute('aria-valuetext',`${Math.min(levelScore,config.goal)} of ${config.goal} dumplings caught`);
       };
       const moveTargets=()=>{
         const bounds=arena.getBoundingClientRect(),padding=42;
@@ -315,6 +317,7 @@
         powerUses={};for(const power of config.powers)powerUses[power]=1;
         instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
         updateStats();renderTargets();renderPowerups();overlay.hidden=true;
+        targetLayer.querySelector('button')?.focus({preventScroll:true});
         if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
         timer=setInterval(()=>{timeLeft-=1;updateStats();if(timeLeft<=0)finishAttempt()},1000);
         if(config.hop)hopTimer=setInterval(()=>{if(running&&Date.now()>=freezeUntil)moveTargets()},config.hop);

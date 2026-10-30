@@ -1,13 +1,13 @@
 /* Shared brand polish for the Forbidden Bite restaurant, gallery, and game pages. */
 :root {
-  --jade: #145846;
-  --jade-dark: #103d32;
-  --gold: #bf9a48;
-  --wine: #713b3c;
-  --paper: #f7f5ef;
-  --ink: #252b27;
-  --muted: #666f69;
-  --line: #e2ded4;
+  --jade: #0d5c4b;
+  --jade-dark: #093d33;
+  --gold: #c5a146;
+  --wine: #741e25;
+  --paper: #faf7f2;
+  --ink: #24231f;
+  --muted: #66645e;
+  --line: #e8e0d3;
   --shadow-soft: 0 10px 28px rgb(25 42 34 / 8%);
   --shadow-hover: 0 16px 36px rgb(25 42 34 / 13%);
 }
@@ -32,12 +32,12 @@ body.game-page :where(a, button, input, select, textarea, summary) {
 
 body.restaurant-page :where(a, button, input, select, textarea, summary):focus-visible,
 body.gallery-page :where(a, button, input, select, textarea, summary):focus-visible {
-  outline: 3px solid #bf9a48;
+  outline: 3px solid #c5a146;
   outline-offset: 3px;
 }
 
 /* Restaurant landing page */
-.restaurant-page .topbar { background: #10372e; box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
+.restaurant-page .topbar { background: var(--jade-dark); box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
 .restaurant-page .nav { min-height: 66px; }
 .restaurant-page .brand { font-size: 1.04rem; letter-spacing: .12em; }
 .restaurant-page .nav > a:not(.brand) { font-weight: 600; }
@@ -106,8 +106,8 @@ body.gallery-page :where(a, button, input, select, textarea, summary):focus-visi
 .restaurant-page .flavor-map { box-shadow: var(--shadow-soft); }
 .restaurant-page .flavor-stop { min-height: 116px; }
 .restaurant-page .flavor-stop:focus-visible,
-.restaurant-page .finale-close:focus-visible { outline-color: #bf9a48; }
-.restaurant-page .quick-scroller { border-color: #e2ded4; background: rgb(250 249 244 / 94%); box-shadow: 0 4px 14px rgb(25 42 34 / 6%); }
+.restaurant-page .finale-close:focus-visible { outline-color: var(--gold); }
+.restaurant-page .quick-scroller { border-color: var(--line); background: rgb(250 249 244 / 94%); box-shadow: 0 4px 14px rgb(25 42 34 / 6%); }
 .restaurant-page .quick-jump { color: #29443a; font-weight: 700; }
 .restaurant-page .quick-thumb { border-color: #d8cba6; border-radius: 9px; }
 .restaurant-page .button,
@@ -135,19 +135,19 @@ body.gallery-page :where(a, button, input, select, textarea, summary):focus-visi
 .restaurant-page .game-launch:hover { transform: translateY(-1px); box-shadow: 0 7px 16px rgb(108 79 20 / 20%); }
 .restaurant-page .add-to-cart,
 .restaurant-page .review-form button,
-.restaurant-page .cart-open { border-color: #145846; background: #145846; color: #fff; }
+.restaurant-page .cart-open { border-color: var(--jade); background: var(--jade); color: #fff; }
 .restaurant-page .add-to-cart:hover,
 .restaurant-page .review-form button:hover,
-.restaurant-page .cart-open:hover { background: #103d32; box-shadow: 0 5px 13px rgb(16 61 50 / 18%); }
+.restaurant-page .cart-open:hover { background: var(--jade-dark); box-shadow: 0 5px 13px rgb(16 61 50 / 18%); }
 .restaurant-page :where(input, select, textarea) { border-color: #d8d5ca; border-radius: 8px; }
-.restaurant-page :where(input, select, textarea):focus { border-color: #145846; box-shadow: 0 0 0 3px rgb(20 88 70 / 13%); outline: 0; }
+.restaurant-page :where(input, select, textarea):focus { border-color: var(--jade); box-shadow: 0 0 0 3px rgb(20 88 70 / 13%); outline: 0; }
 .restaurant-page .editorial-section { padding-block: 2.4rem; }
 .restaurant-page .editorial-card { padding: 1.35rem; }
 .restaurant-page .faq { padding-top: 2rem; }
-.restaurant-page footer { background: #10372e; }
+.restaurant-page footer { background: var(--jade-dark); }
 
 /* Dish gallery */
-.gallery-page .topbar { background: #10372e; box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
+.gallery-page .topbar { background: var(--jade-dark); box-shadow: 0 3px 16px rgb(10 35 29 / 15%); }
 .gallery-page .brand { letter-spacing: .12em; }
 .gallery-page main.wrap { width: min(1040px, calc(100% - 2.5rem)); }
 .gallery-page main { padding-top: clamp(2rem, 5vw, 3.5rem); }
@@ -155,43 +155,171 @@ body.gallery-page :where(a, button, input, select, textarea, summary):focus-visi
 .gallery-page .description { max-width: 74ch; color: #58625b; font-size: .98rem; line-height: 1.75; }
 .gallery-page .hint { display: inline-flex; align-items: center; gap: .5rem; margin-block: .35rem 1rem; padding: .65rem .8rem; border: 1px solid #e4decf; border-radius: 10px; background: #fff; color: #425b4e; font-size: .82rem; }
 .gallery-page .gallery-disclosure > summary { border-color: #b6903c; border-radius: 9px; background: linear-gradient(180deg, #d9bb6d, #c6a44d); box-shadow: 0 3px 9px rgb(108 79 20 / 13%); }
-.gallery-page .gallery { gap: .6rem; padding: .8rem; border-color: #e2ded4; border-radius: 15px; box-shadow: var(--shadow-soft); }
-.gallery-page .dish-tile { border-color: #e2ded4; border-radius: 11px; transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+.gallery-page .gallery { gap: .6rem; padding: .8rem; border-color: var(--line); border-radius: 15px; box-shadow: var(--shadow-soft); }
+.gallery-page .dish-tile { border-color: var(--line); border-radius: 11px; transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
 .gallery-page .dish-tile:hover { transform: translateY(-3px); border-color: #c4ab68; box-shadow: 0 10px 24px rgb(27 44 36 / 16%); }
-.gallery-page .dish-dialog { border-color: #e2ded4; border-radius: 18px; box-shadow: 0 28px 90px rgb(0 0 0 / 28%); }
-.gallery-page .dialog-photo { border-color: #e2ded4; border-radius: 13px; }
-.gallery-page .button { border-radius: 9px; }
+.gallery-page .dish-dialog { border-color: var(--line); border-radius: 18px; box-shadow: 0 28px 90px rgb(0 0 0 / 28%); }
+.gallery-page .dialog-photo { border-color: var(--line); border-radius: 13px; }
+.gallery-page .button,
+.gallery-page .cart-open,
+.gallery-page .add-to-cart { min-height: 42px; border-radius: 9px; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.gallery-page .button:not(.secondary) { border-color: #b6903c; background: linear-gradient(180deg, #d9bb6d, #c6a44d); color: #24291f; box-shadow: 0 3px 9px rgb(108 79 20 / 13%); }
+.gallery-page .cart-open,
+.gallery-page .add-to-cart { border-color: var(--jade); background: var(--jade); color: #fff; }
+.gallery-page .button:hover,
+.gallery-page .cart-open:hover,
+.gallery-page .add-to-cart:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgb(25 42 34 / 13%); }
+.gallery-page .cart-dialog { width: min(94vw, 620px); max-height: min(88vh, 850px); padding: clamp(1rem, 3vw, 1.5rem); border-color: #d9d3c6; border-radius: 20px; background: linear-gradient(155deg, #fffefa, #f8f6ef); box-shadow: 0 28px 95px rgb(8 31 25 / 34%); }
+.gallery-page .cart-dialog::backdrop { background: rgb(7 32 26 / 69%); backdrop-filter: blur(6px); }
+.gallery-page .cart-line { border-color: #e7e2d8; border-radius: 11px; }
+.gallery-page .checkout-group { border-color: #e4dfd4; border-radius: 12px; }
+.gallery-page .choice-card { border-radius: 9px; }
+.gallery-page .review-box { border-color: #ded6bf; border-radius: 12px; }
 
 /* Full-screen mini-game */
 .game-page { background: radial-gradient(ellipse at 50% -10%, #2d6957 0%, #123d33 45%, #092b25 100%); }
-.game-page .game-shell { justify-content: flex-start; gap: .15rem; padding: clamp(1.25rem, 3vw, 2.5rem); }
+.game-page .game-shell { width: min(1120px, 100%); margin-inline: auto; justify-content: flex-start; gap: .15rem; padding: clamp(1.25rem, 3vw, 2.5rem); }
 .game-page .game-top { margin-bottom: 1.25rem; }
 .game-page .game-back { color: #f3df9c; }
 .game-page .game-title { margin-block: .15rem .25rem; letter-spacing: .025em; text-shadow: 0 5px 28px rgb(0 0 0 / 18%); }
+.game-page .game-title::after { display: block; width: 3.5rem; height: 2px; margin: .55rem auto .1rem; border-radius: 99px; background: linear-gradient(90deg, transparent, #d8bd70, transparent); content: ""; }
 .game-page .game-instructions { max-width: 620px; color: #e8eee8; }
-.game-page .game-scorebar { gap: .65rem; }
-.game-page .game-stat { min-width: 112px; border-color: rgb(244 228 170 / 28%); border-radius: 13px; background: linear-gradient(145deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 5%)); box-shadow: inset 0 1px rgb(255 255 255 / 9%); }
+.game-page .game-scorebar { width: min(940px, 100%); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin-block: .65rem .9rem; }
+.game-page .game-stat { min-width: 0; padding: .72rem .8rem; border-color: rgb(244 228 170 / 28%); border-radius: 13px; background: linear-gradient(145deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 5%)); box-shadow: inset 0 1px rgb(255 255 255 / 9%); }
+.game-page .game-stat span { color: #e8d391; font-size: .64rem; letter-spacing: .12em; }
 .game-page .game-stat strong { font-size: 1.42rem; }
 .game-page .game-progress { height: 9px; border: 1px solid rgb(255 255 255 / 12%); background: rgb(0 0 0 / 20%); }
 .game-page .game-progress span { background: linear-gradient(90deg, #c69f45, #f4da82); box-shadow: 0 0 14px rgb(230 194 91 / 42%); }
-.game-page .game-arena { border: 3px solid #d7c17d; border-radius: 20px; box-shadow: 0 22px 60px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 60%); }
+.game-page .powerup-bar { width: min(940px, 100%); margin-block: .25rem .6rem; }
+.game-page .powerup-button { border-color: rgb(227 204 137 / 72%); border-radius: 9px; background: linear-gradient(180deg, #faf5e6, #e6d7ae); box-shadow: 0 3px 10px rgb(0 0 0 / 12%); transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.game-page .powerup-button:hover:not(:disabled) { transform: translateY(-1px); background: #fff8e5; box-shadow: 0 6px 15px rgb(0 0 0 / 18%); }
+.game-page .powerup-status { width: min(940px, 100%); margin-inline: auto; color: #f2df9c; }
+.game-page .game-arena { width: min(940px, 100%); height: min(56vh, 480px); border: 3px solid #d7c17d; border-radius: 20px; background-color: #e9dec3; background-image: radial-gradient(ellipse at 50% 8%, rgb(255 255 255 / 75%), transparent 56%), repeating-linear-gradient(135deg, rgb(131 106 58 / 3%) 0 1px, transparent 1px 13px); box-shadow: 0 22px 60px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 75%); }
+.game-page .dumpling-target { box-shadow: 0 7px 18px rgb(42 36 25 / 24%), inset 0 2px 3px rgb(255 255 255 / 85%); }
+.game-page .dumpling-target:active { transform: translate(-50%, -50%) scale(.92); }
+.game-page .dumpling-target.dumpling-boss { box-shadow: 0 0 0 7px rgb(191 99 64 / 17%), 0 12px 28px rgb(53 37 23 / 32%), inset 0 2px 5px rgb(255 255 255 / 65%); }
 .game-page .game-overlay { background: rgb(8 39 32 / 72%); backdrop-filter: blur(7px); }
-.game-page .game-overlay-card { border-color: rgb(232 208 131 / 50%); border-radius: 19px; box-shadow: 0 22px 60px rgb(0 0 0 / 26%); }
+.game-page .game-overlay-card { width: min(440px, 100%); padding: clamp(1.3rem, 4vw, 1.8rem); border-color: rgb(232 208 131 / 50%); border-radius: 19px; box-shadow: 0 22px 60px rgb(0 0 0 / 26%); }
+.game-page .game-overlay-card p { color: #e4ebe2; }
 .game-page .game-primary { border-radius: 9px; box-shadow: 0 4px 12px rgb(0 0 0 / 15%); transition: transform .18s ease, box-shadow .18s ease; }
 .game-page .game-primary:hover { transform: translateY(-1px); box-shadow: 0 7px 17px rgb(0 0 0 / 22%); }
 .game-page .achievement-panel,
-.game-page .collection-panel { border-color: rgb(232 208 131 / 27%); border-radius: 16px; background: linear-gradient(145deg, rgb(255 255 255 / 9%), rgb(255 255 255 / 4%)); box-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
+.game-page .collection-panel { width: min(940px, 100%); border-color: rgb(232 208 131 / 27%); border-radius: 16px; background: linear-gradient(145deg, rgb(255 255 255 / 9%), rgb(255 255 255 / 4%)); box-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
+.game-page .achievement-panel summary { min-height: 58px; padding: .9rem 1.1rem; }
+.game-page .achievement-grid { gap: .65rem; padding: 0 .9rem .9rem; }
 .game-page .achievement-card,
 .game-page .collection-card { border-radius: 11px; }
-.game-page .collection-panel { padding: clamp(1rem, 2vw, 1.5rem); }
-.game-page .daily-reward { border-radius: 13px; box-shadow: inset 0 1px rgb(255 255 255 / 12%); }
-.game-page .game-footer { color: #cbd7ce; line-height: 1.7; }
+.game-page .collection-panel { padding: clamp(1rem, 2.5vw, 1.6rem); }
+.game-page .collection-heading { padding-bottom: .85rem; border-bottom: 1px solid rgb(255 255 255 / 14%); }
+.game-page .collection-heading h2 { font-size: clamp(1.55rem, 3vw, 1.9rem); }
+.game-page .collection-tools { align-items: end; gap: .7rem; margin-block: .9rem; }
+.game-page .pack-quantity,
+.game-page .sound-theme-control select,
+.game-page .collection-filters select { border-radius: 9px; }
+.game-page .daily-reward { border-radius: 13px; background: linear-gradient(105deg, rgb(225 187 86 / 14%), rgb(255 255 255 / 4%)); box-shadow: inset 0 1px rgb(255 255 255 / 12%); }
+.game-page .collection-note { max-width: 80ch; color: #d5dfd7; line-height: 1.65; }
+.game-page .collection-grid { grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: .65rem; }
+.game-page .collection-card { min-height: 78px; padding: .72rem; background: rgb(255 255 255 / 6%); transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+.game-page .collection-card:hover { transform: translateY(-2px); border-color: rgb(240 216 143 / 62%); background: rgb(255 255 255 / 10%); }
+.game-page .collection-card strong { font-size: .8rem; }
+.game-page .collection-card small { color: #d0dbd2; }
+.game-page .badge-shelf { padding-top: 1rem; }
+.game-page :where(button, a, select, summary):focus-visible { outline: 3px solid #f0d88f; outline-offset: 3px; }
+.game-page .game-footer { width: min(940px, 100%); margin-block: 1.25rem 0; color: #cbd7ce; line-height: 1.7; text-align: left; }
+
+/* Order preview and checkout surfaces */
+.restaurant-page .cart-dialog {
+  width: min(94vw, 620px);
+  max-height: min(88vh, 850px);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border-color: #d9d3c6;
+  border-radius: 20px;
+  background: linear-gradient(155deg, #fffefa 0%, #f8f6ef 100%);
+  box-shadow: 0 28px 95px rgb(8 31 25 / 34%);
+}
+.restaurant-page .cart-dialog::backdrop { background: rgb(7 32 26 / 69%); backdrop-filter: blur(6px); }
+.restaurant-page .cart-head { padding-bottom: .95rem; border-color: #e8e3d8; }
+.restaurant-page .cart-head h2 { font-size: 1.8rem; letter-spacing: -.015em; }
+.restaurant-page .cart-close { border-radius: 8px; background: #f2f0e9; transition: background .18s ease, transform .18s ease; }
+.restaurant-page .cart-close:hover { transform: translateY(-1px); background: #e8e4d8; }
+.restaurant-page .cart-line { padding: .85rem; border-color: #e7e2d8; border-radius: 11px; box-shadow: 0 3px 10px rgb(25 42 34 / 4%); }
+.restaurant-page .cart-summary { padding-block: .9rem; border-color: #ddd8cb; }
+.restaurant-page .checkout-group { gap: .72rem; padding: 1rem; border-color: #e4dfd4; border-radius: 12px; background: rgb(255 255 255 / 86%); }
+.restaurant-page .checkout-group legend { font-size: .92rem; letter-spacing: .005em; }
+.restaurant-page .checkout-form input:not([type=radio]),
+.restaurant-page .checkout-form select { border-color: #d8d6cc; border-radius: 8px; background: #fff; }
+.restaurant-page .choice-card { border-color: #e1ddd2; border-radius: 9px; background: #fbfaf7; transition: border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+.restaurant-page .choice-card:has(input:checked) { border-color: #55806e; background: #f0f6f1; box-shadow: inset 0 0 0 1px #55806e; }
+.restaurant-page .review-box { border-color: #ded6bf; border-radius: 12px; background: linear-gradient(145deg, #f8f4e8, #fffdf7); }
+.restaurant-page .review-totals .review-grand-total { padding-top: .7rem; font-size: 1.02rem; }
+.restaurant-page .checkout-start,
+.restaurant-page .checkout-submit,
+.restaurant-page .success-done { min-height: 48px; border-radius: 9px; font-size: .9rem; }
+.restaurant-page .checkout-submit { background: var(--jade); color: #fff; }
+.restaurant-page .checkout-submit:hover { background: var(--jade-dark); }
+.restaurant-page .checkout-kicker { color: #7a5731; letter-spacing: .15em; }
+.restaurant-page .checkout-demo-note { padding: .75rem .85rem; border: 1px solid #e8e1cf; border-radius: 9px; background: #f8f4e8; color: #62675f; }
+.restaurant-page .success-mark { background: #e9f2eb; color: var(--jade); box-shadow: 0 0 0 6px #e9f2eb88; }
+
+/* Main-page sections and forms */
+.restaurant-page .section-head { margin-bottom: 1.35rem; }
+.restaurant-page .section-head h2 { max-width: 23ch; }
+.restaurant-page .deals .section-head h2,
+.restaurant-page .menu-section .section-head h2 { max-width: none; }
+.restaurant-page .reservation,
+.restaurant-page .build-own-section,
+.restaurant-page .feast-builder,
+.restaurant-page .dish-week,
+.restaurant-page .flavor-finder,
+.restaurant-page .seasonal-banner,
+.restaurant-page .chef-picks,
+.restaurant-page .faq { scroll-margin-top: 110px; }
+.restaurant-page .reservation { background: linear-gradient(135deg, #f2eee4 0%, #fbfaf6 65%, #f2eee4 100%); }
+.restaurant-page .reservation-layout { gap: clamp(1.25rem, 4vw, 2.5rem); }
+.restaurant-page .reservation-panel { border-color: #e0d9c9; border-radius: 14px; }
+.restaurant-page .deals,
+.restaurant-page .flavor-map,
+.restaurant-page .profile-section,
+.restaurant-page .prize-spinner { scroll-margin-top: 110px; }
+.restaurant-page .build-own-card,
+.restaurant-page .feast-builder { border-color: #e0d7c1; box-shadow: var(--shadow-soft); }
+.restaurant-page .seasonal-banner { box-shadow: 0 12px 30px rgb(12 49 40 / 14%); }
+.restaurant-page .dish-week { border: 1px solid rgb(218 192 125 / 60%); }
+.restaurant-page .flavor-finder,
+.restaurant-page .chef-picks { border-radius: 15px; }
+.restaurant-page .review-form { border-color: #e1dacb; border-radius: 13px; }
+.restaurant-page .review-form button { padding-inline: 1rem; }
+.restaurant-page .review-card { border-color: #e5dfd3; border-radius: 11px; box-shadow: 0 4px 12px rgb(25 42 34 / 4%); }
+.restaurant-page .faq details { box-shadow: 0 4px 14px rgb(25 42 34 / 4%); }
+.restaurant-page .faq summary { line-height: 1.45; }
+.restaurant-page footer { border-top: 1px solid rgb(255 255 255 / 10%); }
+.restaurant-page .footer { min-height: 54px; }
+
+/* Reduce the default tap animation to a crisp confirmation flash. */
+.restaurant-page .tap-glow { animation: pro-tap-glow .42s ease-out; }
+.restaurant-page .cart-added.tap-glow { animation: pro-tap-glow .42s ease-out, pro-cart-pulse .5s ease-out; }
+@keyframes pro-tap-glow { 0% { filter: brightness(1); } 35% { filter: brightness(1.13) drop-shadow(0 0 5px rgb(191 154 72 / 35%)); } 100% { filter: brightness(1); } }
+@keyframes pro-cart-pulse { 0% { box-shadow: 0 0 0 0 rgb(191 154 72 / 0%); } 45% { box-shadow: 0 0 0 3px rgb(191 154 72 / 35%); } 100% { box-shadow: 0 0 0 0 rgb(191 154 72 / 0%); } }
+
+/* Quiet, deliberate motion on the profile card. */
+.restaurant-page .profile-card::before { animation-duration: 18s; }
+.restaurant-page .profile-avatar-shell::before { animation-duration: 24s; }
+.restaurant-page .profile-avatar-shell::after { animation-duration: 32s; }
+.restaurant-page .profile-avatar { animation-duration: 5s; }
 
 @media (max-width: 700px) {
   .restaurant-page .hero-inner { min-height: auto; }
   .restaurant-page .section-head { align-items: start; }
   .game-page .game-shell { padding-inline: .85rem; }
   .game-page .game-stat { min-width: 94px; }
+}
+
+@media (max-width: 620px) {
+  .game-page .game-scorebar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .game-page .game-stat { min-height: 68px; }
+  .game-page .game-arena { height: 50svh; min-height: 270px; }
+  .game-page .collection-heading { align-items: flex-start; }
+  .game-page .collection-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -202,4 +330,125 @@ body.gallery-page :where(a, button, input, select, textarea, summary):focus-visi
   .gallery-page .dish-tile, .game-page .game-primary { transition: none !important; }
   .restaurant-page .card:hover, .restaurant-page .fun-card:hover, .restaurant-page .editorial-card:hover,
   .gallery-page .dish-tile:hover { transform: none !important; }
+}
+
+/* Final usability pass: consistent controls, clear disabled states, and deliberate focus. */
+.restaurant-page :where(button, .button, summary, input, select, textarea),
+.gallery-page :where(button, .button, summary, input, select, textarea),
+.game-page :where(button, a, summary, select) { scroll-margin-block: 1rem; }
+.restaurant-page :where(button, .button):disabled,
+.gallery-page :where(button, .button):disabled,
+.game-page :where(button):disabled { cursor: not-allowed; filter: saturate(.55); opacity: .62; transform: none; box-shadow: none; }
+.restaurant-page :where(button, .button):focus-visible,
+.gallery-page :where(button, .button):focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; }
+.restaurant-page .menu-section .card li { transition: background-color .18s ease; }
+.restaurant-page .menu-section .card li:hover { background: linear-gradient(90deg, #f8f6ef, transparent); }
+.restaurant-page .menu-section .card .price,
+.restaurant-page .menu-section .card .compare-at { font-variant-numeric: tabular-nums; }
+.restaurant-page .deal-card,
+.restaurant-page .secret-dish,
+.restaurant-page .seasonal-card { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.restaurant-page .deal-card:hover,
+.restaurant-page .secret-dish:hover,
+.restaurant-page .seasonal-card:hover { border-color: #cbb36d; box-shadow: var(--shadow-hover); }
+.restaurant-page .reservation-fields label,
+.restaurant-page .builder-label,
+.restaurant-page .tool-fields label { line-height: 1.4; }
+.restaurant-page .reservation-action,
+.restaurant-page .seasonal-card button,
+.restaurant-page .tool-button { transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease; }
+.restaurant-page .reservation-action:hover,
+.restaurant-page .seasonal-card button:hover,
+.restaurant-page .tool-button:hover { transform: translateY(-1px); }
+.restaurant-page .profile-avatar-choice:focus-visible,
+.restaurant-page .sound-button:focus-visible,
+.restaurant-page .passport-stamp:focus-visible,
+.restaurant-page .mailbox-open:focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; }
+.restaurant-page .review-disclosure > summary,
+.restaurant-page .build-own-section > summary,
+.restaurant-page .gallery-disclosure > summary { line-height: 1.45; }
+.restaurant-page .quick-scroller { scrollbar-color: #c7b16e #f6f3eb; scrollbar-width: thin; }
+.gallery-page .gallery { grid-template-columns: repeat(auto-fill, minmax(min(100%, 142px), 1fr)); }
+.gallery-page .dish-tile:focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; }
+.gallery-page .dialog-photo { object-fit: cover; }
+.gallery-page .cart-dialog,
+.restaurant-page .cart-dialog { overscroll-behavior: contain; }
+.game-page .game-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 7px 17px rgb(0 0 0 / 22%); }
+.game-page .game-stat strong { font-variant-numeric: tabular-nums; }
+.game-page .achievement-card,
+.game-page .collection-card,
+.game-page .pack-reveal-item { min-width: 0; }
+.game-page .achievement-card:focus-within,
+.game-page .collection-card:focus-within { border-color: #f0d88f; }
+.game-page .achievement-panel summary { list-style: none; }
+.game-page .achievement-panel summary::marker { content: ""; }
+.game-page .pack-reveal { max-height: 350px; overflow: auto; overscroll-behavior: contain; }
+.game-page .collection-filters label,
+.game-page .sound-theme-control { line-height: 1.4; }
+.game-page .game-overlay-card { max-height: min(90%, 520px); overflow: auto; overscroll-behavior: contain; }
+
+@media (max-width: 620px) {
+  .restaurant-page .menu-tools { grid-template-columns: 1fr; }
+  .restaurant-page .reservation-fields { grid-template-columns: 1fr; }
+  .restaurant-page .flavor-map-head { align-items: flex-start; }
+  .restaurant-page .quick-scroller { max-width: calc(100vw - 1rem); }
+  .restaurant-page .quick-jump { min-width: 94px; }
+  .gallery-page main.wrap { width: min(100% - 1.25rem, 1040px); }
+  .game-page .game-top { flex-wrap: wrap; }
+  .game-page .game-label { text-align: right; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page *, .gallery-page *, .game-page * {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .restaurant-page .card:hover, .restaurant-page .fun-card:hover,
+  .restaurant-page .editorial-card:hover, .restaurant-page .deal-card:hover,
+  .restaurant-page .secret-dish:hover, .restaurant-page .seasonal-card:hover,
+  .gallery-page .dish-tile:hover, .game-page .game-primary:hover { transform: none !important; }
+}
+
+@media (forced-colors: active) {
+  .restaurant-page :where(a, button, input, select, textarea, summary):focus-visible,
+  .gallery-page :where(a, button, input, select, textarea, summary):focus-visible,
+  .game-page :where(a, button, input, select, summary):focus-visible { outline: 2px solid Highlight; }
+  .game-page .game-progress span { background: Highlight; }
+  .game-page .powerup-button, .game-page .game-primary { border: 1px solid ButtonText; }
+}
+.gallery-page .cart-head { padding-bottom: .95rem; border-color: #e8e3d8; }
+.gallery-page .cart-head h2 { color: var(--jade-dark); font: 400 1.8rem/1.2 Marcellus, Georgia, serif; letter-spacing: -.015em; }
+.gallery-page .cart-close { border-radius: 8px; background: #f2f0e9; transition: background .18s ease, transform .18s ease; }
+.gallery-page .cart-close:hover { transform: translateY(-1px); background: #e8e4d8; }
+.gallery-page .cart-line { padding: .85rem; border-color: #e7e2d8; border-radius: 11px; box-shadow: 0 3px 10px rgb(25 42 34 / 4%); }
+.gallery-page .cart-summary { padding-block: .9rem; border-color: #ddd8cb; }
+.gallery-page .checkout-group { gap: .72rem; padding: 1rem; border-color: #e4dfd4; border-radius: 12px; background: rgb(255 255 255 / 86%); }
+.gallery-page .checkout-group legend { color: var(--jade-dark); font-size: .92rem; letter-spacing: .005em; }
+.gallery-page .checkout-form input:not([type=radio]),
+.gallery-page .checkout-form select { border-color: #d8d6cc; border-radius: 8px; background: #fff; }
+.gallery-page .choice-card { border-color: #e1ddd2; border-radius: 9px; background: #fbfaf7; transition: border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+.gallery-page .choice-card:has(input:checked) { border-color: #55806e; background: #f0f6f1; box-shadow: inset 0 0 0 1px #55806e; }
+.gallery-page .review-box { background: linear-gradient(145deg, #f8f4e8, #fffdf7); }
+.gallery-page .review-box h3 { color: var(--jade-dark); font: 400 1.15rem Marcellus, Georgia, serif; }
+.gallery-page .review-totals .review-grand-total { padding-top: .7rem; font-size: 1.02rem; }
+.gallery-page .checkout-submit { background: var(--jade); color: #fff; }
+.gallery-page .checkout-submit:hover { background: var(--jade-dark); }
+.gallery-page .checkout-kicker { color: #7a5731; letter-spacing: .15em; }
+.gallery-page .checkout-demo-note { padding: .75rem .85rem; border: 1px solid #e8e1cf; border-radius: 9px; background: #f8f4e8; color: #62675f; }
+.gallery-page .success-mark { background: #e9f2eb; color: var(--jade); box-shadow: 0 0 0 6px #e9f2eb88; }
+.gallery-page .checkout-success h3 { color: var(--jade-dark); font: 400 1.55rem/1.2 Marcellus, Georgia, serif; }
+body.game-page {
+  color-scheme: dark;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.restaurant-page .quick-jump { transition: color .18s ease, transform .18s ease; }
+.restaurant-page .quick-jump:hover { transform: translateY(-2px); }
+.restaurant-page .quick-thumb { transition: border-color .18s ease, box-shadow .18s ease; }
+.restaurant-page .quick-jump:hover .quick-thumb { border-color: var(--gold); box-shadow: 0 4px 12px rgb(25 42 34 / 14%); }
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page .quick-jump:hover { transform: none !important; }
 }
