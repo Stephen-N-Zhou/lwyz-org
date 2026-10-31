@@ -1,0 +1,25 @@
+.print-menu-button{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;margin-top:.35rem;padding:.5rem .8rem;border:1px solid #b69547;border-radius:8px;background:#fffdf5;color:#12483d;font:750 .78rem Inter,system-ui,sans-serif;cursor:pointer}.print-menu-button:hover,.print-menu-button:focus-visible{background:#f3ecdc;outline:3px solid #d8c58f;outline-offset:2px}
+@media print{
+  @page{size:letter;margin:.55in}
+  body.restaurant-page{background:#fff!important;color:#222!important;font:10pt/1.35 Georgia,serif!important}
+  body.restaurant-page>*{display:none!important}
+  body.restaurant-page>main#main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+  body.restaurant-page>main#main>*{display:none!important}
+  body.restaurant-page>main#main>section[aria-labelledby="menu-title"]{display:block!important;padding:0!important}
+  body.restaurant-page>main#main>section[aria-labelledby="menu-title"]::before{display:block;margin:0 0 .12in;padding:0 0 .12in;border-bottom:2px solid #b69547;color:#12483d;content:"FORBIDDEN BITE  ·  TAKEOUT MENU";font:18pt/1.1 Georgia,serif;letter-spacing:.07em;text-align:center}
+  body.restaurant-page #menu-title{margin:0 0 .08in!important;color:#12483d!important;font-size:15pt!important}
+  body.restaurant-page .section-label{margin:0!important;color:#725b26!important;font-size:8pt!important}
+  body.restaurant-page .section-head{margin:0 0 .12in!important}
+  body.restaurant-page .section-head>div:last-child>p,body.restaurant-page .menu-tools,body.restaurant-page #menu-grid>p,body.restaurant-page .add-to-cart{display:none!important}
+  body.restaurant-page #menu-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.12in!important}
+  body.restaurant-page #menu-grid>.card{break-inside:avoid;padding:.12in!important;border:1px solid #d9d0bd!important;border-radius:6px!important;background:#fff!important;box-shadow:none!important}
+  body.restaurant-page #menu-grid>.card h3{margin:0 0 .04in!important;color:#12483d!important;font-size:12pt!important}
+  body.restaurant-page #menu-grid>.card .section-note{margin:0 0 .05in!important;color:#62594c!important;font-size:8pt!important}
+  body.restaurant-page #menu-grid>.card li{padding:.045in 0!important;border-color:#eee9df!important;font-size:8pt!important}
+  body.restaurant-page #menu-grid>.card .detail{color:#49463f!important;font-size:7.5pt!important}
+  body.restaurant-page #menu-grid>.card .meta,body.restaurant-page #menu-grid>.card .options{font-size:7pt!important}
+  body.restaurant-page #menu-grid>.card .price{color:#12483d!important}
+  body.restaurant-page #menu-grid>.card .compare-at{display:none!important}
+  body.restaurant-page #menu-grid::after{grid-column:1/-1;display:block;margin-top:.08in;padding-top:.08in;border-top:1px solid #d9d0bd;color:#62594c;content:"Fictional restaurant concept · Illustrative prices in USD · Please tell your server about food allergies; shared preparation areas are used.";font:7.5pt/1.4 Georgia,serif}
+  body.restaurant-page .restaurant-music{display:none!important}
+}
