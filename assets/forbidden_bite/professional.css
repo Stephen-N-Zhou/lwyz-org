@@ -622,3 +622,55 @@ body.game-page {
 @media(max-width:700px){.restaurant-page .flavor-route{height:500px}.restaurant-page .flavor-stop[data-flavor-stop="spicy"]{left:22%!important;top:20%!important}.restaurant-page .flavor-stop[data-flavor-stop="sweet"]{left:78%!important;top:20%!important}.restaurant-page .flavor-stop[data-flavor-stop="savory"]{left:50%!important;top:50%!important}.restaurant-page .flavor-stop[data-flavor-stop="crunchy"]{left:22%!important;top:80%!important}.restaurant-page .flavor-stop[data-flavor-stop="bright"]{left:78%!important;top:80%!important}}
 @media(max-width:420px){.restaurant-page .flavor-route{height:460px}.restaurant-page .flavor-stop{width:126px;min-height:104px}.restaurant-page .flavor-map-art img{object-position:center}.restaurant-page .chef-video-duration{font-size:.52rem}}
 @media(prefers-reduced-motion:reduce){.restaurant-page .chef-video-dish,.restaurant-page .chef-video-screen.is-playing .chef-video-action,.restaurant-page .chef-video-screen.is-playing .chef-video-mote,.restaurant-page .chef-video-screen.is-playing .chef-video-dish,.restaurant-page .chef-video-cut .chef-video-caption{animation:none!important;transition:none!important}.restaurant-page .chef-video-screen.is-playing .chef-video-dish{transform:none!important;filter:brightness(.78)!important}.restaurant-page .flavor-roadster{transition:none!important}}
+
+/* Large, unmistakable cooking actions: every chef demo gets its own choreography. */
+.restaurant-page .chef-video-screen.is-playing .chef-video-mote{z-index:2;bottom:auto;width:auto;height:auto;padding:0;border:0;border-radius:0;background:none!important;box-shadow:none!important;opacity:0;font-size:clamp(1.7rem,4.4vw,2.7rem);line-height:1;filter:drop-shadow(0 5px 5px #071c1890);will-change:transform,opacity}
+.restaurant-page .chef-video-screen.is-playing .chef-video-mote-1{left:16%;top:55%}
+.restaurant-page .chef-video-screen.is-playing .chef-video-mote-2{left:47%;top:58%}
+.restaurant-page .chef-video-screen.is-playing .chef-video-mote-3{left:76%;top:53%}
+.restaurant-page .scene-noodles.is-playing .chef-video-mote-1{animation:chef-motion-noodle 2.3s .05s cubic-bezier(.35,.05,.55,.95) infinite}
+.restaurant-page .scene-noodles.is-playing .chef-video-mote-2{animation:chef-motion-noodle 2.7s .75s cubic-bezier(.35,.05,.55,.95) infinite}
+.restaurant-page .scene-noodles.is-playing .chef-video-mote-3{animation:chef-motion-chopsticks 2.1s .3s ease-in-out infinite}
+.restaurant-page .scene-dumplings.is-playing .chef-video-mote-1,.restaurant-page .scene-crystal-dumplings.is-playing .chef-video-mote-2{animation:chef-motion-dumpling 1.35s .05s cubic-bezier(.28,.8,.35,1.25) infinite}
+.restaurant-page .scene-dumplings.is-playing .chef-video-mote-2,.restaurant-page .scene-crystal-dumplings.is-playing .chef-video-mote-3{animation:chef-motion-dumpling 1.5s .45s cubic-bezier(.28,.8,.35,1.25) infinite}
+.restaurant-page .scene-dumplings.is-playing .chef-video-mote-3,.restaurant-page .scene-crystal-dumplings.is-playing .chef-video-mote-1{animation:chef-motion-fold 1.8s .2s ease-in-out infinite}
+.restaurant-page .scene-dessert.is-playing .chef-video-mote-1{animation:chef-motion-whisk 2.4s ease-in-out infinite}
+.restaurant-page .scene-dessert.is-playing .chef-video-mote-2{animation:chef-motion-spark 1.7s .25s ease-out infinite}
+.restaurant-page .scene-dessert.is-playing .chef-video-mote-3{animation:chef-motion-sesame 2s .6s ease-in-out infinite}
+.restaurant-page .scene-soup.is-playing .chef-video-mote-1{animation:chef-motion-ladle 2.2s ease-in-out infinite}
+.restaurant-page .scene-soup.is-playing .chef-video-mote-2{animation:chef-motion-greens 2.4s .45s ease-in-out infinite}
+.restaurant-page .scene-soup.is-playing .chef-video-mote-3{animation:chef-motion-dumpling 1.7s .9s cubic-bezier(.28,.8,.35,1.2) infinite}
+.restaurant-page .scene-duck.is-playing .chef-video-mote-1{animation:chef-motion-brush 2.3s ease-in-out infinite}
+.restaurant-page .scene-duck.is-playing .chef-video-mote-2{animation:chef-motion-duck 2.8s .5s ease-in-out infinite}
+.restaurant-page .scene-duck.is-playing .chef-video-mote-3{animation:chef-motion-spark 1.7s .8s ease-out infinite}
+.restaurant-page .scene-cucumbers.is-playing .chef-video-mote-1{animation:chef-motion-cucumber 1.65s .05s cubic-bezier(.35,.1,.5,1) infinite}
+.restaurant-page .scene-cucumbers.is-playing .chef-video-mote-2{animation:chef-motion-cucumber 1.8s .38s cubic-bezier(.35,.1,.5,1) infinite}
+.restaurant-page .scene-cucumbers.is-playing .chef-video-mote-3{animation:chef-motion-sesame 2.1s .65s ease-in-out infinite}
+.restaurant-page .scene-seafood.is-playing .chef-video-mote-1{animation:chef-motion-shrimp 1.9s .05s cubic-bezier(.28,.8,.4,1.15) infinite}
+.restaurant-page .scene-seafood.is-playing .chef-video-mote-2{animation:chef-motion-crab 2.3s .5s ease-in-out infinite}
+.restaurant-page .scene-seafood.is-playing .chef-video-mote-3{animation:chef-motion-corn 2.5s .25s ease-in-out infinite}
+.restaurant-page .scene-noodles.is-playing .chef-video-action{animation:chef-motion-pull 1.8s ease-in-out infinite alternate}
+.restaurant-page .scene-dumplings.is-playing .chef-video-action,.restaurant-page .scene-crystal-dumplings.is-playing .chef-video-action{animation:chef-motion-press 1.4s ease-in-out infinite alternate}
+.restaurant-page .scene-dessert.is-playing .chef-video-action{animation:chef-motion-whisk 2s ease-in-out infinite}
+.restaurant-page .scene-soup.is-playing .chef-video-action{animation:chef-motion-ladle 1.8s ease-in-out infinite}
+.restaurant-page .scene-duck.is-playing .chef-video-action{animation:chef-motion-brush 1.8s ease-in-out infinite}
+.restaurant-page .scene-cucumbers.is-playing .chef-video-action{animation:chef-motion-toss 1.3s ease-in-out infinite alternate}
+.restaurant-page .scene-seafood.is-playing .chef-video-action{animation:chef-motion-shrimp 1.5s ease-in-out infinite}
+@keyframes chef-motion-noodle{0%{opacity:0;transform:translate(-12px,48px) rotate(-45deg) scale(.55)}22%{opacity:1}62%{opacity:1;transform:translate(10px,-38px) rotate(12deg) scale(1.2)}100%{opacity:0;transform:translate(36px,-110px) rotate(36deg) scale(.8)}}
+@keyframes chef-motion-chopsticks{0%,100%{opacity:.25;transform:translate(15px,12px) rotate(-24deg)}50%{opacity:1;transform:translate(-10px,-30px) rotate(18deg)}}
+@keyframes chef-motion-dumpling{0%{opacity:0;transform:translateY(28px) rotate(-50deg) scale(.65)}18%{opacity:1}60%{opacity:1;transform:translate(20px,-46px) rotate(160deg) scale(1.12)}100%{opacity:0;transform:translate(8px,12px) rotate(300deg) scale(.8)}}
+@keyframes chef-motion-fold{0%,100%{opacity:.25;transform:translateY(12px) rotate(-22deg) scale(.8)}50%{opacity:1;transform:translateY(-18px) rotate(28deg) scale(1.14)}}
+@keyframes chef-motion-whisk{0%{opacity:0;transform:translate(-26px,18px) rotate(-50deg)}18%,78%{opacity:1}100%{opacity:0;transform:translate(32px,-8px) rotate(310deg)}}
+@keyframes chef-motion-spark{0%,100%{opacity:0;transform:translateY(12px) scale(.4)}35%,65%{opacity:1;transform:translateY(-16px) scale(1.25)} }
+@keyframes chef-motion-sesame{0%,100%{opacity:0;transform:translate(0,24px) rotate(0) scale(.5)}35%,70%{opacity:1;transform:translate(22px,-18px) rotate(150deg) scale(1)} }
+@keyframes chef-motion-ladle{0%,100%{opacity:.2;transform:translate(-12px,20px) rotate(-38deg)}28%,72%{opacity:1;transform:translate(20px,-26px) rotate(28deg)} }
+@keyframes chef-motion-greens{0%{opacity:0;transform:translate(-12px,-48px) rotate(-90deg) scale(.7)}25%,70%{opacity:1}100%{opacity:0;transform:translate(16px,28px) rotate(165deg) scale(1.1)}}
+@keyframes chef-motion-brush{0%,100%{opacity:.45;transform:translate(-44px,10px) rotate(-35deg)}50%{opacity:1;transform:translate(48px,-10px) rotate(28deg)}}
+@keyframes chef-motion-duck{0%{opacity:0;transform:translate(-22px,42px) rotate(-22deg) scale(.7)}24%,72%{opacity:1}100%{opacity:0;transform:translate(18px,-42px) rotate(32deg) scale(1.12)}}
+@keyframes chef-motion-cucumber{0%{opacity:0;transform:translate(-32px,-36px) rotate(-110deg) scale(.7)}22%,68%{opacity:1}100%{opacity:0;transform:translate(42px,28px) rotate(155deg) scale(1.1)}}
+@keyframes chef-motion-shrimp{0%{opacity:0;transform:translate(-20px,36px) rotate(-80deg) scale(.7)}25%,72%{opacity:1}100%{opacity:0;transform:translate(36px,-38px) rotate(80deg) scale(1.12)}}
+@keyframes chef-motion-crab{0%,100%{opacity:.2;transform:translate(-18px,0) rotate(-12deg)}50%{opacity:1;transform:translate(22px,-14px) rotate(12deg)}}
+@keyframes chef-motion-corn{0%{opacity:0;transform:translate(0,-50px) rotate(80deg)}25%,70%{opacity:1}100%{opacity:0;transform:translate(-8px,22px) rotate(-18deg)}}
+@keyframes chef-motion-pull{0%{transform:translate(-50%,-30%) rotate(-16deg) scale(.8)}100%{transform:translate(-50%,-78%) rotate(14deg) scale(1.25)}}
+@keyframes chef-motion-press{0%{transform:translate(-50%,-58%) rotate(-14deg) scale(.83)}100%{transform:translate(-50%,-42%) rotate(14deg) scale(1.12)}}
+@keyframes chef-motion-toss{0%{transform:translate(-50%,-45%) rotate(-18deg) scale(.88)}100%{transform:translate(-50%,-62%) rotate(18deg) scale(1.16)}}

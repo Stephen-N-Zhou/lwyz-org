@@ -68,7 +68,13 @@
     const chapterNav=make('div','chef-video-chapters');chapterNav.setAttribute('role','group');chapterNav.setAttribute('aria-label',`${name} cooking video chapters`);
     const screen=make('div',`chef-video-screen scene-${feature.motion} phase-prep`);
     const dishImage=make('img','chef-video-dish');dishImage.src=feature.image;dishImage.alt=`Finished ${feature.dish}, featured in ${name}'s cooking video`;dishImage.loading='lazy';dishImage.decoding='async';
-    const motion=make('div','chef-video-motion');motion.setAttribute('aria-hidden','true');for(let index=0;index<3;index++){const mote=make('span',`chef-video-mote chef-video-mote-${index+1}`);motion.append(mote)}
+    const motion=make('div','chef-video-motion');motion.setAttribute('aria-hidden','true');
+    const motionProps={
+      noodles:['〰️','〰️','🥢'],dumplings:['🥟','🥟','🥢'],dessert:['🥄','✦','⚫'],
+      soup:['🥄','🥬','🥟'],duck:['🖌️','🦆','✨'],cucumbers:['🥒','🥒','🧄'],
+      seafood:['🦐','🦀','🌽'],'crystal-dumplings':['♨️','🥟','🥢']
+    };
+    for(let index=0;index<3;index++){const mote=make('span',`chef-video-mote chef-video-mote-${index+1}`,motionProps[feature.motion][index]);motion.append(mote)}
     const chefPortrait=card.querySelector('.chef-portrait')?.cloneNode();
     const chefPip=make('div','chef-video-chef');if(chefPortrait){chefPortrait.removeAttribute('width');chefPortrait.removeAttribute('height');chefPortrait.alt='';chefPortrait.loading='lazy';chefPip.append(chefPortrait)}chefPip.append(make('span','',name));
     const action=make('span','chef-video-action','🥢');action.setAttribute('aria-hidden','true');
