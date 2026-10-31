@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc" preserveAspectRatio="none">
+  <title id="title">The Forbidden Bite Flavor Country map</title>
+  <desc id="desc">An illustrated landscape with a glowing volcano at Heat Mountain, Sweet Pond, Savory Grove, Crunchy Ridge, Brightwater Falls, and a winding trail between them.</desc>
+  <defs>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#dce9c9"/><stop offset="1" stop-color="#b8d0a6"/></linearGradient>
+    <linearGradient id="pond" x2="0" y2="1"><stop stop-color="#9dd3ca"/><stop offset="1" stop-color="#5eaaa1"/></linearGradient>
+    <linearGradient id="lava" x2="0" y2="1"><stop stop-color="#d87445"/><stop offset="1" stop-color="#a94335"/></linearGradient>
+    <pattern id="map-grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".16"/></pattern>
+  </defs>
+  <rect width="1000" height="560" fill="url(#land)"/>
+  <rect width="1000" height="560" fill="url(#map-grid)"/>
+  <path d="M0 225Q110 165 245 211T497 218Q645 153 755 207T1000 182V0H0Z" fill="#e5edcf"/>
+  <path d="M0 340Q139 273 278 335T536 330Q683 275 814 329T1000 291V560H0Z" fill="#a9c894"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2"><path d="M-30 260Q120 195 250 252T500 260Q650 195 800 245T1030 220"/><path d="M-20 377Q120 310 280 372T540 366Q700 308 840 365T1020 340"/><path d="M-10 430Q140 362 285 425T565 418Q725 365 865 420T1020 400"/></g>
+  <path d="M386-20C455 56 426 103 486 143s44 71 5 105 20 75 91 87 62 67 119 86 36 66 76 159" fill="none" stroke="#dff1e9" stroke-width="56" opacity=".8"/>
+  <path d="M386-20C455 56 426 103 486 143s44 71 5 105 20 75 91 87 62 67 119 86 36 66 76 159" fill="none" stroke="url(#pond)" stroke-width="39"/>
+  <path d="M170 142l51-98 58 101z" fill="#8d7664"/><path d="M122 164l70-135 73 138z" fill="#9b826d"/><path d="M212 150l64-118 68 120z" fill="#816b5e"/>
+  <path d="M160 92l32-63 34 64-25-12-11 14-13-14zM200 82l22-38 22 39-16-9-8 10-8-9zM260 89l16-31 17 32-12-7-7 8-6-8z" fill="#fff0d5"/>
+  <path d="M179 142l14 19 17-17-7 30 15 25-27-13-24 19 7-32-18-20 25 6z" fill="url(#lava)" opacity=".9"/>
+  <path d="M166 133q20 12 42 7t42 9M150 158q23 12 45 8t43 10" fill="none" stroke="#e79256" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <ellipse cx="793" cy="116" rx="108" ry="54" fill="#7eaa78"/><ellipse cx="793" cy="111" rx="88" ry="38" fill="url(#pond)"/><path d="M729 117q33-22 65-2t67 0" fill="none" stroke="#d8f4e7" stroke-width="4" opacity=".8"/>
+  <g fill="#6b9862"><ellipse cx="766" cy="108" rx="17" ry="8"/><ellipse cx="827" cy="124" rx="14" ry="7"/><ellipse cx="800" cy="91" rx="11" ry="6"/></g><g fill="#f8df91"><circle cx="765" cy="107" r="3"/><circle cx="827" cy="123" r="3"/></g>
+  <path d="M475 278q-29-51 1-79 27 29 3 70 3-66 39-77 17 42-21 82 27-47 70-36-1 45-54 53 57-14 70 23-42 26-89 1-42 30-73 9 15-42 63-34-57-5-54-44z" fill="#456b49"/>
+  <g fill="#668859"><circle cx="466" cy="234" r="29"/><circle cx="515" cy="216" r="32"/><circle cx="554" cy="236" r="27"/><circle cx="496" cy="267" r="33"/><circle cx="546" cy="268" r="26"/></g><g fill="#88a76e"><circle cx="458" cy="225" r="10"/><circle cx="511" cy="205" r="12"/><circle cx="550" cy="228" r="10"/><circle cx="488" cy="257" r="11"/></g>
+  <path d="M115 398l39-72 36 52 40-91 48 92 38-50 44 75z" fill="#806f61"/><path d="M147 367l7-13 8 12 20 28-35-5-20 10zM222 335l8-16 8 16 28 46-45-12-25 13z" fill="#c5b8a4"/><path d="M101 414q92-34 180 0t176-3" fill="none" stroke="#d9c9a5" stroke-width="8" stroke-dasharray="13 10"/>
+  <path d="M800 348h92l-17 116q-31 30-63 0z" fill="#77b9b1"/><path d="M800 348h92l-17 116q-31 30-63 0z" fill="none" stroke="#f4fff4" stroke-width="7" opacity=".85"/><path d="M819 356v79m21-79v91m21-90v78" stroke="#e0f7e8" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <ellipse cx="847" cy="473" rx="100" ry="31" fill="#6aaea5" opacity=".85"/><path d="M759 473q42 18 85 0t93 0" fill="none" stroke="#d6f2e9" stroke-width="4"/>
+  <g fill="#477550"><path d="M685 391l21-64 22 64zM695 382h24v8h-24zM709 404l20-55 20 55zM714 397h20v7h-20z"/><path d="M942 264l17-54 19 54zM947 257h22v7h-22zM933 303l22-68 21 68zM942 294h23v8h-23z"/></g>
+  <path d="M182 127C330 64 472 95 779 105c44 72-109 165-264 178-112 86-221 118-299 165 152 42 426 58 632 9" fill="none" stroke="#fff8d9" stroke-width="14" stroke-linecap="round" stroke-dasharray="2 22" opacity=".9"/>
+  <path d="M182 127C330 64 472 95 779 105c44 72-109 165-264 178-112 86-221 118-299 165 152 42 426 58 632 9" fill="none" stroke="#ba9144" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 22" opacity=".9"/>
+  <g transform="translate(946 57)" fill="#fff9df" stroke="#8b6a31" stroke-width="2"><path d="M0-26L7-3 0 1-7-3z"/><path d="M0 26L-7 3 0-1 7 3z"/><circle r="4" fill="#8b6a31"/></g><text x="946" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#685733">N</text>
+  <g fill="#52734d" opacity=".85"><circle cx="357" cy="208" r="4"/><circle cx="378" cy="222" r="3"/><circle cx="605" cy="176" r="4"/><circle cx="629" cy="190" r="3"/><circle cx="351" cy="366" r="4"/><circle cx="373" cy="380" r="3"/><circle cx="644" cy="413" r="4"/><circle cx="665" cy="427" r="3"/></g>
+</svg>

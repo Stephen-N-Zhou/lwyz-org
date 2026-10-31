@@ -534,3 +534,52 @@ body.game-page {
 @keyframes kitchen-picture-in{from{opacity:.45;transform:scale(1.015)}to{opacity:1;transform:scale(1)}}
 @media(max-width:760px){.restaurant-page .chef-team-grid{grid-template-columns:1fr}.restaurant-page .chef-profile>p:not(.chef-favorite){min-height:0}.restaurant-page .concept-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.restaurant-page .visit-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.restaurant-page .chef-profile{transition:none!important}.restaurant-page .chef-profile:hover{transform:none!important}}
+
+/* Playable illustrated cooking videos on each chef profile */
+.restaurant-page .chef-video-demo{margin:.75rem 0;padding:.65rem;border:1px solid #e6decc;border-radius:11px;background:linear-gradient(145deg,#fffefa,#f7f3e8)}
+.restaurant-page .chef-video-head,.restaurant-page .chef-video-controls{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.restaurant-page .chef-video-head{margin-bottom:.4rem}
+.restaurant-page .chef-video-head .chef-feature-label{margin:0}
+.restaurant-page .chef-video-duration{color:#77766f;font-size:.58rem;white-space:nowrap}
+.restaurant-page .chef-video-screen{position:relative;isolation:isolate;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#183c32;color:#fff}
+.restaurant-page .chef-video-screen::after{position:absolute;z-index:0;inset:35% 0 0;background:linear-gradient(transparent,#071c18e8);content:"";pointer-events:none}
+.restaurant-page .chef-video-dish{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78);transition:transform 4s ease,filter .5s}
+.restaurant-page .chef-video-screen.is-playing .chef-video-dish{transform:scale(1.1);filter:brightness(.7) saturate(1.12)}
+.restaurant-page .chef-video-chef{position:absolute;z-index:1;top:.45rem;left:.45rem;display:flex;align-items:center;gap:.35rem;padding:.2rem .45rem .2rem .2rem;border:1px solid #fff8;border-radius:99px;background:#102c25c9;color:#fff;font-size:.57rem;font-weight:800;backdrop-filter:blur(5px)}
+.restaurant-page .chef-video-chef img{width:27px;height:27px;border:1px solid #fff;border-radius:50%;object-fit:cover;object-position:center 20%}
+.restaurant-page .chef-video-action{position:absolute;z-index:1;top:42%;left:50%;display:grid;place-items:center;width:50px;height:50px;border:1px solid #fff9;border-radius:50%;background:#123c32c9;font-size:1.45rem;transform:translate(-50%,-50%);transition:filter .3s}
+.restaurant-page .chef-video-screen.is-playing .chef-video-action{animation:chef-demo-action .85s ease-in-out infinite alternate;filter:drop-shadow(0 0 10px #ffe296)}
+.restaurant-page .chef-video-caption{position:absolute;z-index:1;right:.55rem;bottom:.5rem;left:.55rem;display:grid;gap:.15rem;text-shadow:0 1px 4px #000b}
+.restaurant-page .chef-video-step{font-size:.68rem}
+.restaurant-page .chef-video-instruction{font-size:.59rem;line-height:1.35}
+.restaurant-page .chef-video-cut .chef-video-caption{animation:chef-demo-cut .35s ease-out both}
+.restaurant-page .chef-video-progress{height:4px;margin:.45rem 0 .4rem;overflow:hidden;border-radius:99px;background:#e8e2d4}
+.restaurant-page .chef-video-progress span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#c5a146,#0d5c4b);transition:width .35s ease}
+.restaurant-page .chef-video-controls{justify-content:flex-start}
+.restaurant-page .chef-video-play{min-height:34px;padding:.35rem .55rem;border:1px solid #0d5c4b;border-radius:7px;background:#0d5c4b;color:#fff;font-size:.64rem;font-weight:800;cursor:pointer;transition:transform .18s,background .18s}
+.restaurant-page .chef-video-play:hover{transform:translateY(-1px);background:#12483d}
+.restaurant-page .chef-video-play:focus-visible{outline:3px solid #c5a146;outline-offset:2px}
+.restaurant-page .chef-video-dish-name{overflow:hidden;color:#5c6259;font-size:.62rem;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
+@keyframes chef-demo-action{to{transform:translate(-50%,-58%) scale(1.08)}}
+@keyframes chef-demo-cut{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* Flavor Country illustrated landscape map */
+.restaurant-page .flavor-route{isolation:isolate;display:block;height:clamp(410px,49vw,550px);margin:1.1rem 0;overflow:hidden;border:1px solid #8ba783;border-radius:16px;background:#dce9c9;box-shadow:inset 0 2px 12px #23432c20,0 10px 26px #183b3014}
+.restaurant-page .flavor-route::before{display:none}
+.restaurant-page .flavor-map-art{position:absolute;z-index:0;inset:0;overflow:hidden}
+.restaurant-page .flavor-map-art img{display:block;width:100%;height:100%;object-fit:fill}
+.restaurant-page .flavor-route::after{position:absolute;z-index:0;inset:9px;border:1px solid #fff9;border-radius:10px;content:"";pointer-events:none}
+.restaurant-page .flavor-stop{position:absolute;z-index:2;left:var(--map-x);top:var(--map-y);width:clamp(126px,14vw,154px);min-height:112px;padding:.4rem .42rem .5rem;border:1px solid #f9f6e9;border-radius:13px;background:#fffdf0e8;box-shadow:0 5px 15px #183b3030;backdrop-filter:blur(5px);transform:translate(-50%,-50%)}
+.restaurant-page .flavor-stop:hover{z-index:4;transform:translate(-50%,calc(-50% - 4px));box-shadow:0 9px 21px #183b3040}
+.restaurant-page .flavor-stop:focus-visible{z-index:5;outline:3px solid #8c6728;outline-offset:2px}
+.restaurant-page .flavor-stop.is-active{border-color:#a77c2e;background:#fff9dcf2;box-shadow:0 0 0 3px #e6c56b99,0 8px 18px #183b3030}
+.restaurant-page .stop-icon{width:43px;height:43px;border-width:3px;font-size:1.25rem}
+.restaurant-page .stop-name{color:#274537;font-size:.7rem;line-height:1.15}
+.restaurant-page .stop-caption{color:#62685b;font-size:.56rem;line-height:1.2}
+.restaurant-page .stop-stamp{top:3px;right:3px;width:20px;height:20px}
+.restaurant-page .flavor-roadster{z-index:4;top:46%;left:8%;transform:translate(-50%,-50%);transition:left 1.55s cubic-bezier(.18,.78,.2,1),top 1.55s cubic-bezier(.18,.78,.2,1)}
+.restaurant-page .flavor-atlas-note{margin:.4rem 0 .65rem;padding:.55rem .7rem;border:1px solid #dce4d8;border-radius:8px;background:#f7f7ee;color:#5b6459;font-size:.7rem;line-height:1.5}
+.restaurant-page .flavor-atlas-note strong{color:#28503e}
+@media(max-width:700px){.restaurant-page .flavor-route{height:500px}.restaurant-page .flavor-stop[data-flavor-stop="spicy"]{left:22%!important;top:20%!important}.restaurant-page .flavor-stop[data-flavor-stop="sweet"]{left:78%!important;top:20%!important}.restaurant-page .flavor-stop[data-flavor-stop="savory"]{left:50%!important;top:50%!important}.restaurant-page .flavor-stop[data-flavor-stop="crunchy"]{left:22%!important;top:80%!important}.restaurant-page .flavor-stop[data-flavor-stop="bright"]{left:78%!important;top:80%!important}}
+@media(max-width:420px){.restaurant-page .flavor-route{height:460px}.restaurant-page .flavor-stop{width:126px;min-height:104px}.restaurant-page .flavor-map-art img{object-position:center}.restaurant-page .chef-video-duration{font-size:.52rem}}
+@media(prefers-reduced-motion:reduce){.restaurant-page .chef-video-dish,.restaurant-page .chef-video-screen.is-playing .chef-video-action,.restaurant-page .chef-video-cut .chef-video-caption{animation:none!important;transition:none!important}.restaurant-page .flavor-roadster{transition:none!important}}
