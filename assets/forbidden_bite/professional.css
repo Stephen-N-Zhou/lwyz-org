@@ -541,6 +541,11 @@ body.game-page {
 .restaurant-page .chef-video-head{margin-bottom:.4rem}
 .restaurant-page .chef-video-head .chef-feature-label{margin:0}
 .restaurant-page .chef-video-duration{color:#77766f;font-size:.58rem;white-space:nowrap}
+.restaurant-page .chef-video-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.28rem;margin-bottom:.4rem}
+.restaurant-page .chef-video-chapter{min-height:30px;padding:.3rem .2rem;border:1px solid #ded7c6;border-radius:6px;background:#fff;color:#596157;font-size:.56rem;font-weight:800;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
+.restaurant-page .chef-video-chapter[aria-pressed="true"]{border-color:#b99642;background:#f6edcf;color:#4c3e1c;box-shadow:inset 0 0 0 1px #e6d49a}
+.restaurant-page .chef-video-chapter:hover{border-color:#c5a146}
+.restaurant-page .chef-video-chapter:focus-visible{outline:2px solid #0d5c4b;outline-offset:2px}
 .restaurant-page .chef-video-screen{position:relative;isolation:isolate;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#183c32;color:#fff}
 .restaurant-page .chef-video-screen::after{position:absolute;z-index:0;inset:35% 0 0;background:linear-gradient(transparent,#071c18e8);content:"";pointer-events:none}
 .restaurant-page .chef-video-dish{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78);transition:transform 4s ease,filter .5s}
