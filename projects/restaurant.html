@@ -97,7 +97,9 @@
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-print.css?v=2">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
   <link rel="stylesheet" href="/assets/forbidden_bite/kids-menu.css?v=1">
-  <link rel="stylesheet" href="/assets/forbidden_bite/recipe-school.css?v=1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/recipe-school.css?v=2">
+  <link rel="stylesheet" href="/assets/forbidden_bite/dish-vote.css?v=1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/takeout-menu.css?v=1">
 </head>
 <body class="restaurant-page">
   <a class="skip" href="#main">Skip to content</a>
@@ -113,6 +115,7 @@
       <a class="quick-jump" href="#prize-spinner"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🎡</b></span><span>Prize spin</span></a>
       <a class="quick-jump" href="#menu-title"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="menu" aria-hidden="true"></canvas><b aria-hidden="true">🍜</b></span><span>Full menu</span></a>
       <a class="quick-jump" href="#recipe-school"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">👩‍🍳</b></span><span>Recipe school</span></a>
+      <a class="quick-jump" href="#dish-vote"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🏆</b></span><span>Dish vote</span></a>
       <a class="quick-jump" href="#kids-menu"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🐼</b></span><span>Kids menu</span></a>
       <a class="quick-jump" href="#flavor-finder-title"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="flavor" aria-hidden="true"></canvas><b aria-hidden="true">🔎</b></span><span>Flavor finder</span></a>
       <a class="quick-jump" href="#flavor-map"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🗺️</b></span><span>Flavor map</span></a>
@@ -134,6 +137,7 @@
         <span class="badge">An imagined restaurant &amp; menu</span>
         <div class="actions" aria-label="Menu resources">
           <a class="button" href="/projects/restaurant-gallery.html">View picture menu</a>
+          <a class="button secondary" href="#menu-title">Takeout menu · Print</a>
           <a class="button secondary" href="/assets/forbidden_bite/menu2.png?v=picture-gallery-3" target="_blank" rel="noopener">View full menu</a>
           <a class="button secondary" href="#limited-time-deals">See limited-time deals</a>
           <a class="button secondary" href="#chef-picks-title">See chef’s picks</a>
@@ -197,10 +201,17 @@
       <noscript><p>Please open the <a href="/assets/forbidden_bite/menu2.png?v=picture-gallery-3">full menu image</a> to see all menu options.</p></noscript>
     </section>
     <section class="recipe-school" id="recipe-school" aria-labelledby="recipe-school-title">
-      <div class="recipe-school-heading"><div><p class="section-label">From the Forbidden Bite kitchen</p><h2 id="recipe-school-title">Recipe School</h2><p>Choose a dish to see five illustrated cooking steps, from the first prep to the finished plate.</p></div><span class="recipe-school-mark" aria-hidden="true">🥢</span></div>
+      <div class="recipe-school-heading"><div><p class="section-label">From the Forbidden Bite kitchen</p><h2 id="recipe-school-title">Recipe School</h2><p>Choose a dish to see five AI-generated cooking photos, from the first prep to the finished plate.</p></div><span class="recipe-school-mark" aria-hidden="true">🥢</span></div>
       <div class="recipe-choices" id="recipe-choices" role="group" aria-label="Choose a cooking lesson"></div>
       <div class="recipe-lesson" id="recipe-lesson" aria-live="polite"></div>
-      <p class="recipe-school-note">Illustrated recipes for this fictional restaurant concept. Use care around hot oil, knives, steam, and food allergies.</p>
+      <p class="recipe-school-note">AI-generated food photography for this fictional restaurant concept. Use care around hot oil, knives, steam, and food allergies.</p>
+    </section>
+    <section class="dish-vote" id="dish-vote" aria-labelledby="dish-vote-title">
+      <div class="dish-vote-heading"><div><p class="section-label">Your pick, your podium</p><h2 id="dish-vote-title">Which dish deserves the crown?</h2><p>Choose your favorite Forbidden Bite appetizer and see the local poll results.</p></div><span aria-hidden="true">🏆</span></div>
+      <div class="dish-vote-options" id="dish-vote-options" role="group" aria-label="Vote for your favorite appetizer"></div>
+      <div class="dish-vote-results" id="dish-vote-results" hidden><div class="dish-vote-results-head"><h3>Current results on this device</h3><span id="dish-vote-total">0 votes</span></div><div id="dish-vote-bars"></div></div>
+      <p class="dish-vote-status" id="dish-vote-status" role="status" aria-live="polite">Pick one dish to cast your vote.</p>
+      <p class="dish-vote-note">Demo poll: your vote is saved in this browser only. Results are not shared with other visitors. You can change your pick anytime.</p>
     </section>
     <details class="kids-menu" id="kids-menu">
       <summary><span class="kids-menu-mark" aria-hidden="true">🐼</span><span><small>A little secret for younger diners</small><strong>Open the Little Bites menu</strong></span><span class="kids-menu-plus" aria-hidden="true">＋</span></summary>
@@ -785,7 +796,8 @@
   <script src="/assets/forbidden_bite/chefs.js?v=7" defer></script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
   <script src="/assets/forbidden_bite/kids-menu.js?v=2" defer></script>
-  <script src="/assets/forbidden_bite/recipe-school.js?v=1" defer></script>
+  <script src="/assets/forbidden_bite/recipe-school.js?v=2" defer></script>
+  <script src="/assets/forbidden_bite/dish-vote.js?v=1" defer></script>
   <script src="/assets/forbidden_bite/menu-language.js?v=1" defer></script>
 </body>
 </html>

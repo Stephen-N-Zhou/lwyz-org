@@ -1,0 +1,31 @@
+.restaurant-page .print-menu-button{min-height:43px;padding:.58rem .9rem;border-color:#b69547;background:linear-gradient(135deg,#fff9e7,#ead28a);color:#173f35;box-shadow:0 3px 9px #725b2620;transition:transform .18s,box-shadow .18s}
+.restaurant-page .print-menu-button:hover{transform:translateY(-1px);background:linear-gradient(135deg,#fff5cf,#dfbf58);box-shadow:0 6px 14px #725b2630}
+.restaurant-page .print-menu-button:focus-visible{outline:3px solid #0d5c4b;outline-offset:3px}
+@media print{
+  @page{size:letter portrait;margin:.48in .5in .52in}
+  body.restaurant-page{color:#292c28!important;font-family:Georgia,'Times New Roman',serif!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body.restaurant-page>main#main>section[aria-labelledby="menu-title"]{padding-top:0!important}
+  body.restaurant-page>main#main::before{display:block;margin:0 0 .16in;padding:.05in 0 .13in;border-bottom:3px double #b69547;color:#12483d;content:"FORBIDDEN BITE  ·  TAKEOUT MENU";font:small-caps 23pt/1.1 Georgia,serif;letter-spacing:.075em;text-align:center}
+  body.restaurant-page.menu-lang-zh>main#main::before{content:"禁忌之口  ·  外带菜单"}
+  body.restaurant-page>main#main>section[aria-labelledby="menu-title"]::before{display:block;margin:0 0 .13in;color:#746b55;content:"Chinese flavors · warm hospitality · big flavors, best shared";font:italic 9pt/1.3 Georgia,serif;text-align:center}
+  body.restaurant-page.menu-lang-zh>main#main>section[aria-labelledby="menu-title"]::before{content:"中式风味 · 温暖待客 · 美味共享"}
+  body.restaurant-page>main#main>section[aria-labelledby="menu-title"],body.restaurant-page>main#main>#limited-time-deals,body.restaurant-page>main#main>#halloween-menu{display:block!important;width:100%!important;margin:0 0 .15in!important;padding:0!important}
+  body.restaurant-page>main#main>#limited-time-deals .section-head,body.restaurant-page>main#main>#halloween-menu .seasonal-menu-heading{margin:.1in 0 .08in!important}
+  body.restaurant-page>main#main>#limited-time-deals h2,body.restaurant-page>main#main>#halloween-menu h2{color:#12483d!important;font-size:15pt!important}
+  body.restaurant-page>main#main>#limited-time-deals .section-head>p,body.restaurant-page>main#main>#halloween-menu .seasonal-menu-heading p:last-child{display:block!important;color:#62594c!important;font-size:8pt!important}
+  body.restaurant-page #deal-grid,body.restaurant-page #seasonal-menu-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.09in!important}
+  body.restaurant-page #deal-grid>.deal-card,body.restaurant-page #seasonal-menu-grid>.seasonal-card{break-inside:avoid;padding:.1in!important;border:1px solid #d9d0bd!important;border-radius:5px!important;background:#fff!important;box-shadow:none!important}
+  body.restaurant-page #deal-grid .add-to-cart,body.restaurant-page #seasonal-menu-grid button{display:none!important}
+  body.restaurant-page #deal-grid h3,body.restaurant-page #seasonal-menu-grid h3{color:#12483d!important;font-size:10pt!important}
+  body.restaurant-page #deal-grid p,body.restaurant-page #seasonal-menu-grid p{color:#49463f!important;font-size:7.5pt!important}
+  body.restaurant-page #deal-grid .section-note{font-size:7.5pt!important}
+  body.restaurant-page .seasonal-note{margin:.06in 0;color:#62594c!important;font-size:7pt!important}
+  body.restaurant-page #menu-title{font-size:15pt!important}
+  body.restaurant-page #menu-grid>.card{border-top:2px solid #c5a146!important}
+  body.restaurant-page #menu-grid>.card li{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.08in}
+  body.restaurant-page #menu-grid>.card li strong{grid-column:1;grid-row:1}
+  body.restaurant-page #menu-grid>.card li .price-group{grid-column:2;grid-row:1}
+  body.restaurant-page #menu-grid>.card li .detail,body.restaurant-page #menu-grid>.card li .meta,body.restaurant-page #menu-grid>.card li .options{grid-column:1/-1}
+  body.restaurant-page #menu-grid::after{content:"A fictional restaurant concept · Prices shown in USD · Please tell your server about allergies and dietary needs. Shared preparation areas are used."}
+  body.restaurant-page .dish-vote,body.restaurant-page .recipe-school{display:none!important}
+}
