@@ -1,7 +1,13 @@
 (() => {
   const choices = document.getElementById('recipe-choices');
   const lesson = document.getElementById('recipe-lesson');
-  if (!choices || !lesson) return;
+  const cover = document.getElementById('recipe-book-cover');
+  const inside = document.getElementById('recipe-book-inside');
+  const closeBook = document.getElementById('recipe-book-close');
+  const previousPage = document.getElementById('recipe-book-previous');
+  const nextPage = document.getElementById('recipe-book-next');
+  const pageLabel = document.getElementById('recipe-book-page-label');
+  if (!choices || !lesson || !cover || !inside) return;
   const recipes = [
     { id:'popcorn', name:'Forbidden Popcorn Chicken', image:'recipe-popcorn-05.webp', time:'30 min · Medium', food:'chicken', steps:[
       ['Cut and season','Cut boneless chicken into bite-size pieces. Pat them dry, then season with five-spice, salt, and white pepper.','A dry surface helps the coating cling.','board'],
@@ -32,7 +38,8 @@
       ['Chill and finish','Chill briefly, then scatter sesame and scallions over the salad just before serving.','Serve cold while the cucumbers still have a clean crunch.','plate']
     ]}
   ];
-  function renderRecipe(recipe, selectedIndex) {
+  function renderRecipe(recipe, selectedIndex, direction = '') {
+    const turningPage = direction ? lesson.cloneNode(true) : null;
     choices.querySelectorAll('.recipe-choice').forEach((item, index) => item.setAttribute('aria-pressed', String(index === selectedIndex)));
     lesson.replaceChildren();
     const head = document.createElement('div'); head.className='recipe-lesson-head';
@@ -47,12 +54,45 @@
       const heading=document.createElement('h4');heading.textContent=step[0];const text=document.createElement('p');text.textContent=step[1];const tip=document.createElement('small');tip.className='recipe-step-tip';tip.textContent=`Chef’s note · ${step[2]}`;copy.append(number,heading,text,tip);card.append(picture,copy);grid.append(card);
     });
     lesson.append(head,grid);
+    if (turningPage) {
+      turningPage.removeAttribute('id');
+      turningPage.classList.add('recipe-page-turner', `turn-${direction}`);
+      turningPage.setAttribute('aria-hidden', 'true');
+      turningPage.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+      lesson.append(turningPage);
+      turningPage.addEventListener('animationend', () => turningPage.remove(), { once: true });
+      window.setTimeout(() => turningPage.remove(), 750);
+    }
+    if (pageLabel) pageLabel.textContent = `Recipe ${selectedIndex + 1} of ${recipes.length}`;
   }
   recipes.forEach((recipe,index)=>{
     const button=document.createElement('button');button.type='button';button.className='recipe-choice';button.dataset.recipe=recipe.id;button.setAttribute('aria-pressed',String(index===0));
     const image=document.createElement('img');image.src=`/assets/forbidden_bite/${recipe.image}`;image.alt='';image.loading='lazy';image.decoding='async';
     const info=document.createElement('span');const title=document.createElement('strong');title.textContent=recipe.name;const meta=document.createElement('small');meta.textContent=recipe.time;info.append(title,meta);button.append(image,info);
-    button.addEventListener('click',()=>renderRecipe(recipe,index));choices.append(button);
+    choices.append(button);
+  });
+  let selectedRecipe = 0;
+  const renderSelected = (index, direction = '') => {
+    selectedRecipe = (index + recipes.length) % recipes.length;
+    renderRecipe(recipes[selectedRecipe],selectedRecipe,direction);
+  };
+  // Every contents entry turns to the selected recipe page.
+  choices.querySelectorAll('.recipe-choice').forEach((button,index)=>{
+    button.addEventListener('click',()=>renderSelected(index,index===selectedRecipe?'':index>selectedRecipe?'next':'previous'));
+  });
+  previousPage?.addEventListener('click',()=>renderSelected(selectedRecipe-1,'previous'));
+  nextPage?.addEventListener('click',()=>renderSelected(selectedRecipe+1,'next'));
+  cover.addEventListener('click',()=>{
+    inside.hidden=false;
+    cover.setAttribute('aria-expanded','true');
+    cover.classList.add('is-opening');
+    window.setTimeout(()=>{cover.hidden=true;cover.classList.remove('is-opening');choices.querySelector('.recipe-choice')?.focus();},620);
+  });
+  closeBook?.addEventListener('click',()=>{
+    cover.hidden=false;
+    inside.hidden=true;
+    cover.setAttribute('aria-expanded','false');
+    cover.focus();
   });
   renderRecipe(recipes[0],0);
 })();
