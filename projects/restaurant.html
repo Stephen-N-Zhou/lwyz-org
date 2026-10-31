@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=19">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-print.css?v=1">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
+  <link rel="stylesheet" href="/assets/forbidden_bite/kids-menu.css?v=1">
 </head>
 <body class="restaurant-page">
   <a class="skip" href="#main">Skip to content</a>
@@ -110,6 +111,7 @@
       <a class="quick-jump" href="#limited-time-deals"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="39" aria-hidden="true"></canvas><b aria-hidden="true">✨</b></span><span>Deals</span></a>
       <a class="quick-jump" href="#prize-spinner"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🎡</b></span><span>Prize spin</span></a>
       <a class="quick-jump" href="#menu-title"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="menu" aria-hidden="true"></canvas><b aria-hidden="true">🍜</b></span><span>Full menu</span></a>
+      <a class="quick-jump" href="#kids-menu"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🐼</b></span><span>Kids menu</span></a>
       <a class="quick-jump" href="#flavor-finder-title"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="flavor" aria-hidden="true"></canvas><b aria-hidden="true">🔎</b></span><span>Flavor finder</span></a>
       <a class="quick-jump" href="#flavor-map"><span class="quick-thumb quick-thumb-symbol"><b aria-hidden="true">🗺️</b></span><span>Flavor map</span></a>
       <a class="quick-jump" href="/projects/restaurant-gallery.html#gallery-disclosure"><span class="quick-thumb"><canvas width="128" height="72" data-quick-picture="gallery" aria-hidden="true"></canvas><b aria-hidden="true">📷</b></span><span>Picture gallery</span></a>
@@ -192,6 +194,20 @@
       <div id="menu-grid" class="grid" aria-live="polite"><p>Loading the menu…</p></div>
       <noscript><p>Please open the <a href="/assets/forbidden_bite/menu2.png?v=picture-gallery-3">full menu image</a> to see all menu options.</p></noscript>
     </section>
+    <details class="kids-menu" id="kids-menu">
+      <summary><span class="kids-menu-mark" aria-hidden="true">🐼</span><span><small>A little secret for younger diners</small><strong>Open the Little Bites menu</strong></span><span class="kids-menu-plus" aria-hidden="true">＋</span></summary>
+      <div class="kids-menu-content">
+        <div class="kids-menu-heading"><div><p class="section-label">Small plates · little prices</p><h2>Forbidden Bite · Little Bites</h2><p>Build a mini meal with one small appetizer, one small main, and one small dessert.</p></div><span class="kids-menu-stamp" aria-hidden="true">JUST<br>FOR<br>KIDS</span></div>
+        <div class="kids-meal-builder">
+          <label><span><strong>1 · Small appetizer</strong><small>Choose one to start</small></span><select id="kids-appetizer"><option value="" selected disabled>Choose an appetizer</option><option value="Mini Spring Roll Duo" data-price="3">Mini Spring Roll Duo · $3</option><option value="Mini Smashed Cucumbers" data-price="3">Mini Smashed Cucumbers · $3</option><option value="Two Little Dumplings" data-price="4">Two Little Dumplings · $4</option></select></label>
+          <label><span><strong>2 · Small main</strong><small>Choose one little bowl</small></span><select id="kids-main"><option value="" selected disabled>Choose a main</option><option value="Mini Noodle Bowl" data-price="6">Mini Noodle Bowl · $6</option><option value="Little Fried Rice Cup" data-price="5">Little Fried Rice Cup · $5</option><option value="Junior Dragon Beef Rice Bowl" data-price="7">Junior Dragon Beef Rice Bowl · $7</option><option value="Small Tofu Rice Bowl" data-price="5">Small Tofu Rice Bowl · $5</option></select></label>
+          <label><span><strong>3 · Small dessert</strong><small>Finish with a sweet bite</small></span><select id="kids-dessert"><option value="" selected disabled>Choose a dessert</option><option value="Panda Ice Cream Cup" data-price="3">Panda Ice Cream Cup · $3</option><option value="Jade Mochi Duo" data-price="3">Jade Mochi Duo · $3</option><option value="Little Red Bean Ice Cream" data-price="3">Little Red Bean Ice Cream · $3</option></select></label>
+        </div>
+        <div class="kids-meal-total"><span>Mini meal total</span><strong id="kids-meal-price">Choose all three to see your total</strong></div>
+        <button type="button" class="kids-meal-add" id="kids-meal-add" disabled>Add Little Bites meal to pretend cart</button>
+        <p class="kids-menu-note" id="kids-menu-status" role="status" aria-live="polite">A fictional kids’ menu with smaller sample portions and prices. Cart and checkout are pretend only.</p>
+      </div>
+    </details>
     <section class="intro" aria-labelledby="story-title">
       <div><p class="section-label">Our story</p><h2 id="story-title">A little ritual in every bite</h2><p>Inspired by Chinese flavors and modern hospitality, Forbidden Bite brings together hand-pulled noodles, golden popcorn chicken, nourishing soups, colorful rice bowls, and fresh seafood.</p></div>
       <div><p>We love the contrast of chili oil over steaming noodles, the crunch of five-spice chicken, and a calming cup of chrysanthemum tea. Each idea balances rich and refreshing, bold and gentle, with a family-friendly spirit.</p><p class="notice"><strong>Concept note:</strong> Forbidden Bite is a fictional creative concept. Menu items and imagery are illustrative; this page does not represent an operating restaurant or accept orders.</p></div>
@@ -760,5 +776,6 @@
   <script src="/assets/forbidden_bite/profile.js?v=profile-5" defer></script>
   <script src="/assets/forbidden_bite/chefs.js?v=6" defer></script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
+  <script src="/assets/forbidden_bite/kids-menu.js?v=1" defer></script>
 </body>
 </html>
