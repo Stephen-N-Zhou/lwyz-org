@@ -1,0 +1,38 @@
+.restaurant-page .menu-heading-tools{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:.45rem .65rem}
+.restaurant-page .menu-heading-tools>p{flex-basis:100%;margin:0;color:var(--muted);font-size:.9rem;text-align:right}
+.restaurant-page .menu-language-toggle{display:inline-flex;gap:.18rem;padding:.18rem;border:1px solid #d8c58f;border-radius:8px;background:#f5f0e5}
+.restaurant-page .menu-language-toggle button{min-height:34px;padding:.35rem .6rem;border:0;border-radius:6px;background:transparent;color:#51554d;font:750 .72rem Inter,system-ui,sans-serif;cursor:pointer}
+.restaurant-page .menu-language-toggle button[aria-pressed=true]{background:#0d5c4b;color:#fff;box-shadow:0 2px 6px #0d5c4b33}
+.restaurant-page .menu-language-toggle button:focus-visible{outline:3px solid #c5a146;outline-offset:2px}
+.restaurant-page .recipe-school{margin:1.6rem 0 1.9rem;padding:clamp(1rem,3vw,1.5rem);border:1px solid #c8b778;border-radius:16px;background:radial-gradient(circle at 95% 0,#f6edce 0,transparent 29%),linear-gradient(145deg,#fffefa,#f2ecdf);box-shadow:0 12px 30px #17251b10;scroll-margin-top:110px}
+.restaurant-page .recipe-school-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.restaurant-page .recipe-school-heading h2{margin:.1rem 0 .35rem;color:#12483d;font:400 clamp(1.7rem,4vw,2.35rem)/1.15 Marcellus,Georgia,serif}
+.restaurant-page .recipe-school-heading p:last-child{max-width:680px;margin:.25rem 0;color:#656257;font-size:.86rem;line-height:1.55}
+.restaurant-page .recipe-school-mark{display:grid;place-items:center;flex:none;width:66px;height:66px;border:1px solid #d9c477;border-radius:18px;background:#fff8de;font-size:2rem;box-shadow:0 5px 13px #9d79201c}
+.restaurant-page .recipe-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:.9rem 0}
+.restaurant-page .recipe-choice{display:grid;grid-template-columns:58px minmax(0,1fr);align-items:center;gap:.55rem;min-width:0;padding:.45rem;border:1px solid #e0d7c2;border-radius:10px;background:#fff;text-align:left;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}
+.restaurant-page .recipe-choice:hover{transform:translateY(-2px);border-color:#c5a146;box-shadow:0 5px 15px #17251b12}
+.restaurant-page .recipe-choice[aria-pressed=true]{border-color:#b99642;background:#fff9e5;box-shadow:0 0 0 2px #d9bf7048}
+.restaurant-page .recipe-choice:focus-visible{outline:3px solid #0d5c4b;outline-offset:2px}
+.restaurant-page .recipe-choice img{width:58px;height:58px;border-radius:7px;object-fit:cover}
+.restaurant-page .recipe-choice span{display:grid;gap:.18rem;min-width:0}
+.restaurant-page .recipe-choice strong{overflow-wrap:anywhere;color:#19483b;font-size:.72rem;line-height:1.25}
+.restaurant-page .recipe-choice small{color:#82734e;font-size:.63rem;font-weight:750}
+.restaurant-page .recipe-lesson-head{display:flex;align-items:end;justify-content:space-between;gap:.8rem;margin:1.1rem 0 .7rem;padding-bottom:.65rem;border-bottom:1px solid #e4dac1}
+.restaurant-page .recipe-lesson-head h3{margin:.1rem 0;color:#17483b;font:400 clamp(1.3rem,3vw,1.75rem)/1.2 Marcellus,Georgia,serif}
+.restaurant-page .recipe-lesson-head p{margin:.2rem 0 0;color:#716b5d;font-size:.76rem}
+.restaurant-page .recipe-step-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.restaurant-page .recipe-step-card{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);min-width:0;overflow:hidden;border:1px solid #e5dcc9;border-radius:11px;background:#fff;box-shadow:0 4px 14px #17251b0a}
+.restaurant-page .recipe-step-card:last-child:nth-child(odd){grid-column:1/-1;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.restaurant-page .recipe-step-picture{display:block;width:100%;height:100%;min-height:178px;background:#eee3c9}
+.restaurant-page .recipe-step-copy{align-self:center;padding:.8rem .9rem}
+.restaurant-page .recipe-step-number{color:#9a7729;font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.restaurant-page .recipe-step-copy h4{margin:.25rem 0 .4rem;color:#16493a;font:400 1.05rem/1.25 Marcellus,Georgia,serif}
+.restaurant-page .recipe-step-copy p{margin:.25rem 0;color:#625f55;font-size:.76rem;line-height:1.55}
+.restaurant-page .recipe-step-tip{display:block;margin-top:.45rem;padding-top:.4rem;border-top:1px dashed #e5dcc9;color:#836a32;font-size:.67rem;line-height:1.4}
+.restaurant-page .recipe-school-note{margin:.85rem 0 0;color:#7a756a;font-size:.67rem}
+@media(max-width:900px){.restaurant-page .recipe-choices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.restaurant-page .recipe-step-grid{grid-template-columns:1fr}.restaurant-page .recipe-step-card:last-child:nth-child(odd){grid-column:auto;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}}
+@media(max-width:480px){.restaurant-page .menu-heading-tools{justify-content:flex-start}.restaurant-page .menu-heading-tools>p{text-align:left}.restaurant-page .recipe-school-heading{align-items:flex-start}.restaurant-page .recipe-school-mark{width:52px;height:52px;font-size:1.55rem}.restaurant-page .recipe-choices{gap:.42rem}.restaurant-page .recipe-choice{grid-template-columns:46px minmax(0,1fr);gap:.4rem;padding:.34rem}.restaurant-page .recipe-choice img{width:46px;height:46px}.restaurant-page .recipe-choice strong{font-size:.65rem}.restaurant-page .recipe-choice small{font-size:.57rem}.restaurant-page .recipe-step-card,.restaurant-page .recipe-step-card:last-child:nth-child(odd){grid-template-columns:1fr}.restaurant-page .recipe-step-picture{height:auto;min-height:0;aspect-ratio:16/10}.restaurant-page .recipe-step-copy{padding:.7rem .8rem}}
+@media(prefers-reduced-motion:reduce){.restaurant-page .recipe-choice,.restaurant-page .menu-language-toggle button{transition:none!important}.restaurant-page .recipe-choice:hover{transform:none}}
+@media print{.restaurant-page .menu-language-toggle,.restaurant-page .menu-heading-tools{display:none!important}}

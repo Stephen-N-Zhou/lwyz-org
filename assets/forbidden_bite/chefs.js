@@ -68,20 +68,25 @@
     const chapterNav=make('div','chef-video-chapters');chapterNav.setAttribute('role','group');chapterNav.setAttribute('aria-label',`${name} cooking video chapters`);
     const screen=make('div',`chef-video-screen scene-${feature.motion} phase-prep`);
     const dishImage=make('img','chef-video-dish');dishImage.src=feature.image;dishImage.alt=`Finished ${feature.dish}, featured in ${name}'s cooking video`;dishImage.loading='lazy';dishImage.decoding='async';
-    const motion=make('div','chef-video-motion');motion.setAttribute('aria-hidden','true');
-    const motionProps={
-      noodles:['〰️','〰️','🥢'],dumplings:['🥟','🥟','🥢'],dessert:['🥄','✦','⚫'],
-      soup:['🥄','🥬','🥟'],duck:['🖌️','🦆','✨'],cucumbers:['🥒','🥒','🧄'],
-      seafood:['🦐','🦀','🌽'],'crystal-dumplings':['♨️','🥟','🥢']
+    const motionSteps={
+      noodles:[['🪵','〰️','roll'],['🥄','🥣','stir'],['🥢','🍜','lift'],['🥢','🥩','toss'],['🥬','🍜','finish']],
+      dumplings:[['🥣','🥩','mix'],['🪵','🥟','roll'],['👐','🥟','fold'],['🍳','🥟','sear'],['🫕','🥟','steam']],
+      dessert:[['🍳','⚫','toast'],['🥄','🥣','whisk'],['🥄','🥣','stir'],['❄️','🍮','chill'],['🥄','🍵','finish']],
+      soup:[['👐','🥟','fold'],['🥄','🥣','stir'],['🥄','🥟','drop'],['🥢','🥬','toss'],['🥣','🍲','ladle']],
+      duck:[['🔪','🦆','prep'],['🖌️','🦆','brush'],['♨️','🦆','roast'],['🔪','🦆','slice'],['🖌️','🦆','finish']],
+      cucumbers:[['🔪','🥒','smash'],['🧂','🥒','drain'],['🥄','🧄','mix'],['🥢','🥒','toss'],['❄️','🥒','chill']],
+      seafood:[['🔪','🦐','prep'],['🥄','🧄','stir'],['🍲','🌽','boil'],['🥢','🦐','lift'],['🍋','🦀','toss']],
+      'crystal-dumplings':[['🔪','🥬','chop'],['🪵','🥟','roll'],['👐','🥟','fold'],['♨️','🥟','steam'],['🥢','🥟','dip']]
     };
-    for(let index=0;index<3;index++){const mote=make('span',`chef-video-mote chef-video-mote-${index+1}`,motionProps[feature.motion][index]);motion.append(mote)}
+    const action=make('span','chef-video-action');action.setAttribute('aria-hidden','true');
+    const ingredient=make('span','chef-video-ingredient');ingredient.setAttribute('aria-hidden','true');
+    const handOne=make('span','chef-video-hand chef-video-hand-one');const handTwo=make('span','chef-video-hand chef-video-hand-two');
     const chefPortrait=card.querySelector('.chef-portrait')?.cloneNode();
     const chefPip=make('div','chef-video-chef');if(chefPortrait){chefPortrait.removeAttribute('width');chefPortrait.removeAttribute('height');chefPortrait.alt='';chefPortrait.loading='lazy';chefPip.append(chefPortrait)}chefPip.append(make('span','',name));
-    const action=make('span','chef-video-action','🥢');action.setAttribute('aria-hidden','true');
     const overlay=make('div','chef-video-caption');
     const stepTitle=make('strong','chef-video-step','Step 1 of 5 · '+feature.steps[0][0]);
     const stepText=make('span','chef-video-instruction',feature.steps[0][1]);
-    overlay.append(stepTitle,stepText);screen.append(dishImage,motion,chefPip,action,overlay);
+    overlay.append(stepTitle,stepText);screen.append(dishImage,handOne,handTwo,chefPip,action,ingredient,overlay);
     const progress=make('div','chef-video-progress');progress.setAttribute('role','progressbar');progress.setAttribute('aria-label',`${name} cooking video progress`);progress.setAttribute('aria-valuemin','0');progress.setAttribute('aria-valuemax',String(feature.steps.length));progress.setAttribute('aria-valuenow','0');const progressFill=make('span','');progress.append(progressFill);
     let activeChapter=0,stepIndex=0,timer=null;
     const play=make('button','chef-video-play','▶ Play video');play.type='button';play.setAttribute('aria-pressed','false');
@@ -89,7 +94,8 @@
     const controls=make('div','chef-video-controls');
     controls.append(play,make('span','chef-video-dish-name',feature.dish));video.append(videoHead,chapterNav,screen,progress,controls);
     const stop=finished=>{clearInterval(timer);timer=null;screen.classList.remove('is-playing');play.setAttribute('aria-pressed','false');play.textContent=finished?'↻ Replay this video':'▶ Play video'};
-    const showStep=index=>{stepIndex=index;const [title,copy,emoji]=feature.steps[index];stepTitle.textContent=`Step ${index+1} of 5 · ${title}`;stepText.textContent=copy;action.textContent=emoji;const chapterIndex=chapterRanges.findIndex(chapter=>index>=chapter.from&&index<=chapter.to);screen.classList.remove('phase-prep','phase-cook','phase-finish');screen.classList.add(`phase-${['prep','cook','finish'][chapterIndex]}`);progressFill.style.width=`${(index+1)/feature.steps.length*100}%`;progress.setAttribute('aria-valuenow',String(index+1));screen.classList.remove('chef-video-cut');void screen.offsetWidth;screen.classList.add('chef-video-cut')};
+    const showStep=index=>{stepIndex=index;const [title,copy]=feature.steps[index],[tool,food,technique]=motionSteps[feature.motion][index];stepTitle.textContent=`Step ${index+1} of 5 · ${title}`;stepText.textContent=copy;action.textContent=tool;ingredient.textContent=food;screen.dataset.motionStep=technique;const chapterIndex=chapterRanges.findIndex(chapter=>index>=chapter.from&&index<=chapter.to);screen.classList.remove('phase-prep','phase-cook','phase-finish');screen.classList.add(`phase-${['prep','cook','finish'][chapterIndex]}`);progressFill.style.width=`${(index+1)/feature.steps.length*100}%`;progress.setAttribute('aria-valuenow',String(index+1));screen.classList.remove('chef-video-cut');void screen.offsetWidth;screen.classList.add('chef-video-cut')};
+    showStep(0);
     play.addEventListener('click',()=>{const chapter=chapterRanges[activeChapter];if(timer){stop(false);return}if(stepIndex>=chapter.to)showStep(chapter.from);screen.classList.add('is-playing');play.setAttribute('aria-pressed','true');play.textContent='Ⅱ Pause video';timer=setInterval(()=>{if(stepIndex<chapter.to)showStep(stepIndex+1);else stop(true)},4000)});
     const notes=make('div','chef-feature-notes');
     const ingredient=make('div','chef-feature-item');

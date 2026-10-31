@@ -7,6 +7,7 @@
   body.restaurant-page>main#main>*{display:none!important}
   body.restaurant-page>main#main>section[aria-labelledby="menu-title"]{display:block!important;padding:0!important}
   body.restaurant-page>main#main>section[aria-labelledby="menu-title"]::before{display:block;margin:0 0 .12in;padding:0 0 .12in;border-bottom:2px solid #b69547;color:#12483d;content:"FORBIDDEN BITE  ·  TAKEOUT MENU";font:18pt/1.1 Georgia,serif;letter-spacing:.07em;text-align:center}
+  body.restaurant-page.menu-lang-zh>main#main>section[aria-labelledby="menu-title"]::before{content:"禁忌之口 · 外带菜单"}
   body.restaurant-page #menu-title{margin:0 0 .08in!important;color:#12483d!important;font-size:15pt!important}
   body.restaurant-page .section-label{margin:0!important;color:#725b26!important;font-size:8pt!important}
   body.restaurant-page .section-head{margin:0 0 .12in!important}
