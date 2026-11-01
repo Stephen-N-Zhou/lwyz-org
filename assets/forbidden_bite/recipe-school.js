@@ -94,6 +94,9 @@
     recipe.time += ` · ${recipe.difficulty}`;
   });
   const expectedCounts = {Easy:20,Medium:20,Hard:10};
+  const ratingsKey = 'forbidden-bite-cookbook-ratings-v1';
+  const loadRatings = () => { try { return JSON.parse(localStorage.getItem(ratingsKey) || '{}'); } catch { return {}; } };
+  const saveRating = (id, value) => { const ratings=loadRatings(); ratings[id]=value; try { localStorage.setItem(ratingsKey,JSON.stringify(ratings)); } catch {} };
   const levelOrder = {Easy:0,Medium:1,Hard:2};
   recipes.sort((a,b)=>levelOrder[a.difficulty]-levelOrder[b.difficulty]);
   function renderRecipe(recipe, selectedIndex, direction = '') {
@@ -103,7 +106,16 @@
     const head = document.createElement('div'); head.className='recipe-lesson-head';
     const titleWrap = document.createElement('div'); const title = document.createElement('h3'); title.textContent=recipe.name;
     const meta = document.createElement('p'); meta.textContent=`5 photo steps · ${recipe.time}`; titleWrap.append(title,meta);
-    const badge=document.createElement('span');badge.className='recipe-step-number';badge.textContent=`Page ${String(selectedIndex+1).padStart(2,'0')}`;head.append(titleWrap,badge);
+    const folio=document.createElement('span');folio.className='recipe-step-number';folio.textContent=`${String(selectedIndex+1).padStart(2,'0')} · ${recipe.difficulty.toUpperCase()}`;
+    const rating=document.createElement('div');rating.className='recipe-rating';
+    const ratingLabel=document.createElement('span');ratingLabel.className='recipe-rating-label';ratingLabel.textContent='Rate this recipe';
+    const stars=document.createElement('div');stars.className='recipe-rating-stars';stars.setAttribute('role','group');stars.setAttribute('aria-label',`Rate ${recipe.name} from one to five stars`);
+    const savedRating=loadRatings()[recipe.id] || 0;
+    const ratingStatus=document.createElement('small');ratingStatus.className='recipe-rating-status';ratingStatus.setAttribute('aria-live','polite');ratingStatus.textContent=savedRating?`Your rating: ${savedRating} of 5 · saved on this device`:'Your cookbook rating';
+    const drawStars=selected=>{stars.replaceChildren();for(let value=1;value<=5;value++){const star=document.createElement('button');star.type='button';star.className='recipe-rating-star';star.textContent=value<=selected?'★':'☆';star.setAttribute('aria-label',`${value} ${value===1?'star':'stars'}`);star.setAttribute('aria-pressed',String(value===selected));star.addEventListener('click',()=>{saveRating(recipe.id,value);drawStars(value);ratingStatus.textContent=`Your rating: ${value} of 5 · saved on this device`;});stars.append(star);}};
+    drawStars(savedRating);
+    rating.append(ratingLabel,stars,ratingStatus);
+    const headSide=document.createElement('div');headSide.className='recipe-page-mark';headSide.append(folio,rating);head.append(titleWrap,headSide);
     const grid=document.createElement('div');grid.className='recipe-step-grid';
     recipe.steps.forEach((step,index)=>{
       const card=document.createElement('article');card.className='recipe-step-card';
@@ -130,7 +142,7 @@
     const info=document.createElement('span');const title=document.createElement('strong');title.textContent=recipe.name;const meta=document.createElement('small');meta.textContent=`${String(index+1).padStart(2,'0')} · ${recipe.difficulty} · ${recipe.time.split(' · ')[0]}`;info.append(title,meta);button.append(image,info);
     choices.append(button);
   });
-  ['Easy','Medium','Hard'].forEach(level=>{const first=choices.querySelector(`[data-recipe="${difficultyById[level][0]}"]`);if(!first)return;const label=document.createElement('p');label.className='recipe-level-heading';label.textContent=`${level} · ${difficultyById[level].length} recipes`;choices.insertBefore(label,first);});
+  ['Easy','Medium','Hard'].forEach(level=>{const first=choices.querySelector(`[data-recipe="${difficultyById[level][0]}"]`);if(!first)return;const label=document.createElement('p');label.className='recipe-level-heading';label.textContent=`${level} · ${expectedCounts[level]} recipes`;choices.insertBefore(label,first);});
   let selectedRecipe = 0;
   const renderSelected = (index, direction = '') => {
     selectedRecipe = (index + recipes.length) % recipes.length;

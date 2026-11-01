@@ -109,3 +109,44 @@
 @media(max-width:640px){.restaurant-page .recipe-book-spread{grid-template-columns:1fr}.restaurant-page .recipe-book-contents{padding:.85rem .75rem 1rem;border-right:0;border-bottom:1px solid #d7ceb9}.restaurant-page .recipe-book-contents .recipe-choices{grid-template-columns:repeat(2,minmax(0,1fr));max-height:360px}.restaurant-page .recipe-book-page-number{display:none}.restaurant-page .recipe-book-recipe-page{padding:.8rem .65rem}.restaurant-page .recipe-book-recipe-page .recipe-step-grid{grid-template-columns:1fr}.restaurant-page .recipe-book-recipe-page .recipe-step-card{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.restaurant-page .recipe-book-recipe-page .recipe-step-picture{min-height:0}.restaurant-page .recipe-book-pagination{position:sticky;bottom:0;padding:.55rem;background:#fffefaed;backdrop-filter:blur(8px)}}
 @media(max-width:390px){.restaurant-page .recipe-book-contents .recipe-choices{grid-template-columns:1fr}.restaurant-page .recipe-book-cover-title{padding-right:1rem}.restaurant-page .recipe-book-cover{width:min(100%,340px)}}
 @media(prefers-reduced-motion:reduce){.restaurant-page .recipe-book-cover,.restaurant-page .recipe-book-cover-title b span,.restaurant-page .recipe-book-page-button{transition:none!important}.restaurant-page .recipe-book-cover.is-opening,.restaurant-page .recipe-book-inside,.restaurant-page .recipe-page-turner{animation:none!important}.restaurant-page .recipe-book-cover:hover,.restaurant-page .recipe-book-page-button:hover{transform:none}}
+
+/* Bound-cover and printed-page details for the Forbidden Bite cookbook. */
+.restaurant-page .recipe-book-cover{border-width:7px 10px 7px 6px;border-color:#d8b95f #c49f43 #a97f29 #b88e35;border-radius:4px 13px 13px 4px;box-shadow:inset 13px 0 18px #031e1a9c,inset -5px 0 7px #e8c95a20,3px 3px 0 #8e6c2a,6px 7px 0 #ddc98f,0 23px 45px #122d2742}
+.restaurant-page .recipe-book-cover-title{padding-bottom:1.8rem}
+.restaurant-page .recipe-book-cover-title small{display:inline-block;width:max-content;padding:.3rem .45rem;border:1px solid #e8ce81;border-radius:2px;background:#10362cd9}
+.restaurant-page .recipe-book-cover-title .recipe-book-cover-subtitle{font-size:1.12rem}
+.restaurant-page .recipe-book-cover-title>span:not(.recipe-book-cover-subtitle){line-height:1.55}
+.restaurant-page .recipe-book-inside{padding:.8rem;background:linear-gradient(90deg,#e1d4b7 0,#f6f0e1 2%,#f8f4e8 4%,#eee6d5 50%,#fffdf6 50.3%,#f7f2e5 98%,#ddd0b4 100%);box-shadow:0 18px 42px #122d2728,0 4px 0 #d8c9a6,0 8px 0 #eee5d1,0 11px 0 #d9caab}
+.restaurant-page .recipe-book-toolbar{min-height:39px;padding:.3rem .45rem .65rem}
+.restaurant-page .recipe-book-open-label{display:flex;align-items:center;gap:.45rem}
+.restaurant-page .recipe-book-open-label::before{width:21px;height:21px;border:1px solid #ae8c3d;border-radius:50%;background:radial-gradient(circle,#e7cf87 0 24%,#184a3b 28% 100%);content:''}
+.restaurant-page .recipe-book-spread{grid-template-columns:minmax(210px,.36fr) minmax(0,1fr);min-height:520px;border-color:#d4c7a9;border-radius:3px;background:linear-gradient(90deg,#f3eddf,#fffdf7 48.8%,#d7c9a9 50%,#fffefa 50.4%,#fdfbf4);box-shadow:inset 0 0 24px #997d3115,0 2px 5px #654f2810}
+.restaurant-page .recipe-book-contents{padding:1.4rem 1rem 2.25rem;background:linear-gradient(90deg,#f7f2e5,#fcf9f0 91%,#e5dac3);box-shadow:inset -14px 0 16px #75633b0e}
+.restaurant-page .recipe-book-page-kicker{padding-bottom:.48rem;border-bottom:1px solid #d7c99f;font-size:.58rem}
+.restaurant-page .recipe-book-contents h3{font-size:1.4rem}
+.restaurant-page .recipe-book-contents .recipe-choices{max-height:650px;padding-right:.25rem}
+.restaurant-page .recipe-level-heading{margin-top:.7rem;padding:.48rem .5rem;border-top:1px solid #d4c391;font-size:.64rem;letter-spacing:.14em}
+.restaurant-page .recipe-book-contents .recipe-choice{grid-template-columns:42px minmax(0,1fr);gap:.55rem;padding:.4rem .35rem;border-width:0 0 1px;border-radius:0;background:transparent;box-shadow:none}
+.restaurant-page .recipe-book-contents .recipe-choice:hover{transform:translateX(2px);background:#fffdf6;box-shadow:none}
+.restaurant-page .recipe-book-contents .recipe-choice[aria-pressed=true]{border-color:#d4c391;background:#f2e8cc;box-shadow:inset 3px 0 #ad8836}
+.restaurant-page .recipe-book-contents .recipe-choice img{width:42px;height:38px;border:1px solid #ded2b6;border-radius:2px}
+.restaurant-page .recipe-book-contents .recipe-choice strong{font:600 .68rem/1.3 Georgia,serif}
+.restaurant-page .recipe-book-contents .recipe-choice small{font-size:.56rem;letter-spacing:.025em}
+.restaurant-page .recipe-book-recipe-page{padding:1.15rem 1.3rem .85rem;background:linear-gradient(90deg,#f8f4e9,#fffefa 8%,#fffefa 97%,#f0e8d8);box-shadow:inset 14px 0 18px #78683b0c}
+.restaurant-page .recipe-lesson-head{align-items:flex-start;min-height:68px;margin:.1rem 0 .8rem;padding-bottom:.7rem;border-bottom:1px solid #cfc3a7}
+.restaurant-page .recipe-page-mark{display:grid;justify-items:end;gap:.3rem;flex:none}
+.restaurant-page .recipe-step-number{padding:.22rem .36rem;border:1px solid #d8c79c;border-radius:2px;color:#836a32;font-size:.55rem;letter-spacing:.1em}
+.restaurant-page .recipe-rating{display:grid;justify-items:end;gap:.05rem}
+.restaurant-page .recipe-rating-label{color:#85754f;font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.restaurant-page .recipe-rating-stars{display:flex;gap:.04rem}
+.restaurant-page .recipe-rating-star{width:25px;height:26px;padding:0;border:0;background:transparent;color:#af852b;font:700 1.2rem/1 Georgia,serif;cursor:pointer;transition:transform .15s,color .15s}
+.restaurant-page .recipe-rating-star:hover{transform:scale(1.2);color:#d29b20}
+.restaurant-page .recipe-rating-star:focus-visible{outline:2px solid #0d5c4b;outline-offset:1px;border-radius:3px}
+.restaurant-page .recipe-rating-star[aria-pressed=true]{color:#bd8e22}
+.restaurant-page .recipe-rating-status{color:#817b6e;font-size:.54rem;text-align:right}
+.restaurant-page .recipe-book-pagination{padding-top:.7rem}
+.restaurant-page #recipe-book-page-label{font:italic .68rem Georgia,serif;letter-spacing:.025em}
+.restaurant-page .recipe-book-page-number{font-size:.75rem}
+@media(max-width:850px){.restaurant-page .recipe-book-spread{grid-template-columns:minmax(185px,.38fr) minmax(0,1fr)}}
+@media(max-width:640px){.restaurant-page .recipe-book-spread{grid-template-columns:1fr}.restaurant-page .recipe-book-contents{padding:.9rem .8rem 1rem}.restaurant-page .recipe-book-contents .recipe-choices{max-height:340px}.restaurant-page .recipe-book-recipe-page{padding:.85rem .7rem}.restaurant-page .recipe-lesson-head{gap:.35rem}.restaurant-page .recipe-page-mark{max-width:128px}.restaurant-page .recipe-rating-star{width:23px}.restaurant-page .recipe-rating-status{max-width:125px}}
+@media(prefers-reduced-motion:reduce){.restaurant-page .recipe-rating-star{transition:none!important}.restaurant-page .recipe-rating-star:hover{transform:none}}
