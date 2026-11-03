@@ -72,3 +72,15 @@
 @keyframes cart-added-pulse{0%{box-shadow:0 0 0 0 #e1bb5600}40%{box-shadow:0 0 0 5px #e1bb5666,0 0 22px #e1bb56;background:#f8e8ae;font-weight:900}100%{box-shadow:0 0 0 0 #e1bb5600}}
 @keyframes cart-count-pop{0%{transform:scale(1)}40%{transform:scale(1.45);box-shadow:0 0 0 5px #e1bb5666,0 0 16px #e1bb56}100%{transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.tap-glow,.cart-added.tap-glow,.cart-count-pop{animation:none!important;filter:none!important;transform:none!important}}
+
+/* Keep the pretend cart one tap away without covering the primary content. */
+.cart-open{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:75;display:inline-flex;align-items:center;gap:.48rem;min-height:52px;padding:.55rem .85rem;border:1px solid #f4d978;border-radius:999px;background:linear-gradient(145deg,#145844,#0a3b31);box-shadow:0 9px 26px #081c1766,inset 0 1px #ffffff30;color:#fff7d5;font-size:.8rem;transition:transform .18s,box-shadow .18s}
+.cart-open:hover{transform:translateY(-2px);background:linear-gradient(145deg,#1c6e52,#0d493a);box-shadow:0 13px 30px #081c177a}
+.cart-open svg{width:21px;height:21px;fill:none;stroke:#ffe08a;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cart-count{min-width:1.45rem;height:1.45rem;background:#f1d36c;color:#123d32;font-weight:900}
+.cart-open:focus-visible,.cart-browse-menu:focus-visible{outline:3px solid #e2b93f;outline-offset:4px}
+.cart-browse-menu{display:block;margin:.15rem auto .6rem;min-height:42px;padding:.55rem .85rem;border:1px solid #0d5c4b;border-radius:9px;background:#0d5c4b;color:white;font:750 .82rem Inter,system-ui,sans-serif;cursor:pointer}
+.cart-browse-menu:hover{background:#093d33}
+.cart-empty{text-wrap:balance}
+@media(max-width:520px){.cart-open{right:max(.7rem,env(safe-area-inset-right));bottom:max(.7rem,env(safe-area-inset-bottom));min-height:50px;padding:.55rem .75rem}.cart-dialog{width:min(96vw,520px);max-height:90dvh;padding:.9rem}}
+@media(prefers-reduced-motion:reduce){.cart-open{transition:none!important}.cart-open:hover{transform:none}}

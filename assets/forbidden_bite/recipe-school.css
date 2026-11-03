@@ -150,3 +150,5 @@
 @media(max-width:850px){.restaurant-page .recipe-book-spread{grid-template-columns:minmax(185px,.38fr) minmax(0,1fr)}}
 @media(max-width:640px){.restaurant-page .recipe-book-spread{grid-template-columns:1fr}.restaurant-page .recipe-book-contents{padding:.9rem .8rem 1rem}.restaurant-page .recipe-book-contents .recipe-choices{max-height:340px}.restaurant-page .recipe-book-recipe-page{padding:.85rem .7rem}.restaurant-page .recipe-lesson-head{gap:.35rem}.restaurant-page .recipe-page-mark{max-width:128px}.restaurant-page .recipe-rating-star{width:23px}.restaurant-page .recipe-rating-status{max-width:125px}}
 @media(prefers-reduced-motion:reduce){.restaurant-page .recipe-rating-star{transition:none!important}.restaurant-page .recipe-rating-star:hover{transform:none}}
+
+.restaurant-page .recipe-book-cover-photo{background-image:linear-gradient(180deg,#0b27131c 12%,#09271aa0 100%),url('/assets/forbidden_bite/recipe-book-cover-ai.webp')}

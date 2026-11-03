@@ -8,7 +8,7 @@
   const nav=document.querySelector('.nav');
   const cartButton=document.createElement('button');
   cartButton.type='button';cartButton.className='cart-open';cartButton.setAttribute('aria-haspopup','dialog');
-  cartButton.innerHTML='Cart <span class="cart-count" aria-live="polite">0</span>';
+  cartButton.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.5L21 9H7"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-open-label">Your cart</span><span class="cart-count" aria-live="polite">0</span>';
   nav.append(cartButton);
   const dialog=document.createElement('dialog');dialog.className='cart-dialog';dialog.setAttribute('aria-labelledby','cart-title');
   dialog.innerHTML=`
@@ -77,7 +77,7 @@
     const quantity=cart.reduce((sum,item)=>sum+item.quantity,0);
     cartCount.textContent=String(quantity);cartButton.setAttribute('aria-label',`Open cart, ${quantity} ${quantity===1?'item':'items'}`);
     cartItems.replaceChildren();
-    if(!cart.length){const empty=document.createElement('p');empty.className='cart-empty';empty.textContent='Your cart is empty. Add something tasty from either menu.';cartItems.append(empty)}
+    if(!cart.length){const empty=document.createElement('p');empty.className='cart-empty';empty.textContent='Your cart is empty. Start with a Forbidden Bite favorite.';const browse=document.createElement('button');browse.type='button';browse.className='cart-browse-menu';browse.textContent='Browse the menu';browse.addEventListener('click',()=>{dialog.close();document.getElementById('menu-title')?.scrollIntoView({behavior:'smooth',block:'start'})});cartItems.append(empty,browse)}
     for(const item of cart){
       const line=document.createElement('article');line.className='cart-line';
       const name=document.createElement('span');name.className='cart-line-name';name.textContent=item.name;
