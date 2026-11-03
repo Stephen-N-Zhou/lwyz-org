@@ -155,3 +155,14 @@
 
 .restaurant-page .recipe-book-cover-photo{inset:0;background-image:linear-gradient(180deg,#0b27131c 12%,#0b2a21b8 70%,#0a3028f2 100%),url('/assets/forbidden_bite/recipe-book-cover-ai-v3.webp?v=3');background-position:center;background-size:cover}
 
+/* Keep the cookbook title in the artwork's open upper area so the food remains visible. */
+.restaurant-page .recipe-book-cover{width:min(100%,370px);aspect-ratio:2/3;grid-template-rows:1fr auto}
+.restaurant-page .recipe-book-cover-photo{inset:0;background-image:linear-gradient(180deg,#08291fbf 0%,#08291f73 18%,#08291f12 42%,transparent 50%),url('/assets/forbidden_bite/recipe-book-cover-ai-v3.webp?v=3');background-position:center;background-size:cover}
+.restaurant-page .recipe-book-cover-title{min-height:0;align-content:start;justify-items:start;gap:.42rem;padding:1.35rem 1.25rem 0 1.75rem;background:linear-gradient(180deg,#08291fe8 0%,#08291f9c 62%,transparent 100%)}
+.restaurant-page .recipe-book-cover-title strong{font-size:clamp(1.8rem,5.6vw,2.5rem);line-height:.98}
+.restaurant-page .recipe-book-cover-title .recipe-book-cover-subtitle{margin-top:0;font-size:1rem}
+.restaurant-page .recipe-book-cover-title>span:not(.recipe-book-cover-subtitle){max-width:260px;line-height:1.35}
+.restaurant-page .recipe-book-cover-title b{margin-top:.12rem;padding:.48rem .65rem}
+.restaurant-page .recipe-book-cover-seal{top:1rem;right:1rem;width:56px;height:56px;font-size:.68rem}
+@media(max-width:390px){.restaurant-page .recipe-book-cover{width:min(100%,340px)}.restaurant-page .recipe-book-cover-title{padding-right:1rem}.restaurant-page .recipe-book-cover-title strong{font-size:clamp(1.7rem,7vw,2.2rem)}}
+
