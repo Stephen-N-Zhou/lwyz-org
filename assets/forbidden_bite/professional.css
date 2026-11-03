@@ -781,3 +781,7 @@ body.game-page {
 .restaurant-page .profile-game-link.profile-game-featured small{color:#f3dfb4}
 @media(max-width:420px){.restaurant-page .profile-game-grid{grid-template-columns:1fr}.restaurant-page .profile-game-link.profile-game-featured{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.restaurant-page .profile-game-link{transition:none}.restaurant-page .profile-game-link:hover{transform:none}}
+
+/* Keep both cart entry points easy to hit after the shared button styling. */
+.restaurant-page .cart-open,.gallery-page .cart-open{min-height:52px}
+@media(max-width:520px){.restaurant-page .cart-open,.gallery-page .cart-open{min-height:50px}}
