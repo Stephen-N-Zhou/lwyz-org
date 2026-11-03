@@ -24,3 +24,15 @@
   body.restaurant-page #menu-grid::after{grid-column:1/-1;display:block;margin-top:.08in;padding-top:.08in;border-top:1px solid #d9d0bd;color:#62594c;content:"Fictional restaurant concept · Illustrative prices in USD · Please tell your server about food allergies; shared preparation areas are used.";font:7.5pt/1.4 Georgia,serif}
   body.restaurant-page .restaurant-music{display:none!important}
 }
+@media print{
+  body.restaurant-page>main#main>section[aria-labelledby="seasonal-menu-title"],body.restaurant-page>main#main>section[aria-labelledby="deals-title"]{display:block!important;width:100%!important;margin:0 0 .15in!important;padding:0!important;background:#fff!important;color:#222!important;box-shadow:none!important}
+  body.restaurant-page .seasonal-menu-heading h2,body.restaurant-page .deals #deals-title{color:#12483d!important;font-size:15pt!important}
+  body.restaurant-page .seasonal-menu-heading p,body.restaurant-page .seasonal-note,body.restaurant-page .deals .section-head>p{color:#62594c!important;font-size:8pt!important}
+  body.restaurant-page .seasonal-grid,body.restaurant-page #deal-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.1in!important}
+  body.restaurant-page .seasonal-card,body.restaurant-page .deal-card{break-inside:avoid!important;page-break-inside:avoid!important;padding:.12in!important;border:1px solid #d9d0bd!important;border-radius:6px!important;background:#fff!important;color:#222!important;box-shadow:none!important}
+  body.restaurant-page .seasonal-card h3,body.restaurant-page .deal-card h3{color:#12483d!important;font-size:11pt!important}
+  body.restaurant-page .seasonal-card p,body.restaurant-page .deal-card p{color:#49463f!important;font-size:7.5pt!important}
+  body.restaurant-page .seasonal-card button,body.restaurant-page .deal-card button,body.restaurant-page .seasonal-icon{display:none!important}
+  body.restaurant-page #menu-grid>.card,body.restaurant-page #menu-grid>.card li{break-inside:avoid!important;page-break-inside:avoid!important}
+  body.restaurant-page .menu-discovery,body.restaurant-page .menu-demo-details{display:none!important}
+}
