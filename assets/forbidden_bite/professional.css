@@ -761,3 +761,23 @@ body.game-page {
 .restaurant-page .spin-claim-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 9px 22px #a8792c55}
 .restaurant-page .spin-claim-button:disabled{opacity:.55;cursor:not-allowed}
 .restaurant-page .spin-claim-button[hidden]{display:none!important}
+
+/* Profile game picker: avatar selection and game launch are separate actions */
+.restaurant-page .profile-avatar-heading>div{display:grid;gap:.12rem}
+.restaurant-page .profile-avatar-heading>div>small{color:#77766f;font-size:.62rem}
+.restaurant-page .profile-game-launcher{margin-top:.85rem;padding:.8rem;border:1px solid #e1d5b1;border-radius:12px;background:linear-gradient(145deg,#fffdf7,#f3eddf)}
+.restaurant-page .profile-game-heading{display:flex;align-items:center;gap:.55rem;margin-bottom:.6rem;color:#17483b}
+.restaurant-page .profile-game-heading>span{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#e9dfc4;font-size:1.25rem}
+.restaurant-page .profile-game-heading h3{margin:0;color:#18483b;font:400 1.1rem Marcellus,Georgia,serif}
+.restaurant-page .profile-game-heading p{margin:.12rem 0 0;color:#6e7068;font-size:.66rem;line-height:1.4}
+.restaurant-page .profile-game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.42rem}
+.restaurant-page .profile-game-link{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:.08rem .4rem;min-width:0;padding:.48rem .52rem;border:1px solid #e5ddca;border-radius:9px;background:#fff;color:#344a3c;text-decoration:none;transition:transform .16s,border-color .16s,box-shadow .16s}
+.restaurant-page .profile-game-link:hover{transform:translateY(-2px);border-color:#c5a146;box-shadow:0 5px 13px #3d342116}
+.restaurant-page .profile-game-link>span{grid-row:span 2;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#f5efdf;font-size:1.08rem}
+.restaurant-page .profile-game-link strong{overflow-wrap:anywhere;font-size:.68rem;line-height:1.25}
+.restaurant-page .profile-game-link small{color:#79766b;font-size:.56rem;line-height:1.3}
+.restaurant-page .profile-game-link.profile-game-featured{grid-column:1/-1;border-color:#8e342f;background:linear-gradient(115deg,#8e302b,#a84836 54%,#0d5c4b);color:#fff4d0;box-shadow:0 5px 13px #7b2f2730}
+.restaurant-page .profile-game-link.profile-game-featured>span{background:#ffffff1c}
+.restaurant-page .profile-game-link.profile-game-featured small{color:#f3dfb4}
+@media(max-width:420px){.restaurant-page .profile-game-grid{grid-template-columns:1fr}.restaurant-page .profile-game-link.profile-game-featured{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.restaurant-page .profile-game-link{transition:none}.restaurant-page .profile-game-link:hover{transform:none}}
