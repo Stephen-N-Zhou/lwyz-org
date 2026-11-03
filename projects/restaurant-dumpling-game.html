@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-11">
-  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=3">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-12">
+  <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=4">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
 </head>
 <body class="game-page">
@@ -233,7 +233,7 @@
       };
       const addTarget=(kind,index)=>{
         const target=document.createElement('button');target.type='button';target.className='dumpling-target';
-        if(kind==='boss'){target.classList.add('dumpling-boss');target.textContent=`🥟 ${bossHitsLeft}`;target.setAttribute('aria-label',`Boss dumpling, ${bossHitsLeft} hits left`)}
+        if(kind==='boss'){target.classList.add('dumpling-boss');const bossFrame=(levels[levelNumber-1].bossNumber-1)%5;target.style.setProperty('--boss-position',['0%','25%','50%','75%','100%'][bossFrame]);const art=document.createElement('span');art.className='dumpling-boss-art';art.setAttribute('aria-hidden','true');const hp=document.createElement('span');hp.className='dumpling-boss-hp';hp.textContent=String(bossHitsLeft);target.append(art,hp);target.setAttribute('aria-label',`${levels[levelNumber-1].bossName}, boss, ${bossHitsLeft} hits left`)}
         else if(kind==='decoy'){target.classList.add('dumpling-decoy');target.textContent='🥮';target.setAttribute('aria-label','Mooncake decoy: avoid this');}
         else if(kind==='golden'){target.classList.add('dumpling-golden');target.textContent='🥟';target.setAttribute('aria-label','Golden dumpling: worth three points');}
         else{target.textContent='🥟';target.setAttribute('aria-label','Catch dumpling');}
@@ -326,7 +326,7 @@
       function catchTarget(target){
         if(!running)return;
         if(target.dataset.kind==='boss'){
-          bossHitsLeft--;levelScore++;totalScore++;catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');if(catchStreak>=15)unlockAchievement('combo-15');if(catchStreak>=25)unlockAchievement('combo-25');if(totalScore>=100)unlockAchievement('century-club');if(totalScore>=250)unlockAchievement('score-250');if(totalScore>=500)unlockAchievement('score-500');if(totalScore>=1000)unlockAchievement('score-1000');playSound('boss');target.textContent=`🥟 ${Math.max(0,bossHitsLeft)}`;target.setAttribute('aria-label',`Boss dumpling, ${Math.max(0,bossHitsLeft)} hits left`);powerStatus.textContent=bossHitsLeft>0?`Bonk! ${bossHitsLeft} hit${bossHitsLeft===1?'':'s'} to go!`:'Boss dumpling defeated!';
+          bossHitsLeft--;levelScore++;totalScore++;catchStreak++;unlockAchievement('first-bite');if(catchStreak>=5)unlockAchievement('combo-five');if(catchStreak>=15)unlockAchievement('combo-15');if(catchStreak>=25)unlockAchievement('combo-25');if(totalScore>=100)unlockAchievement('century-club');if(totalScore>=250)unlockAchievement('score-250');if(totalScore>=500)unlockAchievement('score-500');if(totalScore>=1000)unlockAchievement('score-1000');playSound('boss');target.querySelector('.dumpling-boss-hp').textContent=String(Math.max(0,bossHitsLeft));target.setAttribute('aria-label',`${levels[levelNumber-1].bossName}, boss, ${Math.max(0,bossHitsLeft)} hits left`);target.animate?.([{transform:'translate(-50%,-50%) scale(1)'},{transform:'translate(-50%,-50%) scale(1.22) rotate(-7deg)'},{transform:'translate(-50%,-50%) scale(1)'}],{duration:260,easing:'ease-out'});powerStatus.textContent=bossHitsLeft>0?`Bonk! ${bossHitsLeft} hit${bossHitsLeft===1?'':'s'} to go!`:'Boss dumpling defeated!';
           updateStats();if(bossHitsLeft<=0){levelScore=levels[levelNumber-1].goal;finishLevel()}else moveTargets();return;
         }else if(target.dataset.kind==='decoy'){
           if(bambooShield){bambooShield=false;powerStatus.textContent='Bonk! Bamboo Shield bounced that sneaky mooncake away.'}
@@ -362,5 +362,6 @@
     })();
   </script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=4').catch(()=>{}));}</script>
 </body>
 </html>

@@ -757,3 +757,7 @@ body.game-page {
 .restaurant-page .roadster-art{position:absolute;top:50%;left:50%;width:42px;height:68px;object-fit:contain;transform:translate(-50%,-50%) rotate(90deg)}
 .restaurant-page .seasonal-icon{display:grid;place-items:center;width:70px;height:64px;margin-bottom:.2rem;border:1px solid #ead9a9;border-radius:13px;background:radial-gradient(circle at 50% 35%,#fffdf6,#f2e6c6);font-size:2rem}
 .restaurant-page .seasonal-icon img{display:block;width:100%;height:100%;padding:3px;object-fit:contain}
+.restaurant-page .spin-claim-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin:.55rem 0 0;padding:.65rem 1rem;border:1px solid #f4d46d;border-radius:9px;background:linear-gradient(135deg,#f0d277,#c38d2d);color:#17382d;font:850 .88rem Inter,system-ui,sans-serif;box-shadow:0 5px 18px #a8792c33;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.restaurant-page .spin-claim-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 9px 22px #a8792c55}
+.restaurant-page .spin-claim-button:disabled{opacity:.55;cursor:not-allowed}
+.restaurant-page .spin-claim-button[hidden]{display:none!important}

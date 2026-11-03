@@ -65,3 +65,5 @@ body.is-game-fullscreen .arcade-stage{background:radial-gradient(ellipse at 18% 
 .avatar-arcade-page[data-game="ace"] .arena-wrap{background-image:url('/assets/forbidden_bite/arcade-ace-festival.webp')}
 .avatar-arcade-page .offline-game-note{margin:.55rem 0 0;padding:.65rem .85rem;border-left:3px solid #f2ce5c;border-radius:0 9px 9px 0;background:#ffffff0d;color:#e6eedc;font-size:.74rem;line-height:1.5}
 @media(max-width:680px){.avatar-arcade-page .mode-card{background-position:center 45%}.avatar-arcade-page .offline-game-note{font-size:.7rem}}
+.avatar-arcade-page .arcade-stage[data-boss="true"] .arena-wrap{outline:3px solid #e2bb50;outline-offset:3px;box-shadow:0 0 34px #f0be4540}
+.avatar-arcade-page .mode-card .difficulty{white-space:nowrap}

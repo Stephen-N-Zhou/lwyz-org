@@ -1,14 +1,17 @@
-const CACHE_NAME = 'forbidden-bite-offline-v2';
+const CACHE_NAME = 'forbidden-bite-offline-v4';
 const SHELL = [
   '/projects/restaurant.html',
-  '/projects/restaurant-arcade.html'
+  '/projects/restaurant-arcade.html',
+  '/projects/restaurant-dumpling-game.html'
 ];
 const CORE_ASSETS = [
-  '/assets/forbidden_bite/avatar-arcade.css?v=11',
-  '/assets/forbidden_bite/avatar-arcade.js?v=11',
-  '/assets/forbidden_bite/order.css?v=checkout-6',
-  '/assets/forbidden_bite/order.js?v=checkout-6',
-  '/assets/forbidden_bite/fun.css?v=fun-11',
+  '/assets/forbidden_bite/avatar-arcade.css?v=12',
+  '/assets/forbidden_bite/avatar-arcade.js?v=12',
+  '/assets/forbidden_bite/order.css?v=checkout-7',
+  '/assets/forbidden_bite/order.js?v=checkout-7',
+  '/assets/forbidden_bite/professional.css?v=21',
+  '/assets/forbidden_bite/professional.css?v=4',
+  '/assets/forbidden_bite/fun.css?v=fun-12',
   '/assets/forbidden_bite/fun.js?v=fun-3',
   '/assets/forbidden_bite/profile.js?v=profile-5',
   '/assets/forbidden_bite/chefs.js?v=7',
@@ -31,6 +34,8 @@ const CORE_ASSETS = [
   '/assets/forbidden_bite/arcade-racer-red.png',
   '/assets/forbidden_bite/arcade-truck-gold.png',
   '/assets/forbidden_bite/arcade-truck-cream.png',
+  '/assets/forbidden_bite/arcade-boss-atlas-ai.png?v=1',
+  '/assets/forbidden_bite/dumpling-dash-mountain-ai.png?v=1',
   '/assets/forbidden_bite/arcade-flavor-star.webp',
   ...Array.from({length:16},(_,i)=>`/assets/forbidden_bite/arcade-dish-${String(i+1).padStart(2,'0')}.webp`),
   '/assets/forbidden_bite/arcade-food-noodles.webp',

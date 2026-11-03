@@ -1,5 +1,7 @@
 (()=>{
   const storageKey='forbidden-bite-demo-cart-v1';
+  const spinCouponKey='forbidden-bite-spin-coupon-v1';
+  const spinPromoRules={'SPIN5':{amount:5,min:0},'SPIN7-30':{amount:7,min:30},'SPIN8-35':{amount:8,min:35},'SPIN10-40':{amount:10,min:40},'SPIN12-60':{amount:12,min:60},'SPIN10-50':{amount:10,min:50},'SPIN25-100':{amount:25,min:100},'SPIN15':{percent:15,min:0}};
   const readCart=()=>{try{const value=JSON.parse(localStorage.getItem(storageKey)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
   let cart=readCart();
   let promoApplied='';
@@ -72,6 +74,7 @@
   const checkoutForm=dialog.querySelector('.checkout-form');
   const persist=()=>{try{localStorage.setItem(storageKey,JSON.stringify(cart))}catch{}};
   const subtotal=()=>cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
+  const discountFor=(code,amount)=>{if(code==='DEMO10')return amount*.1;if(flavorRewardAmounts[code])return flavorRewardAmounts[code];const rule=spinPromoRules[code];return rule&&amount>=rule.min?rule.percent?amount*rule.percent/100:rule.amount:0};
   const saveAndRender=()=>{persist();render()};
   const render=()=>{
     const quantity=cart.reduce((sum,item)=>sum+item.quantity,0);
@@ -104,7 +107,7 @@
     if(!checkoutForm)return;
     const reviewItems=dialog.querySelector('.review-items');reviewItems.replaceChildren();
     for(const item of cart){const row=document.createElement('p');const label=document.createElement('span');label.textContent=`${item.quantity} × ${item.name}`;const price=document.createElement('strong');price.textContent=money(item.quantity*item.price);row.append(label,price);reviewItems.append(row)}
-    const delivery=selected('fulfillment')==='Delivery';const subtotalAmount=subtotal();const discount=promoApplied==='DEMO10'?subtotalAmount*.1:(flavorRewardAmounts[promoApplied]||0);
+    const delivery=selected('fulfillment')==='Delivery';const subtotalAmount=subtotal();const discount=discountFor(promoApplied,subtotalAmount);
     dialog.querySelector('.review-subtotal').textContent=money(subtotalAmount);
     dialog.querySelector('.discount-row').hidden=!promoApplied;dialog.querySelector('.discount-amount').textContent=`−${money(discount)}`;
     dialog.querySelector('.review-total').textContent=money(Math.max(0,subtotalAmount+(delivery?4.99:0)-discount));
@@ -117,7 +120,7 @@
   document.addEventListener('click',event=>{
     const add=event.target.closest('[data-order-item]');if(!add)return;
     let selectedItem;try{selectedItem=JSON.parse(add.dataset.orderItem)}catch{return}
-    if(!selectedItem||typeof selectedItem.name!=='string'||!Number.isFinite(Number(selectedItem.price))||Number(selectedItem.price)<=0)return;
+    if(!selectedItem||typeof selectedItem.name!=='string'||!Number.isFinite(Number(selectedItem.price))||Number(selectedItem.price)<0)return;
     add.classList.remove('cart-added');void add.offsetWidth;add.classList.add('cart-added');clearTimeout(orderTimers.get(add));orderTimers.set(add,setTimeout(()=>add.classList.remove('cart-added'),900));
     const existing=cart.find(item=>item.name===selectedItem.name);
     if(existing)existing.quantity+=1;else cart.push({name:selectedItem.name,price:Number(selectedItem.price),quantity:1});
@@ -126,9 +129,10 @@
   cartButton.addEventListener('click',()=>{setView('cart');dialog.showModal()});
   dialog.querySelector('.cart-close').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
-  const applyPromoCode=()=>{const code=checkoutForm.elements.promo.value.trim().toUpperCase();const status=dialog.querySelector('.promo-status');if(code==='DEMO10'){promoApplied=code;status.textContent='DEMO10 applied: 10% off your demo subtotal.'}else if(flavorRewardAmounts[code]){promoApplied=code;status.textContent=`${code} applied: ${money(flavorRewardAmounts[code])} off your demo total.`}else{promoApplied='';status.textContent=code?'That demo code was not recognized. Try DEMO10 or your unlocked FLAVOR code.':'Enter DEMO10 or an unlocked FLAVOR code.'}status.classList.toggle('is-error',!promoApplied);updateReview()};
+  const applyPromoCode=()=>{const code=checkoutForm.elements.promo.value.trim().toUpperCase();const status=dialog.querySelector('.promo-status'),rule=spinPromoRules[code];if(code==='DEMO10'){promoApplied=code;status.textContent='DEMO10 applied: 10% off your demo subtotal.'}else if(flavorRewardAmounts[code]){promoApplied=code;status.textContent=`${code} applied: ${money(flavorRewardAmounts[code])} off your demo total.`}else if(rule&&subtotal()>=(rule.min||0)){promoApplied=code;status.textContent=rule.percent?`${code} applied: ${rule.percent}% off your demo subtotal.`:`${code} applied: ${money(rule.amount)} off your demo subtotal.`}else if(rule){promoApplied='';status.textContent=`${code} needs a ${money(rule.min)} pretend subtotal.`}else{promoApplied='';status.textContent=code?'That demo code was not recognized. Try DEMO10, an unlocked FLAVOR code, or your wheel prize code.':'Enter DEMO10, an unlocked FLAVOR code, or your wheel prize code.'}status.classList.toggle('is-error',!promoApplied);updateReview()};
   window.addEventListener('forbidden-bite:flavor-reward-unlocked',event=>{const code=event.detail?.code;if(flavorRewardAmounts[code]){try{localStorage.setItem('forbidden-bite-flavor-reward-v1',code)}catch{}}});
-  dialog.querySelector('.checkout-start').addEventListener('click',()=>{promoApplied='';let code='';try{code=localStorage.getItem('forbidden-bite-flavor-reward-v1')||''}catch{};dialog.querySelector('[name="promo"]').value=code;dialog.querySelector('.promo-status').textContent='';setView('checkout');updateDelivery();if(code)applyPromoCode();else updateReview()});
+  window.addEventListener('forbidden-bite:spinner-prize-claimed',event=>{const reward=event.detail;if(!reward)return;if(reward.kind==='item'&&typeof reward.name==='string'){const name=`Daily Wheel Prize: ${reward.name}`,existing=cart.find(item=>item.name===name);if(existing)existing.quantity++;else cart.push({name,price:0,quantity:1});saveAndRender();cartButton.click();return}if(reward.kind==='coupon'&&spinPromoRules[reward.code]){try{const current=JSON.parse(localStorage.getItem(spinCouponKey)||'[]'),coupons=Array.isArray(current)?current:current?.code?[current]:[];if(!coupons.some(item=>item.code===reward.code&&item.day===reward.day))coupons.push({code:reward.code,day:reward.day});localStorage.setItem(spinCouponKey,JSON.stringify(coupons))}catch{};dialog.querySelector('.cart-demo-note').innerHTML='<strong>Daily wheel prize saved:</strong> Close the cart, add a menu dish, then return to Checkout Preview to apply it.';cartButton.click()}});
+  dialog.querySelector('.checkout-start').addEventListener('click',()=>{promoApplied='';let code='';try{code=localStorage.getItem('forbidden-bite-flavor-reward-v1')||'';const saved=JSON.parse(localStorage.getItem(spinCouponKey)||'[]'),coupons=Array.isArray(saved)?saved:saved?.code?[saved]:[],eligible=coupons.filter(item=>spinPromoRules[item.code]).sort((a,b)=>discountFor(b.code,subtotal())-discountFor(a.code,subtotal()));if(eligible.length)code=eligible[0].code}catch{};dialog.querySelector('[name="promo"]').value=code;dialog.querySelector('.promo-status').textContent='';setView('checkout');updateDelivery();if(code)applyPromoCode();else updateReview()});
   dialog.querySelector('.checkout-back').addEventListener('click',()=>setView('cart'));
   dialog.querySelector('.success-done').addEventListener('click',()=>dialog.close());
   checkoutForm.addEventListener('change',event=>{if(event.target.name==='fulfillment')updateDelivery();else updateReview()});
@@ -138,10 +142,10 @@
     const formData=new FormData(checkoutForm);const fulfillment=formData.get('fulfillment');
     const detail=fulfillment==='Delivery'?'Delivery details are shown for the preview.':`Pickup time: ${formData.get('pickupTime')}.`;
     const demoNumber=`DEMO-${Math.random().toString(36).slice(2,8).toUpperCase()}`;
-    const subtotalAmount=subtotal(),discount=promoApplied==='DEMO10'?subtotalAmount*.1:(flavorRewardAmounts[promoApplied]||0),total=Math.max(0,subtotalAmount+(fulfillment==='Delivery'?4.99:0)-discount);
+    const subtotalAmount=subtotal(),discount=discountFor(promoApplied,subtotalAmount),total=Math.max(0,subtotalAmount+(fulfillment==='Delivery'?4.99:0)-discount);
     window.dispatchEvent(new CustomEvent('forbidden-bite:demo-order-completed',{detail:{id:demoNumber,total,items:cart.map(item=>({...item})),promo:promoApplied||''}}));
     dialog.querySelector('.success-message').textContent=`Reference ${demoNumber}. ${detail} No order was sent and no payment was processed.`;
-    cart=[];promoApplied='';saveAndRender();setView('success');
+    cart=[];const completedPromo=promoApplied;promoApplied='';try{const saved=JSON.parse(localStorage.getItem(spinCouponKey)||'[]'),coupons=Array.isArray(saved)?saved:saved?.code?[saved]:[];localStorage.setItem(spinCouponKey,JSON.stringify(coupons.filter(item=>item.code!==completedPromo)))}catch{};saveAndRender();setView('success');
   });
   dialog.addEventListener('close',()=>{if(successView.hidden===false){checkoutForm.reset();promoApplied=''}setView('cart')});
   render();updateDelivery();
