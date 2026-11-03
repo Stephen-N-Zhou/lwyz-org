@@ -151,10 +151,10 @@
 @media(prefers-reduced-motion:reduce){.dumpling-target{transition:none}}
 @media(prefers-reduced-motion:reduce){.game-launch-icon{animation:none;transition:none}}
 @media(prefers-reduced-motion:reduce){.pack-reveal-item{animation:none}}
-.game-arena::before{position:absolute;inset:0;z-index:0;content:"";background-image:linear-gradient(180deg,#173a2d18,#12322655),url('/assets/forbidden_bite/dumpling-dash-mountain-ai-lite.webp?v=lite-1');background-position:center;background-size:cover;animation:dash-world-drift 28s ease-in-out infinite alternate;pointer-events:none}
+.game-arena::before{position:absolute;inset:0;z-index:0;content:"";background-image:linear-gradient(180deg,#173a2d18,#12322655),url('/assets/forbidden_bite/dumpling-dash-mountain-ai-lite.webp?v=lite-2');background-position:center;background-size:cover;animation:dash-world-drift 28s ease-in-out infinite alternate;pointer-events:none}
 .game-arena:has(.dumpling-boss)::before{filter:saturate(1.22) brightness(.82);animation:dash-world-boss 4s ease-in-out infinite alternate}
 .dumpling-target.dumpling-boss{position:absolute;isolation:isolate;color:#fff6cd;text-shadow:0 2px 8px #422618;font-size:0}
-.dumpling-boss-art{position:absolute;inset:2px;background-image:url('/assets/forbidden_bite/arcade-boss-atlas-ai-lite.webp?v=lite-1');background-position:var(--boss-position,0%) center;background-size:500% 100%;background-repeat:no-repeat;filter:drop-shadow(0 4px 8px #3c2b16aa);pointer-events:none}
+.dumpling-boss-art{position:absolute;inset:2px;background-image:url('/assets/forbidden_bite/arcade-boss-atlas-ai-lite.webp?v=lite-2');background-position:var(--boss-position,0%) center;background-size:500% 100%;background-repeat:no-repeat;filter:drop-shadow(0 4px 8px #3c2b16aa);pointer-events:none}
 .dumpling-boss-hp{position:absolute;z-index:1;right:-6px;bottom:-7px;display:grid;place-items:center;min-width:32px;height:32px;padding:0 .25rem;border:2px solid #fff1b4;border-radius:50%;background:linear-gradient(145deg,#e94e37,#851f27);box-shadow:0 3px 10px #391712aa;color:#fff;font-size:.82rem;font-weight:950;text-shadow:none;animation:boss-counter-pulse .65s ease-in-out infinite alternate;pointer-events:none}
 @keyframes dash-world-drift{from{background-position:48% center}to{background-position:52% center}}
 @keyframes dash-world-boss{from{filter:saturate(1.05) brightness(.79)}to{filter:saturate(1.35) brightness(.94)}}

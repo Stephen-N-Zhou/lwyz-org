@@ -7,7 +7,7 @@
   <title>Picture Gallery | Forbidden Bite</title>
   <meta name="description" content="Browse the image-only Forbidden Bite food gallery, with 48 photographs of dishes, drinks, and desserts.">
   <link rel="canonical" href="https://www.lwyz.org/projects/restaurant-gallery.html">
-  <link rel="preload" as="image" href="/assets/forbidden_bite/menu-lite.webp?v=lite-1">
+  <link rel="preload" as="image" href="/assets/forbidden_bite/menu-lite.webp?v=lite-2">
   <link rel="stylesheet" href="/assets/forbidden_bite/order.css?v=checkout-2">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
@@ -38,7 +38,7 @@
       <p class="dialog-price" id="dish-dialog-price"></p>
       <button class="add-to-cart dialog-add" id="dish-add-to-cart" type="button">Add to cart</button>
     </dialog>
-    <div class="actions"><a class="button" href="/assets/forbidden_bite/full-menu-lite.webp?v=lite-1" target="_blank" rel="noopener">Open the full menu</a><a class="button secondary" href="/projects/restaurant.html">Back to Forbidden Bite</a></div>
+    <div class="actions"><a class="button" href="/assets/forbidden_bite/full-menu-lite.webp?v=lite-2" target="_blank" rel="noopener">Open the full menu</a><a class="button secondary" href="/projects/restaurant.html">Back to Forbidden Bite</a></div>
   </main>
   <script>
     const galleryOrder=[
@@ -59,7 +59,7 @@
     const dialog=document.getElementById('dish-dialog');
     const dialogPhoto=document.getElementById('dialog-photo');
     const galleryImage=new Image();
-    galleryImage.src='/assets/forbidden_bite/menu-lite.webp?v=lite-1';
+    galleryImage.src='/assets/forbidden_bite/menu-lite.webp?v=lite-2';
     const columnCuts=[[0,177],[183,362],[367,549],[553,726]];
     const rowCuts=[[0,162],[165,329],[332,494],[497,662],[666,830],[833,1003],[1006,1178],[1181,1370],[1373,1550],[1554,1738],[1741,1928],[1931,2167]];
     function drawDishCrop(canvas,col,row){
