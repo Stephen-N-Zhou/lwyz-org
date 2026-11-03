@@ -151,7 +151,7 @@
 @media(prefers-reduced-motion:reduce){.dumpling-target{transition:none}}
 @media(prefers-reduced-motion:reduce){.game-launch-icon{animation:none;transition:none}}
 @media(prefers-reduced-motion:reduce){.pack-reveal-item{animation:none}}
-.game-arena::before{position:absolute;inset:0;z-index:0;content:"";background-image:linear-gradient(180deg,#173a2d18,#12322655),url('/assets/forbidden_bite/dumpling-dash-mountain-ai-lite.webp?v=lite-2');background-position:center;background-size:cover;animation:dash-world-drift 28s ease-in-out infinite alternate;pointer-events:none}
+.game-arena::before{position:absolute;inset:0;z-index:0;content:"";background-image:linear-gradient(180deg,#173a2d18,#12322655),url('/assets/forbidden_bite/dumpling-dash-mountain-ai-v2.webp?v=1');background-position:center;background-size:cover;animation:dash-world-drift 28s ease-in-out infinite alternate;pointer-events:none}
 .game-arena:has(.dumpling-boss)::before{filter:saturate(1.22) brightness(.82);animation:dash-world-boss 4s ease-in-out infinite alternate}
 .dumpling-target.dumpling-boss{position:absolute;isolation:isolate;color:#fff6cd;text-shadow:0 2px 8px #422618;font-size:0}
 .dumpling-boss-art{position:absolute;inset:2px;background-image:url('/assets/forbidden_bite/arcade-boss-atlas-ai-lite.webp?v=lite-2');background-position:var(--boss-position,0%) center;background-size:500% 100%;background-repeat:no-repeat;filter:drop-shadow(0 4px 8px #3c2b16aa);pointer-events:none}
@@ -160,3 +160,24 @@
 @keyframes dash-world-boss{from{filter:saturate(1.05) brightness(.79)}to{filter:saturate(1.35) brightness(.94)}}
 @keyframes boss-counter-pulse{to{transform:scale(1.12);box-shadow:0 0 16px #ffd35e}}
 @media(prefers-reduced-motion:reduce){.game-arena::before,.game-arena:has(.dumpling-boss)::before,.dumpling-boss-hp{animation:none!important}}
+
+/* Dumpling Dash: illustrated mountain pass, readable targets, and a persistent exit */
+.game-arena{border-color:#e2c46a;box-shadow:0 24px 70px #031d185e,inset 0 0 0 5px #fff5;background:#13372d}
+.game-arena::before{background-image:linear-gradient(180deg,#09271b18 0%,#09271b20 46%,#071d17a3 100%),url('/assets/forbidden_bite/dumpling-dash-mountain-ai-v2.webp?v=1');background-position:center;background-size:cover;animation:dash-world-drift 32s ease-in-out infinite alternate}
+.game-arena::after{position:absolute;z-index:0;inset:0;border-radius:inherit;background:radial-gradient(ellipse at center,#0000 45%,#071d1744 100%);content:"";pointer-events:none}
+.game-exit{position:absolute;z-index:5;top:.65rem;right:.65rem;display:inline-flex;align-items:center;gap:.4rem;min-height:40px;padding:.42rem .7rem;border:1px solid #ffe9ab;border-radius:999px;background:#102f28e8;color:#fff3ce;font-size:.7rem;font-weight:900;text-decoration:none;box-shadow:0 5px 18px #06191288;backdrop-filter:blur(8px);transition:transform .16s,background .16s}
+.game-exit span{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#c64b39;color:white;font-size:1rem;line-height:1}
+.game-exit:hover{transform:translateY(-2px);background:#17473a}
+.dumpling-target{border:2px solid #fff6dc;background:radial-gradient(circle at 35% 24%,#fffdf4,#f4dfad 72%);box-shadow:0 8px 18px #432d1d66,0 0 0 4px #ffedb534;animation:target-steam-bob 2.3s ease-in-out infinite alternate}
+.dumpling-target:active{transform:translate(-50%,-50%) scale(.86)}
+.dumpling-target.dumpling-golden{background:radial-gradient(circle at 32% 24%,#fffbe0,#f0bf37 75%);box-shadow:0 0 0 6px #ffe17a66,0 0 26px #ffda4bba}
+.dumpling-target.dumpling-decoy{background:radial-gradient(circle at 35% 24%,#f4e7d7,#aa8168 78%);box-shadow:0 5px 15px #311d1766}
+.game-scorebar .game-stat{border-color:#ffe7a47d;background:linear-gradient(145deg,#fff7e9e8,#f2e0b9e8);box-shadow:0 6px 16px #071d1744,inset 0 1px #fff}
+.game-scorebar .game-stat span{color:#775b24}.game-scorebar .game-stat strong{color:#153f33}
+.game-progress{height:11px;border:1px solid #fff7;background:#071d17a8;box-shadow:0 4px 12px #071d1744}
+.game-progress span{background:linear-gradient(90deg,#e94938,#efb63c 48%,#d9ef87);box-shadow:0 0 14px #fff3}
+.game-overlay{background:linear-gradient(135deg,#08271dbb,#061c19aa);backdrop-filter:blur(6px)}
+.game-overlay-card{border:1px solid #ffe3a0;background:linear-gradient(150deg,#154d3fdc,#0a2b24f2);box-shadow:0 24px 65px #03151088,inset 0 1px #fff3}
+@keyframes target-steam-bob{from{margin-top:2px;filter:drop-shadow(0 3px 5px #39271855)}to{margin-top:-3px;filter:drop-shadow(0 8px 9px #39271844)}}
+@media(max-width:520px){.game-exit{top:.45rem;right:.45rem;min-height:36px;padding:.34rem .55rem;font-size:.64rem}}
+@media(prefers-reduced-motion:reduce){.dumpling-target{animation:none!important}.game-exit{transition:none!important}}

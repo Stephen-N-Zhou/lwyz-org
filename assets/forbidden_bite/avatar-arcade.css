@@ -67,3 +67,24 @@ body.is-game-fullscreen .arcade-stage{background:radial-gradient(ellipse at 18% 
 @media(max-width:680px){.avatar-arcade-page .mode-card{background-position:center 45%}.avatar-arcade-page .offline-game-note{font-size:.7rem}}
 .avatar-arcade-page .arcade-stage[data-boss="true"] .arena-wrap{outline:3px solid #e2bb50;outline-offset:3px;box-shadow:0 0 34px #f0be4540}
 .avatar-arcade-page .mode-card .difficulty{white-space:nowrap}
+
+/* Clear in-game controls and a more finished arcade cabinet */
+.arcade-stage{border-color:#d8bb67aa;background:linear-gradient(145deg,#f8f3e8 0,#e9dfcb 100%);color:#15392f;box-shadow:0 26px 64px #061a145c,inset 0 1px #fff9}
+.stage-head h2{color:#124b3d;text-shadow:0 1px #fff8}
+.stage-stats div{border-color:#174b3524;background:linear-gradient(145deg,#fffdf5,#eee4ce);box-shadow:inset 0 1px #fff;}
+.stage-stats span{color:#896f2b}.stage-stats strong{color:#173f34}
+.game-rule{color:#40594c}
+.stage-controls{padding:.6rem .7rem;border:1px solid #174b3524;border-radius:14px;background:linear-gradient(105deg,#153e33,#0a2c26);box-shadow:0 9px 24px #061a1426}
+.control-copy{color:#f4e9c9}
+.stage-actions{display:flex;align-items:center;justify-content:flex-end;gap:.4rem}
+.exit-fullscreen,.exit-game{min-height:40px;padding:.48rem .7rem;border:1px solid #dcc272;border-radius:9px;background:#fff9e8;color:#23463a;font:800 .68rem Inter,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px #061a1424;transition:transform .16s,box-shadow .16s,background .16s}
+.exit-game{border-color:#a8493b;background:linear-gradient(180deg,#b84737,#8b2c28);color:#fff5df}
+.exit-fullscreen:hover,.exit-game:hover{transform:translateY(-1px);box-shadow:0 6px 15px #061a1444}
+.exit-fullscreen[hidden],.exit-game[hidden],.roadster-steering[hidden]{display:none!important}
+.roadster-steering{display:flex;align-items:center;gap:.38rem;padding:.2rem .4rem;border:1px solid #f4d47e55;border-radius:11px;background:#ffffff0c;color:#f4dc9b;font-size:.55rem;font-weight:900;letter-spacing:.12em}
+.roadster-steering button{width:40px;height:40px;border:1px solid #f2cf72;border-radius:10px;background:linear-gradient(145deg,#ffe28a,#c9a444);color:#153c30;font-size:1.3rem;font-weight:950;cursor:pointer;touch-action:manipulation}
+.roadster-steering button:active{transform:scale(.92)}
+body.is-game-fullscreen .arcade-stage{border-color:#d6bb6b;background:linear-gradient(145deg,#fff8e9,#e9dec8)}
+body.is-game-fullscreen .stage-actions{justify-content:flex-end}
+body[data-game="roadster"] .arena-wrap{border-color:#e5b84f;box-shadow:0 0 0 4px #e5b84f25,0 20px 50px #030e0a66}
+@media(max-width:760px){.stage-actions{gap:.28rem}.exit-fullscreen,.exit-game{min-height:38px;padding:.42rem .5rem;font-size:.6rem}.roadster-steering{flex:1;justify-content:center}.roadster-steering button{width:44px;height:44px}}

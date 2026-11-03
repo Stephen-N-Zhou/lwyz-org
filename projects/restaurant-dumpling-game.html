@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#093d33">
   <title>Dumpling Dash | Forbidden Bite</title>
   <meta name="description" content="Play 100 increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-13">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-15">
   <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=4">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
 </head>
@@ -27,6 +27,7 @@
     <div class="powerup-bar" id="powerup-bar" aria-label="Power-ups" hidden></div>
     <p class="powerup-status" id="powerup-status" role="status" aria-live="polite"></p>
     <section class="game-arena" id="game-arena" aria-label="Dumpling Dash play area">
+      <a class="game-exit" href="/projects/restaurant.html#little-delights" aria-label="Exit Dumpling Dash and return to the restaurant">Exit game <span aria-hidden="true">×</span></a>
       <div class="target-layer" id="target-layer"></div>
       <div class="game-overlay" id="game-overlay">
         <div class="game-overlay-card"><h2 id="overlay-title">Ready, set, steam!</h2><p id="overlay-copy" role="status" aria-live="polite" aria-atomic="true">Level 1: catch five dumplings in 20 seconds. Then see how far you can make it through all 100 levels.</p><div class="game-controls" id="game-controls"><button class="game-primary" id="game-start" type="button">Start the game</button><a class="game-secondary" href="/projects/restaurant.html#little-delights">Back to the menu</a></div></div>
@@ -359,6 +360,6 @@
     })();
   </script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=5').catch(()=>{}));}</script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=6').catch(()=>{}));}</script>
 </body>
 </html>
