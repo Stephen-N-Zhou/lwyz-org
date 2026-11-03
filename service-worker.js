@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v12';
+const CACHE_NAME = 'forbidden-bite-offline-v13';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -30,6 +30,7 @@ const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/arcade-flavor-star.webp',
   ...Array.from({length:16},(_,index)=>`/assets/forbidden_bite/arcade-dish-${String(index+1).padStart(2,'0')}.webp`),
   '/assets/forbidden_bite/menu.json',
+  '/assets/forbidden_bite/dish-info.js',
   '/assets/forbidden_bite/menu-lite.webp',
   '/assets/forbidden_bite/full-menu-lite.webp'
 ];
