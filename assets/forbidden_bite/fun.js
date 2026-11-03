@@ -9,7 +9,7 @@
   ];
   const columnCuts=[[0,177],[183,362],[367,549],[553,726]];
   const rowCuts=[[0,162],[165,329],[332,494],[497,662],[666,830],[833,1003],[1006,1178],[1181,1370],[1373,1550],[1554,1738],[1741,1928],[1931,2167]];
-  const image=new Image();image.src='/assets/forbidden_bite/menu.png?v=picture-gallery-5';
+  const image=new Image();image.src='/assets/forbidden_bite/menu-lite.webp?v=lite-1';
   const menuPromise=fetch('/assets/forbidden_bite/menu.json').then(r=>{if(!r.ok)throw Error('Menu unavailable');return r.json()});
   const menuIndexName={'Mini Noodles':'Mini Noodle Bowl'};
   const drawDish=(canvas,index)=>{

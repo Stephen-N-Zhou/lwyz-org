@@ -1,92 +1,63 @@
-const CACHE_NAME = 'forbidden-bite-offline-v4';
+const CACHE_NAME = 'forbidden-bite-offline-v5';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
-  '/projects/restaurant-dumpling-game.html'
+  '/projects/restaurant-dumpling-game.html',
+  '/projects/restaurant-gallery.html',
+  '/projects/restaurant-rooms.html'
 ];
-const CORE_ASSETS = [
-  '/assets/forbidden_bite/avatar-arcade.css?v=12',
-  '/assets/forbidden_bite/avatar-arcade.js?v=12',
-  '/assets/forbidden_bite/order.css?v=checkout-7',
-  '/assets/forbidden_bite/order.js?v=checkout-7',
-  '/assets/forbidden_bite/professional.css?v=21',
-  '/assets/forbidden_bite/professional.css?v=4',
-  '/assets/forbidden_bite/fun.css?v=fun-12',
-  '/assets/forbidden_bite/fun.js?v=fun-3',
-  '/assets/forbidden_bite/profile.js?v=profile-5',
-  '/assets/forbidden_bite/chefs.js?v=7',
-  '/assets/forbidden_bite/restaurant-music.js?v=1',
-  '/assets/forbidden_bite/restaurant-music.css?v=1',
-  '/assets/forbidden_bite/kids-menu.js?v=2',
-  '/assets/forbidden_bite/recipe-school.css?v=7',
-  '/assets/forbidden_bite/recipe-school.js?v=7',
-  '/assets/forbidden_bite/dish-vote.js?v=1',
-  '/assets/forbidden_bite/menu-language.js?v=1',
-  '/assets/forbidden_bite/menu.json',
-  '/assets/forbidden_bite/recipe-book-cover-ai.webp',
-  '/assets/forbidden_bite/flavor-map-ai.webp',
-  '/assets/forbidden_bite/arcade-noodle-mountain.webp',
-  '/assets/forbidden_bite/arcade-dish-garden.webp',
-  '/assets/forbidden_bite/arcade-roadster-mountains.webp',
-  '/assets/forbidden_bite/arcade-trail-garden.webp',
-  '/assets/forbidden_bite/arcade-ace-festival.webp',
-  '/assets/forbidden_bite/arcade-racer-jade.png',
-  '/assets/forbidden_bite/arcade-racer-red.png',
-  '/assets/forbidden_bite/arcade-truck-gold.png',
-  '/assets/forbidden_bite/arcade-truck-cream.png',
-  '/assets/forbidden_bite/arcade-boss-atlas-ai.png?v=1',
-  '/assets/forbidden_bite/dumpling-dash-mountain-ai.png?v=1',
-  '/assets/forbidden_bite/arcade-flavor-star.webp',
-  ...Array.from({length:16},(_,i)=>`/assets/forbidden_bite/arcade-dish-${String(i+1).padStart(2,'0')}.webp`),
-  '/assets/forbidden_bite/arcade-food-noodles.webp',
-  '/assets/forbidden_bite/arcade-food-bok-choy.webp',
-  '/assets/forbidden_bite/arcade-food-chicken.webp',
-  '/assets/forbidden_bite/arcade-food-carrot.webp',
-  '/assets/forbidden_bite/arcade-food-mushroom.webp',
-  '/assets/forbidden_bite/arcade-food-chili.webp'
-];
+
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    for (const url of [...SHELL,...CORE_ASSETS]) {
+    await Promise.all(SHELL.map(async url => {
       try {
-        const response = await fetch(url,{cache:'reload'});
-        if (response.ok) await cache.put(url,response.clone());
+        const response = await fetch(url, {cache: 'reload', signal: AbortSignal.timeout(5000)});
+        if (response.ok) await cache.put(url, response);
       } catch {}
-    }
+    }));
     await self.skipWaiting();
   })());
 });
+
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith('forbidden-bite-offline-') && key !== CACHE_NAME).map(key => caches.delete(key)));
+    await Promise.all(keys
+      .filter(key => key.startsWith('forbidden-bite-offline-') && key !== CACHE_NAME)
+      .map(key => caches.delete(key)));
     await self.clients.claim();
   })());
 });
+
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
   if (request.mode === 'navigate') {
+    const network = fetch(request).then(async response => {
+      if (response.ok) {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(request, response.clone());
+      }
+      return response;
+    });
+    event.waitUntil(network.then(() => undefined).catch(() => undefined));
     event.respondWith((async () => {
       const cache = await caches.open(CACHE_NAME);
-      try {
-        const response = await fetch(request);
-        if (response.ok) await cache.put(request,response.clone());
-        return response;
-      } catch {
-        return await cache.match(request,{ignoreSearch:true}) || await cache.match('/projects/restaurant-arcade.html') || Response.error();
-      }
+      const cached = await cache.match(request, {ignoreSearch: true});
+      if (cached) return cached;
+      try { return await network; }
+      catch { return await cache.match('/projects/restaurant.html') || Response.error(); }
     })());
     return;
   }
   event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
-    const cached = await cache.match(request,{ignoreSearch:true});
+    const cached = await cache.match(request, {ignoreSearch: true});
     if (cached) return cached;
     try {
       const response = await fetch(request);
-      if (response.ok) await cache.put(request,response.clone());
+      if (response.ok) await cache.put(request, response.clone());
       return response;
     } catch { return Response.error(); }
   })());
