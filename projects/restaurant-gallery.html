@@ -56,6 +56,8 @@
       'Pork & Chive Dumplings','Silken Path (Vegan)','Wolfberry Chrysanthemum Tea','Red Moon Ice Cream'
     ];
     const gallery=document.getElementById('dish-gallery');
+    const galleryDisclosure=document.getElementById('gallery-disclosure');
+    if(location.hash==='#gallery-disclosure'&&galleryDisclosure){galleryDisclosure.open=true;requestAnimationFrame(()=>galleryDisclosure.scrollIntoView({block:'start'}))}
     const dialog=document.getElementById('dish-dialog');
     const dialogPhoto=document.getElementById('dialog-photo');
     const galleryImage=new Image();
