@@ -56,6 +56,34 @@ body.is-game-fullscreen .arcade-stage{background:radial-gradient(ellipse at 18% 
 .avatar-arcade-page .mode-card[data-mode="roadster"]{background-image:url('/assets/forbidden_bite/arcade-roadster-mountains.webp')}
 .avatar-arcade-page .mode-card[data-mode="trailblazer"]{background-image:url('/assets/forbidden_bite/arcade-trail-garden.webp')}
 .avatar-arcade-page .mode-card[data-mode="ace"]{background-image:url('/assets/forbidden_bite/arcade-ace-festival.webp')}
+
+/* Arcade polish pass: clearer controls, stronger game state cues, and better small-screen framing. */
+.avatar-arcade-page .mode-card{min-height:118px;border-width:1px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,filter .2s ease}
+.avatar-arcade-page .mode-card:active{transform:scale(.985)}
+.avatar-arcade-page .mode-card:focus-visible{outline:3px solid #ffe47a;outline-offset:3px}
+.avatar-arcade-page .mode-card.is-selected .mode-icon{transform:scale(1.06);box-shadow:0 0 0 3px #ffe16a40,0 8px 20px #06160b80}
+.avatar-arcade-page .mode-icon{transition:transform .22s ease,box-shadow .22s ease}
+.avatar-arcade-page .game-rule{padding:.55rem .75rem;border-left:3px solid #f0c84d;border-radius:0 9px 9px 0;background:#ffffff0b;color:#f6efd9;line-height:1.55}
+.avatar-arcade-page .stage-stats div{min-height:58px;align-content:center;border-color:#ffffff32;background:linear-gradient(145deg,#ffffff19,#071a102e);box-shadow:inset 0 1px #ffffff14,0 5px 14px #07180d42}
+.avatar-arcade-page .stage-stats span{color:#ffe37a;font-size:.58rem}
+.avatar-arcade-page .stage-stats strong{color:#fffdf4;font-size:1rem;line-height:1.25;overflow-wrap:anywhere}
+.avatar-arcade-page .stage-actions{flex-wrap:wrap}
+.avatar-arcade-page .exit-fullscreen,.avatar-arcade-page .exit-game{min-height:44px;padding:.55rem .78rem;font-size:.72rem}
+.avatar-arcade-page .power-button,.avatar-arcade-page .restart-button,.avatar-arcade-page .power-select-wrap select{min-height:44px}
+.avatar-arcade-page .power-button:not(:disabled){border-color:#ffe275;background:linear-gradient(145deg,#fff1b1,#e2bc45);box-shadow:0 5px 15px #07180b66;color:#173c2b}
+.avatar-arcade-page .arena-wrap{isolation:isolate;background:linear-gradient(145deg,#143e2b,#102d24);box-shadow:0 0 0 4px #fff1,0 18px 48px #03160db3,inset 0 1px #ffffff40}
+.avatar-arcade-page .arena-wrap::after{position:absolute;inset:0;z-index:1;border:1px solid #fff2;border-radius:inherit;content:"";pointer-events:none}
+.avatar-arcade-page .arena-wrap canvas{position:relative;z-index:0}
+.avatar-arcade-page .arcade-stage[data-boss="true"] .arena-wrap{border-color:#ee7562;box-shadow:0 0 0 4px #ee75622b,0 0 34px #d7433544,0 18px 48px #03160db3}
+.avatar-arcade-page .arcade-stage[data-boss="true"] .stage-head .arcade-kicker{color:#ffab8e}
+.avatar-arcade-page .arcade-stage[data-boss="true"] .stage-stats div{border-color:#ef94715c}
+.avatar-arcade-page .stage-overlay{z-index:2;padding:clamp(.55rem,3vw,1.5rem)}
+.avatar-arcade-page .overlay-card{max-height:100%;overflow:auto;overscroll-behavior:contain}
+.avatar-arcade-page .overlay-card .arcade-button{min-height:48px}
+.avatar-arcade-page .roadster-steering button{min-width:48px;min-height:48px}
+@media(max-width:760px){.avatar-arcade-page .mode-card{min-height:102px}.avatar-arcade-page .stage-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}.avatar-arcade-page .stage-head>div:first-child{min-width:0}.avatar-arcade-page .stage-actions{grid-column:2;grid-row:1}.avatar-arcade-page .stage-stats{grid-column:1/-1}.avatar-arcade-page .stage-actions button{min-height:42px}.avatar-arcade-page .arena-wrap::after{border-radius:10px}}
+@media(max-width:760px) and (orientation:landscape){body.is-game-fullscreen .arcade-stage{grid-template-rows:auto minmax(0,1fr) auto auto;gap:.35rem;padding:max(.35rem,env(safe-area-inset-top)) .6rem max(.35rem,env(safe-area-inset-bottom))}body.avatar-arcade-page.is-game-fullscreen .stage-head{grid-template-columns:minmax(115px,.55fr) minmax(250px,1fr) auto;gap:.45rem}body.avatar-arcade-page.is-game-fullscreen .stage-stats{grid-column:auto;grid-template-columns:repeat(4,minmax(50px,1fr));width:auto}body.avatar-arcade-page.is-game-fullscreen .stage-stats div{min-height:42px;padding:.2rem .35rem}body.avatar-arcade-page.is-game-fullscreen .stage-stats span{font-size:.43rem}body.avatar-arcade-page.is-game-fullscreen .stage-stats strong{font-size:.72rem}body.avatar-arcade-page.is-game-fullscreen .stage-controls{padding:.25rem .4rem}body.avatar-arcade-page.is-game-fullscreen .control-copy{flex-basis:160px;font-size:.57rem}}
+@media(prefers-reduced-motion:reduce){.avatar-arcade-page .mode-card,.avatar-arcade-page .mode-icon{transition:none!important}.avatar-arcade-page .mode-card:active,.avatar-arcade-page .mode-card.is-selected .mode-icon{transform:none}}
 .avatar-arcade-page .mode-card.is-selected::after{background:linear-gradient(105deg,#08271fe8,#a43c2c65 95%)}
 .avatar-arcade-page .arena-wrap{background:#204b36 center/cover no-repeat;box-shadow:inset 0 0 0 1px #f8dc7480,0 18px 42px #07180c66}
 .avatar-arcade-page[data-game="noodle"] .arena-wrap{background-image:url('/assets/forbidden_bite/arcade-noodle-mountain.webp')}

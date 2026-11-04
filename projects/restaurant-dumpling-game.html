@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#093d33">
   <title>Dumpling Dash | Forbidden Bite</title>
   <meta name="description" content="Play 100 increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
-  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-15">
+  <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-17">
   <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=25">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
 </head>
@@ -308,7 +308,7 @@
         showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
       };
       function beginLevel(number,freshRun=false){
-        clearTimers();levelNumber=number;levelScore=0;const config=levels[levelNumber-1];timeLeft=config.timeLimit;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;bossHitsLeft=config.bossHits;powerStatus.textContent='';
+        document.body.classList.add('is-dumpling-active');clearTimers();levelNumber=number;levelScore=0;const config=levels[levelNumber-1];timeLeft=config.timeLimit;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;bossHitsLeft=config.bossHits;powerStatus.textContent='';
         decoysHitThisLevel=0;
         if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set();bossStreak=0;lastBossLevel=0}
         if(levelNumber>=5)unlockAchievement('halfway-hero');
@@ -360,6 +360,6 @@
     })();
   </script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=19').catch(()=>{}));}</script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=22').catch(()=>{}));}</script>
 </body>
 </html>

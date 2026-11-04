@@ -181,3 +181,55 @@
 @keyframes target-steam-bob{from{margin-top:2px;filter:drop-shadow(0 3px 5px #39271855)}to{margin-top:-3px;filter:drop-shadow(0 8px 9px #39271844)}}
 @media(max-width:520px){.game-exit{top:.45rem;right:.45rem;min-height:36px;padding:.34rem .55rem;font-size:.64rem}}
 @media(prefers-reduced-motion:reduce){.dumpling-target{animation:none!important}.game-exit{transition:none!important}}
+
+/* Dumpling Dash quality pass: clearer progress, steadier targets, and cleaner responsive framing. */
+.game-page .game-shell{gap:.18rem}
+.game-page .game-top{min-height:44px;margin-bottom:.7rem}
+.game-page .game-label{color:#ffe37a}
+.game-page .game-title{text-shadow:0 8px 30px #041d17a8;letter-spacing:.01em}
+.game-page .game-instructions{max-width:58ch;padding:.55rem .9rem;border:1px solid #f3d77c2e;border-radius:12px;background:#0a302a70;color:#f4f1e5;font-size:.93rem}
+.game-page .game-scorebar{display:grid;width:min(760px,100%);grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:.45rem auto .75rem}
+.game-page .game-stat{display:grid;align-content:center;min-width:0;min-height:68px;padding:.55rem .75rem;border-color:#f0d47c66;border-radius:13px;background:linear-gradient(150deg,#164b38eb,#0d3429eb);box-shadow:0 8px 20px #041b1555,inset 0 1px #ffffff1d}
+.game-page .game-stat span{color:#ffe37a;font-size:.62rem}
+.game-page .game-stat strong{color:#fffdf2;font-size:1.25rem;line-height:1.2}
+.game-page .game-progress{height:12px;border:1px solid #fff5;box-shadow:0 4px 14px #03180f66}
+.game-page .powerup-bar{gap:.5rem;margin-bottom:.65rem}
+.game-page .powerup-button{min-height:44px;padding:.55rem .8rem;border-radius:11px;box-shadow:0 4px 12px #041b1555;transition:transform .16s,box-shadow .16s,filter .16s}
+.game-page .powerup-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px #041b1580}
+.game-page .powerup-button:focus-visible,.game-page .game-primary:focus-visible,.game-page .game-secondary:focus-visible,.game-page .game-exit:focus-visible{outline:3px solid #ffe37a;outline-offset:3px}
+.game-page .game-arena{height:min(58svh,540px);min-height:clamp(270px,40svh,450px);border-width:2px;border-radius:22px;box-shadow:0 24px 70px #03181099,inset 0 0 0 4px #ffffff16}
+.game-page .game-arena::before{filter:saturate(1.12) contrast(1.04)}
+.game-page .game-arena:has(.dumpling-boss)::before{filter:saturate(1.2) contrast(1.08) brightness(.82)}
+.game-page .game-arena:has(.dumpling-boss){border-color:#ef8468;box-shadow:0 0 0 4px #ee756228,0 0 40px #d743354d,0 24px 70px #03181099}
+.game-page .dumpling-target{width:clamp(74px,9vw,92px);height:clamp(74px,9vw,92px);border:2px solid #fff8e8;box-shadow:0 8px 22px #27170e77,0 0 0 4px #f5dea44d;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.game-page .dumpling-target:focus-visible{outline:4px solid #fff1a8;outline-offset:5px}
+.game-page .dumpling-target.dumpling-boss{width:clamp(108px,17vw,160px);height:clamp(108px,17vw,160px);border-width:5px}
+.game-page .dumpling-target.dumpling-decoy{border-color:#f2dac3;background:radial-gradient(circle at 35% 24%,#f7e8da,#986549 78%);box-shadow:0 6px 18px #21130d88}
+.game-page .game-overlay-card{width:min(520px,100%);padding:clamp(1.1rem,4vw,1.8rem);border-radius:22px;background:linear-gradient(150deg,#154d3feF,#09291ff7);box-shadow:0 28px 85px #02110dd9,inset 0 1px #fff4}
+.game-page .achievement-panel,.game-page .collection-panel{width:min(900px,100%);border-color:#f0d47c55;border-radius:16px;background:linear-gradient(145deg,#123d31,#0c3027);box-shadow:0 12px 36px #04170f55}
+.game-page .achievement-card{min-height:70px;border-radius:12px;background:#ffffff0d;transition:transform .18s,border-color .18s,background .18s}
+.game-page .achievement-card.is-unlocked{background:linear-gradient(120deg,#cba94224,#ffffff0b);box-shadow:inset 0 0 18px #e2c45c12}
+.game-page .collection-panel{padding:clamp(.9rem,3vw,1.4rem)}
+.game-page .collection-grid{gap:.65rem}
+.game-page .collection-card{border-radius:13px;box-shadow:0 7px 17px #04170f44}
+.game-page .pack-quantity,.game-page #open-pack,.game-page #claim-daily{min-height:44px;border-radius:11px}
+.game-page .game-exit{min-width:105px;min-height:44px;justify-content:center;border-color:#fff0b6;background:linear-gradient(145deg,#143d32f2,#09291ff2);box-shadow:0 6px 22px #03150f99}
+@media(max-width:620px){.game-page .game-shell{justify-content:flex-start;padding:.75rem .65rem 1.4rem}.game-page .game-scorebar{gap:.35rem}.game-page .game-stat{min-height:58px;padding:.4rem .3rem}.game-page .game-stat span{font-size:.52rem;letter-spacing:.04em}.game-page .game-stat strong{font-size:1.05rem}.game-page .game-arena{height:min(56svh,480px);min-height:260px;border-radius:17px}.game-page .dumpling-target{width:72px;height:72px}.game-page .dumpling-target.dumpling-boss{width:112px;height:112px}.game-page .collection-panel{padding:.75rem}.game-page .achievement-card{min-height:64px}}
+@media(max-width:760px) and (orientation:landscape){.game-page .game-shell{padding:.45rem .65rem 1rem}.game-page .game-title{font-size:2.1rem}.game-page .game-instructions{margin:.15rem auto .4rem;padding:.3rem .65rem;font-size:.76rem}.game-page .game-scorebar{width:min(680px,100%);margin:.2rem auto .45rem}.game-page .game-stat{min-height:48px;padding:.25rem .4rem}.game-page .game-arena{height:66svh;min-height:220px}.game-page .game-progress{margin-bottom:.5rem}}
+@media(prefers-reduced-motion:reduce){.game-page .powerup-button,.game-page .achievement-card{transition:none!important}.game-page .powerup-button:hover:not(:disabled),.game-page .achievement-card:hover{transform:none!important}.game-page .game-arena::before{filter:none!important}}
+/* Keep active play in view on browsers that cannot grant native fullscreen. */
+body.game-page.is-dumpling-active{overflow:hidden}
+body.game-page.is-dumpling-active .game-shell{position:fixed;z-index:50;inset:0;display:grid;width:100vw;height:100vh;height:100dvh;min-height:0;grid-template-rows:auto auto auto auto minmax(0,1fr);align-items:stretch;justify-items:stretch;gap:.4rem;overflow:hidden;padding:max(.45rem,env(safe-area-inset-top)) clamp(.45rem,2vw,1rem) max(.45rem,env(safe-area-inset-bottom));background:radial-gradient(ellipse at 12% 0%,#9f292b37,transparent 34%),radial-gradient(ellipse at 90% 0%,#d4a82e2b,transparent 30%),linear-gradient(145deg,#123f2d,#09291f);text-align:center}
+body.game-page.is-dumpling-active .game-top,body.game-page.is-dumpling-active .game-shell>.game-label,body.game-page.is-dumpling-active .game-title,body.game-page.is-dumpling-active .favorite-display,body.game-page.is-dumpling-active .game-instructions,body.game-page.is-dumpling-active .achievement-panel,body.game-page.is-dumpling-active .collection-panel,body.game-page.is-dumpling-active .game-footer{display:none!important}
+body.game-page.is-dumpling-active .game-scorebar{grid-row:1;width:min(720px,100%);margin:0 auto;gap:.4rem}
+body.game-page.is-dumpling-active .game-stat{min-height:48px;padding:.25rem .45rem}
+body.game-page.is-dumpling-active .game-stat span{font-size:.52rem}
+body.game-page.is-dumpling-active .game-stat strong{font-size:1rem}
+body.game-page.is-dumpling-active .game-progress{grid-row:2;width:min(900px,100%);margin:0 auto}
+body.game-page.is-dumpling-active .powerup-bar{grid-row:3;align-self:center;max-width:100%;margin:0 auto}
+body.game-page.is-dumpling-active .powerup-status{grid-row:4;min-height:1.25em;margin:0 auto;color:#ffe37a;font-size:.75rem}
+body.game-page.is-dumpling-active .game-arena{grid-row:5;width:100%;height:100%;min-height:0;max-height:none;border-radius:18px}
+body.game-page.is-dumpling-active .game-exit{position:absolute;top:max(.55rem,env(safe-area-inset-top));right:max(.55rem,env(safe-area-inset-right));min-width:100px;min-height:44px}
+@media(max-width:520px){body.game-page.is-dumpling-active .game-shell{gap:.3rem;padding:max(.35rem,env(safe-area-inset-top)) .35rem max(.35rem,env(safe-area-inset-bottom))}body.game-page.is-dumpling-active .game-scorebar{gap:.25rem}body.game-page.is-dumpling-active .game-stat{min-height:44px;padding:.2rem .25rem}body.game-page.is-dumpling-active .game-stat span{font-size:.45rem}body.game-page.is-dumpling-active .game-stat strong{font-size:.85rem}body.game-page.is-dumpling-active .powerup-button{min-height:40px;padding:.4rem .55rem;font-size:.7rem}body.game-page.is-dumpling-active .game-arena{border-radius:12px}body.game-page.is-dumpling-active .game-exit{top:max(.4rem,env(safe-area-inset-top));right:max(.4rem,env(safe-area-inset-right));min-width:86px;min-height:40px}}
+@media(max-width:760px) and (orientation:landscape){body.game-page.is-dumpling-active .game-shell{grid-template-rows:auto auto auto minmax(0,1fr);gap:.25rem;padding:max(.25rem,env(safe-area-inset-top)) .45rem max(.25rem,env(safe-area-inset-bottom))}body.game-page.is-dumpling-active .game-scorebar{grid-row:1;max-width:550px}body.game-page.is-dumpling-active .game-stat{min-height:38px}body.game-page.is-dumpling-active .game-progress{grid-row:2}body.game-page.is-dumpling-active .powerup-bar{grid-row:3}body.game-page.is-dumpling-active .powerup-status{display:none}body.game-page.is-dumpling-active .game-arena{grid-row:4}}
+@media(prefers-reduced-motion:reduce){body.game-page.is-dumpling-active .game-shell{scroll-behavior:auto}}
