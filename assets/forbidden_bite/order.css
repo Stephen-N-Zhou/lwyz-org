@@ -126,3 +126,18 @@ dialog.order-celebration::backdrop{background:transparent}
 @media(prefers-reduced-motion:reduce){.order-celebration,.order-celebration-card,.order-celebration-check,.order-celebration-progress,.order-spark,.cart-open-pop,.cart-dialog[open],.order-complete .success-mark,.cart-empty-steam,.cart-line-enter,.dish-dialog[open],.nutrition-details[open] .nutrition-card{animation:none!important;transition:none!important}.order-celebration-card{opacity:1;transform:none}.order-spark{display:none}.tap-glow{animation:none!important;filter:none!important}.cart-open:active,.cart-nav-shortcut:active,.cart-dialog button:active,.restaurant-page .cart-open:hover,.gallery-page .cart-open:hover,.cart-nav-shortcut:hover{transform:none!important}}
 @media(prefers-reduced-motion:reduce){.cart-nav-shortcut{transition:none!important}.cart-nav-shortcut:hover{transform:none}}
 @media print{.cart-open,.cart-nav-shortcut,.cart-dialog,dialog.order-celebration{display:none!important}}
+/* Small, task-specific motion keeps interactive sections lively without distracting from the menu. */
+.builder-choice-pop{animation:builder-choice-pop .55s ease-out;box-shadow:0 0 0 2px #c5a14666!important}
+.builder-price-pop{display:inline-block;animation:builder-price-pop .48s cubic-bezier(.2,.8,.2,1)}
+.builder-preview-pop{animation:builder-preview-pop .48s ease-out}
+.build-own-card{transition:border-color .24s,box-shadow .24s,transform .24s}
+.build-own-card:focus-within{transform:translateY(-2px);border-color:#c5a146;box-shadow:0 12px 30px #17251b12,0 0 0 3px #c5a14620}
+.add-to-cart.cart-added,.fun-button.cart-added{animation:cart-added-pulse .82s cubic-bezier(.2,.8,.2,1)}
+.dish-tile:active{transform:scale(.96);box-shadow:0 0 0 3px #c5a14666}
+.flavor-stop.stamp-pop .stop-icon{animation:stamp-arrives .65s cubic-bezier(.2,.9,.2,1.3)}
+.cart-dialog .checkout-submit:active{box-shadow:0 0 0 4px #c5a14644}
+@keyframes builder-choice-pop{0%{background-color:#fff9df}100%{background-color:transparent}}
+@keyframes builder-price-pop{35%{color:#94711e;transform:translateY(-3px) scale(1.08)}100%{color:inherit;transform:translateY(0) scale(1)}}
+@keyframes builder-preview-pop{0%{opacity:.5;transform:translateY(4px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes stamp-arrives{0%{transform:scale(.6) rotate(-12deg)}65%{transform:scale(1.18) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+@media(prefers-reduced-motion:reduce){.builder-choice-pop,.builder-price-pop,.builder-preview-pop,.flavor-stop.stamp-pop .stop-icon,.add-to-cart.cart-added,.fun-button.cart-added{animation:none!important}.build-own-card{transition:none!important}.build-own-card:focus-within{transform:none;box-shadow:0 0 0 2px #c5a14655}.dish-tile:active{transform:none}}

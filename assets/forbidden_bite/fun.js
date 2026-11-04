@@ -9,6 +9,7 @@
   ];
   const columnCuts=[[0,177],[183,362],[367,549],[553,726]];
   const rowCuts=[[0,162],[165,329],[332,494],[497,662],[666,830],[833,1003],[1006,1178],[1181,1370],[1373,1550],[1554,1738],[1741,1928],[1931,2167]];
+  const replay=(element,className)=>{if(!element)return;element.classList.remove(className);void element.offsetWidth;element.classList.add(className);setTimeout(()=>element.classList.remove(className),700)};
   const image=new Image();image.src='/assets/forbidden_bite/menu-lite.webp?v=lite-2';
   const menuPromise=fetch('/assets/forbidden_bite/menu.json').then(r=>{if(!r.ok)throw Error('Menu unavailable');return r.json()});
   const menuIndexName={'Mini Noodles':'Mini Noodle Bowl'};
@@ -56,7 +57,7 @@
         const selectedProteins=[...soupForm.querySelectorAll('input[name="protein"]:checked')];
         if(selectedProteins.length>2){event.target.checked=false;document.getElementById('soup-error').textContent='Choose up to two meats or proteins.';document.getElementById('soup-error').hidden=false;setTimeout(()=>{document.getElementById('soup-error').hidden=true},2400)}
       }
-      updateSoup();
+      updateSoup();replay(event.target.closest('label'),'builder-choice-pop');replay(document.getElementById('soup-total'),'builder-price-pop');replay(document.getElementById('soup-preview'),'builder-preview-pop');
     });
     soupForm.addEventListener('submit',event=>{
       event.preventDefault();const bowl=updateSoup();
@@ -72,11 +73,12 @@
     const update=()=>{
       const selects=[...form.querySelectorAll('select')],chosenOptions=selects.map(select=>({name:select.selectedOptions[0].textContent.replace(/\s*·\s*\$\d+(?:\.\d{1,2})?.*$/,''),price:Number(select.selectedOptions[0].dataset.price||0)})),checked=[...form.querySelectorAll('input[type="checkbox"]:checked')],extras=checked.map(input=>({name:input.value,price:Number(input.dataset.price||0)})),items=[...chosenOptions,...extras],total=Math.round((Number(form.dataset.basePrice||0)+items.reduce((sum,item)=>sum+item.price,0))*100)/100;
       priceOutput.textContent=`$${total.toFixed(2)}`;preview.textContent=items.map(item=>item.name).join(' · ');add.firstChild.textContent=`${buttonLabel} · `;
+      if(form.dataset.ready==='true'){replay(priceOutput,'builder-price-pop');replay(preview,'builder-preview-pop')}
       return {items,total};
     };
-    form.addEventListener('change',update);form.addEventListener('input',update);
+    form.addEventListener('change',event=>{replay(event.target.closest('label'),'builder-choice-pop');update()});form.addEventListener('input',update);
     add.addEventListener('click',()=>{const {items,total}=update();add.dataset.orderItem=JSON.stringify({name:`${form.dataset.builderName} — ${items.map(item=>item.name).join('; ')}`,price:total})});
-    update();
+    update();form.dataset.ready='true';
   });
   (function setupDishPassport(){
     const storageKey='forbidden-bite-dish-passport-v1',buttons=[...document.querySelectorAll('[data-passport-dish]')],status=document.getElementById('passport-progress'),reset=document.getElementById('passport-reset');
