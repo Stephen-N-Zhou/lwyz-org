@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v25';
+const CACHE_NAME = 'forbidden-bite-offline-v26';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -10,10 +10,13 @@ const SHELL = [
 const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/avatar-arcade.css',
   '/assets/forbidden_bite/avatar-arcade.js',
+  '/assets/forbidden_bite/game-world.js',
   '/assets/forbidden_bite/order.css',
   '/assets/forbidden_bite/order.js',
   '/assets/forbidden_bite/fun.js',
   '/assets/forbidden_bite/fun.css',
+  '/assets/forbidden_bite/professional.css',
+  '/assets/forbidden_bite/dish-info.js',
   '/assets/forbidden_bite/restaurant-music.css',
   '/assets/forbidden_bite/arcade-boss-atlas-ai-lite.webp',
   '/assets/forbidden_bite/arcade-noodle-mountain.webp',
@@ -21,6 +24,9 @@ const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/arcade-roadster-mountains.webp',
   '/assets/forbidden_bite/arcade-trail-garden.webp',
   '/assets/forbidden_bite/arcade-ace-festival.webp',
+  '/assets/forbidden_bite/wok-flyer-art.svg',
+  '/assets/forbidden_bite/lantern-snake-art.svg',
+  '/assets/forbidden_bite/tea-breaker-art.svg',
   '/assets/forbidden_bite/arcade-food-noodles.webp',
   '/assets/forbidden_bite/arcade-food-bok-choy.webp',
   '/assets/forbidden_bite/arcade-food-chicken.webp',

@@ -15,7 +15,9 @@
     ['Fish',/\bfish\b|sea bass|anchov|fish sauce/i],['Peanuts / tree nuts',/peanut|cashew|almond|walnut|chestnut|tree nut/i]
   ];
   const spice = dish => {
-    const text=`${dish.name||''} ${dish.description||''}`.toLowerCase(), options=(dish.options||[]).map(value=>value.toLowerCase()), levels=[];
+    const name=(dish.name||'').toLowerCase(),text=`${name} ${dish.description||''}`.toLowerCase(), options=(dish.options||[]).map(value=>value.toLowerCase()), levels=[];
+    if(/family feast|small bite \+ drink/.test(name)) return 'Varies by selection';
+    if(/dessert|ice cream|panna cotta|mochi|sweet red bean|sparkler|tea|latte|cold brew|soft drink|drink/.test(name)||/ice cream|panna cotta|mochi|sweet red bean/.test(text)) return 'No heat';
     if(options.some(value=>/no chili|no chilli|mild/.test(value))) levels.push('Mild');
     if(options.some(value=>/medium/.test(value))) levels.push('Medium');
     if(options.some(value=>/hot/.test(value))) levels.push('Hot');
