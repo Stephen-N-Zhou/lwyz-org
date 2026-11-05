@@ -788,6 +788,5 @@ body.game-page {
 /* The active Dumpling Dash board uses all remaining live viewport space. */
 body.game-page.is-dumpling-active .game-shell{height:100vh;height:100svh;height:100dvh;min-height:0;grid-template-rows:max-content max-content max-content max-content minmax(0,1fr)}
 body.game-page.is-dumpling-active .game-arena{width:100%;height:100%;min-height:0;max-height:none;margin:0}
-body.game-page.is-dumpling-active .world-weather{position:absolute;inset:0;z-index:1}
 body.game-page.is-dumpling-active .target-layer{z-index:3}
 @media(max-width:760px) and (orientation:landscape){body.game-page.is-dumpling-active .game-shell{grid-template-rows:max-content max-content max-content minmax(0,1fr)}body.game-page.is-dumpling-active .game-scorebar{grid-row:1}body.game-page.is-dumpling-active .game-progress{grid-row:2}body.game-page.is-dumpling-active .powerup-status{display:none}body.game-page.is-dumpling-active .powerup-bar{grid-row:3}body.game-page.is-dumpling-active .game-arena{grid-row:4;height:100%;min-height:0}}
