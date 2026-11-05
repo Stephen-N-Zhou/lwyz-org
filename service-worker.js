@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v32';
+const CACHE_NAME = 'forbidden-bite-offline-v33';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -9,6 +9,8 @@ const SHELL = [
 ];
 const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/avatar-arcade.css',
+  '/assets/forbidden_bite/game-collection.js',
+  '/assets/forbidden_bite/game-collection.css',
   '/assets/forbidden_bite/avatar-arcade.js',
   '/assets/forbidden_bite/game-world.js',
   '/assets/forbidden_bite/order.css',

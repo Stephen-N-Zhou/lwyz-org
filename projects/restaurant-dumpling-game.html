@@ -50,6 +50,7 @@
     </section>
     <p class="game-footer">Catch dumplings, avoid mooncake decoys, and use your power-ups wisely. Your best level and achievements are saved on this device only. Achievements are grouped by difficulty, from easy to very hard. New power-ups unlock as you advance.</p>
   </main>
+  <script src="/assets/forbidden_bite/game-collection.js?v=1"></script>
   <script src="/assets/forbidden_bite/game-world.js?v=2" defer></script>
   <script>
     (()=>{
@@ -294,7 +295,7 @@
         if(levelNumber>bestLevel){bestLevel=levelNumber;bestText.textContent=String(bestLevel);writeBest(bestLevel)}
         if(levelNumber===10)unlockAchievement('feast-champion');
         if(config.boss){bossStreak=levelNumber===lastBossLevel+10?bossStreak+1:1;lastBossLevel=levelNumber;const reward=streakRewards.find(item=>item.streak===bossStreak);if(reward){addBadge(reward.badge);addToCollection(reward.item);collectionStatus.textContent=`${reward.badge.icon} Boss streak reward! ${reward.badge.name} badge and ${reward.item.name}.`}}
-        const rating=roundRating();setCoins(coins+rating.coins);collectionStatus.textContent=`Level ${levelNumber}: ${rating.name} rating — earned ${rating.coins} coin${rating.coins===1?'':'s'}!`;playSound('reward');
+        const rating=roundRating();setCoins(coins+rating.coins);window.ForbiddenBiteCollection?.award(rating.coins,"Dumpling Dash "+rating.name+" level","dash-"+Date.now()+"-"+levelNumber);collectionStatus.textContent=`Level ${levelNumber}: ${rating.name} rating — earned ${rating.coins} dash coin${rating.coins===1?'':'s'} and Bite Points for your avatar collection!`;playSound('reward');
         if(levelNumber===100){
           unlockAchievement('level-100');
           if(config.boss)showBossCollectionChoice(rating);else showOverlay('Feast champion!',`You cleared all 100 levels and scored ${totalScore} points. Your final round earned a ${rating.name} rating and ${rating.coins} coin${rating.coins===1?'':'s'}. The Forbidden Bite kitchen salutes you.`,[makeButton('Play the whole run again','game-primary',()=>beginLevel(1,true)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
@@ -305,7 +306,7 @@
         }
       };
       const finishAttempt=()=>{
-        running=false;clearTimers();targetLayer.replaceChildren();bossStreak=0;lastBossLevel=0;
+        running=false;clearTimers();targetLayer.replaceChildren();bossStreak=0;lastBossLevel=0;window.ForbiddenBiteCollection?.award(1,"Dumpling Dash played","dash-attempt-"+Date.now());
         showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
       };
       function beginLevel(number,freshRun=false){
@@ -361,6 +362,6 @@
     })();
   </script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=33').catch(()=>{}));}</script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=34').catch(()=>{}));}</script>
 </body>
 </html>

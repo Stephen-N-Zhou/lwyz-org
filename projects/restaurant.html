@@ -13,6 +13,7 @@
   <meta property="og:url" content="https://www.lwyz.org/projects/restaurant.html">
   <link rel="stylesheet" href="/assets/forbidden_bite/order.css?v=checkout-15">
   <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-18">
+  <link rel="stylesheet" href="/assets/forbidden_bite/game-collection.css?v=1">
   <style>
     :root{color-scheme:light;--jade:#0d5c4b;--jade-dark:#093d33;--gold:#c5a146;--wine:#741e25;--paper:#faf7f2;--ink:#24231f;--muted:#66645e;--line:#e8e0d3;--white:#fff;--shadow:0 12px 32px #17251b12}
     *{box-sizing:border-box}
@@ -161,8 +162,10 @@
           <div class="profile-rank"><div class="profile-rank-top"><span class="profile-rank-emblem" id="profile-rank-emblem" aria-hidden="true">🥢</span><div><small id="profile-rank-label">LEVEL 1 · NOODLE ROOKIE</small><strong id="profile-rank-title">Your flavor journey begins</strong></div><b id="profile-xp-count">0 flavor points</b></div><div class="profile-xp-track" role="progressbar" aria-label="Progress toward the next flavor level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profile-xp-fill"></span></div><p id="profile-xp-caption">Complete pretend checkouts, reviews, games, and flavor-map stops to earn points and level up.</p></div>
           <div class="profile-stats"><div><strong id="profile-order-count">0</strong><span>pretend checkouts</span></div><div><strong id="profile-review-count">0</strong><span>reviews saved</span></div><div><strong id="profile-achievement-count">0</strong><span>game achievements</span></div></div>
           <div class="profile-badges-block"><h3>Badges you have earned</h3><div class="profile-badges" id="profile-badges" aria-live="polite"></div></div>
-          <div class="profile-avatar-heading"><div><h3>Profile picture avatars</h3><small>These change your profile picture only.</small></div><button type="button" id="profile-refresh" class="profile-refresh">Check for unlocks</button></div>
+          <div class="profile-avatar-heading"><div><h3>Dish avatar collection</h3><small>Play games to earn Bite Points, collect 10 dish avatars, and upgrade each from bronze to silver to gold.</small></div><button type="button" id="profile-refresh" class="profile-refresh">Refresh</button></div>
+          <div class="bite-points-wallet" aria-live="polite"><span aria-hidden="true">🪙</span><strong id="bite-points-count">0 Bite Points</strong><small>Earn points by clearing game levels. Practice rounds don’t count.</small></div>
           <div class="profile-avatar-grid" id="profile-avatar-grid" aria-label="Choose an unlocked profile avatar"></div>
+          <button type="button" id="profile-avatar-upgrade" class="profile-avatar-upgrade">Upgrade selected dish</button>
           <section class="profile-game-launcher" aria-labelledby="profile-game-title"><div class="profile-game-heading"><span aria-hidden="true">🎮</span><div><h3 id="profile-game-title">Choose a game to play</h3><p>Tap a game to open it directly. You can exit at any time.</p></div></div><div class="profile-game-grid"><a class="profile-game-link profile-game-featured" href="/projects/restaurant-dumpling-game.html"><span aria-hidden="true">🥟</span><strong>Go to Dumpling Dash</strong><small>100 levels · collection book</small></a><a class="profile-game-link" href="/projects/restaurant-arcade.html?game=noodle"><span aria-hidden="true">🍜</span><strong>Noodle Pal</strong><small>Catch ingredients</small></a><a class="profile-game-link" href="/projects/restaurant-arcade.html?game=match"><span aria-hidden="true">🧩</span><strong>Dish Match</strong><small>Find the pairs</small></a><a class="profile-game-link" href="/projects/restaurant-arcade.html?game=roadster"><span aria-hidden="true">🏎️</span><strong>Flavor Roadster</strong><small>Race through the lanes</small></a><a class="profile-game-link" href="/projects/restaurant-arcade.html?game=trailblazer"><span aria-hidden="true">🌿</span><strong>Trailblazer</strong><small>Remember the route</small></a><a class="profile-game-link" href="/projects/restaurant-arcade.html?game=ace"><span aria-hidden="true">🌟</span><strong>Arcade Ace</strong><small>Time your strikes</small></a></div></section>
           <p class="profile-note">This profile is a demo: orders are not sent and payments are not taken. Profile details and progress stay in this browser. Reviews appear publicly only if you choose to submit one through the guestbook.</p>
         </article>
@@ -817,13 +820,14 @@
   </script>
   <script src="/assets/forbidden_bite/fun.js?v=fun-5" defer></script>
   <script src="/assets/forbidden_bite/order.js?v=checkout-15" defer></script>
-  <script src="/assets/forbidden_bite/profile.js?v=profile-5" defer></script>
+  <script src="/assets/forbidden_bite/game-collection.js?v=1" defer></script>
+  <script src="/assets/forbidden_bite/profile.js?v=profile-6" defer></script>
   <script src="/assets/forbidden_bite/chefs.js?v=7" defer></script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
   <script src="/assets/forbidden_bite/kids-menu.js?v=2" defer></script>
   <script src="/assets/forbidden_bite/recipe-school.js?v=8" defer></script>
   <script src="/assets/forbidden_bite/dish-vote.js?v=1" defer></script>
   <script src="/assets/forbidden_bite/menu-language.js?v=3" defer></script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=33').catch(()=>{}));}</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=34').catch(()=>{}));}</script>
 </body>
 </html>
