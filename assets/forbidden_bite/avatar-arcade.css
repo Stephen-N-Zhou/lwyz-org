@@ -15,6 +15,8 @@ body.is-game-fullscreen .game-badges{display:none}
 .avatar-arcade-page .mode-card{overflow:hidden}
 .avatar-arcade-page .mode-art{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .25s;mask-image:linear-gradient(100deg,#000 0%,#0009 42%,transparent 88%)}
 .avatar-arcade-page .mode-card:hover .mode-art,.avatar-arcade-page .mode-card.is-selected .mode-art{opacity:.7;transform:scale(1.07)}
+.avatar-arcade-page .mode-card:active,.avatar-arcade-page .stage-controls button:active{transform:translateY(1px) scale(.97);filter:brightness(1.18)}
+.avatar-arcade-page .stage-controls button:focus-visible{outline:3px solid #ffe17b;outline-offset:3px;box-shadow:0 0 22px #ffe17b88}
 .avatar-arcade-page .mode-icon,.avatar-arcade-page .mode-copy,.avatar-arcade-page .difficulty{position:relative;z-index:1}
 .power-quickbar{display:flex;flex:1 1 100%;align-items:stretch;gap:.45rem;min-width:0;overflow-x:auto;padding:.2rem .1rem .4rem;scrollbar-width:thin;scrollbar-color:#d7b75e88 #ffffff0d;overscroll-behavior-inline:contain}
 .power-quick{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.32rem;flex:0 0 auto;min-width:130px;min-height:44px;padding:.4rem .58rem;border:1px solid #c8d7a478;border-radius:12px;background:linear-gradient(145deg,#164c3c,#0b3029);color:#f9f3dc;font:750 .66rem Inter,system-ui,sans-serif;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s,filter .18s;touch-action:manipulation}
