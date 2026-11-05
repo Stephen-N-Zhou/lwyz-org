@@ -100,7 +100,9 @@
   <style>
     .menu-discovery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:.4rem 0 1rem}.discovery-panel{min-width:0;padding:.85rem;border:1px solid #e4dbc8;border-radius:12px;background:linear-gradient(145deg,#fffefa,#f7f1e5)}.discovery-panel h3{margin:0 0 .15rem;color:var(--jade-dark);font:400 1.12rem Marcellus,Georgia,serif}.discovery-panel>p{margin:.1rem 0 .55rem;color:var(--muted);font-size:.7rem}.discovery-dishes{display:flex;gap:.5rem;overflow-x:auto;padding:.12rem .05rem .4rem;scroll-snap-type:x proximity}.discovery-dish{display:grid;align-content:start;gap:.28rem;flex:0 0 min(190px,75vw);padding:.65rem;border:1px solid #e7dfd0;border-radius:9px;background:#fff;box-shadow:0 3px 10px #17251b0b;scroll-snap-align:start}.discovery-dish h4{margin:0;color:#12483d;font:700 .79rem/1.3 Inter,system-ui,sans-serif}.discovery-dish p{margin:0;color:#66645e;font-size:.68rem;line-height:1.4}.discovery-dish .discovery-price{color:#755821;font-size:.72rem;font-weight:850}.discovery-dish button{min-height:34px;padding:.35rem .55rem;border:1px solid #b69547;border-radius:6px;background:#0d5c4b;color:#fff;font:700 .68rem Inter,system-ui,sans-serif;cursor:pointer}.dish-signals{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.05rem}.dish-signal{display:inline-flex;align-items:center;gap:.18rem;padding:.13rem .38rem;border:1px solid #e6decb;border-radius:99px;background:#faf7f0;color:#5f5849;font-size:.64rem;line-height:1.3}.dish-signal.heat-hot{border-color:#e7b2a6;background:#fff0ec;color:#8c342c}.dish-signal.heat-medium{border-color:#e8ce8d;background:#fff8dd;color:#775b15}.dish-signal.heat-mild{border-color:#c8dccb;background:#eef8ef;color:#315c3a}.dish-info-compact{grid-column:1/-1;display:grid;gap:.12rem;padding:.38rem .5rem;border-left:2px solid #c5a146;background:#faf8f2;color:#5f5849;font-size:.64rem;line-height:1.4}.dish-info-panel{display:grid;gap:.38rem;margin:.55rem 0;padding:.65rem;border:1px solid #e7dfd0;border-radius:9px;background:#faf8f2;color:#4d514b;font-size:.84rem;line-height:1.5}.dish-info-row strong{color:#17483b}.dish-info-note{display:block;margin-top:.5rem;color:#725e35;font-size:.73rem;line-height:1.45}.menu-demo-details{margin:.2rem 0 .8rem;border:1px solid #e2d8c5;border-radius:9px;background:#fff}.menu-demo-details summary{padding:.55rem .7rem;color:#17483b;font-size:.75rem;font-weight:750;cursor:pointer}.menu-demo-details p{margin:0;padding:0 .7rem .65rem;color:#66645e;font-size:.7rem;line-height:1.45}.reservation-how{margin:.55rem 0}.reservation-how summary{color:#59481e;font-size:.72rem;font-weight:750;cursor:pointer}.reservation-how p{margin:.3rem 0 0;color:#71654c;font-size:.72rem;line-height:1.4}@media(max-width:680px){.menu-discovery{grid-template-columns:1fr}}
   </style>
-</head>
+<style>
+.quick-thumb-monthly{background:linear-gradient(145deg,#f8ebc9,#d8c47f)}.quick-monthly-icon{font-size:1.5rem;text-shadow:0 1px #fff9}.quick-thumb-secret{background:linear-gradient(145deg,#e8dfc8,#cdb777)}.quick-thumb-secret::before{content:'🔒';font-size:1.35rem}
+</style></head>
 <body class="restaurant-page">
   <a class="skip" href="#main">Skip to content</a>
   <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="/">LWYZ<span>.</span></a><a href="/#projects">Projects</a><button class="cart-nav-shortcut" type="button" data-cart-shortcut><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.5L21 9H7"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>Cart <span class="cart-shortcut-count" data-cart-shortcut-count>0</span></button></nav></header>
@@ -110,7 +112,7 @@
       <a class="quick-jump" href="/projects/restaurant-arcade.html"><span class="quick-thumb"><img class="quick-thumb-contain" src="/assets/forbidden_bite/arcade-racer-jade-lite.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🎮</b></span><span>Avatar arcade</span></a>
       <a class="quick-jump" href="#chef-team"><span class="quick-thumb"><img src="/assets/forbidden_bite/chef-mei-lin.jpg" loading="lazy" decoding="async" alt=""><b aria-hidden="true">👩‍🍳</b></span><span>Meet the chefs</span></a>
       <a class="quick-jump" href="/projects/restaurant-rooms.html"><span class="quick-thumb"><img src="/assets/forbidden_bite/dining-room-01.jpg" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🪑</b></span><span>100 Photos</span></a>
-      <a class="quick-jump" href="#seasonal-menu"><span class="quick-thumb"><img src="/assets/forbidden_bite/recipe-charred-seasonal-greens-01.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🍂</b></span><span>November harvest</span></a>
+      <a class="quick-jump" href="#seasonal-menu"><span class="quick-thumb quick-thumb-monthly"><span class="quick-monthly-icon" id="quick-monthly-icon" aria-hidden="true">🍂</span><b aria-hidden="true">✦</b></span><span id="quick-monthly-label">Monthly specialty</span></a>
       <a class="quick-jump" href="#limited-time-deals"><span class="quick-thumb"><img src="/assets/forbidden_bite/recipe-seafood-boil-01.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">✨</b></span><span>Deals</span></a>
       <a class="quick-jump" href="#prize-spinner"><span class="quick-thumb quick-thumb-wheel"><b aria-hidden="true">🎡</b></span><span>Prize spin</span></a>
       <a class="quick-jump" href="/projects/restaurant-full-menu.html"><span class="quick-thumb"><img class="quick-thumb-contain" src="/assets/forbidden_bite/arcade-dish-11.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🍜</b></span><span>Full menu</span></a>
@@ -122,7 +124,7 @@
       <a class="quick-jump" href="/projects/restaurant-gallery.html#gallery-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/surprise-photo-02.jpg" loading="lazy" decoding="async" alt=""><b aria-hidden="true">📷</b></span><span>Picture menu</span></a>
       <a class="quick-jump" href="#build-your-own-disclosure"><span class="quick-thumb"><img class="quick-thumb-contain" src="/assets/forbidden_bite/arcade-dish-12.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🥢</b></span><span>Build your own</span></a>
       <a class="quick-jump" href="#feast-disclosure"><span class="quick-thumb"><img src="/assets/forbidden_bite/surprise-photo-01.jpg" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🥟</b></span><span>Build a Feast</span></a>
-      <a class="quick-jump" href="#secret-menu"><span class="quick-thumb"><img src="/assets/forbidden_bite/recipe-peking-duck-01.webp" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🔐</b></span><span>Secret menu</span></a>
+      <a class="quick-jump" href="#secret-menu"><span class="quick-thumb quick-thumb-secret"><b aria-hidden="true">🔐</b></span><span>Secret menu</span></a>
       <a class="quick-jump" href="#review-disclosure"><span class="quick-thumb quick-thumb-note"><b aria-hidden="true">💌</b></span><span>Guestbook</span></a>
       <a class="quick-jump" href="#party-options"><span class="quick-thumb"><img src="/assets/forbidden_bite/surprise-photo-25.jpg" loading="lazy" decoding="async" alt=""><b aria-hidden="true">🎂</b></span><span>Party planner</span></a>
     </div></div>
@@ -171,12 +173,12 @@
       </div>
     </section>
     <section class="seasonal-menu" id="seasonal-menu" aria-labelledby="seasonal-menu-title">
-      <div class="seasonal-menu-heading"><div><p class="section-label">Seasonal menu · November 1–30, 2026</p><h2 id="seasonal-menu-title">Forbidden Bite November Harvest</h2><p>A month of roasted harvest flavors, warming broths, crisp bites, and bright fruit.</p></div><span class="pumpkin-mark" aria-hidden="true">🍂</span></div>
+      <div class="seasonal-menu-heading"><div><p class="section-label" id="monthly-menu-kicker">Monthly specialties · refreshed on the first</p><h2 id="seasonal-menu-title">This Month at Forbidden Bite</h2><p id="monthly-menu-intro">New seasonal dishes arrive on the first day of each month.</p></div><span class="pumpkin-mark" id="monthly-menu-mark" aria-hidden="true">🍽️</span></div>
       <div class="seasonal-grid" id="seasonal-menu-grid" aria-live="polite"><p>Preparing the November harvest specials…</p></div>
-      <p class="seasonal-note">Fictional, limited-time menu for the restaurant concept. Sample prices only.</p>
+      <p class="seasonal-note">Fresh for <span id="monthly-menu-month">this month</span> · New specialties arrive <span id="monthly-menu-change-date">on the first</span>. Fictional sample dishes and prices.</p>
     </section>
     <section class="deals" id="limited-time-deals" aria-labelledby="deals-title">
-      <div class="section-head"><div><p class="section-label">Limited-time offers · shareable feasts</p><h2 id="deals-title" class="section-heading">Specials worth gathering for</h2></div><p>Five premium dishes at special concept prices.</p></div>
+      <div class="section-head"><div><p class="section-label" id="limited-edition-kicker">Limited-time edition · refreshed on the first</p><h2 id="deals-title" class="section-heading">This Month’s Featured Feasts</h2></div><p id="limited-edition-note">Four premium dishes, replaced on the first day of each month.</p></div>
       <div id="deal-grid" class="deal-grid" aria-live="polite"><p>Loading limited-time offers…</p></div>
     </section>
     <section class="prize-spinner" id="prize-spinner" aria-labelledby="spinner-title">
@@ -299,15 +301,15 @@
 
     <details class="secret-menu" id="secret-menu">
       <summary>Secret menu</summary>
-      <div class="secret-menu-intro"><h2>Five dishes from the hidden menu</h2><p>Tap a dish to add it to your pretend cart. These secret specials are exclusive to this page.</p></div>
+      <div class="secret-menu-intro"><h2>Five new dishes from the hidden menu</h2><p>Tap a dish to add it to your pretend cart. These fresh secret specials are not on the regular menu.</p></div>
       <div class="secret-menu-grid">
-        <article class="secret-dish"><span class="secret-number">Hidden dish 01</span><h3>Velvet Thunder Noodles</h3><p>Silky black-sesame broth, braised short rib, crisp greens, and a slow-building chili oil finish.</p><span class="secret-price">$23</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Velvet Thunder Noodles","price":23}'>Add to pretend cart</button></article>
-        <article class="secret-dish"><span class="secret-number">Hidden dish 02</span><h3>Moonlit Crystal Dumplings</h3><p>Translucent shrimp dumplings with water chestnut, ginger, and a bright citrus-black-vinegar dip.</p><span class="secret-price">$16</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Moonlit Crystal Dumplings","price":16}'>Add to pretend cart</button></article>
-        <article class="secret-dish"><span class="secret-number">Hidden dish 03</span><h3>Jade Comet Eggplant</h3><p>Charred eggplant with a glossy black-bean glaze, garlic chips, scallions, and fragrant jasmine rice.</p><span class="secret-price">$18</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Jade Comet Eggplant","price":18}'>Add to pretend cart</button></article>
-        <article class="secret-dish"><span class="secret-number">Hidden dish 04</span><h3>Golden Phoenix Bao</h3><p>Crisp duck, pickled daikon, and mango-chili jam tucked into two soft golden bao buns.</p><span class="secret-price">$19</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Golden Phoenix Bao","price":19}'>Add to pretend cart</button></article>
-        <article class="secret-dish"><span class="secret-number">Hidden dish 05</span><h3>Starfall Lychee Cloud</h3><p>Chilled lychee cream, jasmine jelly, and a delicate shower of toasted coconut and gold sugar.</p><span class="secret-price">$10</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Starfall Lychee Cloud","price":10}'>Add to pretend cart</button></article>
+        <article class="secret-dish"><span class="secret-number">Hidden dish 01</span><h3>Ember-Lacquered Beef Noodles</h3><p>Slow-braised short rib, hand-cut wheat noodles, smoky chili-bean broth, and crisp scallions.</p><span class="secret-price">$24</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Ember-Lacquered Beef Noodles","price":24}'>Add to pretend cart</button></article>
+        <article class="secret-dish"><span class="secret-number">Hidden dish 02</span><h3>Lotus Crown Soup Dumplings</h3><p>Steamed pork and ginger soup dumplings with black vinegar, young ginger, and a hint of citrus.</p><span class="secret-price">$17</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Lotus Crown Soup Dumplings","price":17}'>Add to pretend cart</button></article>
+        <article class="secret-dish"><span class="secret-number">Hidden dish 03</span><h3>Five-Spice Crab Bao</h3><p>Two soft bao filled with sweet crab, crunchy cabbage, scallion, and house five-spice sauce.</p><span class="secret-price">$21</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Five-Spice Crab Bao","price":21}'>Add to pretend cart</button></article>
+        <article class="secret-dish"><span class="secret-number">Hidden dish 04</span><h3>Jade Peppercorn Eggplant</h3><p>Fire-charred eggplant with fragrant green peppercorn, garlic, scallions, and jasmine rice.</p><span class="secret-price">$18</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Jade Peppercorn Eggplant","price":18}'>Add to pretend cart</button></article>
+        <article class="secret-dish"><span class="secret-number">Hidden dish 05</span><h3>Longan-Pear Snow Cup</h3><p>Chilled pear, longan, jasmine jelly, and a soft cloud of coconut cream.</p><span class="secret-price">$11</span><br><button class="add-to-cart" type="button" data-order-item='{"name":"Longan-Pear Snow Cup","price":11}'>Add to pretend cart</button></article>
       </div>
-      <p class="secret-menu-note">Fictional secret-menu specials with sample prices. They are not included in the full menu or picture gallery.</p>
+      <p class="secret-menu-note">Fictional secret-menu specials with sample prices. These five are exclusive to the hidden menu.</p>
     </details>
     <section class="build-own-section" id="build-your-own" aria-labelledby="build-own-title">
       <div class="section-head"><div><p class="section-label">Make it your own · demo builders</p><h2 id="build-own-title" class="section-heading">Build your own</h2></div><p>Open only the builder you want. Every button adds a pretend item to the demo cart.</p></div>
@@ -498,6 +500,7 @@
   </main>
   <footer><div class="wrap footer"><p>© LWYZ · Forbidden Bite, a fictional food &amp; design concept</p><a href="/#projects">Back to projects</a></div></footer>
   <script src="/assets/forbidden_bite/dish-info.js?v=2"></script>
+  <script src="/assets/forbidden_bite/monthly-menu.js?v=1"></script>
   <script>
     (function setupPrizeSpinner(){
       const wheel=document.getElementById('prize-wheel'),button=document.getElementById('spin-button'),claim=document.getElementById('spin-claim-button'),result=document.getElementById('spin-result'),history=document.getElementById('spin-history'),remaining=document.getElementById('spin-remaining');
@@ -520,14 +523,17 @@
         window.setTimeout(()=>{isSpinning=false;syncSpinState();result.classList.remove('is-winner');void result.offsetWidth;result.classList.add('is-winner')},reduced?30:5500);
       });
     })();
-    const seasonalDishes=[
-      {name:'Maple Ginger Pumpkin Dumplings',image:'/assets/forbidden_bite/arcade-dish-02.webp',description:'Roasted pumpkin and shiitake folded in golden wrappers with ginger soy dip.',price:14,section:'November Harvest Menu',icon:'🥟',tags:['Vegetarian']},
-      {name:'Cider Braised Pork Noodles',image:'/assets/forbidden_bite/arcade-dish-01.webp',description:'Slow-braised pork, apple cider broth, wheat noodles, greens, and toasted scallion.',price:19,section:'November Harvest Menu',icon:'🍜'},
-      {name:'Chestnut Mushroom Clay Pot',image:'/assets/forbidden_bite/arcade-dish-11.webp',description:'Jasmine rice, roasted chestnuts, shiitake, tofu, and ginger glaze in a sizzling pot.',price:17,section:'November Harvest Menu',icon:'🍚',tags:['Vegetarian']},
-      {name:'Crispy Pear Spring Rolls',image:'/assets/forbidden_bite/arcade-dish-12.webp',description:'Tender pear, cabbage, and warm five-spice in crisp wrappers with plum dip.',price:9,section:'November Harvest Menu',icon:'🍐',tags:['Vegan']},
-      {name:'Pomegranate Lychee Sparkler',image:'/assets/forbidden_bite/arcade-dish-13.webp',description:'Lychee, tart pomegranate, lime, and sparkling water over ice.',price:7,section:'November Harvest Menu',icon:'🥤',tags:['Nonalcoholic']},
-      {name:'Apple Cinnamon Sesame Mochi',image:'/assets/forbidden_bite/arcade-dish-15.webp',description:'Soft matcha mochi with cinnamon apple and a toasted sesame finish.',price:8,section:'November Harvest Menu',icon:'🍡',tags:['Vegetarian']}
-    ];
+    const monthlyMenu=window.ForbiddenBiteMonthlyMenu.current(),seasonalDishes=monthlyMenu.monthlySpecialties;
+    document.getElementById('seasonal-menu-title').textContent=`Forbidden Bite · ${monthlyMenu.title}`;
+    document.getElementById('monthly-menu-kicker').textContent=`Monthly specialties · ${monthlyMenu.monthLabel} 1–${new Date(monthlyMenu.year,new Date().getMonth()+1,0).getDate()}`;
+    document.getElementById('monthly-menu-intro').textContent=monthlyMenu.intro;
+    document.getElementById('monthly-menu-mark').textContent=monthlyMenu.mark;
+    document.getElementById('monthly-menu-month').textContent=monthlyMenu.monthLabel;
+    document.getElementById('monthly-menu-change-date').textContent=monthlyMenu.changeDate;
+    document.getElementById('quick-monthly-label').textContent=`${monthlyMenu.monthLabel} menu`;
+    document.getElementById('quick-monthly-icon').textContent=monthlyMenu.mark;
+    document.getElementById('limited-edition-kicker').textContent=`Limited-time edition · through ${monthlyMenu.changeDate}`;
+    document.getElementById('limited-edition-note').textContent=`${monthlyMenu.limitedTimeDeals.length} premium dishes · refreshed on the first of each month.`;
     const ingredientMatchers={sesame:/sesame/i,soy:/\bsoy\b|\btofu\b/i,shellfish:/\bshrimp\b|\bprawn\w*\b|\bcrab\b|\blobster\b|\bmussel\w*\b|\bseafood\b/i,egg:/\begg\w*\b/i,dairy:/\bmilk\b|\bcream\b|\bbutter\b|\bice cream\b|\bpanna cotta\b/i,wheat:/\bnoodle\w*\b|\budon\b|\bwonton\w*\b|\bdumpling\w*\b|\bbao\b|\bpancake\b|\bbun\w*\b|\bspring roll\w*\b|\bwheat\b/i,nuts:/\bpeanut\w*\b|\bcashew\w*\b|\balmond\w*\b|\bwalnut\w*\b|\btree nut\w*\b/i};
     const menuTypeForSection=name=>({'Small Bites':'small-bites','Noodles':'noodles','Soups':'soups','Rice Bowls':'rice-bowls','Seafood & Sides':'seafood-sides','Kids, Combos & Specials':'kids-combos','Desserts':'desserts','Drinks & Tea':'drinks-tea','Limited-Time Deals':'limited-time'}[name]||'seasonal');
     const spiceLevelsForDish=dish=>{const text=`${dish.name||''} ${dish.description||''}`.toLowerCase(),options=(dish.options||[]).map(value=>value.toLowerCase()),levels=[];if(options.some(value=>/no chili|no chilli|mild/.test(value)))levels.push('mild');if(options.some(value=>/medium/.test(value)))levels.push('medium');if(options.some(value=>/hot/.test(value)))levels.push('hot');if(levels.length)return [...new Set(levels)];if(/ghost pepper|extra hot|very spicy|fiery hot/.test(text))return ['hot'];if(/spicy|chili|chilli|pepper|mapo|dragon fire|hot & sour/.test(text))return ['medium'];return ['mild']};
@@ -613,6 +619,8 @@
         const response=await fetch('/assets/forbidden_bite/menu.json');
         if(!response.ok) throw new Error('Menu data unavailable');
         const menu=await response.json();
+        const limitedSection=menu.sections.find(section=>section.name==='Limited-Time Deals');
+        if(limitedSection){limitedSection.description=`${monthlyMenu.title} · limited run through ${monthlyMenu.changeDate}.`;limitedSection.items=monthlyMenu.limitedTimeDeals;}
         host.replaceChildren();dealHost.replaceChildren();
         for(const section of menu.sections){
           const destination=section.name==='Limited-Time Deals'?dealHost:host;
@@ -816,6 +824,6 @@
   <script src="/assets/forbidden_bite/recipe-school.js?v=8" defer></script>
   <script src="/assets/forbidden_bite/dish-vote.js?v=1" defer></script>
   <script src="/assets/forbidden_bite/menu-language.js?v=3" defer></script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=32').catch(()=>{}));}</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=33').catch(()=>{}));}</script>
 </body>
 </html>
