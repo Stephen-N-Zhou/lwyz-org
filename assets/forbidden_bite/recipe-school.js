@@ -10,6 +10,27 @@
   const tocPageNumber = document.getElementById('recipe-book-page-number');
   const searchInput = document.getElementById('recipe-contents-search');
   if (!choices || !lesson || !cover || !inside) return;
+  const stepDialog=document.createElement('dialog');stepDialog.className='recipe-step-dialog';stepDialog.setAttribute('aria-labelledby','recipe-step-dialog-title');
+  const stepDialogClose=document.createElement('button');stepDialogClose.type='button';stepDialogClose.className='recipe-step-dialog-close';stepDialogClose.textContent='Close';stepDialogClose.setAttribute('aria-label','Close detailed recipe step');
+  const stepDialogBody=document.createElement('div');stepDialogBody.className='recipe-step-dialog-body';stepDialog.append(stepDialogClose,stepDialogBody);document.body.append(stepDialog);
+  stepDialogClose.addEventListener('click',()=>stepDialog.close());stepDialog.addEventListener('click',event=>{if(event.target===stepDialog)stepDialog.close()});
+  function openStepDetails(recipe,step,index,photo){
+    stepDialogBody.replaceChildren();
+    const image=document.createElement('img');image.className='recipe-step-dialog-photo';image.src=photo;image.alt=`${recipe.name}: ${step[0]}`;
+    const copy=document.createElement('div');copy.className='recipe-step-dialog-copy';
+    const kicker=document.createElement('p');kicker.className='recipe-step-dialog-kicker';kicker.textContent=`STEP ${index+1} OF ${recipe.steps.length} · ${recipe.difficulty.toUpperCase()}`;
+    const title=document.createElement('h3');title.id='recipe-step-dialog-title';title.textContent=step[0];
+    const intro=document.createElement('p');intro.className='recipe-step-dialog-intro';intro.textContent=`${recipe.name} · ${recipe.time} · Makes ${recipe.serves}.`;
+    const methodTitle=document.createElement('h4');methodTitle.textContent='Method for this step';
+    const method=document.createElement('p');method.className='recipe-step-dialog-method';method.textContent=step[1];
+    const cue=document.createElement('p');cue.className='recipe-step-dialog-cue';cue.textContent=`Chef’s cue: ${step[2]}`;
+    const checkTitle=document.createElement('h4');checkTitle.textContent='Before you continue';
+    const check=document.createElement('p');check.textContent='Set out the measured ingredients and tools below before heating a pan or pot. Keep raw meat and seafood separate from ready-to-eat foods, wash hands and equipment after handling them, and cook animal proteins through.';
+    const columns=document.createElement('div');columns.className='recipe-step-dialog-lists';
+    [[`Ingredients · ${recipe.serves}`,recipe.ingredients],['Tools and equipment',recipe.tools]].forEach(([headingText,items])=>{const section=document.createElement('section');const heading=document.createElement('h4');heading.textContent=headingText;const list=document.createElement('ul');items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.append(li)});section.append(heading,list);columns.append(section)});
+    copy.append(kicker,title,intro,methodTitle,method,cue,checkTitle,check,columns);stepDialogBody.append(image,copy);
+    if(typeof stepDialog.showModal==='function')stepDialog.showModal();else stepDialog.setAttribute('open','');
+  }
   const recipes = [
     { id:'popcorn', name:'Forbidden Popcorn Chicken', image:'recipe-popcorn-05.webp', time:'30 min · Medium', steps:[['Cut and season','Cut boneless chicken into bite-size pieces. Pat dry and season with five-spice, salt, and white pepper.','Dry chicken helps the coating cling.'],['Coat each piece','Toss with starch until each piece has a thin, even coat. Shake off the extra.','Work in small batches so pieces stay separate.'],['Fry until crisp','Carefully fry in small batches, turning once, until deeply golden and cooked through.','Keep the pan uncrowded so the oil stays hot.'],['Toss with five-spice','Drain briefly, then toss while warm with scallion, chili salt, and a pinch of five-spice.','Season while the crust is warm.'],['Garnish and serve','Pile onto a platter with fresh scallions and chili salt on the side.','Rest for a minute to keep the coating crunchy.']]},
     { id:'pan-seared', name:'Pork & Chive Dumplings', image:'recipe-pan-seared-05.webp', time:'45 min · Medium', steps:[['Prepare the filling','Mix ground pork, chopped chives, ginger, soy, and sesame oil until just sticky.','Cook a small test piece and adjust seasoning.'],['Fill and pleat','Spoon filling into wrappers, fold, then press tidy pleats along the seam.','Keep the wrapper rim clean so it seals.'],['Warm the skillet','Heat a lightly oiled skillet over medium heat. Set dumplings flat-side down with a little space.','A flat base helps each dumpling brown evenly.'],['Sear and steam','Cook until the bottoms are golden. Carefully add a splash of water and cover to steam through.','Keep your hand back from the hot steam.'],['Uncover and serve','Let the last moisture evaporate, then serve crisp-side up with ginger-soy dip.','Check that the filling is cooked through.']]},
@@ -81,6 +102,110 @@
     steps:kitchenSteps[kind].map(([title,action,tip],index)=>[title,`${action} ${description}`,tip])
   }));
   recipes.push(...extras);
+  const recipeDetails = Object.fromEntries([
+    ['popcorn','4 snack servings','1 lb boneless chicken thighs, 1-inch pieces; 1/2 cup cornstarch; 1 tsp five-spice; 3/4 tsp kosher salt; 1/4 tsp white pepper; neutral oil for frying; 2 scallions; chili salt'],
+    ['pan-seared','24 dumplings','12 oz ground pork; 1 cup finely chopped chives; 1 tbsp grated ginger; 1 tbsp soy sauce; 1 tsp sesame oil; 24 round dumpling wrappers; 1 tbsp neutral oil; 1/3 cup water; ginger-soy dip'],
+    ['cucumbers','4 side portions','2 English cucumbers; 1/2 tsp kosher salt; 1 small garlic clove, grated; 1 tbsp rice vinegar; 1 tbsp soy sauce; 1 tsp sesame oil; 1 tsp chili oil, to taste; 1 tsp toasted sesame; 1 scallion'],
+    ['spring-rolls','8 rolls','8 spring-roll wrappers; 2 cups finely shredded cabbage; 1 medium carrot, julienned; 1 cup sliced shiitake; 1 tsp soy sauce; 1 tsp cornstarch mixed with 1 tsp water; neutral oil for frying; sweet chili sauce'],
+    ['scallion-pancake','2 pancakes','2 cups all-purpose flour; 3/4 cup warm water; 1/2 tsp salt; 3 tbsp neutral oil; 4 scallions, thinly sliced; sesame-soy dip'],
+    ['five-spice-wings','4 portions','1 1/2 lb chicken wings; 1 tsp five-spice; 3/4 tsp salt; 1 tbsp neutral oil; 2 scallions; chili or plum dipping sauce'],
+    ['shrimp-toast','12 pieces','8 oz peeled shrimp; 4 slices soft white bread; 1 tsp grated ginger; 1 scallion; 1 egg white; 1/3 cup sesame seeds; 1 tbsp cornstarch; neutral oil for pan-frying; chili dip'],
+    ['seasonal-bao','2 buns','1 cup all-purpose flour; 1 tsp instant yeast; 1 tsp sugar; 1/3 cup warm water; 1 cup chopped seasonal mushrooms and greens; 1 tsp grated ginger; 1 tsp soy sauce; 1 tsp neutral oil'],
+    ['dragon-fire-noodles','2 bowls','8 oz fresh wheat noodles; 8 oz thin-sliced beef; 4 cups beef broth; 1 tbsp soy sauce; 1 to 2 tsp chili oil; 2 cups bok choy; 2 scallions; 1 tsp chili crisp'],
+    ['silken-path','2 bowls','6 oz wheat noodles; 4 oz shiitake mushrooms; 6 oz soft tofu; 3 cups vegetable broth; 2 tbsp sesame paste or tahini; 1 tbsp soy sauce; 1 tsp grated ginger; 2 scallions'],
+    ['golden-chill-udon','2 bowls','12 oz udon noodles; 2 tbsp sesame paste; 1 tbsp soy sauce; 1 tbsp lemon or yuzu juice; 1 tbsp water; 1/2 cucumber; 1 nori sheet; 1 tsp sesame seeds'],
+    ['imperial-hot-sour','4 bowls','6 cups vegetable broth; 8 oz soft tofu; 1 cup sliced shiitake; 1/2 cup bamboo shoots; 1 egg, beaten; 2 tbsp black vinegar; 1 tbsp soy sauce; 1 tsp white pepper; 1 tsp ginger; 2 scallions'],
+    ['spicy-wonton-soup','4 bowls','8 oz ground pork; 20 wonton wrappers; 6 cups chicken broth; 1 tbsp soy sauce; 1 tbsp chili oil, to taste; 1 garlic clove; 1 tsp grated ginger; 2 cups leafy greens; 2 scallions'],
+    ['char-siu-bowl','2 bowls','12 oz pork tenderloin; 2 tbsp soy sauce; 1 tbsp honey; 1 tsp five-spice; 1 garlic clove; 1 cup jasmine rice; 2 cups seasonal greens; 1 tsp sesame seeds'],
+    ['mapo-tofu','3 bowls','14 oz firm tofu; 6 oz ground pork or plant-based mince; 1 tbsp chili-bean paste; 1 tsp grated ginger; 1 garlic clove; 1 cup broth; 1 tsp soy sauce; 2 scallions; 2 cups cooked rice'],
+    ['dragon-beef-bowl','2 bowls','12 oz flank steak, thinly sliced; 1 cup jasmine rice; 1 tbsp soy sauce; 1 tsp cornstarch; 1 tsp grated ginger; 1 garlic clove; 1 cup broccoli; 1 scallion; 1 tsp sesame seeds'],
+    ['garlic-prawns','2 portions','12 oz peeled prawns; 4 garlic cloves, thinly sliced; 1 tbsp neutral oil; 1 tbsp butter; 1 tsp soy sauce; 1 scallion; 1/2 lemon; 1 cup cooked jasmine rice'],
+    ['chili-crab-claws','2 portions','1 1/2 lb crab claws, thawed if frozen; 1 tbsp neutral oil; 2 garlic cloves; 1 tbsp ginger; 2 tbsp chili sauce; 1 tbsp soy sauce; 1 tsp rice vinegar; 2 scallions'],
+    ['ginger-steamed-fish','2 portions','2 white-fish fillets, 5 to 6 oz each; 2 tbsp thin-sliced ginger; 2 scallions; 1 tbsp soy sauce; 1 tsp sesame oil; 1 tbsp neutral oil; 1 cup jasmine rice; 2 cups greens'],
+    ['seafood-fried-rice','3 portions','3 cups cooked chilled jasmine rice; 8 oz mixed shrimp and scallops; 2 eggs; 2 scallions; 1 garlic clove; 1 tbsp soy sauce; 1 tbsp neutral oil; 1 cup peas and diced carrots'],
+    ['charred-seasonal-greens','4 sides','1 lb seasonal greens; 1 tbsp neutral oil; 1 garlic clove; 1 tsp soy sauce; 1 tsp sesame oil; 1 tsp toasted sesame; pinch of salt'],
+    ['sweet-sin','4 portions','1 cup black sesame paste; 3 cups milk or oat milk; 3 tbsp sugar; 2 tbsp cornstarch; 1/4 cup water; 4 sesame wafers'],
+    ['jade-pillows','12 sweets','1 cup glutinous rice flour; 1/2 cup warm water; 1/2 cup sweetened red bean paste; 1/4 cup toasted sesame; 1 tbsp sugar; cornstarch for dusting'],
+    ['seafood-boil','2 to 3 sharing portions','1 lb crab legs; 1 lb shell-on shrimp; 1 lb small potatoes; 2 ears corn, quartered; 4 tbsp butter; 3 garlic cloves; 1 tbsp Old Bay-style seasoning; 1 lemon'],
+    ['peking-duck','4 sharing portions','1 whole 4 to 5 lb duck; 1 tbsp kosher salt; 1 tbsp honey; 1 tbsp rice vinegar; 12 mandarin pancakes; 1 cucumber; 4 scallions; hoisin sauce'],
+    ['empress-comfort','2 bowls','6 oz wheat noodles; 4 cups chicken broth; 8 oz roast pork, sliced; 1/2 cup bamboo shoots; 2 eggs; 1 tbsp soy sauce; 1 tsp ginger; 2 scallions'],
+    ['lotus-root-pork','4 bowls','1 lb pork shoulder, cubed; 1 medium lotus root, sliced; 6 cups chicken broth; 1 tbsp ginger; 2 scallions; 1 tsp salt; 1 tsp white pepper'],
+    ['tofu-seaweed-soup','4 bowls','6 cups light vegetable broth; 10 oz silken tofu, cubed; 1/2 cup dried wakame, rehydrated; 1 tsp grated ginger; 1 tbsp soy sauce; 2 scallions'],
+    ['golden-veggie-bowl','2 bowls','1 cup jasmine rice; 8 oz firm tofu; 2 cups seasonal vegetables; 1 tbsp sesame paste; 1 tbsp soy sauce; 1 tsp rice vinegar; 1 tsp sesame oil; 1 tsp sesame seeds'],
+    ['moonlight-fried-rice','2 portions','2 cups chilled jasmine rice; 2 eggs; 2 scallions; 2 garlic cloves, thinly sliced; 1 tbsp soy sauce; 1 tbsp neutral oil; pinch of white pepper'],
+    ['mini-noodle-bowl','1 bowl','3 oz wheat noodles; 2 cups mild chicken or vegetable broth; 2 oz sliced roast chicken or tofu; 1/2 cup bok choy; 1 scallion; 1 tsp soy sauce'],
+    ['popcorn-chicken-bites','1 child portion','4 oz boneless chicken; 2 tbsp cornstarch; pinch of mild five-spice; pinch of salt; 1 tbsp neutral oil for air-frying or shallow-frying; 1 tbsp mild dip'],
+    ['kids-fried-rice-cup','1 child portion','3/4 cup cooked jasmine rice; 1 egg; 1 tbsp peas and diced carrots; 1 scallion; 1 tsp neutral oil; 1/2 tsp soy sauce'],
+    ['panda-dessert','1 dessert','1 scoop vanilla ice cream; 1 tbsp chocolate sauce; 2 chocolate chips; 1 small cookie for ears; 1 tsp whipped cream'],
+    ['noodle-popcorn-chicken','1 combo','1 small serving wheat noodles; 2 cups mild broth; 3 oz chicken; 1 tbsp cornstarch; 1/2 cup bok choy; 1 scallion; 1 tsp soy sauce'],
+    ['small-bite-drink','1 pairing','1 prepared small-plate dish from the current menu; 1 prepared tea or soft drink from the current menu; optional garnish listed on the selected items'],
+    ['family-feast','4 sharing portions','8 oz dumplings; 2 noodle bowls; 2 cups fried rice; 1 lb shared vegetables or small bites; 2 dipping sauces; scallions and sesame for garnish'],
+    ['emperor-midnight-bowl','2 bowls','6 oz seasonal wheat noodles; 4 cups house broth; 8 oz rotating seasonal protein or tofu; 2 cups seasonal vegetables; 1 tsp chili oil; 2 scallions'],
+    ['red-moon-ice-cream','4 scoops','2 cups heavy cream; 1 cup whole milk; 1/2 cup sweetened red bean paste; 1/3 cup sugar; 1 tsp vanilla; 4 sesame wafers'],
+    ['wolfberry-chrysanthemum-tea','2 mugs','2 tsp dried chrysanthemum flowers; 1 tbsp dried wolfberries; 2 cups hot water; honey to taste; 2 lemon slices, optional'],
+    ['jade-matcha-latte','2 drinks','2 tsp ceremonial or culinary matcha; 2 tbsp hot water; 1 1/2 cups milk or oat milk; 1 to 2 tsp honey; ice, optional'],
+    ['lychee-sparkler','2 glasses','1 cup lychee juice; 1 cup sparkling water, chilled; 1 tbsp lime juice; 1 tsp simple syrup, optional; 1/2 cup lychee fruit; ice'],
+    ['mandarin-blossom-cold-brew','2 glasses','2 tbsp loose jasmine or oolong tea; 2 cups cold water; 1 mandarin, juiced; 1 tsp honey, optional; ice'],
+    ['lobster-ginger-hot-pot','3 to 4 sharing portions','1 lobster tail, split; 8 oz shrimp; 6 oz firm tofu; 2 cups napa cabbage; 1 cup sliced mushrooms; 6 cups seafood broth; 2 tbsp ginger; 2 scallions'],
+    ['black-pepper-wagyu-clay-pot','2 portions','10 oz wagyu or well-marbled beef, sliced; 1 cup sliced mushrooms; 1 tbsp coarsely cracked black pepper; 1 tbsp soy sauce; 1 tsp cornstarch; 2 scallions; 1 cup jasmine rice'],
+    ['crispy-whole-sea-bass-feast','3 to 4 sharing portions','1 cleaned whole sea bass, 1 1/2 to 2 lb; 2 tbsp cornstarch; 1 tbsp grated ginger; 2 scallions; 2 tbsp soy sauce; neutral oil for frying; 2 cups jasmine rice; 2 cups seasonal greens'],
+    ['custom-soup-noodles','2 bowls','6 oz noodles; 4 cups chosen broth; 8 oz chosen protein or tofu; 2 cups chosen vegetables; 1 to 2 tsp chosen chili oil; 2 selected extras; scallions for garnish'],
+    ['custom-dumplings','20 dumplings','20 dumpling wrappers; 10 oz chosen filling; 1 tsp ginger; 1 scallion; 1 tsp soy sauce; 1 tsp sesame oil; 1/3 cup water for steaming or pan-searing'],
+    ['custom-tea','2 drinks','2 tea bags or 2 tsp loose tea; 2 cups water or milk; 1/2 cup chosen fruit; 1 to 2 tsp chosen sweetener; ice, optional; selected garnish'],
+    ['custom-dessert','2 portions','2 cups chosen dessert base; 1/2 cup chosen fruit or red bean; 2 tbsp chosen sauce; 1/4 cup selected toppings; garnish as desired']
+  ].map(([id,serves,ingredients])=>[id,{serves,ingredients:ingredients.split('; '),tools:({
+    popcorn:'chef knife; cutting board; heavy pot or deep fryer; clip-on thermometer; spider or tongs; wire rack; paper towels',
+    'pan-seared':'mixing bowl; chef knife; cutting board; measuring spoons; skillet with lid; small bowl for dip; spatula',
+    cucumbers:'chef knife; cutting board; flat cleaver or rolling pin; colander; mixing bowl; whisk or fork; serving plate',
+    'spring-rolls':'chef knife; cutting board; skillet or wok; mixing bowl; pastry brush; heavy pot or deep fryer; tongs; wire rack',
+    'scallion-pancake':'mixing bowl; measuring cup; rolling pin; pastry brush; skillet; spatula; chef knife',
+    'five-spice-wings':'sheet pan; wire rack; oven; instant-read thermometer; mixing bowl; tongs; chef knife',
+    'shrimp-toast':'food processor; chef knife; cutting board; mixing bowl; shallow dish; skillet; spatula; wire rack',
+    'seasonal-bao':'mixing bowl; measuring cup; chef knife; cutting board; skillet; parchment squares; steamer basket with lid',
+    'dragon-fire-noodles':'chef knife; cutting board; stockpot; wok or skillet; noodle strainer; ladle; thermometer',
+    'silken-path':'chef knife; cutting board; stockpot; skillet; whisk; saucepan; noodle strainer; ladle',
+    'golden-chill-udon':'stockpot; colander; mixing bowl; whisk; chef knife; cutting board; citrus juicer',
+    'imperial-hot-sour':'chef knife; cutting board; stockpot; mixing bowl; whisk; ladle; thermometer',
+    'spicy-wonton-soup':'mixing bowl; chef knife; cutting board; stockpot; small bowl of water; slotted spoon; ladle',
+    'char-siu-bowl':'mixing bowl; chef knife; cutting board; roasting tray; pastry brush; rice cooker or saucepan; thermometer',
+    'mapo-tofu':'chef knife; cutting board; wok or deep skillet; spatula; saucepan or rice cooker; measuring spoons',
+    'dragon-beef-bowl':'chef knife; cutting board; mixing bowl; wok or skillet; rice cooker; spatula; tongs',
+    'garlic-prawns':'chef knife; cutting board; skillet; tongs; measuring spoons; saucepan or rice cooker',
+    'chili-crab-claws':'chef knife; cutting board; wok with lid; tongs; seafood crackers; serving platter; food thermometer',
+    'ginger-steamed-fish':'steamer with lid; heat-safe plate; chef knife; cutting board; small saucepan; rice cooker; thermometer',
+    'seafood-fried-rice':'wok or large skillet; spatula; chef knife; cutting board; mixing bowl; rice cooker; food thermometer',
+    'charred-seasonal-greens':'chef knife; cutting board; wok or skillet; tongs; small mixing bowl; serving plate',
+    'sweet-sin':'medium saucepan; whisk; measuring cups; small bowls; fine-mesh sieve; refrigerator',
+    'jade-pillows':'mixing bowl; measuring cup; steamer basket; parchment; small saucepan; slotted spoon; tray for dusting',
+    'seafood-boil':'large stockpot; colander; seafood crackers; tongs; heat-safe serving tray; instant-read thermometer',
+    'peking-duck':'roasting rack; roasting pan; oven; instant-read thermometer; small saucepan; chef knife; carving board',
+    'empress-comfort':'chef knife; cutting board; stockpot; noodle strainer; rice cooker; ladle; saucepan for eggs',
+    'lotus-root-pork':'chef knife; cutting board; vegetable brush; stockpot; ladle; tongs',
+    'tofu-seaweed-soup':'chef knife; cutting board; small bowl for soaking seaweed; saucepan; ladle; measuring spoons',
+    'golden-veggie-bowl':'chef knife; cutting board; rice cooker; skillet; mixing bowl; whisk; spatula',
+    'moonlight-fried-rice':'wok or skillet; spatula; chef knife; cutting board; mixing bowl; rice cooker',
+    'mini-noodle-bowl':'small saucepan; chef knife; cutting board; noodle strainer; ladle; small serving bowl',
+    'popcorn-chicken-bites':'chef knife; cutting board; mixing bowl; air fryer or skillet; tongs; instant-read thermometer',
+    'kids-fried-rice-cup':'small wok or skillet; spatula; chef knife; cutting board; small bowl; rice cooker',
+    'panda-dessert':'ice-cream scoop; chilled dessert bowl; small spoon; piping bag or spoon for cream; freezer',
+    'noodle-popcorn-chicken':'chef knife; cutting board; stockpot; skillet or air fryer; noodle strainer; tongs; serving bowl',
+    'small-bite-drink':'serving plate; tea cup or glass; small garnish bowl; serving tray',
+    'family-feast':'stockpot; skillet; steamer; rice cooker; chef knife; cutting board; serving platter; tongs',
+    'emperor-midnight-bowl':'chef knife; cutting board; stockpot; skillet; noodle strainer; ladle; serving bowls',
+    'red-moon-ice-cream':'medium saucepan; whisk; measuring cups; ice-cream maker or freezer-safe container; spatula; scoop',
+    'wolfberry-chrysanthemum-tea':'kettle; teapot with infuser; measuring spoon; tea strainer; mugs',
+    'jade-matcha-latte':'kettle; matcha bowl; bamboo whisk or small whisk; measuring spoon; milk frother; glasses',
+    'lychee-sparkler':'measuring cup; citrus juicer; bar spoon; pitcher; chilled glasses',
+    'mandarin-blossom-cold-brew':'jar with lid; fine-mesh tea strainer; citrus juicer; measuring spoon; refrigerator',
+    'lobster-ginger-hot-pot':'large hot-pot or stockpot; chef knife; cutting board; tongs; ladle; instant-read thermometer; seafood crackers',
+    'black-pepper-wagyu-clay-pot':'chef knife; cutting board; mixing bowl; heavy skillet or clay pot; tongs; rice cooker; thermometer',
+    'crispy-whole-sea-bass-feast':'chef knife; cutting board; heavy pot or deep fryer; thermometer; wire rack; tongs; steamer or rice cooker',
+    'custom-soup-noodles':'chef knife; cutting board; stockpot; skillet; noodle strainer; ladle; two serving bowls',
+    'custom-dumplings':'mixing bowl; chef knife; cutting board; skillet with lid or steamer; small bowl of water; tongs',
+    'custom-tea':'kettle; teapot or shaker; measuring cup; citrus juicer; bar spoon; two glasses',
+    'custom-dessert':'mixing bowl; measuring cups; whisk; small saucepan; dessert cups; refrigerator or freezer'
+  })[id].split('; ')}]));
+  recipes.forEach(recipe=>{const detail=recipeDetails[recipe.id];if(!detail)throw new Error(`Missing ingredient/tool guide for ${recipe.id}`);Object.assign(recipe,detail)});
   const difficultyById = {
     Easy:['cucumbers','silken-path','golden-chill-udon','imperial-hot-sour','garlic-prawns','charred-seasonal-greens','sweet-sin','empress-comfort','tofu-seaweed-soup','golden-veggie-bowl','moonlight-fried-rice','mini-noodle-bowl','popcorn-chicken-bites','kids-fried-rice-cup','panda-dessert','small-bite-drink','red-moon-ice-cream','wolfberry-chrysanthemum-tea','jade-matcha-latte','lychee-sparkler'],
     Medium:['popcorn','pan-seared','spring-rolls','five-spice-wings','shrimp-toast','dragon-fire-noodles','spicy-wonton-soup','char-siu-bowl','mapo-tofu','dragon-beef-bowl','chili-crab-claws','ginger-steamed-fish','seafood-fried-rice','lotus-root-pork','noodle-popcorn-chicken','custom-soup-noodles','custom-dumplings','custom-tea','jade-pillows','mandarin-blossom-cold-brew'],
@@ -116,14 +241,22 @@
     drawStars(savedRating);
     rating.append(ratingLabel,stars,ratingStatus);
     const headSide=document.createElement('div');headSide.className='recipe-page-mark';headSide.append(folio,rating);head.append(titleWrap,headSide);
+    const essentials=document.createElement('section');essentials.className='recipe-essentials';essentials.setAttribute('aria-label',`Ingredients and tools for ${recipe.name}`);
+    const yieldCard=document.createElement('div');yieldCard.className='recipe-yield';const yieldLabel=document.createElement('span');yieldLabel.textContent='MAKES';const yieldValue=document.createElement('strong');yieldValue.textContent=recipe.serves;yieldCard.append(yieldLabel,yieldValue);
+    const ingredientCard=document.createElement('section');ingredientCard.className='recipe-list-card';const ingredientHeading=document.createElement('h4');ingredientHeading.textContent='Ingredients';const ingredients=document.createElement('ul');recipe.ingredients.forEach(item=>{const li=document.createElement('li');li.textContent=item;ingredients.append(li)});ingredientCard.append(ingredientHeading,ingredients);
+    const toolCard=document.createElement('section');toolCard.className='recipe-list-card recipe-tools-card';const toolHeading=document.createElement('h4');toolHeading.textContent='Tools you’ll need';const tools=document.createElement('ul');recipe.tools.forEach(item=>{const li=document.createElement('li');li.textContent=item;tools.append(li)});toolCard.append(toolHeading,tools);
+    essentials.append(yieldCard,ingredientCard,toolCard);lesson.append(essentials);
+    const stepsHeading=document.createElement('h4');stepsHeading.className='recipe-steps-heading';stepsHeading.textContent='The illustrated method · tap any photo for the detailed step';lesson.append(stepsHeading);
     const grid=document.createElement('div');grid.className='recipe-step-grid';
     recipe.steps.forEach((step,index)=>{
       const card=document.createElement('article');card.className='recipe-step-card';
-      const picture=document.createElement('img');picture.className='recipe-step-picture';picture.alt=`AI-generated cooking photo for ${recipe.name}, step ${index+1}: ${step[0]}`;picture.loading='lazy';picture.decoding='async';picture.src=`/assets/forbidden_bite/recipe-${recipe.photoId || recipe.id}-${String(index+1).padStart(2,'0')}.webp`;
+      const photoButton=document.createElement('button');photoButton.type='button';photoButton.className='recipe-step-photo-button';photoButton.setAttribute('aria-label',`Open detailed instructions for ${recipe.name}, step ${index+1}: ${step[0]}`);
+      const picture=document.createElement('img');picture.className='recipe-step-picture';picture.alt=`Tap to read detailed instructions for ${recipe.name}, step ${index+1}: ${step[0]}`;picture.loading='lazy';picture.decoding='async';picture.src=`/assets/forbidden_bite/recipe-${recipe.photoId || recipe.id}-${String(index+1).padStart(2,'0')}.webp`;photoButton.append(picture);
+      const photoHint=document.createElement('span');photoHint.className='recipe-step-photo-hint';photoHint.textContent='Tap photo · full step';photoButton.append(photoHint);photoButton.addEventListener('click',()=>openStepDetails(recipe,step,index,picture.currentSrc||picture.src));
       const copy=document.createElement('div');copy.className='recipe-step-copy';const number=document.createElement('span');number.className='recipe-step-number';number.textContent=`Step ${index+1} of 5`;
-      const heading=document.createElement('h4');heading.textContent=step[0];const text=document.createElement('p');text.textContent=step[1];const tip=document.createElement('small');tip.className='recipe-step-tip';tip.textContent=`Chef’s note · ${step[2]}`;copy.append(number,heading,text,tip);card.append(picture,copy);grid.append(card);
+      const heading=document.createElement('h4');heading.textContent=step[0];const text=document.createElement('p');text.textContent=step[1];const tip=document.createElement('small');tip.className='recipe-step-tip';tip.textContent=`Chef’s note · ${step[2]}`;copy.append(number,heading,text,tip);card.append(photoButton,copy);grid.append(card);
     });
-    lesson.append(head,grid);
+    lesson.prepend(head);lesson.append(grid);
     if (turningPage) {
       turningPage.removeAttribute('id');
       turningPage.classList.add('recipe-page-turner', `turn-${direction}`);
