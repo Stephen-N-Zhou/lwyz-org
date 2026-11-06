@@ -9,9 +9,10 @@
     wok: { name: 'Lantern Flight', bpm: 132, root: 196, voice: 'triangle', melody: [0, 4, 7, 12, 9, 12, 7, 4, 2, 7, 11, 14, 12, 9, 7, 2] },
     lantern: { name: 'Jade Garden', bpm: 94, root: 246.94, voice: 'sine', melody: [0, 7, 4, 2, 9, 7, 4, 11, 12, 7, 4, 2, 9, 11, 7, 4] },
     teatoss: { name: 'Tea House Bounce', bpm: 122, root: 220, voice: 'triangle', melody: [0, 7, 12, 9, 7, 4, 9, 12, 2, 9, 14, 12, 7, 4, 11, 7] },
+    sugar: { name: 'Sugar Sprint', bpm: 116, root: 261.63, voice: 'triangle', melody: [0, 4, 7, 12, 9, 7, 12, 16, 14, 12, 9, 7, 4, 9, 7, 0] },
     dumpling: { name: 'Dumpling Dash', bpm: 116, root: 196, voice: 'sine', melody: [0, 4, 7, 9, 12, 9, 7, 4, 2, 7, 9, 14, 12, 9, 7, 2] }
   };
-  const arcadeTheme = { noodle: 'noodle', match: 'match', roadster: 'roadster', trailblazer: 'trailblazer', ace: 'ace', wok: 'wok', lantern: 'lantern', teatoss: 'teatoss' };
+  const arcadeTheme = { noodle: 'noodle', match: 'match', roadster: 'roadster', trailblazer: 'trailblazer', ace: 'ace', wok: 'wok', lantern: 'lantern', teatoss: 'teatoss', sugar: 'sugar' };
   const arcadeThemeFor = game => Object.prototype.hasOwnProperty.call(arcadeTheme, game) ? arcadeTheme[game] : 'noodle';
   const isArcade = document.body.classList.contains('avatar-arcade-page');
   const isDash = document.body.classList.contains('game-page');
@@ -53,7 +54,7 @@
     if (!audio || !enabled) return;
     const theme = themes[arcadeThemeFor(game)];
     const now = audio.currentTime + .015;
-    const motifs = { noodle: [0, 4, 7, 12], match: [0, 7, 12], roadster: [0, 2, 7, 9], trailblazer: [0, 5, 9, 12], ace: [0, 7, 9, 16], wok: [2, 7, 12, 19], lantern: [0, 5, 12, 16], teatoss: [0, 4, 12, 7] };
+    const motifs = { noodle: [0, 4, 7, 12], match: [0, 7, 12], roadster: [0, 2, 7, 9], trailblazer: [0, 5, 9, 12], ace: [0, 7, 9, 16], wok: [2, 7, 12, 19], lantern: [0, 5, 12, 16], teatoss: [0, 4, 12, 7], sugar: [0, 7, 12, 16] };
     const motif = motifs[game] || motifs.noodle;
     const stepsByKind = { start: [motif[0], motif[1]], pickup: [motif.at(-1)], power: motif, gate: [motif[0], motif[1] + 7, motif[2] + 12, motif.at(-1) + 12], hit: [motif[1], 1], boss: [motif[0] + 12, motif[2] + 12, motif.at(-1) + 19], clear: [...motif, motif[0] + 12], record: [...motif, motif.at(-1) + 12] };
     const steps = stepsByKind[kind] || [motif[1]];
@@ -77,7 +78,7 @@
     if (step === 0 || step === 8) {
       [0, 4, 7].forEach((interval, index) => tone(theme.root * Math.pow(2, interval / 12), now, beatSeconds * 3.8, 'sine', .009 - index * .001));
     }
-    if ((themeKey === 'roadster' || themeKey === 'noodle' || themeKey === 'dumpling' || themeKey === 'wok') && step % 4 === 0) tone(95, now, .075, 'sine', .018, 48);
+    if ((themeKey === 'roadster' || themeKey === 'noodle' || themeKey === 'dumpling' || themeKey === 'wok' || themeKey === 'sugar') && step % 4 === 0) tone(95, now, .075, 'sine', .018, 48);
     if (themeKey === 'teatoss' && step % 4 === 2) tone(150, now, .06, 'triangle', .012, 105);
     if (themeKey === 'browse' && step % 4 === 2) tone(theme.root * 2.01, now, .11, 'sine', .009);
     beat++;
