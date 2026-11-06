@@ -223,5 +223,64 @@ body.is-game-fullscreen .game-status{min-width:0;max-width:100%;line-height:1.3}
 @media(max-height:520px) and (orientation:landscape){body.is-game-fullscreen .arcade-stage{grid-template-rows:auto minmax(0,1fr) auto auto;gap:.2rem}body.is-game-fullscreen .stage-stats div{min-height:30px;padding:.08rem .2rem}body.is-game-fullscreen .stage-controls{max-height:16vh;padding:.12rem .25rem}body.is-game-fullscreen .game-status{font-size:.58rem}}
 @media(prefers-reduced-motion:reduce){body.is-game-fullscreen .arcade-stage,body.is-game-fullscreen .arena-wrap{animation:none!important}}
 
+/* Clear mission tracking, compact picture-led tutorials, and per-game identity. */
+.mission-meter{min-width:0;padding:.48rem .68rem;border:1px solid color-mix(in srgb,var(--identity),transparent 44%);border-radius:12px;background:linear-gradient(110deg,color-mix(in srgb,var(--identity),#123b2b 72%),#123b2bd9);box-shadow:inset 0 1px #fff2,0 6px 18px #091c1230}
+.mission-heading{display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:#f7edce;font-size:.64rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.mission-heading strong{color:var(--identity-bright);font-size:.72rem;letter-spacing:0;text-align:right}
+.mission-track{height:8px;margin-top:.35rem;overflow:hidden;border:1px solid #ffffff35;border-radius:999px;background:#071d1688}
+.mission-track span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--identity),var(--identity-bright),var(--identity-green));box-shadow:0 0 12px color-mix(in srgb,var(--identity-bright),transparent 38%);transition:width .24s ease}
+.avatar-arcade-page[data-game="noodle"]{--identity:#d7433d;--identity-bright:#f4ca50;--identity-green:#4ba456}
+.avatar-arcade-page[data-game="match"]{--identity:#3e9b59;--identity-bright:#f2ce55;--identity-green:#c83c3b}
+.avatar-arcade-page[data-game="roadster"]{--identity:#e1b941;--identity-bright:#f5dc72;--identity-green:#36994d}
+.avatar-arcade-page[data-game="trailblazer"]{--identity:#388e4d;--identity-bright:#f1ca50;--identity-green:#c33939}
+.avatar-arcade-page[data-game="ace"]{--identity:#c83c3b;--identity-bright:#f3cb4d;--identity-green:#448f4f}
+.avatar-arcade-page[data-game="wok"]{--identity:#c6383c;--identity-bright:#f4c847;--identity-green:#3d9651}
+.avatar-arcade-page[data-game="lantern"]{--identity:#348e4d;--identity-bright:#f0c94b;--identity-green:#ca3b3c}
+.avatar-arcade-page[data-game="teatoss"]{--identity:#dfb937;--identity-bright:#f5d96b;--identity-green:#378d4c}
+.avatar-arcade-page[data-game] .arcade-stage{border-color:color-mix(in srgb,var(--identity),transparent 56%);background-image:radial-gradient(ellipse at 10% 0%,color-mix(in srgb,var(--identity),transparent 83%),transparent 42%),radial-gradient(ellipse at 95% 100%,color-mix(in srgb,var(--identity-green),transparent 87%),transparent 45%),linear-gradient(145deg,#174b35f2,#0d3026ee)}
+.avatar-arcade-page[data-game] .overlay-card{border-color:color-mix(in srgb,var(--identity-bright),transparent 30%)}
+.avatar-arcade-page[data-game] .overlay-icon{border-color:color-mix(in srgb,var(--identity-bright),transparent 16%);background:linear-gradient(145deg,color-mix(in srgb,var(--identity),#18462f 44%),color-mix(in srgb,var(--identity-green),#123b2c 40%))}
+.avatar-arcade-page .stage-head h2{color:var(--identity-bright);text-shadow:0 2px 12px color-mix(in srgb,var(--identity),transparent 55%)}
+.avatar-arcade-page .game-rule{border-left-color:var(--identity);box-shadow:inset 3px 0 var(--identity-green)}
+.avatar-arcade-page .stage-stats div{border-color:color-mix(in srgb,var(--identity),transparent 68%)}
+.avatar-arcade-page .power-quick{border-color:color-mix(in srgb,var(--identity-bright),transparent 42%);background:linear-gradient(145deg,color-mix(in srgb,var(--identity),#214b36 35%),#173b2b)}
+.avatar-arcade-page .power-quick.is-selected{border-color:var(--identity-bright);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--identity-bright),transparent 45%),0 0 12px color-mix(in srgb,var(--identity),transparent 56%)}
+.avatar-arcade-page .power-quick b{background:var(--identity-bright);color:#28412d}
+.avatar-arcade-page .flap-control,.avatar-arcade-page .snake-pad button{border-color:color-mix(in srgb,var(--identity-bright),white 18%);background:linear-gradient(145deg,var(--identity-bright),var(--identity-green));box-shadow:0 4px 13px color-mix(in srgb,var(--identity),transparent 55%)}
+.avatar-arcade-page .stage-controls .arcade-button,.avatar-arcade-page .power-button:not(:disabled){border-color:var(--identity-bright);background:linear-gradient(145deg,var(--identity-bright),color-mix(in srgb,var(--identity),#d6b35b 42%))}
+.picture-tutorials{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.48rem;margin:.45rem 0 .7rem}
+.picture-step{min-width:0;overflow:hidden;border:1px solid #e3cf8c55;border-radius:12px;background:linear-gradient(145deg,#fff8e7,#efe3bf);box-shadow:0 5px 13px #09251e18}
+.picture-step{transition:transform .18s ease,box-shadow .18s ease}
+.picture-step:hover{transform:translateY(-2px);box-shadow:0 9px 19px #09251e2d}
+.picture-step-art{display:grid;place-items:center;min-height:76px;background:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--identity-bright),transparent 25%),transparent 72%),linear-gradient(125deg,color-mix(in srgb,var(--identity),#fff 14%),color-mix(in srgb,var(--identity-green),#fff 20%));font-size:clamp(1.75rem,4.4vw,2.5rem);letter-spacing:.05em;text-shadow:0 3px 0 #152b2738,0 6px 12px #152b2730}
+.picture-step:nth-child(2) .picture-step-art{background:radial-gradient(ellipse at 50% 0%,#f6d65f99,transparent 72%),linear-gradient(125deg,#bd3939,#d99f37)}
+.picture-step:nth-child(3) .picture-step-art{background:radial-gradient(ellipse at 50% 0%,#f7dc7399,transparent 72%),linear-gradient(125deg,#368b4c,#1e5a3c)}
+.picture-step-label{display:block;padding:.34rem .45rem .42rem;color:#264835;font-size:.67rem;font-weight:850;line-height:1.25;text-align:center}
+.written-tutorial{grid-column:1/-1;margin:.3rem 0 .55rem;color:#e8e0c8}
+.written-tutorial summary{width:max-content;max-width:100%;padding:.32rem .55rem;border:1px solid #d8bd5a77;border-radius:9px;background:#fff1c20d;color:#f5dda0;font-size:.69rem;font-weight:800;cursor:pointer}
+.written-tutorial summary:hover,.written-tutorial summary:focus-visible{background:#d3b64226;outline:2px solid #f1d266;outline-offset:2px}
+.written-tutorial ol{margin:.5rem 0;padding-left:1.4rem}
+.written-tutorial li{margin:.3rem 0}
+.tutorial-number{display:inline-grid;place-items:center;width:1.12rem;height:1.12rem;margin-right:.2rem;border-radius:50%;background:var(--identity);color:#fff8df;font-size:.61rem;vertical-align:middle}
+.power-quick{min-width:172px}
+.power-quick .power-description{grid-column:1/-1;display:-webkit-box;max-width:210px;overflow:hidden;color:#eadfbf;font-size:.56rem;font-weight:550;line-height:1.25;text-overflow:ellipsis;white-space:normal;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.power-quick:disabled{filter:saturate(.55);opacity:.64;cursor:not-allowed}
+.power-quick:disabled .power-description{color:#e0d9c6}
+.record-level{display:block;margin-top:.15rem;color:#62715a;font-size:.64rem;font-weight:700}
+.record-chip{transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.record-chip:hover{transform:translateY(-2px);border-color:#dfbd4a;background:#e8c94c24}
+.practice-toggle:focus-within{outline:2px solid #f4d46c;outline-offset:3px}
+body.is-game-fullscreen .arcade-stage{grid-template-rows:auto auto auto minmax(0,1fr) auto auto!important;gap:clamp(.12rem,.48vh,.4rem)!important}
+body.is-game-fullscreen .mission-meter{grid-row:3;padding:.3rem .5rem;border-radius:9px}
+body.is-game-fullscreen .mission-heading{font-size:.57rem}
+body.is-game-fullscreen .mission-heading strong{font-size:.63rem}
+body.is-game-fullscreen .mission-track{height:6px;margin-top:.24rem}
+body.is-game-fullscreen .how-to-play{display:none}
+body.is-game-fullscreen .arena-wrap{grid-row:4}
+body.is-game-fullscreen .stage-controls{grid-row:5}
+body.is-game-fullscreen .game-status{grid-row:6}
+@media(max-width:600px){.picture-tutorials{gap:.28rem}.picture-step-art{min-height:62px}.picture-step-label{padding:.3rem .18rem;font-size:.59rem}.mission-meter{padding:.42rem .52rem}.power-quick{min-width:158px}}
+@media(prefers-reduced-motion:reduce){.mission-track span,.picture-step,.record-chip{transition:none!important}.picture-step:hover,.record-chip:hover{transform:none!important}}
+
 @keyframes power-fired{0%{transform:scale(.88);filter:brightness(1)}45%{transform:scale(1.12);filter:brightness(1.55);box-shadow:0 0 24px #ffdf7c99}100%{transform:scale(1);filter:brightness(1)}}
 @media(prefers-reduced-motion:reduce){.avatar-arcade-page .mode-art{animation:none!important;transition:none!important}}
