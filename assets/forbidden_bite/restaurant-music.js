@@ -10,15 +10,18 @@
     lantern: { name: 'Jade Garden', bpm: 94, root: 246.94, voice: 'sine', melody: [0, 7, 4, 2, 9, 7, 4, 11, 12, 7, 4, 2, 9, 11, 7, 4] },
     teatoss: { name: 'Tea House Bounce', bpm: 122, root: 220, voice: 'triangle', melody: [0, 7, 12, 9, 7, 4, 9, 12, 2, 9, 14, 12, 7, 4, 11, 7] },
     sugar: { name: 'Sugar Sprint', bpm: 116, root: 261.63, voice: 'triangle', melody: [0, 4, 7, 12, 9, 7, 12, 16, 14, 12, 9, 7, 4, 9, 7, 0] },
+    mooncake: { name: 'Mooncake Stack', bpm: 92, root: 220, voice: 'sine', melody: [0, 7, 4, 9, 12, 9, 4, 7, 2, 7, 11, 9, 14, 11, 7, 4] },
     dumpling: { name: 'Dumpling Dash', bpm: 116, root: 196, voice: 'sine', melody: [0, 4, 7, 9, 12, 9, 7, 4, 2, 7, 9, 14, 12, 9, 7, 2] }
   };
-  const arcadeTheme = { noodle: 'noodle', match: 'match', roadster: 'roadster', trailblazer: 'trailblazer', ace: 'ace', wok: 'wok', lantern: 'lantern', teatoss: 'teatoss', sugar: 'sugar' };
+  const arcadeTheme = { noodle: 'noodle', match: 'match', roadster: 'roadster', trailblazer: 'trailblazer', ace: 'ace', wok: 'wok', lantern: 'lantern', teatoss: 'teatoss', sugar: 'sugar', mooncake: 'mooncake' };
   const arcadeThemeFor = game => Object.prototype.hasOwnProperty.call(arcadeTheme, game) ? arcadeTheme[game] : 'noodle';
   const isArcade = document.body.classList.contains('avatar-arcade-page');
   const isDash = document.body.classList.contains('game-page');
   const requestedMode = new URLSearchParams(location.search).get('game');
   let themeKey = isArcade ? arcadeThemeFor(requestedMode) : isDash ? 'dumpling' : 'browse';
+  const soundPreferenceKey='forbidden-bite-arcade-sound-v1';
   let audio, timer, beat = 0, enabled = false;
+  if(isArcade)try{enabled=localStorage.getItem(soundPreferenceKey)==='true'}catch{}
 
   const player = document.createElement('div');
   player.className = 'restaurant-music';
@@ -35,6 +38,7 @@
     toggle.setAttribute('aria-label', enabled ? (isArcade ? 'Pause game soundtrack and sound effects' : 'Pause restaurant music') : (isArcade ? 'Play the game soundtrack and sound effects' : 'Play restaurant music'));
     toggle.title = isArcade ? 'Each arcade game has its own soundtrack and sound effects.' : 'Original Forbidden Bite background music.';
     player.classList.toggle('is-playing', enabled);
+    window.dispatchEvent(new CustomEvent('forbidden-bite:sound-state',{detail:{enabled}}));
   }
   function tone(frequency, start, duration, type, volume, endFrequency = frequency) {
     if (!audio) return;
@@ -54,7 +58,7 @@
     if (!audio || !enabled) return;
     const theme = themes[arcadeThemeFor(game)];
     const now = audio.currentTime + .015;
-    const motifs = { noodle: [0, 4, 7, 12], match: [0, 7, 12], roadster: [0, 2, 7, 9], trailblazer: [0, 5, 9, 12], ace: [0, 7, 9, 16], wok: [2, 7, 12, 19], lantern: [0, 5, 12, 16], teatoss: [0, 4, 12, 7], sugar: [0, 7, 12, 16] };
+    const motifs = { noodle: [0, 4, 7, 12], match: [0, 7, 12], roadster: [0, 2, 7, 9], trailblazer: [0, 5, 9, 12], ace: [0, 7, 9, 16], wok: [2, 7, 12, 19], lantern: [0, 5, 12, 16], teatoss: [0, 4, 12, 7], sugar: [0, 7, 12, 16], mooncake: [0, 4, 9, 14] };
     const motif = motifs[game] || motifs.noodle;
     const stepsByKind = { start: [motif[0], motif[1]], pickup: [motif.at(-1)], power: motif, gate: [motif[0], motif[1] + 7, motif[2] + 12, motif.at(-1) + 12], hit: [motif[1], 1], boss: [motif[0] + 12, motif[2] + 12, motif.at(-1) + 19], clear: [...motif, motif[0] + 12], record: [...motif, motif.at(-1) + 12] };
     const steps = stepsByKind[kind] || [motif[1]];
@@ -92,7 +96,7 @@
       beat = 0;
       playBeat();
       timer = setInterval(playBeat, (60 / themes[themeKey].bpm) * 1000);
-    });
+    }).catch(() => { enabled = false; clearInterval(timer); updateLabel(); });
   }
   function selectTheme(key) {
     if (!themes[key] || key === themeKey) return;
@@ -100,11 +104,14 @@
     updateLabel();
     if (enabled) startMusic();
   }
-  toggle.addEventListener('click', () => {
-    enabled = !enabled;
+  function setSound(value) {
+    enabled = Boolean(value);
+    if(isArcade)try{localStorage.setItem(soundPreferenceKey,String(enabled))}catch{}
     if (enabled) startMusic(); else { clearInterval(timer); audio?.suspend(); }
     updateLabel();
-  });
+  }
+  window.forbiddenBiteSetArcadeSound=value=>{if(isArcade)setSound(value)};
+  toggle.addEventListener('click', () => setSound(!enabled));
   if (isArcade) {
     document.querySelectorAll('.mode-card').forEach(card => card.addEventListener('click', () => selectTheme(arcadeTheme[card.dataset.mode])));
   }

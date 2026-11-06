@@ -313,3 +313,14 @@ body.is-game-fullscreen .game-status{grid-row:6;overflow:hidden;text-overflow:el
 
 @keyframes power-fired{0%{transform:scale(.88);filter:brightness(1)}45%{transform:scale(1.12);filter:brightness(1.55);box-shadow:0 0 24px #ffdf7c99}100%{transform:scale(1);filter:brightness(1)}}
 @media(prefers-reduced-motion:reduce){.avatar-arcade-page .mode-art{animation:none!important;transition:none!important}}
+
+.arcade-preferences{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem 1rem;margin:0 0 1rem;padding:.6rem .8rem;border:1px solid #d9bc5b55;border-radius:12px;background:linear-gradient(100deg,#173f2fe8,#214932d9);color:#f7ebc8;box-shadow:inset 0 1px #fff2}
+.arcade-preferences>strong{margin-right:auto;color:#f1d776;font-size:.76rem;letter-spacing:.04em;text-transform:uppercase}
+.arcade-preferences label{display:flex;align-items:center;gap:.42rem;min-height:34px;padding:.3rem .55rem;border:1px solid #ffffff2c;border-radius:8px;background:#ffffff0c;color:#f8f0d9;font-size:.72rem;font-weight:750;cursor:pointer}
+.arcade-preferences input{width:17px;height:17px;accent-color:#e2bf48}
+.avatar-arcade-page[data-game="mooncake"]{--identity:#c8453d;--identity-bright:#f1cf63;--identity-green:#438e4d}
+.mode-card[data-mode="mooncake"]{--accent:#e8c85b;background-image:linear-gradient(120deg,#173d2bcf,#173d2b74),url('/assets/forbidden_bite/arcade-sugar-rooftops-ai.webp');background-size:cover;background-position:center}
+.avatar-arcade-page .mode-card[data-mode="mooncake"]{background-image:linear-gradient(120deg,#173d2bcf,#173d2b74),url('/assets/forbidden_bite/arcade-sugar-rooftops-ai.webp')}
+body.reduce-arcade-motion .arcade-stage,body.reduce-arcade-motion .arena-wrap,body.reduce-arcade-motion .mode-card,body.reduce-arcade-motion .mode-icon,body.reduce-arcade-motion .picture-step,body.reduce-arcade-motion .record-chip{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce-arcade-motion .mode-card:hover,body.reduce-arcade-motion .mode-card:active,body.reduce-arcade-motion .record-chip:hover,body.reduce-arcade-motion .picture-step:hover{transform:none!important}
+@media(max-width:600px){.arcade-preferences{gap:.4rem;padding:.5rem}.arcade-preferences>strong{flex-basis:100%}.arcade-preferences label{flex:1;justify-content:center}}
