@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v47';
+const CACHE_NAME = 'forbidden-bite-offline-v48';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -9,6 +9,8 @@ const SHELL = [
 ];
 const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/arcade-city-chongqing-night.jpg',
+  '/assets/forbidden_bite/arcade-tutorial-atlas-one.jpg',
+  '/assets/forbidden_bite/arcade-tutorial-atlas-two.jpg',
   '/assets/forbidden_bite/arcade-city-shanghai-park.jpg',
   '/assets/forbidden_bite/arcade-city-street.jpg',
   '/assets/forbidden_bite/arcade-roadster-food-market.jpg',
