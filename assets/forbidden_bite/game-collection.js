@@ -1,16 +1,16 @@
 (()=>{
   const key='forbidden-bite-bite-points-v1', profileKey='forbidden-bite-visitor-profile-v1';
   const dishes=[
-    {id:'dumpling',name:'Golden Dumpling',icon:'🥟',cost:0},
-    {id:'popcorn-chicken',name:'Popcorn Chicken',icon:'🍗',cost:25},
-    {id:'fire-noodles',name:'Dragon Fire Noodles',icon:'🍜',cost:55},
-    {id:'smashed-cucumber',name:'Smashed Cucumber',icon:'🥒',cost:85},
-    {id:'soup-bowl',name:'Cozy Soup Bowl',icon:'🍲',cost:120},
-    {id:'scallion-pancake',name:'Scallion Pancake',icon:'🥞',cost:160},
-    {id:'bao-bun',name:'Jade Bao Bun',icon:'🥮',cost:205},
-    {id:'bubble-tea',name:'Lychee Bubble Tea',icon:'🧋',cost:250},
-    {id:'sesame-mochi',name:'Sesame Mochi',icon:'🍡',cost:300},
-    {id:'seafood-feast',name:'Seafood Feast',icon:'🦐',cost:375}
+    {id:'dumpling',name:'Golden Dumpling',icon:'🥟',cost:0,flavor:'Savory · tender · golden sear'},
+    {id:'popcorn-chicken',name:'Popcorn Chicken',icon:'🍗',cost:25,flavor:'Crispy · peppery · shareable'},
+    {id:'fire-noodles',name:'Dragon Fire Noodles',icon:'🍜',cost:55,flavor:'Spicy · chewy · garlic-rich'},
+    {id:'smashed-cucumber',name:'Smashed Cucumber',icon:'🥒',cost:85,flavor:'Cool · tangy · sesame crunch'},
+    {id:'soup-bowl',name:'Cozy Soup Bowl',icon:'🍲',cost:120,flavor:'Warming · savory · comforting'},
+    {id:'scallion-pancake',name:'Scallion Pancake',icon:'🥞',cost:160,flavor:'Flaky · crisp · scallion-scented'},
+    {id:'bao-bun',name:'Jade Bao Bun',icon:'🥮',cost:205,flavor:'Soft · fragrant · lightly sweet'},
+    {id:'bubble-tea',name:'Lychee Bubble Tea',icon:'🧋',cost:250,flavor:'Juicy · floral · creamy'},
+    {id:'sesame-mochi',name:'Sesame Mochi',icon:'🍡',cost:300,flavor:'Chewy · nutty · sweet'},
+    {id:'seafood-feast',name:'Seafood Feast',icon:'🦐',cost:375,flavor:'Briny · buttery · celebratory'}
   ];
   const read=()=>{try{const x=JSON.parse(localStorage.getItem(key)||'{}');return {points:Math.max(0,Number(x.points)||0),owned:Array.isArray(x.owned)?x.owned:['dumpling'],tiers:x.tiers&&typeof x.tiers==='object'?x.tiers:{},selected:typeof x.selected==='string'?x.selected:'dumpling',runs:x.runs&&typeof x.runs==='object'?x.runs:{}}}catch{return {points:0,owned:['dumpling'],tiers:{},selected:'dumpling',runs:{}}}};
   let state=read(); if(!state.owned.includes('dumpling'))state.owned.unshift('dumpling');
