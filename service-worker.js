@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v36';
+const CACHE_NAME = 'forbidden-bite-offline-v37';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
