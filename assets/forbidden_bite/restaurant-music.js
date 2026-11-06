@@ -55,7 +55,7 @@
     const now = audio.currentTime + .015;
     const motifs = { noodle: [0, 4, 7, 12], match: [0, 7, 12], roadster: [0, 2, 7, 9], trailblazer: [0, 5, 9, 12], ace: [0, 7, 9, 16], wok: [2, 7, 12, 19], lantern: [0, 5, 12, 16], teatoss: [0, 4, 12, 7] };
     const motif = motifs[game] || motifs.noodle;
-    const stepsByKind = { start: [motif[0], motif[1]], pickup: [motif.at(-1)], power: motif, hit: [motif[1], 1], boss: [motif[0] + 12, motif[2] + 12, motif.at(-1) + 19], clear: [...motif, motif[0] + 12], record: [...motif, motif.at(-1) + 12] };
+    const stepsByKind = { start: [motif[0], motif[1]], pickup: [motif.at(-1)], power: motif, gate: [motif[0], motif[1] + 7, motif[2] + 12, motif.at(-1) + 12], hit: [motif[1], 1], boss: [motif[0] + 12, motif[2] + 12, motif.at(-1) + 19], clear: [...motif, motif[0] + 12], record: [...motif, motif.at(-1) + 12] };
     const steps = stepsByKind[kind] || [motif[1]];
     steps.forEach((step, index) => {
       const freq = theme.root * Math.pow(2, step / 12);
