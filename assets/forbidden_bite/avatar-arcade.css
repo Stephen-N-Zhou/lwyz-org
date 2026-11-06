@@ -285,6 +285,29 @@ body.is-game-fullscreen .game-status{grid-row:6}
 @media(max-width:600px){.picture-tutorials{gap:.28rem}.picture-step-art{min-height:62px}.picture-step-label{padding:.3rem .18rem;font-size:.59rem}.mission-meter{padding:.42rem .52rem}.power-quick{min-width:158px}}
 @media(prefers-reduced-motion:reduce){.mission-track span,.picture-step,.record-chip{transition:none!important}.picture-step:hover,.record-chip:hover{transform:none!important}}
 
+/* Fit the complete game UI inside short iPad Safari and split-screen viewports. */
+body.is-game-fullscreen{top:var(--arcade-vtop,0px);right:0;bottom:auto;left:0;height:var(--arcade-vh,100dvh)}
+body.is-game-fullscreen .arcade-stage{top:var(--arcade-vtop,0px);right:0;bottom:auto;left:0;box-sizing:border-box;min-width:0;grid-template-rows:max-content max-content max-content minmax(0,1fr) minmax(42px,min(14dvh,104px)) max-content!important;gap:clamp(.08rem,.35vh,.28rem)!important}
+body.is-game-fullscreen .stage-head,body.is-game-fullscreen .game-rule,body.is-game-fullscreen .mission-meter,body.is-game-fullscreen .arena-wrap,body.is-game-fullscreen .stage-controls,body.is-game-fullscreen .game-status{min-width:0;min-height:0}
+body.is-game-fullscreen .game-rule{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.1}
+body.is-game-fullscreen .mission-meter{grid-row:3}
+body.is-game-fullscreen .arena-wrap{grid-row:4;width:100%;height:100%}
+body.is-game-fullscreen .arena-wrap canvas{width:100%;height:100%;max-width:100%;max-height:100%;aspect-ratio:auto;object-fit:contain}
+body.is-game-fullscreen .stage-controls{grid-row:5;flex-wrap:nowrap;align-items:center;min-height:42px;max-height:min(14dvh,104px);overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;touch-action:pan-x;scrollbar-width:thin}
+body.is-game-fullscreen .control-copy{flex:0 0 auto;max-width:30vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.is-game-fullscreen .power-quick{flex:0 0 144px;min-width:144px}
+body.is-game-fullscreen .game-status{grid-row:6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.05}
+@media(max-height:600px) and (orientation:landscape){
+ body.is-game-fullscreen .arcade-stage{grid-template-rows:max-content max-content minmax(0,1fr) minmax(40px,min(16dvh,58px)) max-content!important;gap:.12rem!important;padding-top:max(.25rem,env(safe-area-inset-top));padding-bottom:max(.25rem,env(safe-area-inset-bottom))}
+ body.is-game-fullscreen .game-rule{display:none}
+ body.is-game-fullscreen .mission-meter{grid-row:2;padding:.18rem .4rem}
+ body.is-game-fullscreen .mission-track{height:4px;margin-top:.12rem}
+ body.is-game-fullscreen .arena-wrap{grid-row:3}
+ body.is-game-fullscreen .stage-controls{grid-row:4;min-height:40px;max-height:min(16dvh,58px);padding:.12rem .25rem}
+ body.is-game-fullscreen .game-status{grid-row:5;font-size:.58rem}
+ body.is-game-fullscreen .stage-stats div{min-height:24px;padding:.08rem .2rem}
+}
+
 .avatar-arcade-page .picture-step-art{height:clamp(100px,11vw,148px);min-height:0;background-repeat:no-repeat;background-size:200% auto;background-color:#173b2b;box-shadow:inset 0 -18px 25px #10251a44}
 @media(max-width:600px){.picture-tutorials{grid-template-columns:repeat(2,minmax(0,1fr))}.picture-step:nth-child(3){grid-column:1/-1;width:calc(50% - .14rem);justify-self:center}.avatar-arcade-page .picture-step-art{height:clamp(82px,28vw,118px)}}
 
