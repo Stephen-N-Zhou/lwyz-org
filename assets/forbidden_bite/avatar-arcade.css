@@ -202,6 +202,10 @@ body.avatar-arcade-page{background:radial-gradient(ellipse at 50% -12%,#4c754d 0
 .avatar-arcade-page[data-game="wok"] .arena-wrap{background-image:linear-gradient(180deg,#30472814,#1b362d55),url('/assets/forbidden_bite/arcade-city-chongqing-night.jpg')}
 .avatar-arcade-page[data-game="lantern"] .arena-wrap{background-image:linear-gradient(180deg,#30472818,#1a382755),url('/assets/forbidden_bite/arcade-city-shanghai-park.jpg')}
 .avatar-arcade-page[data-game="teatoss"] .arena-wrap{background-image:linear-gradient(180deg,#30472818,#1c372a55),url('/assets/forbidden_bite/arcade-city-street.jpg')}
+.avatar-arcade-page[data-game="wok"] .arena-wrap{background-image:linear-gradient(135deg,#d82f3270 0%,#e84b2630 34%,transparent 65%,#e7bd3270 100%),linear-gradient(180deg,#30472810,#1b362d35),url('/assets/forbidden_bite/arcade-city-chongqing-night.jpg');border-color:#ed4941;box-shadow:inset 0 0 55px #c929272e,0 0 0 3px #ed494144,0 16px 38px #0006}
+.avatar-arcade-page[data-game="lantern"] .arena-wrap{background-image:linear-gradient(145deg,#c9353260 0%,transparent 43%,#e5bf3150 72%,#218b4b55 100%),linear-gradient(180deg,#30472810,#1a382735),url('/assets/forbidden_bite/arcade-city-shanghai-park.jpg');border-color:#58a94b;box-shadow:inset 0 0 55px #26853c35,0 0 0 3px #e3c14655,0 16px 38px #0006}
+.avatar-arcade-page[data-game="teatoss"] .arena-wrap{background-image:linear-gradient(135deg,#d9363270 0%,#e7c13d45 48%,transparent 73%,#28864750 100%),linear-gradient(180deg,#30472810,#1c372a35),url('/assets/forbidden_bite/arcade-city-street.jpg');border-color:#e2bd36;box-shadow:inset 0 0 55px #d5a92d30,0 0 0 3px #e2bd3655,0 16px 38px #0006}
+.avatar-arcade-page[data-game="wok"] .arena-wrap canvas,.avatar-arcade-page[data-game="lantern"] .arena-wrap canvas,.avatar-arcade-page[data-game="teatoss"] .arena-wrap canvas{filter:saturate(1.08) contrast(1.035)}
 .avatar-arcade-page[data-game="wok"] .arena-wrap,body.is-game-fullscreen[data-game="lantern"] .arena-wrap,body.is-game-fullscreen[data-game="teatoss"] .arena-wrap{animation:none}
 
 /* Keep the play area inside modern iPad Safari's changing visual viewport. */
