@@ -327,6 +327,6 @@ body.reduce-arcade-motion .mode-card:hover,body.reduce-arcade-motion .mode-card:
 
 /* Keep each selected game's AI scene visible on its picker card and playfield. */
 .avatar-arcade-page .mode-card[data-mode="lantern"]{background-image:linear-gradient(100deg,#102d22c9 0%,#102d2260 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-lantern-snake-ai.webp')!important;background-position:center;background-size:cover}
-.avatar-arcade-page .mode-card[data-mode="sugar"]{background-image:linear-gradient(100deg,#102d22d4 0%,#102d2268 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-sugar-rooftops-ai.webp')!important;background-position:center;background-size:cover}
+.avatar-arcade-page .mode-card[data-mode="sugar"]{background-image:linear-gradient(100deg,#102d22d4 0%,#102d2268 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-sugar-sprint-village-ai.webp')!important;background-position:center;background-size:cover}
 .avatar-arcade-page[data-game="lantern"] .arena-wrap{background-image:linear-gradient(135deg,#173c2b28,#173c2b3a),url('/assets/forbidden_bite/arcade-lantern-snake-ai.webp');background-position:center;background-size:cover}
-.avatar-arcade-page[data-game="sugar"] .arena-wrap{background-image:linear-gradient(135deg,#173c2b20,#173c2b35),url('/assets/forbidden_bite/arcade-sugar-rooftops-ai.webp');background-position:center;background-size:cover}
+.avatar-arcade-page[data-game="sugar"] .arena-wrap{background-image:linear-gradient(135deg,#173c2b20,#173c2b35),url('/assets/forbidden_bite/arcade-sugar-sprint-village-ai.webp');background-position:center;background-size:cover}
