@@ -333,3 +333,16 @@ body.reduce-arcade-motion .mode-card:hover,body.reduce-arcade-motion .mode-card:
 
 /* One-tap endless runs and customizable Dish Match boards. */
 .match-board-wrap{display:grid;gap:.4rem;margin:.2rem 0 .65rem;text-align:left}.match-board-wrap[hidden]{display:none!important}.match-board-wrap label{color:#34583e;font-size:.77rem;font-weight:900}.match-board-wrap select{width:100%;min-height:44px;padding:.65rem .8rem;border:1px solid #cda84f;border-radius:11px;background:#fffaf0;color:#173b2d;font:750 .82rem Inter,system-ui,sans-serif}.match-board-wrap small{color:#647262;font-size:.68rem}.endless-run-button{background:linear-gradient(135deg,#39884e,#1c5b3c);color:#fff8df;border-color:#e2c15b;box-shadow:0 5px 16px #235f3c3b}.endless-run-button:hover{box-shadow:0 7px 20px #235f3c55}.overlay-card #endless-game{margin-bottom:.55rem}.overlay-card #start-game{display:block;width:100%}
+
+/* Clear touch targets for platform play on phones and tablets. */
+body.is-game-fullscreen[data-game="sugar"] .sugar-pad:not([hidden]){position:fixed!important;inset:auto .65rem max(.65rem,env(safe-area-inset-bottom));z-index:999;display:block;height:68px;overflow:visible;border:0;background:transparent;padding:0;pointer-events:none}
+body.is-game-fullscreen[data-game="sugar"] .sugar-pad button{position:absolute;top:0;min-width:68px;min-height:64px;border:2px solid #fff0a6;border-radius:17px;background:linear-gradient(145deg,#bc3935f5,#8e302ef5);box-shadow:0 6px 18px #081a11aa,0 0 0 3px #153b2e88;color:#fff8df;font-size:1.35rem;pointer-events:auto;touch-action:none;-webkit-user-select:none;user-select:none}
+body.is-game-fullscreen[data-game="sugar"] .sugar-pad #sugar-left{left:0}
+body.is-game-fullscreen[data-game="sugar"] .sugar-pad #sugar-right{left:76px}
+body.is-game-fullscreen[data-game="sugar"] .sugar-pad #sugar-jump{right:0;min-width:96px;background:linear-gradient(145deg,#f5d76d,#dda738);color:#183d2e;font-size:.78rem}
+.practice-picker{display:grid;gap:.35rem;margin:.15rem 0 .6rem;text-align:left}
+.practice-picker label{color:#f5df96;font-size:.75rem;font-weight:900}
+.practice-picker select{width:100%;min-height:44px;padding:.6rem .75rem;border:1px solid #dfc45f;border-radius:11px;background:#fff9e7;color:#214632;font:750 .82rem Inter,system-ui,sans-serif}
+.practice-picker small{color:#e4eadb;font-size:.67rem;line-height:1.4}
+.overlay-card .practice-game-button{background:linear-gradient(145deg,#53b879,#2e8652);border-color:#b8ed9a;color:#fffbe9;box-shadow:0 4px 15px #11291a55}
+@media(max-width:430px){.practice-picker{margin:.05rem 0 .35rem}.practice-picker select{min-height:42px}.practice-picker small{font-size:.62rem}}
