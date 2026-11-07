@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v57';
+const CACHE_NAME = 'forbidden-bite-offline-v58';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -11,6 +11,16 @@ const SHELL = [
 const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/arcade-city-chongqing-night.jpg',
   '/assets/forbidden_bite/arcade-tutorial-atlas-one.jpg',
+  '/assets/forbidden_bite/arcade-tutorial-noodle-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-match-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-roadster-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-trailblazer-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-ace-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-wok-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-lantern-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-teatoss-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-sugar-ai.webp',
+  '/assets/forbidden_bite/arcade-tutorial-mooncake-ai.webp',
   '/assets/forbidden_bite/arcade-tutorial-atlas-two.jpg',
   '/assets/forbidden_bite/arcade-lantern-gate-tutorial.jpg',
   '/assets/forbidden_bite/arcade-city-shanghai-park.jpg',
