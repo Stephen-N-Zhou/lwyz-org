@@ -326,10 +326,10 @@ body.reduce-arcade-motion .mode-card:hover,body.reduce-arcade-motion .mode-card:
 @media(max-width:600px){.arcade-preferences{gap:.4rem;padding:.5rem}.arcade-preferences>strong{flex-basis:100%}.arcade-preferences label{flex:1;justify-content:center}}
 
 /* Keep each selected game's AI scene visible on its picker card and playfield. */
-.avatar-arcade-page .mode-card[data-mode="lantern"]{background-image:linear-gradient(100deg,#102d22c9 0%,#102d2260 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-lantern-snake-ai.webp')!important;background-position:center;background-size:cover}
-.avatar-arcade-page .mode-card[data-mode="sugar"]{background-image:linear-gradient(100deg,#102d22d4 0%,#102d2268 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-sugar-sprint-chinese-city-ai.webp?v=1')!important;background-position:center;background-size:cover}
-.avatar-arcade-page[data-game="lantern"] .arena-wrap{background-image:linear-gradient(135deg,#173c2b28,#173c2b3a),url('/assets/forbidden_bite/arcade-lantern-snake-ai.webp');background-position:center;background-size:cover}
-.avatar-arcade-page[data-game="sugar"] .arena-wrap{background-image:linear-gradient(135deg,#173c2b20,#173c2b35),url('/assets/forbidden_bite/arcade-sugar-sprint-chinese-city-ai.webp?v=1');background-position:center;background-size:cover}
+.avatar-arcade-page .mode-card[data-mode="lantern"]{background-image:linear-gradient(100deg,#102d22c9 0%,#102d2260 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-city-shanghai-park.jpg')!important;background-position:center;background-size:cover}
+.avatar-arcade-page .mode-card[data-mode="sugar"]{background-image:linear-gradient(100deg,#102d22d4 0%,#102d2268 60%,#102d2230 100%),url('/assets/forbidden_bite/arcade-sugar-sprint-v2-ai.webp')!important;background-position:center;background-size:cover}
+.avatar-arcade-page[data-game="lantern"] .arena-wrap{background:#164936;background-image:none!important}
+.avatar-arcade-page[data-game="sugar"] .arena-wrap{background:#a9cf82;background-image:none!important}
 
 /* One-tap endless runs and customizable Dish Match boards. */
 .match-board-wrap{display:grid;gap:.4rem;margin:.2rem 0 .65rem;text-align:left}.match-board-wrap[hidden]{display:none!important}.match-board-wrap label{color:#34583e;font-size:.77rem;font-weight:900}.match-board-wrap select{width:100%;min-height:44px;padding:.65rem .8rem;border:1px solid #cda84f;border-radius:11px;background:#fffaf0;color:#173b2d;font:750 .82rem Inter,system-ui,sans-serif}.match-board-wrap small{color:#647262;font-size:.68rem}.endless-run-button{background:linear-gradient(135deg,#39884e,#1c5b3c);color:#fff8df;border-color:#e2c15b;box-shadow:0 5px 16px #235f3c3b}.endless-run-button:hover{box-shadow:0 7px 20px #235f3c55}.overlay-card #endless-game{margin-bottom:.55rem}.overlay-card #start-game{display:block;width:100%}
