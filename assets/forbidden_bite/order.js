@@ -119,7 +119,12 @@
     dialog.querySelector('.discount-row').hidden=!promoApplied;dialog.querySelector('.discount-amount').textContent=`−${money(discount)}`;
     dialog.querySelector('.review-total').textContent=money(Math.max(0,subtotalAmount+(delivery?4.99:0)-discount));
   };
-  const tapTimers=new WeakMap(),activeTapEffects=new WeakMap(),orderTimers=new WeakMap();
+  const tapTimers=new WeakMap(),activeTapEffects=new WeakMap(),activeTapLayers=new WeakMap(),orderTimers=new WeakMap();
+  const tapSymbols={
+    'fx-serve':['✦','✧','•'],'fx-cart':['◉','●','◉'],'fx-reservation':['✦','✧'],'fx-prize':['✦','✧','✷'],
+    'fx-route':['•','◆'],'fx-photo':['✦','✧'],'fx-page':['◇','✦'],'fx-note':['★','✧'],
+    'fx-audio':['♪','♫'],'fx-reveal':['✧','＋'],'fx-builder':['◆','✦'],'fx-press':['✦','•']
+  };
   const tapEffectFor=control=>{
     if(control.matches('.cart-open,.cart-nav-shortcut,[data-cart-shortcut]'))return 'fx-cart';
     if(control.matches('#reservation-form .reservation-action'))return 'fx-reservation';
@@ -137,8 +142,13 @@
   document.addEventListener('click',event=>{
     const control=event.target.closest('button,a,summary,[role="button"]');if(!control||control.disabled||control.getAttribute('aria-disabled')==='true')return;
     const previous=activeTapEffects.get(control);if(previous)control.classList.remove(previous);
-    const effect=tapEffectFor(control);void control.offsetWidth;control.classList.add(effect);activeTapEffects.set(control,effect);
-    clearTimeout(tapTimers.get(control));tapTimers.set(control,setTimeout(()=>{control.classList.remove(effect);activeTapEffects.delete(control)},850));
+    activeTapLayers.get(control)?.remove();
+    const effect=tapEffectFor(control),layer=document.createElement('span'),symbols=tapSymbols[effect]||tapSymbols['fx-press'];
+    layer.className=`restaurant-fx-layer ${effect}-layer`;layer.setAttribute('aria-hidden','true');
+    const count=effect==='fx-prize'?14:effect==='fx-serve'||effect==='fx-cart'||effect==='fx-builder'?10:7;
+    for(let index=0;index<count;index++){const particle=document.createElement('span'),angle=(Math.PI*2*index/count)-Math.PI/2,distance=effect==='fx-prize'?48+index%3*12:effect==='fx-cart'?36+index%3*10:30+index%3*9;particle.className='restaurant-fx-particle';particle.textContent=symbols[index%symbols.length];particle.style.setProperty('--fx-x',`${Math.cos(angle)*distance}px`);particle.style.setProperty('--fx-y',`${Math.sin(angle)*distance}px`);particle.style.setProperty('--fx-delay',`${index%5*24}ms`);layer.append(particle)}
+    control.append(layer);activeTapLayers.set(control,layer);void control.offsetWidth;control.classList.add(effect);activeTapEffects.set(control,effect);
+    clearTimeout(tapTimers.get(control));tapTimers.set(control,setTimeout(()=>{control.classList.remove(effect);activeTapEffects.delete(control);activeTapLayers.delete(control);layer.remove()},1100));
   },true);
   document.addEventListener('click',event=>{
     const add=event.target.closest('[data-order-item]');if(!add)return;

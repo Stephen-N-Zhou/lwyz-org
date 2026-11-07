@@ -139,6 +139,25 @@ dialog.order-celebration::backdrop{background:transparent}
 @media(prefers-reduced-motion:reduce){.builder-choice-pop,.builder-price-pop,.builder-preview-pop,.flavor-stop.stamp-pop .stop-icon,.add-to-cart.cart-added,.fun-button.cart-added{animation:none!important}.build-own-card{transition:none!important}.build-own-card:focus-within{transform:none;box-shadow:0 0 0 2px #c5a14655}.dish-tile:active{transform:none}}
 
 /* Restaurant controls use distinct motion cues, so every tap has its own feedback. */
+.fx-serve,.fx-cart,.fx-reservation,.fx-prize,.fx-route,.fx-photo,.fx-page,.fx-note,.fx-audio,.fx-reveal,.fx-builder,.fx-press{position:relative!important;isolation:isolate;overflow:visible!important}
+.restaurant-fx-layer{position:absolute;z-index:30;inset:-1.15rem;display:block;overflow:visible;pointer-events:none}
+.restaurant-fx-particle{position:absolute;top:50%;left:50%;display:block;color:#c5a146;font:900 1.05rem/1 Georgia,serif;text-shadow:0 2px 5px #4a351c55;opacity:0;transform:translate(-50%,-50%) scale(.2);animation:fx-particle-flight .8s var(--fx-delay,0ms) cubic-bezier(.12,.72,.2,1) both}
+.fx-serve-layer .restaurant-fx-particle{color:#d4a931;font-size:1.2rem}
+.fx-cart-layer .restaurant-fx-particle{color:#dbb84e;font-size:1rem;text-shadow:0 2px 4px #70541c88}
+.fx-prize-layer .restaurant-fx-particle{color:#b7352b;font-size:1.35rem;text-shadow:0 0 7px #f4d77c}
+.fx-prize-layer .restaurant-fx-particle:nth-child(3n){color:#d6a52c}.fx-prize-layer .restaurant-fx-particle:nth-child(3n + 1){color:#176b4e}
+.fx-route-layer .restaurant-fx-particle{color:#347957;font-size:.82rem}
+.fx-photo-layer .restaurant-fx-particle{color:#fff1b9;font-size:1.25rem;text-shadow:0 1px 5px #765623}
+.fx-page-layer .restaurant-fx-particle{color:#b88d30;font-size:1rem}
+.fx-note-layer .restaurant-fx-particle{color:#a63d32;font-size:1rem}
+.fx-audio-layer .restaurant-fx-particle{color:#31765d;font-size:1.15rem}
+.fx-builder-layer .restaurant-fx-particle:nth-child(odd){color:#a33e30}.fx-builder-layer .restaurant-fx-particle:nth-child(even){color:#287052}
+.fx-prize-layer::before,.fx-reservation-layer::before,.fx-audio-layer::before{position:absolute;top:50%;left:50%;width:18px;height:18px;border:2px solid #d7b74f;border-radius:50%;content:"";opacity:0;transform:translate(-50%,-50%);animation:fx-ring-expand .7s ease-out both}
+.fx-prize-layer::before{width:28px;height:28px;border-width:3px;border-color:#ba4934}
+.fx-reservation-layer::before{width:20px;height:20px;border-color:#34745b}
+.fx-audio-layer::before{width:15px;height:15px;border-color:#34745b;border-style:dashed;animation-duration:.85s}
+.fx-photo-layer::before{position:absolute;inset:15%;border:2px solid #fff7cf;border-radius:9px;content:"";opacity:0;box-shadow:0 0 20px #fff4b9;animation:fx-photo-flash .55s ease-out both}
+.fx-page-layer::before{position:absolute;top:15%;right:28%;bottom:15%;width:2px;background:linear-gradient(transparent,#d8b957,#fff3c0,#d8b957,transparent);content:"";opacity:0;transform:rotate(18deg) scaleY(.2);animation:fx-page-glint .65s ease-out both}
 .fx-serve{animation:fx-serve .58s cubic-bezier(.2,.85,.24,1.2)}
 .fx-cart{animation:fx-cart .52s cubic-bezier(.2,.8,.25,1.25)}
 .fx-reservation{animation:fx-reservation .68s ease-out}
@@ -163,4 +182,8 @@ dialog.order-celebration::backdrop{background:transparent}
 @keyframes fx-reveal{0%{box-shadow:0 0 0 0 #c5a14600}45%{box-shadow:0 0 0 5px #c5a14655,0 5px 16px #17251b18}100%{box-shadow:0 0 0 0 #c5a14600}}
 @keyframes fx-builder{0%{transform:scale(1)}45%{transform:translateY(-3px) scale(1.035);box-shadow:0 7px 18px #0d5c4b30}100%{transform:none}}
 @keyframes fx-press{0%{transform:scale(1)}45%{transform:scale(1.045);filter:brightness(1.08)}100%{transform:scale(1);filter:none}}
-@media(prefers-reduced-motion:reduce){.fx-serve,.fx-cart,.fx-reservation,.fx-prize,.fx-route .stop-icon,.fx-photo,.fx-page,.fx-note,.fx-audio,.fx-reveal,.fx-builder,.fx-press{animation:none!important;filter:none!important}}
+@keyframes fx-particle-flight{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}14%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(45deg)}100%{opacity:0;transform:translate(calc(-50% + var(--fx-x)),calc(-50% + var(--fx-y))) scale(.35) rotate(220deg)}}
+@keyframes fx-ring-expand{0%{opacity:.9;transform:translate(-50%,-50%) scale(.25)}72%{opacity:.45}100%{opacity:0;transform:translate(-50%,-50%) scale(5.8)}}
+@keyframes fx-photo-flash{0%{opacity:0;transform:scale(.78)}28%{opacity:.95;transform:scale(1.02)}100%{opacity:0;transform:scale(1.15)}}
+@keyframes fx-page-glint{0%{opacity:0;transform:rotate(18deg) scaleY(.2)}45%{opacity:.9;transform:rotate(18deg) scaleY(1)}100%{opacity:0;transform:rotate(18deg) scaleY(.55)}}
+@media(prefers-reduced-motion:reduce){.fx-serve,.fx-cart,.fx-reservation,.fx-prize,.fx-route .stop-icon,.fx-photo,.fx-page,.fx-note,.fx-audio,.fx-reveal,.fx-builder,.fx-press{animation:none!important;filter:none!important}.restaurant-fx-layer{display:none!important}}
