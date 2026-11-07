@@ -1,4 +1,4 @@
-const CACHE_NAME = 'forbidden-bite-offline-v58';
+const CACHE_NAME = 'forbidden-bite-offline-v59';
 const SHELL = [
   '/projects/restaurant.html',
   '/projects/restaurant-arcade.html',
@@ -52,6 +52,9 @@ const OFFLINE_ASSETS = [
   '/assets/forbidden_bite/arcade-noodle-mountain.webp',
   '/assets/forbidden_bite/arcade-sugar-rooftops-ai.webp',
   '/assets/forbidden_bite/arcade-sugar-sprint-village-ai.webp?v=1',
+  '/assets/forbidden_bite/arcade-sugar-platform-ai.webp',
+  '/assets/forbidden_bite/arcade-mooncake-layer-ai.webp',
+  '/assets/forbidden_bite/arcade-mooncake-board-ai.webp?v=1',
   '/assets/forbidden_bite/arcade-dish-garden.webp',
   '/assets/forbidden_bite/arcade-roadster-mountains.webp',
   '/assets/forbidden_bite/arcade-trail-garden.webp',
