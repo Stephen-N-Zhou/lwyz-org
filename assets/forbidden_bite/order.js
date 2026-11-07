@@ -119,10 +119,26 @@
     dialog.querySelector('.discount-row').hidden=!promoApplied;dialog.querySelector('.discount-amount').textContent=`−${money(discount)}`;
     dialog.querySelector('.review-total').textContent=money(Math.max(0,subtotalAmount+(delivery?4.99:0)-discount));
   };
-  const tapTimers=new WeakMap(),orderTimers=new WeakMap();
+  const tapTimers=new WeakMap(),activeTapEffects=new WeakMap(),orderTimers=new WeakMap();
+  const tapEffectFor=control=>{
+    if(control.matches('.cart-open,.cart-nav-shortcut,[data-cart-shortcut]'))return 'fx-cart';
+    if(control.matches('#reservation-form .reservation-action'))return 'fx-reservation';
+    if(control.matches('#spin-button,#spin-claim-button,.spin-button'))return 'fx-prize';
+    if(control.matches('.flavor-stop'))return 'fx-route';
+    if(control.matches('.dish-tile,.dialog-add'))return 'fx-photo';
+    if(control.matches('.recipe-book-cover,.recipe-book-page-button,.recipe-book-next,.recipe-book-previous'))return 'fx-page';
+    if(control.matches('.review-form button,.review-tools button'))return 'fx-note';
+    if(control.matches('.sound-button'))return 'fx-audio';
+    if(control.matches('summary'))return 'fx-reveal';
+    if(control.matches('.add-to-cart,[data-order-item]'))return 'fx-serve';
+    if(control.matches('.fun-button,[data-builder-add],#feast-add,#planner-build,#planner-add'))return 'fx-builder';
+    return 'fx-press';
+  };
   document.addEventListener('click',event=>{
     const control=event.target.closest('button,a,summary,[role="button"]');if(!control||control.disabled||control.getAttribute('aria-disabled')==='true')return;
-    control.classList.remove('tap-glow');void control.offsetWidth;control.classList.add('tap-glow');clearTimeout(tapTimers.get(control));tapTimers.set(control,setTimeout(()=>control.classList.remove('tap-glow'),700));
+    const previous=activeTapEffects.get(control);if(previous)control.classList.remove(previous);
+    const effect=tapEffectFor(control);void control.offsetWidth;control.classList.add(effect);activeTapEffects.set(control,effect);
+    clearTimeout(tapTimers.get(control));tapTimers.set(control,setTimeout(()=>{control.classList.remove(effect);activeTapEffects.delete(control)},850));
   },true);
   document.addEventListener('click',event=>{
     const add=event.target.closest('[data-order-item]');if(!add)return;
