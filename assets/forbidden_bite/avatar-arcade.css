@@ -372,3 +372,10 @@ body.is-game-fullscreen[data-game="sugar"] .sugar-pad #sugar-jump{right:0;min-wi
 @keyframes power-ring{0%{opacity:0;transform:scale(.18)}24%{opacity:.8}100%{opacity:0;transform:scale(1)}}
 @keyframes power-card-pop{0%{opacity:0;transform:translateY(30px) scale(.72) rotate(-3deg)}58%{opacity:1;transform:translateY(-5px) scale(1.055) rotate(1deg)}78%{transform:translateY(2px) scale(.99)}100%{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.power-activation-overlay.is-live,.power-activation-overlay.is-live::before,.power-activation-overlay.is-live::after,.is-live .power-activation-card{animation-duration:.18s!important}.power-activation-overlay::before,.power-activation-overlay::after{display:none}}
+
+.arcade-scroll-note{margin:.4rem 0;color:#f1d98b;font-size:.78rem;font-weight:700}
+.stage-overlay{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.overlay-card{max-height:100%;overflow-y:auto}
+@media(max-height:760px){.stage-overlay{align-items:start}.overlay-card{margin:auto}}
+
+/* Keep game controls in normal page flow on touch devices, including iPad Safari. */
+.arena-wrap canvas{touch-action:pan-y}

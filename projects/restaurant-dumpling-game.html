@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#093d33">
   <title>Dumpling Dash | Forbidden Bite</title>
-  <meta name="description" content="Play 100 increasingly tricky levels of Dumpling Dash, a full-screen Forbidden Bite mini-game.">
+  <meta name="description" content="Play 100 increasingly tricky levels of Dumpling Dash in the Forbidden Bite arcade.">
   <link rel="stylesheet" href="/assets/forbidden_bite/fun.css?v=fun-18">
   <link rel="stylesheet" href="/assets/forbidden_bite/professional.css?v=26">
   <link rel="stylesheet" href="/assets/forbidden_bite/restaurant-music.css?v=1">
+  <style>.game-scroll-note{margin:-.35rem 0 .75rem;color:#617362;font-size:.82rem;font-weight:700;line-height:1.45}</style>
 </head>
 <body class="game-page">
   <main class="game-shell">
     <header class="game-top"><a class="game-back" href="/projects/restaurant.html#little-delights">← Back to Forbidden Bite</a><span class="game-label">Forbidden Bite mini-game</span></header>
     <p class="game-label">100 levels of dumpling mayhem</p>
-    <h1 class="game-title">Dumpling Dash</h1>
+    <h1 class="game-title">Dumpling Dash</h1><p class="game-scroll-note">The game stays in the page. Scroll normally to reach the collection, badges, and restaurant links.</p>
     <p class="favorite-display" id="favorite-display" hidden></p>
     <p class="game-instructions" id="level-instructions">Tap the dumpling before time runs out. Clear each round to unlock the next level.</p>
     <div class="game-scorebar" aria-label="Game progress">
@@ -309,7 +310,7 @@
         showOverlay('Time is up!',`You scored ${levelScore} of ${levels[levelNumber-1].goal} points on level ${levelNumber}. Your run total is ${totalScore}.`,[makeButton('Try this level again','game-primary',()=>beginLevel(levelNumber)),Object.assign(document.createElement('a'),{className:'game-secondary',href:'/projects/restaurant.html#little-delights',textContent:'Back to the menu'})]);
       };
       function beginLevel(number,freshRun=false){
-        document.body.classList.add('is-dumpling-active');clearTimers();levelNumber=number;levelScore=0;const config=levels[levelNumber-1];timeLeft=config.timeLimit;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;bossHitsLeft=config.bossHits;powerStatus.textContent='';
+        clearTimers();levelNumber=number;levelScore=0;const config=levels[levelNumber-1];timeLeft=config.timeLimit;running=true;freezeUntil=0;doubleUntil=0;tripleUntil=0;bambooShield=false;bossHitsLeft=config.bossHits;powerStatus.textContent='';
         decoysHitThisLevel=0;
         if(freshRun){totalScore=0;catchStreak=0;runPowersUsed=new Set();bossStreak=0;lastBossLevel=0}
         if(levelNumber>=5)unlockAchievement('halfway-hero');
@@ -318,7 +319,6 @@
         instructions.textContent=`Level ${levelNumber}: ${config.hint}`;
         updateStats();renderTargets();renderPowerups();overlay.hidden=true;
         targetLayer.querySelector('button')?.focus({preventScroll:true});
-        if(document.documentElement.requestFullscreen&&!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
         timer=setInterval(()=>{timeLeft-=1;updateStats();if(timeLeft<=0)finishAttempt()},1000);
         if(config.hop&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)hopTimer=setInterval(()=>{if(running&&Date.now()>=freezeUntil)moveTargets()},config.hop);
       }
@@ -361,6 +361,6 @@
     })();
   </script>
   <script src="/assets/forbidden_bite/restaurant-music.js?v=1" defer></script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=69').catch(()=>{}));}</script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js?v=70').catch(()=>{}));}</script>
 </body>
 </html>
