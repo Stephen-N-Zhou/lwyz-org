@@ -377,5 +377,8 @@ body.is-game-fullscreen[data-game="sugar"] .sugar-pad #sugar-jump{right:0;min-wi
 .stage-overlay{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.overlay-card{max-height:100%;overflow-y:auto}
 @media(max-height:760px){.stage-overlay{align-items:start}.overlay-card{margin:auto}}
 
+/* Keep every arcade canvas compact enough for short iPad and landscape viewports. */
+.avatar-arcade-page .arena-wrap{width:min(100%,720px,155svh);margin-inline:auto}
+
 /* Keep game controls in normal page flow on touch devices, including iPad Safari. */
 .arena-wrap canvas{touch-action:pan-y}

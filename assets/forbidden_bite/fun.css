@@ -249,3 +249,6 @@ body.game-page.is-dumpling-active .target-layer{z-index:3}
 body.game-page.is-dumpling-active .game-arena::after{z-index:2}
 @media(max-width:520px){body.game-page.is-dumpling-active .game-shell{gap:.18rem;padding:max(.22rem,env(safe-area-inset-top)) .24rem max(.22rem,env(safe-area-inset-bottom))}body.game-page.is-dumpling-active .game-scorebar{width:100%;max-width:560px}body.game-page.is-dumpling-active .powerup-bar{justify-content:flex-start}body.game-page.is-dumpling-active .game-arena{border-radius:10px}}
 @media(max-height:520px) and (orientation:landscape){body.game-page.is-dumpling-active .game-shell{grid-template-rows:max-content max-content max-content minmax(0,1fr);gap:.12rem}body.game-page.is-dumpling-active .game-scorebar{grid-row:1}body.game-page.is-dumpling-active .game-progress{grid-row:2}body.game-page.is-dumpling-active .powerup-status{display:none}body.game-page.is-dumpling-active .powerup-bar{grid-row:3}body.game-page.is-dumpling-active .game-arena{grid-row:4}body.game-page.is-dumpling-active .game-stat{min-height:34px}body.game-page.is-dumpling-active .powerup-button{min-height:34px}}
+
+/* Normal page mode: keep Dumpling Dash compact across tablet and phone viewports. */
+.game-page:not(.is-dumpling-active) .game-arena{width:min(100%,760px,155svh);height:clamp(240px,44svh,380px);min-height:0;margin-inline:auto}
